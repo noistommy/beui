@@ -23,7 +23,7 @@ $badgeOffsetLeft: calc(100% - $badgeOffset);
   font-weight: $badgeFontWeight;
   text-align: center;
   min-width: $badgeSize;
-  min-height: $badgeSize;
+  // min-height: $badgeSize;
   line-height: 1em;
   padding: $badgePadding;
   border-radius: $badgeBorderRadius;

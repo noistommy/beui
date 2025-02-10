@@ -2,6 +2,7 @@
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import SlideSideLayout from './components/SlideSideLayout.vue'
+import SideList from '@/components/SideList.vue'
 
 const route = useRoute()
 const toggleSide = ref(true)
@@ -28,14 +29,7 @@ watch(route, () => {
           </div>
         </div>
         <div class="side-nav-contents">
-          <div class="be-list nav-list selection">
-            <RouterLink to="/">
-              <div class="item">Home</div>
-            </RouterLink>
-            <RouterLink to="/about">
-              <div class="item">About</div>
-            </RouterLink>
-          </div>
+          <SideList :current="mainTitle" />
         </div>
       </div>
     </template>
@@ -50,12 +44,15 @@ watch(route, () => {
   </SlideSideLayout>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 $headerHeight: 58px;
 main {
   padding: 10px;
   margin-left: 20px;
+  height: 100%;
+  overflow-y: auto;
   .main-title {
+    height: $headerHeight;
     &::first-letter {
       text-transform: uppercase;
     }
@@ -86,14 +83,35 @@ main {
   }
   .side-nav-contents {
     flex-grow: 1;
-    .nav-list {
-      .item {
-        padding: 0.5rem 1rem;
-        &:hover {
-          background-color: rgba(0, 0, 0, 0.04);
-        }
-      }
-    }
   }
+}
+
+//page style
+.page-wrapper {
+  width: 1024px;
+  section {
+    margin-bottom: 2rem;
+  }
+  overflow-y: auto;
+}
+.summary {
+  margin-bottom: 2rem;
+  // padding: 1rem;
+  // width: 500px;
+}
+section {
+  .desc {
+    opacity: .8;
+    padding: 5px 5px 10px ;
+  }
+}
+.contents-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid var(--brd);
+  gap: 8px;
+
 }
 </style>

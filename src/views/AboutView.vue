@@ -2,8 +2,11 @@
 import { ref } from 'vue'
 import BeButton from '@/beComponents/beButton/BeButton.vue'
 import BeInput from '@/beComponents/beInput/BeInput.vue'
+import BeCheckBox from '@/beComponents/beCheckBox/BeCheckBox.vue'
 
 const insertValue = ref('')
+const checkValue = ref(false)
+const radioValue = ref('test3')
 </script>
 <template>
   <div class="button">
@@ -28,6 +31,15 @@ const insertValue = ref('')
       <input type="number" placeholder="숫자를 입력하세요" />
     </BeInput>
     <BeInput type="textarea"></BeInput>
+  </div>
+  <div class="checkbox">
+    <BeCheckBox id="test" name="check" v-model="checkValue">Test CheckBox</BeCheckBox>
+  </div>
+  <div class="radio">
+    <BeCheckBox type="radio" id="test1" name="check" v-model="radioValue">Test1</BeCheckBox>
+    <BeCheckBox type="radio" id="test2" name="check" v-model="radioValue">Test2</BeCheckBox>
+    <BeCheckBox type="radio" id="test3" name="check" v-model="radioValue">Test3</BeCheckBox>
+    {{  radioValue }}
   </div>
 </template>
 

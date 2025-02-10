@@ -14,7 +14,7 @@ $switchRadiusSize: $baseInputRadius;
     position: relative;
     width: 3em;
     height: 1.3em;
-    top: 0.15em;
+    // top: 0.15em;
     input:checked + .switch {
       background-color: $primary;
     }
@@ -24,27 +24,22 @@ $switchRadiusSize: $baseInputRadius;
     .switch {
       cursor: pointer;
       position: absolute;
-      top: 0.15em;
-      bottom: 0;
-      left: 0.15em;
-      right: 0;
+      inset: .1em;
+      // top: 0.15em;
+      // bottom: 0;
+      // left: 0.15em;
+      // right: 0;
       display: inline-block;
       background-color: #c4c4c4;
       border-radius: $switchRadiusSize;
       /*transition: all 400ms ease-out;*/
-      &.round {
-        border-radius: 1em;
-        &:before {
-          border-radius: 50%;
-        }
-      }
       &:before {
         content: '';
         position: absolute;
         width: 1.6em;
         height: 1.6em;
-        top: -0.15em;
-        left: -0.15em;
+        top: -0.25em;
+        left: -0.25em;
         background-color: #fff;
         border-radius: $switchRadiusSize;
         //border: 1px solid #c4c4c4;
@@ -61,14 +56,21 @@ $switchRadiusSize: $baseInputRadius;
         transform: translateX(20px);
       }
       .switch {
-        top: 0;
-        left: 0;
+        inset: 0;
       }
       .switch:before {
         width: 18px;
         height: 18px;
         top: 2px;
         left: 2px;
+      }
+    }
+    &.round {
+      .switch {
+        border-radius: 1em;
+        &:before {
+          border-radius: 50%;
+        }
       }
     }
   }
