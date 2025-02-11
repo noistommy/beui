@@ -188,27 +188,5 @@ const selectedIndex = ref(0)
 </template>
 
 <style lang="scss" scoped>
-.page-wrapper {
-  width: 1024px;
-  section {
-    margin-bottom: 2rem;
-  }
-  overflow-y: auto;
-}
-.summary {
-  margin-bottom: 2rem;
-  // padding: 1rem;
-  // width: 500px;
-}
-.title {
-  margin-bottom: 1rem;
-}
-.contents-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  padding: 1rem;
-  border: 1px solid var(--brd);
-  gap: 8px;
-}
+
 </style>

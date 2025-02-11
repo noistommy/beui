@@ -34,6 +34,21 @@ const router = createRouter({
       name: 'switch',
       component: () => import('../views/SwitchView.vue'),
     },
+    {
+      path: '/tag',
+      name: 'tag',
+      component: () => import('../views/TagsView.vue'),
+    },
+    {
+      path: '/grid',
+      name: 'grid',
+      component: () => import('../views/GridView.vue'),
+    },
+    {
+      path: '/components/pagination',
+      name: 'pagination',
+      component: () => import('../views/PaginationView.vue'),
+    },
   ],
   scrollBehavior() {
     return { left: 0, top: 0 }  // 모든 라우트 변경시 페이지의 최상단으로 스크롤

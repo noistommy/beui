@@ -4,6 +4,7 @@ $switchRadiusSize: $baseInputRadius;
 
 .be-switch {
   display: inline-block;
+  cursor: pointer;
   input {
     display: none;
     position: absolute;
@@ -14,6 +15,9 @@ $switchRadiusSize: $baseInputRadius;
     position: relative;
     width: 3em;
     height: 1.3em;
+    &:not(.inside) {
+      margin: 0.15em;
+    }
     // top: 0.15em;
     input:checked + .switch {
       background-color: $primary;
@@ -86,6 +90,7 @@ $switchRadiusSize: $baseInputRadius;
         color: $white;
         font-weight: 700;
         border-radius: $switchRadiusSize;
+        // margin-left: -5px;
         //box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.36);
       }
       & ~ .on {
@@ -98,10 +103,12 @@ $switchRadiusSize: $baseInputRadius;
         color: $white;
         font-weight: 700;
         border-radius: $switchRadiusSize;
+        // margin-right: -5px;
         //box-shadow: 0 0 5px 0 #2985DB;
       }
       & ~ .off {
         background-color: transparent;
+        font-weight: 500;
         color: #333333;
         box-shadow: none;
       }

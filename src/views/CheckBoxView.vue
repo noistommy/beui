@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 
 const radioValue = ref(1)
-const cbValue = ref(true)
+const cbValue = ref([true, false, false])
 </script>
 
 <template>
@@ -34,9 +34,17 @@ const cbValue = ref(true)
       <h4 class="title">CheckBox</h4>
       <div class="desc"></div>
       <div class="contents-wrapper">
-        <div class="be-checkbox" :class="{checked: cbValue}">
-          <input type="checkbox" id="checkbox" v-model="cbValue" />
-          <label for="checkbox">Checkbox</label>
+        <div class="be-checkbox" :class="{checked: cbValue[0]}">
+          <input type="checkbox" id="checkbox1" v-model="cbValue[0]" />
+          <label for="checkbox1">Checkbox1</label>
+        </div>
+        <div class="be-checkbox" :class="{checked: cbValue[1]}">
+          <input type="checkbox" id="checkbox2" v-model="cbValue[1]" />
+          <label for="checkbox2">Checkbox2</label>
+        </div>
+        <div class="be-checkbox" :class="{checked: cbValue[2]}">
+          <input type="checkbox" id="checkbox3" v-model="cbValue[2]" />
+          <label for="checkbox3">Checkbox3</label>
         </div>
       </div>
     </section>

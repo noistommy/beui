@@ -1,0 +1,41 @@
+<script setup>
+defineProps({
+  type: {
+    type: String,
+    default: 'slide',
+    varidator: (value) => {
+      return ['slide', 'button'].includes(value)
+    }
+  },
+  round: {
+    type: Boolean,
+  },
+  onText: {
+    type: String,
+    default: 'ON'
+  },
+  offText: {
+    type: String,
+    default: 'OFF'
+  }
+})
+const switchValue = defineModel()
+
+const onClick = () => {
+  switchValue.value = !switchValue.value
+}
+</script>
+<template>
+  <div class="be-switch" :class="[type, {round:round} ]" @click="onClick">
+    <input type="checkbox" v-model="switchValue" />
+    <template v-if="type === 'slide'">
+      <div class="switch"></div>
+    </template>
+    <template v-else>
+      <slot>
+        <span class="on" :class="{active: switchValue}">{{ onText }}</span>
+        <span class="off" :class="{active: !switchValue}">{{ offText }}</span>
+      </slot>
+    </template>
+  </div>
+</template>

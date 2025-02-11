@@ -24,7 +24,7 @@ watch(route, () => {
           </div>
           <div class="toggle-btn" :class="{ show: toggleSide }" @click="toggleSide = !toggleSide">
             <div class="be-button icon circle gray-70">
-              <i class="xi-hamburger-out" :class="{ 'xi-rotate-180': toggleSide }"></i>
+              <i class="xi-angle-left" :class="{ 'xi-rotate-180': toggleSide }"></i>
             </div>
           </div>
         </div>
