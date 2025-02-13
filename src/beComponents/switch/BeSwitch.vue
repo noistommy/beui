@@ -20,10 +20,13 @@ defineProps({
   }
 })
 const switchValue = defineModel()
+const emit = defineEmits(['change'])
 
 const onClick = () => {
   switchValue.value = !switchValue.value
+  emit('change', switchValue.value)
 }
+
 </script>
 <template>
   <div class="be-switch" :class="[type, {round:round} ]" @click="onClick">

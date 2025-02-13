@@ -45,7 +45,7 @@ watch(route, () => {
 </template>
 
 <style lang="scss">
-$headerHeight: 58px;
+$headerHeight: 80px;
 main {
   padding: 10px;
   margin-left: 20px;
@@ -63,13 +63,15 @@ main {
   flex-direction: column;
 
   height: 100%;
-  color: #fff;
+  color: var(--txt);
   .side-header {
     height: $headerHeight;
     display: flex;
     justify-content: space-between;
     align-items: center;
     .logo {
+      font-weight: 800;
+      font-size: 3em;
       padding: 10px 15px;
       height: 100%;
     }
@@ -88,11 +90,10 @@ main {
 
 //page style
 .page-wrapper {
-  width: 1024px;
+  width: 780px;
   section {
     margin-bottom: 2rem;
   }
-  overflow-y: auto;
 }
 .summary {
   margin-bottom: 2rem;
@@ -106,12 +107,26 @@ section {
   }
 }
 .contents-wrapper {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   padding: 1rem;
   border: 1px solid var(--brd);
   gap: 8px;
+  margin-bottom: 5px;
+  &:last-child {
+    // &:after {
+    //   content: 'component';
+    //   padding: 3px 5px;
+    //   position: absolute;
+    //   top: 0;
+    //   right: 0;
+    //   font-size: 0.8em;
+    //   background-color: #333;
+    //   color: #fff;
 
+    // }
+  }
 }
 </style>

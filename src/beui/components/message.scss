@@ -31,6 +31,16 @@
       text-align: right;
     }
   }
+  &.icon {
+    padding-left: 48px;
+    position: relative;
+    i.icon {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      font-size: 1.6em;
+    }
+  }
 }
 
 .be-messages {

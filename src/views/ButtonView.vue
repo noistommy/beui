@@ -10,7 +10,8 @@ const selectedIndex = ref(0)
 <template>
   <div class="page-wrapper be-container">
     <div class="summary">
-      <div class="be-message info">
+      <div class="be-message icon success">
+        <i class="icon xi-info"></i>
         @baseFont 14px
       </div>
     </div>
@@ -20,6 +21,7 @@ const selectedIndex = ref(0)
       <div class="contents-wrapper">
         <div class="be-button">Base(class)</div>
         <button class="be-button">Base(tag)</button>
+        <BeButton content-text="Component"></BeButton>
       </div>
     </section>
     <section>
@@ -29,6 +31,8 @@ const selectedIndex = ref(0)
         <button class="be-button primary">primary</button>
         <button class="be-button secondary">secondary</button>
         <button v-for="state in status" :key="state" class="be-button" :class="state">{{ state }}</button>
+        <BeButton brand="primary" content-text="Comp(brand)"></BeButton>
+        <BeButton status="danger" content-text="Comp(status)"></BeButton>
       </div>
     </section>
     <section>
@@ -36,6 +40,7 @@ const selectedIndex = ref(0)
       <div class="desc"></div>
       <div class="contents-wrapper">
         <button v-for="color in colors" :key="color" class="be-button" :class="color">{{ color }}</button>
+        <BeButton color="lightblue" content-text="Comp(color)"></BeButton>
       </div>
     </section>
     <section>
@@ -48,6 +53,7 @@ const selectedIndex = ref(0)
           <i class="icon left xi-text-size"></i>
           text
         </button>
+        <BeButton :text="true" content-text="Comp(text)"></BeButton>
       </div>
     </section>
     <section>
@@ -61,6 +67,7 @@ const selectedIndex = ref(0)
           </template>
           border
         </button>
+        <BeButton :border="true" content-text="Comp(border)"></BeButton>
       </div>
     </section>
     <section>
@@ -69,6 +76,7 @@ const selectedIndex = ref(0)
       <div class="contents-wrapper">
         <button class="be-button disabled">disabled</button>
         <button class="be-button" disabled>disabled(attr)</button>
+        <BeButton :disabled="true" content-text="Comp(disabled)"></BeButton>
       </div>
     </section>
     <section>
@@ -82,6 +90,7 @@ const selectedIndex = ref(0)
           </template>
           fluid ({{ opt }})
         </button>
+        <BeButton :fluid="true" content-text="Comp(fluid)"></BeButton>
       </div>
     </section>
     <section>
@@ -95,6 +104,7 @@ const selectedIndex = ref(0)
           </template>
           compact
         </button>
+        <BeButton :compact="true" content-text="Comp(compact)"></BeButton>
       </div>
     </section>
     <section>
@@ -108,6 +118,7 @@ const selectedIndex = ref(0)
           </template>
           outline
         </button>
+        <BeButton :outline="true" content-text="Comp(outline)"></BeButton>
       </div>
     </section>
     <section>
@@ -119,6 +130,7 @@ const selectedIndex = ref(0)
         <button v-for="(opt, i) in options" :key="opt" class="be-button icon" :class="opt">
           <i :class="`xi-${icons[i]}`"></i>
         </button>
+        <BeButton icon="xi-airplane"></BeButton>
       </div>
     </section>
     <section>
@@ -132,6 +144,7 @@ const selectedIndex = ref(0)
           </template>
           circle
         </button>
+        <BeButton :circle="true" content-text="Comp(circle)"></BeButton>
       </div>
     </section>
     <section>
@@ -151,10 +164,11 @@ const selectedIndex = ref(0)
           Icon Both
           <i class="icon right xi-angle-right"></i>
         </button>
+        <BeButton with-icon="xi-airplane" icon-pos="left" content-text="Comp(icon)"></BeButton>
       </div>
     </section>
     <section>
-      <h4 class="title">Bedge</h4>
+      <h4 class="title">Badge</h4>
       <div class="desc"></div>
       <div class="contents-wrapper">
         <button class="be-button badge">
@@ -165,6 +179,7 @@ const selectedIndex = ref(0)
           Bedge New
           <span class="in-badge be-red">N</span>
         </button>
+        <BeButton badge="COMP" badge-option="secondary" content-text="Comp(badge)"></BeButton>
       </div>
     </section>
     <section>

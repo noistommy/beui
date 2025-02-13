@@ -11,6 +11,7 @@ const elementList = [
 
 const componentList = [
   { name: 'pagination', path: '/pagination' },
+  { name: 'selectbox', path: '/selectbox' },
 ]
 defineProps({
   current: {
@@ -36,7 +37,7 @@ defineProps({
     <div class="list-title gray-30">
       <h5>Element</h5>
     </div>
-    <div class="be-list nav-list selection">
+    <div class="be-list nav-list selection text mark">
       <div class="item" v-for="item in elementList" :key="item.name" :class="{selected: current === item.name}">
         <RouterLink :to="item.path">
           {{ item.name }}
@@ -46,7 +47,7 @@ defineProps({
     <div class="list-title gray-30">
       <h5>Components</h5>
     </div>
-    <div class="be-list nav-list selection">
+    <div class="be-list nav-list selection text mark">
       <div class="item" v-for="item in componentList" :key="item.name" :class="{selected: current === item.name}">
         <RouterLink :to="`/components${item.path}`">
           {{ item.name }}

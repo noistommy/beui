@@ -47,6 +47,7 @@ const props = defineProps({
 })
 const pageEl = ref(null)
 const current = defineModel()
+const emit = defineEmits(['change'])
 const last = ref(1)
 
 const pageList = computed(() => {
@@ -95,6 +96,7 @@ onMounted(() => {
 const setCurrent = (num) => {
   if (num > last.value || num <= 0) return
   current.value = num
+  emit('change',num)
 }
 const setPrev = () => {
   if (isDisabledPrev.value) return

@@ -1,7 +1,11 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const cbValue = ref(true)
+
+const setSwitch = computed(() => {
+  return cbValue
+})
 </script>
 
 <template>
@@ -23,7 +27,7 @@ const cbValue = ref(true)
       <div class="contents-wrapper">
         <div class="be-switch slide inside" @click="cbValue = !cbValue">
           <input type="checkbox" :checked="cbValue">
-          <span class="switch"></span>
+          <span class="switch" ></span>
         </div>
       </div>
     </section>
@@ -81,6 +85,14 @@ const cbValue = ref(true)
           <span class="off">Off</span>
         </div>
       </div>
+    </section>
+    <section>
+      <h4 class="title">Emit</h4>
+      <div class="desc">emit: change</div>
+      <div class="contents-wrapper">
+        <BeSwitch v-model="cbValue" />
+      </div>
+      Result: {{ setSwitch }}
     </section>
   </div>
 </template>

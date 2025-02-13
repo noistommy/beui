@@ -2,6 +2,11 @@
 import { ref } from 'vue'
 
 const pageValue = ref(1)
+const showValue = ref(1)
+
+const setCurrent = (payload) => {
+  showValue.value = payload
+}
 </script>
 
 <template>
@@ -60,6 +65,14 @@ const pageValue = ref(1)
       <div class="contents-wrapper">
         <BePagination :limits="5" :ellipsis="true"  v-model="pageValue" :page-length="10" />
       </div>
+    </section>
+    <section>
+      <h4 class="title">Emit</h4>
+      <div class="desc">emit: change</div>
+      <div class="contents-wrapper">
+        <BePagination :limits="5" :ellipsis="true"  v-model="pageValue" :page-length="10" @change="setCurrent" />
+      </div>
+      Result: {{ showValue }}
     </section>
   </div>
 </template>
