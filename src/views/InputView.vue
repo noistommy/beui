@@ -4,9 +4,7 @@ const placeholder = '입력하세요'
 <template>
   <div class="page-wrapper be-container">
     <div class="summary">
-      <div class="be-message info">
-        @baseFont 14px
-      </div>
+      <div class="be-message info">@baseFont 14px</div>
     </div>
     <section>
       <h4 class="title">Base</h4>
@@ -127,6 +125,16 @@ const placeholder = '입력하세요'
       </div>
     </section>
     <section>
+      <h4 class="title">Clear Icon</h4>
+      <div class="desc">
+        <span class="be-tag label">component</span>
+        입력값을 초기화 하기 위한 버튼 제공
+      </div>
+      <div class="contents-wrapper">
+        <BeInput :clear="true" />
+      </div>
+    </section>
+    <section>
       <h4 class="title">Badge</h4>
       <div class="desc"></div>
       <div class="contents-wrapper">
@@ -169,10 +177,10 @@ const placeholder = '입력하세요'
       <div class="desc"></div>
       <div class="contents-wrapper">
         <div class="be-input fluid">
-          <textarea type="text" :placeholder="placeholder" ></textarea>
+          <textarea type="text" :placeholder="placeholder"></textarea>
         </div>
         <div class="be-input fluid short">
-          <textarea type="text" :placeholder="placeholder" ></textarea>
+          <textarea type="text" :placeholder="placeholder"></textarea>
         </div>
       </div>
     </section>

@@ -40,6 +40,18 @@
       &.primary {
         border-color: $primary;
       }
+      & + i.icon.clear-btn {
+        border-radius: 50%;
+        background-color: #ebebeb;
+        opacity: 1;
+        &.disabled {
+          pointer-events: none;
+          opacity: 0.3;
+        }
+        &:hover {
+          opacity: 1;
+        }
+      }
     }
     &::placeholder {
       // color: #c4c4c4;
@@ -141,7 +153,6 @@
   }
   &.icon {
     > i.icon {
-      pointer-events: none;
       position: absolute;
       height: 2em;
       width: 2em;
@@ -149,11 +160,17 @@
       opacity: 0.5;
       top: 50%;
       transform: translateY(-50%);
+      z-index: 10;
       &:before {
         position: absolute;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
+      }
+      &.clear-btn {
+        font-size: 12px;
+        cursor: pointer;
+        opacity: 0;
       }
     }
     &.both {

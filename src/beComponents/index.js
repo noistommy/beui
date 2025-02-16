@@ -26,5 +26,5 @@ export default {
   BeCheckBox,
   BeSwitch,
   BePagination,
-  BeSelectBox
+  BeSelectBox,
 }

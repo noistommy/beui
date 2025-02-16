@@ -1,0 +1,39 @@
+div[class*='layout-'] {
+  display: flex;
+  .flexible-handle {
+    position: relative;
+    display: inline-block;
+    transition: all 250ms;
+    flex-shrink: 0;
+  }
+  &.layout-h {
+    .flexible-handle {
+      cursor: col-resize;
+      width: 5px;
+    }
+  }
+  &.layout-v {
+    flex-direction: column;
+    .flexible-handle {
+      cursor: row-resize;
+      height: 5px;
+    }
+  }
+  // view 1
+  div:has(+ .flexible-handle) {
+    flex-shrink: 0;
+  }
+  //view 2
+  .flexible-handle + div {
+    flex-grow: 1;
+  }
+  // view 1 - reverse
+  div:has(+ .flexible-handle.reverse) {
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  .reverse + div {
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+}

@@ -3,6 +3,8 @@ import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import SlideSideLayout from './components/SlideSideLayout.vue'
 import SideList from '@/components/SideList.vue'
+import onMouseDown from './beComponents/flexible-view'
+import './beComponents/flexible-view/flexible-view.scss'
 
 const route = useRoute()
 const toggleSide = ref(true)
@@ -38,7 +40,9 @@ watch(route, () => {
         <div class="main-title">
           <h2>{{ mainTitle }}</h2>
         </div>
-        <RouterView />
+        <div class="main-contents">
+          <RouterView />
+        </div>
       </main>
     </template>
   </SlideSideLayout>
@@ -47,15 +51,18 @@ watch(route, () => {
 <style lang="scss">
 $headerHeight: 80px;
 main {
-  padding: 10px;
   margin-left: 20px;
   height: 100%;
   overflow-y: auto;
   .main-title {
     height: $headerHeight;
+    border-bottom: 1px solid var(--brd);
     &::first-letter {
       text-transform: uppercase;
     }
+  }
+  .main-contents {
+    height: calc(100% - $headerHeight);
   }
 }
 .side-nav {
@@ -90,7 +97,9 @@ main {
 
 //page style
 .page-wrapper {
-  width: 780px;
+  max-width: 780px;
+  padding: 1rem;
+  flex-grow: 1;
   section {
     margin-bottom: 2rem;
   }
@@ -102,8 +111,8 @@ main {
 }
 section {
   .desc {
-    opacity: .8;
-    padding: 5px 5px 10px ;
+    opacity: 0.8;
+    padding: 5px 5px 10px;
   }
 }
 .contents-wrapper {
@@ -127,6 +136,31 @@ section {
     //   color: #fff;
 
     // }
+  }
+}
+.layout-h {
+  display: flex;
+  .side-pane {
+    width: 300px;
+    flex: 1 0 auto;
+  }
+  .flexible-handle {
+    transition: all 250ms;
+    border-left: 1px solid var(--brd);
+    &:after {
+      content: '';
+      transform: translateX(-50%);
+      position: absolute;
+      width: 0;
+      height: 100%;
+      background-color: #6d9d72;
+      opacity: 0.5;
+    }
+    &:hover {
+      &:after {
+        width: 100%;
+      }
+    }
   }
 }
 </style>

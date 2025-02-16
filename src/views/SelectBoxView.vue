@@ -1,5 +1,5 @@
 <script setup>
-import {ref} from 'vue'
+import { ref } from 'vue'
 const options = [
   { id: 1, option: 'run', icon: 'xi-run' },
   { id: 2, option: 'bicycle', icon: 'xi-bicycle' },
@@ -35,7 +35,7 @@ const setSelect = (payload) => {
       <div class="contents-wrapper">
         <div class="selected-list">
           <span class="be-tag label" v-for="item in resultList" :key="item">
-            {{item.option}}
+            {{ item.option }}
           </span>
         </div>
         <BeSelectBox :options :multiple="true" max-opt-height="" @select="setSelect" />
@@ -117,7 +117,7 @@ const setSelect = (payload) => {
       <h4 class="title">Option Limit Height</h4>
       <div class="desc"></div>
       <div class="contents-wrapper">
-        <BeSelectBox :options max-opt-height="120px"  />
+        <BeSelectBox :options max-opt-height="120px" />
       </div>
     </section>
     <section>
