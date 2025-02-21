@@ -255,6 +255,18 @@ $buttonIconDistance: calc($horizontalInputPadding * 0.5);
       }
     }
   }
+  &.round {
+    .be-button {
+      &:first-child:not(.icon) {
+        border-top-left-radius: 2em;
+        border-bottom-left-radius: 2em;
+      }
+      &:last-child:not(.icon) {
+        border-top-right-radius: 2em;
+        border-bottom-right-radius: 2em;
+      }
+    }
+  }
 }
 
 @each $color, $values in list.join($brandColors, $stateColors) {

@@ -54,6 +54,11 @@ const router = createRouter({
       name: 'selectbox',
       component: () => import('../views/SelectBoxView.vue'),
     },
+    {
+      path: '/components/list',
+      name: 'list',
+      component: () => import('../views/ListView.vue'),
+    },
   ],
   scrollBehavior() {
     return { left: 0, top: 0 }  // 모든 라우트 변경시 페이지의 최상단으로 스크롤

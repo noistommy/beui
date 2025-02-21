@@ -1,5 +1,7 @@
 <script setup>
+import { ref } from 'vue'
 const placeholder = '입력하세요'
+const editMode = ref(false)
 </script>
 <template>
   <div class="page-wrapper be-container">
@@ -8,25 +10,33 @@ const placeholder = '입력하세요'
     </div>
     <section>
       <h4 class="title">Base</h4>
-      <div class="desc"></div>
+      <div class="desc">
+        <span class="be-tag label">component</span>
+      </div>
       <div class="contents-wrapper">
         <div class="be-input">
           <input type="text" :placeholder="placeholder" />
         </div>
+        <BeInput :placeholder="placeholder" />
       </div>
     </section>
     <section>
       <h4 class="title">Disabled</h4>
-      <div class="desc"></div>
+      <div class="desc">
+        <span class="be-tag label">component</span>
+      </div>
       <div class="contents-wrapper">
         <div class="be-input disabled">
           <input type="text" :placeholder="placeholder" />
         </div>
+        <BeInput disabled :placeholder="placeholder" />
       </div>
     </section>
     <section>
       <h4 class="title">Readonly</h4>
-      <div class="desc"></div>
+      <div class="desc">
+        <span class="be-tag label">component</span>
+      </div>
       <div class="contents-wrapper">
         <div class="be-input readonly">
           <input type="text" :placeholder="placeholder" />
@@ -34,38 +44,50 @@ const placeholder = '입력하세요'
         <div class="be-input">
           <input type="text" readonly :placeholder="placeholder" />
         </div>
+        <BeInput :readonly="true" :placeholder="placeholder" />
       </div>
     </section>
     <section>
       <h4 class="title">Underline</h4>
-      <div class="desc"></div>
+      <div class="desc">
+        <span class="be-tag label">component</span>
+      </div>
       <div class="contents-wrapper">
         <div class="be-input underline">
           <input type="text" :placeholder="placeholder" />
         </div>
+        <BeInput :underline="true" :placeholder="placeholder" />
       </div>
     </section>
     <section>
       <h4 class="title">Transparent</h4>
-      <div class="desc"></div>
+      <div class="desc">
+        <span class="be-tag label">component</span>
+      </div>
       <div class="contents-wrapper">
         <div class="be-input transparent">
           <input type="text" :placeholder="placeholder" />
         </div>
+        <BeInput :transparent="true" :placeholder="placeholder" />
       </div>
     </section>
     <section>
       <h4 class="title">Compact</h4>
-      <div class="desc"></div>
+      <div class="desc">
+        <span class="be-tag label">component</span>
+      </div>
       <div class="contents-wrapper">
         <div class="be-input compact">
           <input type="text" :placeholder="placeholder" />
         </div>
+        <BeInput :compact="true" :placeholder="placeholder" />
       </div>
     </section>
     <section>
       <h4 class="title">Edit</h4>
-      <div class="desc"></div>
+      <div class="desc">
+        <span class="be-tag label">component</span>
+      </div>
       <div class="contents-wrapper">
         <div class="be-input edit">
           <input type="text" placeholder="일반 모드" />
@@ -73,11 +95,15 @@ const placeholder = '입력하세요'
         <div class="be-input edit editable">
           <input type="text" placeholder="수정 모드" />
         </div>
+        <BeInput :edit="true" :edit-mode="editMode" :placeholder="placeholder" />
+        <div class="be-button" @click="editMode = !editMode">EDIT {{ editMode ? 'OFF' : 'ON' }}</div>
       </div>
     </section>
     <section>
       <h4 class="title">Status</h4>
-      <div class="desc"></div>
+      <div class="desc">
+        <span class="be-tag label">component</span>
+      </div>
       <div class="contents-wrapper">
         <div class="be-input success">
           <input type="text" placeholder="success mode" />
@@ -85,29 +111,39 @@ const placeholder = '입력하세요'
         <div class="be-input danger">
           <input type="text" placeholder="danger mode" />
         </div>
+        <BeInput status="success" :placeholder="placeholder" />
       </div>
     </section>
     <section>
       <h4 class="title">Fluid</h4>
-      <div class="desc"></div>
+      <div class="desc">
+        <span class="be-tag label">component</span>
+      </div>
       <div class="contents-wrapper">
         <div class="be-input fluid">
           <input type="text" :placeholder="placeholder" />
         </div>
+        <BeInput :fluid="true" :placeholder="placeholder" />
       </div>
     </section>
     <section>
       <h4 class="title">Unit</h4>
-      <div class="desc">1글자 unit만 적용 (대, 개, 월, 일, 명, 년...)</div>
+      <div class="desc">
+        <span class="be-tag label">component</span>
+        1글자 unit만 적용 (대, 개, 월, 일, 명, 년...)
+      </div>
       <div class="contents-wrapper">
         <div class="be-input unit" data-unit="대">
           <input type="text" :placeholder="placeholder" class="align-right" />
         </div>
+        <BeInput unit="명" :placeholder="placeholder" />
       </div>
     </section>
     <section>
       <h4 class="title">Icon</h4>
-      <div class="desc"></div>
+      <div class="desc">
+        <span class="be-tag label">component</span>
+      </div>
       <div class="contents-wrapper">
         <div class="be-input icon left">
           <i class="icon xi-search"></i>
@@ -122,6 +158,7 @@ const placeholder = '입력하세요'
           <input type="text" :placeholder="placeholder" />
           <i class="icon xi-close"></i>
         </div>
+        <BeInput icon-left="users" icon-right="lock" :placeholder="placeholder" />
       </div>
     </section>
     <section>
@@ -136,12 +173,15 @@ const placeholder = '입력하세요'
     </section>
     <section>
       <h4 class="title">Badge</h4>
-      <div class="desc"></div>
+      <div class="desc">
+        <span class="be-tag label">component</span>
+      </div>
       <div class="contents-wrapper">
         <div class="be-input badge">
           <input type="text" :placeholder="placeholder" />
           <span class="be-badge red">R</span>
         </div>
+        <BeInput badge="10" badge-option="blue" />
       </div>
     </section>
     <section>

@@ -4,6 +4,7 @@ import BeCheckBox from './checkbox/BeCheckBox.vue'
 import BeSwitch from './switch/BeSwitch.vue'
 import BePagination from './pagination/BePagination.vue'
 import BeSelectBox from './selectbox/BeSelectBox.vue'
+import BeList from './list/BeList.vue'
 
 const be_ui = [
   { name: 'BeButton', comp: BeButton },
@@ -12,6 +13,7 @@ const be_ui = [
   { name: 'BeSwitch', comp: BeSwitch },
   { name: 'BePagination', comp: BePagination },
   { name: 'BeSelectBox', comp: BeSelectBox },
+  { name: 'BeList', comp: BeList },
 ]
 const install = (app) => {
   be_ui.forEach((comp) => {
@@ -27,4 +29,5 @@ export default {
   BeSwitch,
   BePagination,
   BeSelectBox,
+  BeList,
 }

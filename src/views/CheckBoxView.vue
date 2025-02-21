@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 
 const radioValue = ref(1)
+const compValue = ref(false)
 const cbValue = ref([true, false, false])
 </script>
 
@@ -10,7 +11,9 @@ const cbValue = ref([true, false, false])
     <div class="summary"></div>
     <section>
       <h4 class="title">Base</h4>
-      <div class="desc"></div>
+      <div class="desc">
+        <span class="be-tag label">component</span>
+      </div>
       <div class="contents-wrapper">
         <div class="be-checkbox">
           <input type="checkbox" />
@@ -28,11 +31,15 @@ const cbValue = ref([true, false, false])
           <input type="checkbox" />
           <label>Checked Radio</label>
         </div>
+        <BeCheckBox v-model="compValue" id="checkComp" label-text="component" />
+        <BeCheckBox v-model="compValue" type="radio" id="checkComp" label-text="component" />
       </div>
     </section>
     <section>
       <h4 class="title">CheckBox</h4>
-      <div class="desc"></div>
+      <div class="desc">
+        <span class="be-tag label">component</span>
+      </div>
       <div class="contents-wrapper">
         <div class="be-checkbox" :class="{checked: cbValue[0]}">
           <input type="checkbox" id="checkbox1" v-model="cbValue[0]" />
@@ -50,7 +57,9 @@ const cbValue = ref([true, false, false])
     </section>
     <section>
       <h4 class="title">Radio</h4>
-      <div class="desc"></div>
+      <div class="desc">
+        <span class="be-tag label">component</span>
+      </div>
       <div class="contents-wrapper">
         <div class="be-checkbox radio" v-for="item in 3" :key="item" :class="{checked: radioValue === item}">
           <input type="radio" :id="item" name="radios" v-model="radioValue" :value="item"/>

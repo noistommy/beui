@@ -12,6 +12,7 @@ const elementList = [
 const componentList = [
   { name: 'pagination', path: '/pagination' },
   { name: 'selectbox', path: '/selectbox' },
+  { name: 'list', path: '/list' },
 ]
 defineProps({
   current: {

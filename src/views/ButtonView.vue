@@ -195,6 +195,24 @@ const selectedIndex = ref(0)
             {{ item }} Button
           </div>
         </div>
+        <div class="be-buttons round">
+          <div class="be-button"
+            v-for="(item, i) in ['A', 'B', 'C', 'D']"
+            :key="item"
+            :class="{selected: selectedIndex === i}"
+            @click="selectedIndex = i">
+            {{ item }} Button
+          </div>
+        </div>
+        <div class="be-buttons outline">
+          <div class="be-button"
+            v-for="(item, i) in ['A', 'B', 'C', 'D']"
+            :key="item"
+            :class="{selected: selectedIndex === i}"
+            @click="selectedIndex = i">
+            {{ item }} Button
+          </div>
+        </div>
 
       </div>
     </section>

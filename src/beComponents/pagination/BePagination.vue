@@ -51,7 +51,7 @@ const emit = defineEmits(['change'])
 const last = ref(1)
 
 const pageList = computed(() => {
-  if (props.pageLength < props.limits || !props.limits) {
+  if (offLimits.value) {
     return new Array(props.pageLength).fill(1).map((n, i) => n + i)
   } else if (props.ellipsis) {
     let start = 2
@@ -86,6 +86,9 @@ const isDisabledNext = computed(() => {
 const isDisabledPrev = computed(() => {
   return current.value - 1 <= 0
 })
+const offLimits = computed(() => {
+  return props.pageLength <= props.limits || !props.limits
+})
 
 onMounted(() => {
   pageEl.value.focus()
@@ -119,7 +122,7 @@ const setNextBlock = () => {
 
 <template>
   <div class="be-pagination" :class="[type, {round}, {compact}, `align-${align}`]" ref="pageEl">
-    <div v-if="!ellipsis" class="pagination-nav first" :class="[itemClass, {disabled: isDisabledPrev}]" @click="setCurrent(1)">
+    <div v-if="!ellipsis && !offLimits" class="pagination-nav first" :class="[itemClass, {disabled: isDisabledPrev}]" @click="setCurrent(1)">
       F
     </div>
     <div class="pagination-nav prev" :class="[itemClass, {disabled: isDisabledPrev}]" @click="setPrev">
@@ -149,7 +152,7 @@ const setNextBlock = () => {
         </div>
       </template>
     </div>
-    <template  v-if="ellipsis">
+    <template  v-if="ellipsis && props.limits < props.pageLength">
       <div v-if="isNextPoint" class="pagination-nav" :class="[itemClass]" @click="setNextBlock">
         <i class="xi-ellipsis-h"></i>
       </div>
@@ -160,7 +163,7 @@ const setNextBlock = () => {
     <div class="pagination-nav next" :class="[itemClass, {disabled: isDisabledNext}]" @click="setNext">
       <i class="xi-angle-right"></i>
     </div>
-    <div v-if="!ellipsis" class="pagination-nav last" :class="[itemClass, {disabled: isDisabledNext}]" @click="setCurrent(last)">
+    <div v-if="!ellipsis && !offLimits" class="pagination-nav last" :class="[itemClass, {disabled: isDisabledNext}]" @click="setCurrent(last)">
       L
     </div>
   </div>

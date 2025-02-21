@@ -7,6 +7,10 @@ defineProps({
       return ['slide', 'button'].includes(value)
     }
   },
+  inside: {
+    type: Boolean,
+    default: false
+  },
   round: {
     type: Boolean,
   },
@@ -29,7 +33,7 @@ const onClick = () => {
 
 </script>
 <template>
-  <div class="be-switch" :class="[type, {round:round} ]" @click="onClick">
+  <div class="be-switch" :class="[type, {inside}, {round:round} ]" @click="onClick">
     <input type="checkbox" v-model="switchValue" />
     <template v-if="type === 'slide'">
       <div class="switch"></div>

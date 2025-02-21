@@ -120,7 +120,11 @@ const setMultipleList = (item) => {
     <Transition name="extend-fade">
       <div v-if="isShow" class="select-menu" :style="optionsHeight">
         <div class="be-list selection" :class="selectedType" ref="menu">
+          <div v-if="searchedOptions.length === 0" class="no-searched">
+            검색 결과가 없습니다.
+          </div>
           <div
+            v-else
             class="item option-item"
             v-for="(opt, idx) in searchedOptions"
             :key="`option-${idx}`"
@@ -141,6 +145,9 @@ const setMultipleList = (item) => {
 </template>
 
 <style lang="scss" scoped>
+.no-searched {
+  padding: .5rem;
+}
 .be-select-box {
   .be-list {
     .item {

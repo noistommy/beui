@@ -19,21 +19,24 @@ div[class*='layout-'] {
       height: 5px;
     }
   }
-  // view 1
-  div:has(+ .flexible-handle) {
-    flex-shrink: 0;
+  &:not(.reverse) {
+    // view 1
+    div:has(+ .flexible-handle) {
+      flex-shrink: 0;
+    }
+    //view 2
+    .flexible-handle + div {
+      flex-grow: 1;
+    }
   }
-  //view 2
-  .flexible-handle + div {
-    flex-grow: 1;
-  }
-  // view 1 - reverse
-  div:has(+ .flexible-handle.reverse) {
-    flex-grow: 1;
-    flex-shrink: 1;
-  }
-  .reverse + div {
-    flex-grow: 0;
-    flex-shrink: 0;
+  &.reverse {
+    // view 1 - reverse
+    div:has(+ .flexible-handle) {
+      flex-grow: 1;
+      // width: calc(100% - (var(--side) * 1px + 5px));
+    }
+    .flexible-handle + div {
+      flex-shrink: 0;
+    }
   }
 }

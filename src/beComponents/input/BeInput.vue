@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
 const props = defineProps({
   type: {
     type: String,
@@ -19,9 +19,36 @@ const props = defineProps({
       return ['left', 'center', 'right'].includes(value)
     },
   },
+  status: {
+    type: String,
+    default: null,
+    validator(value) {
+      return ['success', 'error', 'attention', 'info', 'importance'].includes(value)
+    },
+  },
   placeholder: {
     type: String,
     default: '입력하세요',
+  },
+  readonly: {
+    type: Boolean,
+    default: false,
+  },
+  underline: {
+    type: Boolean,
+    default: false,
+  },
+  transparent: {
+    type: Boolean,
+    default: false,
+  },
+  compact: {
+    type: Boolean,
+    default: false,
+  },
+  fluid: {
+    type: Boolean,
+    default: false,
   },
   iconLeft: {
     type: String,
@@ -43,19 +70,48 @@ const props = defineProps({
     type: String,
     default: null,
   },
+  edit: {
+    type: Boolean,
+    default: false,
+  },
+  editMode: {
+    type: Boolean,
+    default: false
+  },
+  unit: {
+    type: String,
+    default: null
+  },
 })
 const inputValue = defineModel()
+const emit = defineEmits(['focus'])
 
+const isFocus = ref(false)
+
+const input = ref(null)
 const iconPosition = computed(() => {
   if (props.iconLeft && (props.iconRight || props.clear)) return 'both'
   return props.iconLeft ? 'left' : props.iconRight || props.clear ? 'right' : null
 })
+
+const checkFocus = () => {
+  if (!isFocus.value) {
+    isFocus.value = true
+    console.log('fucus', isFocus.value)
+    emit('focus', isFocus.value)
+  }
+}
+const onBlur = () => {
+  isFocus.value = false
+  emit('focus', isFocus.value)
+}
 </script>
 
 <template>
   <div
     class="be-input"
-    :class="[{ icon: iconLeft || iconRight || clear }, iconPosition, { badge: badge }]"
+    :class="[status, {readonly}, {underline}, {transparent}, {compact}, {fluid}, {edit: edit}, {editable: editMode}, { icon: iconLeft || iconRight || clear }, iconPosition, { badge: badge }, {unit}]"
+    :data-unit="unit"
   >
     <slot>
       <i v-if="iconLeft" :class="`icon xi-${iconLeft}`" />
@@ -65,6 +121,9 @@ const iconPosition = computed(() => {
           v-model="inputValue"
           :placeholder="placeholder"
           :class="[`aline-${align}`]"
+          ref="input"
+          @click="checkFocus()"
+          @blur="onBlur()"
         />
       </template>
       <template v-else>
