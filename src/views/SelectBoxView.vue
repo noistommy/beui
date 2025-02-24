@@ -8,9 +8,17 @@ const options = [
   { id: 5, option: 'public:bus', icon: 'xi-bus' },
   { id: 6, option: 'public:taxi', icon: 'xi-taxi' },
 ]
+const labels = [
+  { id: 11, option: 'run', icon: 'xi-run' },
+  { id: 12, option: 'bicycle', icon: 'xi-bicycle' },
+  { id: 13, option: 'airplane', icon: 'xi-airplane' },
+  { id: 14, option: 'public:car', icon: 'xi-car' },
+  { id: 15, option: 'public:bus', icon: 'xi-bus' },
+  { id: 16, option: 'public:taxi', icon: 'xi-taxi' },
+]
 const result = ref(null)
 const resultList = ref(null)
-const setResult = (payload) => {
+const setResult = (name, payload) => {
   result.value = payload
 }
 const setSelect = (payload) => {
@@ -35,7 +43,7 @@ const setSelect = (payload) => {
       <div class="contents-wrapper">
         <div class="selected-list">
           <span class="be-tag label" v-for="item in resultList" :key="item">
-            {{ item.option }}
+            {{ item }}
           </span>
         </div>
         <BeSelectBox :options :multiple="true" max-opt-height="" @select="setSelect" />
@@ -121,10 +129,25 @@ const setSelect = (payload) => {
       </div>
     </section>
     <section>
+      <h4 class="title">User Custom Option Key</h4>
+      <div class="desc"></div>
+      <div class="contents-wrapper">
+        <BeSelectBox :options="labels"  :use-icon="true" />
+      </div>
+    </section>
+    <section>
       <h4 class="title">Emit</h4>
       <div class="desc">emit:select</div>
       <div class="contents-wrapper">
         <BeSelectBox :options @select="setResult" />
+      </div>
+      {{ result }}
+    </section>
+    <section>
+      <h4 class="title">Model</h4>
+      <div class="desc"></div>
+      <div class="contents-wrapper">
+        <BeSelectBox :options v-model="result" />
       </div>
       {{ result }}
     </section>
