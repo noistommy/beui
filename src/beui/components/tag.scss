@@ -2,7 +2,8 @@
 @use 'sass:list';
 @use '../theme.scss' as *;
 
-$baseTagColor: var(--suf);
+$baseTagColor: var(--base-color);
+$baseHoverTagColor: var(--base-hover-color);
 $tagDotSize: 16px;
 $tagLineWidth: 80px;
 $tagLineHeight: 8px;
@@ -44,7 +45,7 @@ $tagLineHeight: 8px;
     &.focus,
     &:hover,
     &:focus {
-      background-color: var(--hover-suf);
+      background-color: $baseHoverTagColor;
     }
     i.icon.left {
       margin-right: 5px;
@@ -52,6 +53,9 @@ $tagLineHeight: 8px;
     i.icon.right {
       margin-left: 5px;
     }
+  }
+  &.static {
+    pointer-events: none;
   }
 }
 

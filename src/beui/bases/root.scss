@@ -11,6 +11,18 @@
   --suf: #{map.get($grays, 'gray-5')};
   --hover-suf: #{map.get($grays, 'gray-10')};
 
+  --base-color: #{map.get($grays, 'gray-10')};
+  --base-hover-color: #{map.get($grays, 'gray-15')};
+
+  --primary: #{$primary};
+  --secondary: #{$secondary};
+
+  --success: #{$success};
+  --info: #{$info};
+  --error: #{$danger};
+  --warning: #{$attention};
+  --importance: #{$importance};
+
   --depth-bg: #{map.get($grays, 'gray-0')};
   --depth-bs: 0 0 16px 2px rgba(0, 0, 0, 0.16);
 

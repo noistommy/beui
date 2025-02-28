@@ -63,7 +63,7 @@ const setCurrent = (payload) => {
       <h4 class="title">Ellipsis Type</h4>
       <div class="desc"></div>
       <div class="contents-wrapper">
-        <BePagination :limits="5" :ellipsis="true"  v-model="pageValue" :page-length="10" />
+        <BePagination :limits="5" :ellipsis="true"  v-model="pageValue" :page-length="20" />
       </div>
     </section>
     <section>

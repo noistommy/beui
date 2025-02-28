@@ -123,7 +123,7 @@ const selectItem = (value, index) => {
     setMultipleList(value)
     selectedItem.value = selectedList.value.length + '개 선택'
   } else {
-    selectedItem.value = value[props.optionKey]
+    selectedItem.value = value.val
     emit('select', selectedItem.value, props.target)
   }
 }
@@ -136,10 +136,10 @@ const showMenu = (value = true) => {
 
 const setMultipleList = (item) => {
   if (selectedList.value.includes(item[props.optionKey])) {
-    const same = selectedList.value.findIndex((c) => item[props.optionKey] === c)
+    const same = selectedList.value.findIndex((c) => item.val === c)
     selectedList.value.splice(same, 1)
   } else {
-    selectedList.value.push(item[props.optionKey])
+    selectedList.value.push(item.val)
   }
   emit('select', selectedList.value, props.target)
 }
@@ -186,8 +186,8 @@ const selectAll = () => {
               v-for="(opt, idx) in searchedOptions"
               :key="`option-${idx}`"
               :class="[
-                { selected: opt[props.optionKey] === selectedItem },
-                { include: selectedList.includes(opt[props.optionKey]) },
+                { selected: opt.val === selectedItem },
+                { include: selectedList.includes(opt.val) },
               ]"
               @click="selectItem(opt, idx)"
             >

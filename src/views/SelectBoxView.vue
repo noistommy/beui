@@ -1,20 +1,20 @@
 <script setup>
 import { ref } from 'vue'
 const options = [
-  { id: 1, option: 'run', icon: 'xi-run' },
-  { id: 2, option: 'bicycle', icon: 'xi-bicycle' },
-  { id: 3, option: 'airplane', icon: 'xi-airplane' },
-  { id: 4, option: 'public:car', icon: 'xi-car' },
-  { id: 5, option: 'public:bus', icon: 'xi-bus' },
-  { id: 6, option: 'public:taxi', icon: 'xi-taxi' },
+  { id: 1, option: 'Run', icon: 'xi-run', val: 'run' },
+  { id: 2, option: 'Bicycle', icon: 'xi-bicycle', val: 'bicycle' },
+  { id: 3, option: 'Airplane', icon: 'xi-airplane', val: 'airplane' },
+  { id: 4, option: 'Public:car', icon: 'xi-car', val: 'car' },
+  { id: 5, option: 'Public:bus', icon: 'xi-bus', val: 'bus' },
+  { id: 6, option: 'Public:taxi', icon: 'xi-taxi', val: 'taxi' },
 ]
 const labels = [
-  { id: 11, option: 'run', icon: 'xi-run' },
-  { id: 12, option: 'bicycle', icon: 'xi-bicycle' },
-  { id: 13, option: 'airplane', icon: 'xi-airplane' },
-  { id: 14, option: 'public:car', icon: 'xi-car' },
-  { id: 15, option: 'public:bus', icon: 'xi-bus' },
-  { id: 16, option: 'public:taxi', icon: 'xi-taxi' },
+  { id: 11, label: 'run', icon: 'xi-run', val: 'run' },
+  { id: 12, label: 'bicycle', icon: 'xi-bicycle', val: 'bicycle' },
+  { id: 13, label: 'airplane', icon: 'xi-airplane', val: 'airplane' },
+  { id: 14, label: 'public:car', icon: 'xi-car', val: 'car' },
+  { id: 15, label: 'public:bus', icon: 'xi-bus', val: 'bus' },
+  { id: 16, label: 'public:taxi', icon: 'xi-taxi', val: 'taxi' },
 ]
 const result = ref(null)
 const resultList = ref(null)
@@ -46,7 +46,7 @@ const setSelect = (payload) => {
             {{ item }}
           </span>
         </div>
-        <BeSelectBox :options :multiple="true" max-opt-height="" @select="setSelect" />
+        <BeSelectBox  :is-search="true" :options :multiple="true" max-opt-height="" @select="setSelect" />
       </div>
     </section>
     <section>
@@ -132,7 +132,7 @@ const setSelect = (payload) => {
       <h4 class="title">User Custom Option Key</h4>
       <div class="desc"></div>
       <div class="contents-wrapper">
-        <BeSelectBox :options="labels"  :use-icon="true" />
+        <BeSelectBox :options="labels" option-key="label"  :use-icon="true" />
       </div>
     </section>
     <section>

@@ -3,8 +3,8 @@
 @use '../theme.scss' as *;
 //Colors
 $baseButtonColor: var(--txt);
-$baseButtonBg: var(--suf);
-$hoverButtonBg: var(--hover-suf);
+$baseButtonBg: var(--base-color);
+$hoverButtonBg: var(--base-hover-color);
 $buttonIconDistance: calc($horizontalInputPadding * 0.5);
 
 .be-button {
@@ -23,6 +23,7 @@ $buttonIconDistance: calc($horizontalInputPadding * 0.5);
   text-align: center;
   user-select: none;
   border-radius: $baseBorderRadius;
+  border-radius: 2em;
   border: 0;
   outline: none;
   text-shadow: none;
@@ -112,6 +113,9 @@ $buttonIconDistance: calc($horizontalInputPadding * 0.5);
   &.selected {
     background-color: $primary;
     color: $white;
+    &:hover {
+      background-color: color.adjust($primary, $lightness: -10%);
+    }
   }
   &.no-hover {
     cursor: default;
@@ -198,6 +202,9 @@ $buttonIconDistance: calc($horizontalInputPadding * 0.5);
       margin-right: 5px;
     }
   }
+  &.static {
+    pointer-events: none;
+  }
 }
 
 .be-button {
@@ -256,16 +263,17 @@ $buttonIconDistance: calc($horizontalInputPadding * 0.5);
     }
   }
   &.round {
-    .be-button {
-      &:first-child:not(.icon) {
-        border-top-left-radius: 2em;
-        border-bottom-left-radius: 2em;
-      }
-      &:last-child:not(.icon) {
-        border-top-right-radius: 2em;
-        border-bottom-right-radius: 2em;
-      }
-    }
+    border-radius: 2em;
+    // .be-button {
+    //   &:first-child:not(.icon) {
+    //     border-top-left-radius: 2em;
+    //     border-bottom-left-radius: 2em;
+    //   }
+    //   &:last-child:not(.icon) {
+    //     border-top-right-radius: 2em;
+    //     border-bottom-right-radius: 2em;
+    //   }
+    // }
   }
 }
 

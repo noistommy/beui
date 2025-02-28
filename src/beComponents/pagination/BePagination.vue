@@ -55,14 +55,14 @@ const pageList = computed(() => {
     return new Array(props.pageLength).fill(1).map((n, i) => n + i)
   } else if (props.ellipsis) {
     let start = 2
-    let half = Math.floor((props.limits - 2) / 2)
+    let half = Math.floor((props.limits) / 2)
     if (isPrevPoint.value) {
       start = current.value - half
     }
     if (!isNextPoint.value && isPrevPoint.value) {
-      start = last.value - (props.limits - 2)
+      start = last.value - (props.limits)
     }
-    return new Array(props.limits - 2).fill(0).map((n, i) => start + i)
+    return new Array(props.limits).fill(0).map((n, i) => start + i)
   } else {
     let start = Math.min(findStart.value, props.pageLength - props.limits + 1 )
     return new Array(props.limits).fill(start).map((n, i) => n + i)
@@ -75,10 +75,10 @@ const findStart = computed(() => {
 //   return props.pageLength === 1
 // })
 const isPrevPoint = computed(() => {
-  return current.value > Math.floor(props.limits / 2) + 1 && props.limits < last.value
+  return current.value > Math.floor(props.limits / 2) + 2 && props.limits < last.value
 })
 const isNextPoint = computed(() => {
-  return current.value <= last.value -(props.limits - 2) && props.limits < last.value
+  return current.value <= last.value - (props.limits) && props.limits < last.value
 })
 const isDisabledNext = computed(() => {
   return current.value + 1 > last.value
@@ -110,11 +110,11 @@ const setNext = () => {
   setCurrent(current.value + 1)
 }
 const setPrevBlock = () => {
-  let prevNum = current.value - props.limits + 2 <= 0 ? 1 : current.value - 1
+  let prevNum = current.value - props.limits <= 0 ? current.value - 1 : current.value - props.limits
   setCurrent(prevNum)
 }
 const setNextBlock = () => {
-  let prevNum = current.value + props.limits - 2 > last.value ? last.value : current.value + 1
+  let prevNum = current.value + props.limits > last.value ? current.value + 1 : current.value + props.limits
   setCurrent(prevNum)
 }
 
