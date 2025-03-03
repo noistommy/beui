@@ -1,6 +1,7 @@
 import BeButton from './button/BeButton.vue'
 import BeInput from './input/BeInput.vue'
 import BeCheckBox from './checkbox/BeCheckBox.vue'
+import BeCheckBoxGroup from './checkbox/BeCheckBoxGroup.vue'
 import BeSwitch from './switch/BeSwitch.vue'
 import BePagination from './pagination/BePagination.vue'
 import BeSelectBox from './selectbox/BeSelectBox.vue'
@@ -10,6 +11,7 @@ const be_ui = [
   { name: 'BeButton', comp: BeButton },
   { name: 'BeInput', comp: BeInput },
   { name: 'BeCheckBox', comp: BeCheckBox },
+  { name: 'BeCheckBoxGroup', comp: BeCheckBoxGroup },
   { name: 'BeSwitch', comp: BeSwitch },
   { name: 'BePagination', comp: BePagination },
   { name: 'BeSelectBox', comp: BeSelectBox },
@@ -26,6 +28,7 @@ export default {
   BeButton,
   BeInput,
   BeCheckBox,
+  BeCheckBoxGroup,
   BeSwitch,
   BePagination,
   BeSelectBox,
