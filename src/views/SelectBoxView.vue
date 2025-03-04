@@ -22,7 +22,6 @@ const setResult = (name, payload) => {
   result.value = payload
 }
 const setSelect = (payload) => {
-  console.log(payload)
   resultList.value = payload
 }
 </script>
@@ -46,7 +45,7 @@ const setSelect = (payload) => {
             {{ item }}
           </span>
         </div>
-        <BeSelectBox  :is-search="true" :options :multiple="true" max-opt-height="" @select="setSelect" />
+        <BeSelectBox  :is-search="true" :options :multiple="true"  max-opt-height="" result-key="option" @select="setSelect" />
       </div>
     </section>
     <section>
@@ -132,7 +131,14 @@ const setSelect = (payload) => {
       <h4 class="title">User Custom Option Key</h4>
       <div class="desc"></div>
       <div class="contents-wrapper">
-        <BeSelectBox :options="labels" option-key="label"  :use-icon="true" />
+        <BeSelectBox :options="labels" option-key="label"  />
+      </div>
+    </section>
+    <section>
+      <h4 class="title">Result Key</h4>
+      <div class="desc"></div>
+      <div class="contents-wrapper">
+        <BeSelectBox :options="labels" result-key="val" />
       </div>
     </section>
     <section>
@@ -143,14 +149,14 @@ const setSelect = (payload) => {
       </div>
       {{ result }}
     </section>
-    <section>
+    <!-- <section>
       <h4 class="title">Model</h4>
       <div class="desc"></div>
       <div class="contents-wrapper">
-        <BeSelectBox :options v-model="result" />
+        <BeSelectBox :options :multiple="true" v-model="resultList" />
       </div>
       {{ result }}
-    </section>
+    </section> -->
   </div>
 </template>
 

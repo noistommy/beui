@@ -11,7 +11,7 @@ const props = defineProps({
     },
   },
   selectedValue: {
-    type: [Array, Object],
+    type: [Array, Object, String],
     default: () => {
       return null
     },
@@ -19,10 +19,6 @@ const props = defineProps({
   boxType: {
     type: String,
     default: 'dropdown', // dropdown, float
-  },
-  selectType: {
-    type: String,
-    default: 'single', // single, multiple
   },
   placeholder: {
     type: String,
@@ -42,7 +38,7 @@ const props = defineProps({
   },
   maxOptHeight: {
     type: Number,
-    default: 250,
+    default: 260,
   },
   selectedType: {
     type: String,
@@ -52,10 +48,18 @@ const props = defineProps({
     type: String,
     default: 'option',
   },
+  resultKey: {
+    type: String,
+    default: 'option'
+  },
   isAll: {
     type: Boolean,
     default: false,
   },
+  fluid: {
+    type: Boolean,
+    default: false
+  }
 })
 
 const emit = defineEmits(['select'])
@@ -69,12 +73,12 @@ const selectedList = ref([])
 const optionList = reactive(props.options)
 
 const menuStyle = ref({
-  top: '100%',
+  top: props.boxType === 'dropdown' ? '100%' : '0',
 })
 
 const searchedOptions = computed(() => {
-  if (props.isSearch && selectedItem.value) {
-    return optionList.filter((item) => item[props.optionKey].indexOf(selectedItem.value) > -1)
+  if (props.isSearch && selectedItem.value && !props.multiple) {
+    return optionList.filter((item) => item[props.optionKey].toLowerCase().indexOf(selectedItem.value.toLowerCase()) > -1)
   } else {
     return optionList
   }
@@ -100,7 +104,7 @@ const initValue = () => {
   if (props.multiple) {
     selectedList.value = props.selectedValue ? props.selectedValue : []
     selectedItem.value = props.selectedValue ? props.selectedValue.length : null
-  } else {
+  } else {   
     selectedItem.value = props.selectedValue
   }
 }
@@ -112,7 +116,7 @@ const toggleOpen = () => {
   if (menuPos === 'up') {
     menuStyle.value = {
       top: 'auto',
-      bottom: '100%',
+      bottom: props.boxType === 'dropdown' ? '100%' : '0',
     }
   }
   isShow.value = !isShow.value
@@ -123,7 +127,7 @@ const selectItem = (value, index) => {
     setMultipleList(value)
     selectedItem.value = selectedList.value.length + '개 선택'
   } else {
-    selectedItem.value = value.val
+    selectedItem.value = value[props.resultKey]
     emit('select', selectedItem.value, props.target)
   }
 }
@@ -135,17 +139,17 @@ const showMenu = (value = true) => {
 }
 
 const setMultipleList = (item) => {
-  if (selectedList.value.includes(item[props.optionKey])) {
-    const same = selectedList.value.findIndex((c) => item.val === c)
+  if (selectedList.value.includes(item[props.resultKey])) {
+    const same = selectedList.value.findIndex((c) => item[props.resultKey] === c)
     selectedList.value.splice(same, 1)
   } else {
-    selectedList.value.push(item.val)
+    selectedList.value.push(item[props.resultKey])
   }
   emit('select', selectedList.value, props.target)
 }
 
 const selectAll = () => {
-  selectedList.value = [...searchedOptions.value].map((se) => se[props.optionKey])
+  selectedList.value = [...searchedOptions.value].map((se) => se[props.resultKey])
   emit('select', selectedList.value, props.target)
 }
 </script>
@@ -157,17 +161,25 @@ const selectAll = () => {
     @click="toggleOpen"
     ref="el"
   >
-    <div class="selected-item be-input icon right">
-      <input type="text" :placeholder v-model="selectedItem" :readonly="!isSearch || !isShow" />
-
-      <i
-        v-if="isShow && multiple"
-        class="icon xi-close"
-        :style="{ pointerEvents: 'auto' }"
-        @click.stop="isShow = false"
-      ></i>
-      <i v-else class="icon xi-angle-down"></i>
-    </div>
+  <div class="selected-item">
+    <template v-if="!isSearch">
+      <div class="default-text" :class="{has: selectedItem}">
+        {{ selectedItem || placeholder }}
+      </div>
+    </template>
+    <template v-else>
+      <div class="be-input icon right">
+        <input type="text" :placeholder v-model="selectedItem" :readonly="!isSearch || !isShow" />
+      </div>
+    </template>
+    <i
+      v-if="isShow && multiple"
+      class="icon xi-close"
+      :style="{ pointerEvents: 'auto' }"
+      @click.stop="isShow = false"
+    ></i>
+    <i v-else class="icon xi-angle-down"></i>
+  </div>
     <!-- <div class="selected-list">
       <span class="be-tag label" v-for="s in selectedList" :key="s">
         {{searchedOptions[s].option}}
@@ -186,8 +198,8 @@ const selectAll = () => {
               v-for="(opt, idx) in searchedOptions"
               :key="`option-${idx}`"
               :class="[
-                { selected: opt.val === selectedItem },
-                { include: selectedList.includes(opt.val) },
+                { selected: opt[resultKey] === selectedItem },
+                { include: selectedList.includes(opt[resultKey]) },
               ]"
               @click="selectItem(opt, idx)"
             >
@@ -202,6 +214,7 @@ const selectAll = () => {
         </div>
       </div>
     </Transition>
+    {{ selectedItem }}
   </div>
 </template>
 

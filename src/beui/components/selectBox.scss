@@ -10,27 +10,45 @@ $selectBoxCompactVerticalPadding: $compactVerticalPadding;
   border-radius: $baseBorderRadius;
   display: flex;
   flex-direction: column;
-  //.selected-item {
-  //  position: relative;
-  //  display: flex;
-  //
-  //  padding: $inputPadding;
-  //  vertical-align: baseline;
-  //  flex-grow: 1;
-  //  .item-icon {
-  //    margin-right: 10px;
-  //  }
-  //  .select-icon {
-  //    position: absolute;
-  //    top: 0;
-  //    right: 0;
-  //    padding: $verticalInputPadding;
-  //    color: #D4D4D4;
-  //  }
-  //}
+  .selected-item {
+    position: relative;
+    display: inline-flex;
+    .default-text {
+      padding: $inputPadding;
+      line-height: $inputLineHeight;
+      border: 1px solid var(--brd);
+      background-color: var(--bgc);
+      border-radius: $baseInputRadius;
+      max-width: 100%;
+      width: 100%;
+      min-width: 205px;
+      color: #33333388;
+      &.has {
+        color: #333;
+      }
+    }
+    & > i.icon {
+      position: absolute;
+      height: 2em;
+      width: 2em;
+      text-align: center;
+      opacity: 0.5;
+      top: 50%;
+      right: 0;
+      transform: translate(-5px, -50%);
+      z-index: 10;
+      &:before {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+    }
+  }
   &.show,
   &.open {
-    .selected-item.right,
+    .selected-item,
     select + i.icon {
       i.icon {
         transform: translate(-5px, -50%) rotate(180deg);
