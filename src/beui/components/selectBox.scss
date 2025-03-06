@@ -150,6 +150,14 @@ $selectBoxCompactVerticalPadding: $compactVerticalPadding;
       width: 100%;
     }
   }
+  &.disabled {
+    .default-text {
+      background-color: var(--suf);
+      border-color: var(--brd);
+      opacity: 0.5;
+    }
+    pointer-events: none;
+  }
   select {
     font-size: 1em;
     width: 100%;
@@ -179,6 +187,7 @@ $selectBoxCompactVerticalPadding: $compactVerticalPadding;
   }
   &.compact {
     .selected-item input,
+    .selected-item .default-text,
     select {
       padding: $compactPadding;
     }

@@ -138,7 +138,8 @@ const setSelect = (payload) => {
       <h4 class="title">Result Key</h4>
       <div class="desc"></div>
       <div class="contents-wrapper">
-        <BeSelectBox :options="labels" result-key="val" />
+        <BeSelectBox :options placeholder="Result: val" result-key="val" />
+        <BeSelectBox :options placeholder="Result: option" result-key="option" />
       </div>
     </section>
     <section>

@@ -19,17 +19,22 @@ $tabLineWidth: 2px;
       }
       &.active {
         color: $primary;
-        //font-weight: 600;
+        font-weight: 800;
       }
     }
   }
-  &.vertical .tab-menu {
-    .tab-item {
-      display: block;
+  &.vertical {
+    display: flex;  
+    .tab-menu {
+      .tab-item {
+        display: block;
+      }
     }
   }
   &.line {
-    border-bottom: $tabLineWidth solid $tabsLineColor;
+    .tab-menu {
+      border-bottom: $tabLineWidth solid $tabsLineColor;
+    }
     .tab-item.active {
       position: relative;
       &:after {
@@ -43,8 +48,10 @@ $tabLineWidth: 2px;
       }
     }
     &.vertical {
-      border-bottom: 0;
-      border-left: $tabLineWidth solid $tabsLineColor;
+      .tab-menu {
+        border-bottom: 0;
+        border-left: $tabLineWidth solid $tabsLineColor;
+      }
       .tab-item.active {
         position: relative;
         &:after {
@@ -64,14 +71,13 @@ $tabLineWidth: 2px;
     .tab-menu {
       .tab-item {
         background-color: $baseButtonBg;
-        color: $baseButtonColor;
         padding: $buttonPadding;
         opacity: 0.5;
         &:hover {
           background-color: $hoverButtonBg;
         }
         &.active {
-          background-color: $surface;
+          background-color: #fff;
           opacity: 1;
         }
       }
@@ -79,7 +85,7 @@ $tabLineWidth: 2px;
   }
   .tab-contents {
     width: 100%;
-    background-color: $surface;
+    // background-color: $surface;
     padding: 20px;
   }
   &.browser {
@@ -94,8 +100,8 @@ $tabLineWidth: 2px;
         max-width: 150px;
         background-color: #fff;
         padding-right: 5px;
-        &.active span {
-          background-color: $surface;
+        &.active .tabText {
+          background-color: $white;
           opacity: 1;
         }
         .btn-close {

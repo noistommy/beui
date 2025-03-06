@@ -11,6 +11,7 @@ const colors = ['red', 'orange', 'yellow', 'lightgreen', 'green', 'lightblue', '
       <div class="contents-wrapper">
         <div class="be-tag label">BASE</div>
         <div class="be-tag label">기본태그</div>
+        <div class="be-tag label round">Round</div>
         <div class="be-tag label">
           <i class="icon xi-tag"></i>
         </div>
@@ -80,6 +81,32 @@ const colors = ['red', 'orange', 'yellow', 'lightgreen', 'green', 'lightblue', '
       </div>
     </section>
     <section>
+      <h4 class="title">Round</h4>
+      <div class="desc"></div>
+      <div class="contents-wrapper">
+        <div class="be-tag label round">
+            <i class="icon left xi-angle-left"></i>
+          Left
+        </div>
+        <div class="be-tag label round">
+          Right
+          <i class="icon right xi-angle-right"></i>
+        </div>
+        <div class="be-tag label round blue">
+            <i class="icon left xi-user"></i>
+          User
+        </div>
+        <div class="be-tag label round red">
+            <i class="icon left xi-new"></i>
+          New
+        </div>
+        <div class="be-tag label round deeppurple">
+          Tag
+          <i class="icon right xi-close"></i>
+        </div>
+      </div>
+    </section>
+    <section>
       <h4 class="title">Tags</h4>
       <div class="desc"></div>
       <div class="contents-wrapper">
@@ -108,5 +135,18 @@ const colors = ['red', 'orange', 'yellow', 'lightgreen', 'green', 'lightblue', '
         <div v-for="color in colors" :key="color" class="be-tag label" :class="color">{{ color }}</div>
       </div>
     </section>
+    <section>
+      <h4 class="title">Color - light</h4>
+      <div class="desc"></div>
+      <div class="contents-wrapper">
+        <div v-for="color in colors" :key="color" class="be-tag label light" :class="color">{{ color }}</div>
+      </div>
+    </section>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.be-tag.label::first-letter {
+  text-transform: uppercase;
+}
+</style>

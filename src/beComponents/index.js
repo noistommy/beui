@@ -1,5 +1,6 @@
 import BeButton from './button/BeButton.vue'
 import BeInput from './input/BeInput.vue'
+import BeInputNumber from './input/BeInputNumber.vue'
 import BeCheckBox from './checkbox/BeCheckBox.vue'
 import BeCheckBoxGroup from './checkbox/BeCheckBoxGroup.vue'
 import BeSwitch from './switch/BeSwitch.vue'
@@ -10,6 +11,7 @@ import BeList from './list/BeList.vue'
 const be_ui = [
   { name: 'BeButton', comp: BeButton },
   { name: 'BeInput', comp: BeInput },
+  { name: 'BeInputNumber', comp: BeInputNumber },
   { name: 'BeCheckBox', comp: BeCheckBox },
   { name: 'BeCheckBoxGroup', comp: BeCheckBoxGroup },
   { name: 'BeSwitch', comp: BeSwitch },
@@ -27,6 +29,7 @@ export default {
   install,
   BeButton,
   BeInput,
+  BeInputNumber,
   BeCheckBox,
   BeCheckBoxGroup,
   BeSwitch,

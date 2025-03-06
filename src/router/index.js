@@ -25,6 +25,11 @@ const router = createRouter({
       component: () => import('../views/InputView.vue'),
     },
     {
+      path: '/input-number',
+      name: 'input-number',
+      component: () => import('../views/InputNumberView.vue'),
+    },
+    {
       path: '/checkbox',
       name: 'checkbox',
       component: () => import('../views/CheckBoxView.vue'),
@@ -38,6 +43,11 @@ const router = createRouter({
       path: '/tag',
       name: 'tag',
       component: () => import('../views/TagsView.vue'),
+    },
+    {
+      path: '/badge',
+      name: 'badge',
+      component: () => import('../views/BadgeView.vue'),
     },
     {
       path: '/grid',
@@ -58,6 +68,11 @@ const router = createRouter({
       path: '/components/list',
       name: 'list',
       component: () => import('../views/ListView.vue'),
+    },
+    {
+      path: '/tabs',
+      name: 'tabs',
+      component: () => import('../views/TabsView.vue'),
     },
   ],
   scrollBehavior() {

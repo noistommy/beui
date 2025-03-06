@@ -59,6 +59,10 @@ const props = defineProps({
   fluid: {
     type: Boolean,
     default: false
+  },
+  disabled: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -68,12 +72,15 @@ const emit = defineEmits(['select'])
 const el = ref(null)
 const menu = ref(null)
 const isShow = ref(false)
+// const selectedIndex = ref(0)
 const selectedItem = ref(null)
 const selectedList = ref([])
 const optionList = reactive(props.options)
 
-const menuStyle = ref({
-  top: props.boxType === 'dropdown' ? '100%' : '0',
+
+
+const selectedIndex = computed(() => {
+  return selectedItem.value ? searchedOptions.value.findIndex(f => f[props.resultKey] === selectedItem.value) : 0
 })
 
 const searchedOptions = computed(() => {
@@ -87,6 +94,7 @@ const optionsHeight = computed(() => {
   if (!props.maxOptHeight) return
   return { maxHeight: props.maxOptHeight + 'px' }
 })
+
 
 watch(props, () => {
   initValue()
@@ -104,19 +112,33 @@ const initValue = () => {
   if (props.multiple) {
     selectedList.value = props.selectedValue ? props.selectedValue : []
     selectedItem.value = props.selectedValue ? props.selectedValue.length : null
-  } else {   
+  } else {
     selectedItem.value = props.selectedValue
   }
 }
 
+const menuStyle = ref({
+  top: props.boxType === 'dropdown' ? '100%' : selectedIndex.value * -37 + 'px',
+})
+
 const toggleOpen = () => {
   if (props.multiple && isShow.value) return
   const posEl = el.value.getBoundingClientRect()
-  const menuPos = window.innerHeight - posEl.bottom - props.maxOptHeight - 10 < 0 ? 'up' : 'down'
+
+  let menuPos
+  if ( window.innerHeight - posEl.bottom - props.maxOptHeight - 10 < 0) {
+    menuPos = 'up'
+  } else {
+    menuPos = 'down'
+  }
   if (menuPos === 'up') {
     menuStyle.value = {
       top: 'auto',
       bottom: props.boxType === 'dropdown' ? '100%' : '0',
+    }
+  } else {
+    menuStyle.value = {
+      top: props.boxType === 'dropdown' ? '100%' : selectedIndex.value * -37 + 'px',
     }
   }
   isShow.value = !isShow.value
@@ -157,7 +179,7 @@ const selectAll = () => {
 <template>
   <div
     class="be-select-box"
-    :class="[boxType, { multiple }, { show: isShow }]"
+    :class="[boxType, { multiple, fluid, disabled }, { show: isShow }]"
     @click="toggleOpen"
     ref="el"
   >
@@ -168,7 +190,7 @@ const selectAll = () => {
       </div>
     </template>
     <template v-else>
-      <div class="be-input icon right">
+      <div class="be-input icon right" :class="{fluid, disabled}">
         <input type="text" :placeholder v-model="selectedItem" :readonly="!isSearch || !isShow" />
       </div>
     </template>
@@ -214,7 +236,6 @@ const selectAll = () => {
         </div>
       </div>
     </Transition>
-    {{ selectedItem }}
   </div>
 </template>
 

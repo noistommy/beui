@@ -3,10 +3,13 @@
 const elementList = [
   { name: 'button', path: '/button' },
   { name: 'input', path: '/input' },
+  { name: 'input-number', path: '/input-number' },
   { name: 'checkbox', path: '/checkbox' },
   { name: 'switch', path: '/switch' },
   { name: 'tag', path: '/tag' },
+  { name: 'badge', path: '/badge' },
   { name: 'grid', path: '/grid' },
+  { name: 'tabs', path: '/tabs' },
 ]
 
 const componentList = [
