@@ -46,3 +46,31 @@ const onClick = () => {
     </template>
   </div>
 </template>
+
+<style lang="scss">
+// .be-switch.button {
+//   position: relative;
+//   overflow: hidden;
+//   &:before {
+//     content: '';
+//     position: absolute;
+//     border-radius: 4px;
+//     background-color: var(--primary);
+//     width: 50%;
+//     height: calc(100% - 4px);
+//     top: 2px;
+//     right: 2px;
+//     transition: right 250ms ease;
+//   }
+//   &:has(input:checked) {
+//     &:before {
+//       right: calc(50% - 2px);
+//     }
+//   }
+//   span {
+//     background-color: transparent !important;
+//     position: relative;
+//     z-index: 3;
+//   }
+// }
+</style>

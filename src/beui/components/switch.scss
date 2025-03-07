@@ -133,6 +133,36 @@ $switchRadiusSize: $baseInputRadius;
     //  font-weight: 700;
     //  border-radius: 4px;
     //}
+    &-slide {
+      position: relative;
+      overflow: hidden;
+      &:before {
+        content: '';
+        position: absolute;
+        border-radius: $switchRadiusSize;
+        background-color: var(--primary);
+        width: calc(50% - 2px);
+        height: calc(100% - 4px);
+        top: 2px;
+        right: 2px;
+        transition: right 250ms ease;
+      }
+      &:has(input:checked) {
+        &:before {
+          right: 50%;
+        }
+      }
+      span {
+        background-color: transparent !important;
+        position: relative;
+        z-index: 3;
+      }
+      &.round {
+        &:before {
+          border-radius: 1em;
+        }
+      }
+    }
   }
 }
 
