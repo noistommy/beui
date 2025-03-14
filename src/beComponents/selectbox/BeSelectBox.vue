@@ -96,6 +96,8 @@ const optionsHeight = computed(() => {
 })
 
 
+
+
 watch(props, () => {
   initValue()
 })
@@ -144,7 +146,7 @@ const toggleOpen = () => {
   isShow.value = !isShow.value
 }
 
-const selectItem = (value, index) => {
+const selectItem = (value) => {
   if (props.multiple) {
     setMultipleList(value)
     selectedItem.value = selectedList.value.length + '개 선택'

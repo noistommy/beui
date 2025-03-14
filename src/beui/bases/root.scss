@@ -33,6 +33,28 @@
   --desktop-l: #{map.get($breakpoints, 'xl')};
 }
 
+@each $color, $value in $stateColors {
+  $lightValue: color.adjust(list.nth( $value, 1), $lightness: 35%);
+  :root {
+    --be-#{$color}-color:  #{$value}; 
+    --be-#{$color}-light:  #{$lightValue};
+  }
+}
+@each $color, $value in $colors {
+  $lightValue: color.adjust(list.nth( $value, 1), $lightness: 35%);
+  :root {
+    --be-#{$color}-color:  #{$value}; 
+    --be-#{$color}-light:  #{$lightValue};
+  }
+}
+// @each $color, $value in $colors2 {
+//   $lightValue: color.adjust(list.nth( $value, 1), $lightness: 35%);
+//   :root {
+//     --be-#{$color}-sub-color:  #{$value}; 
+//     --be-#{$color}-sub-light:  #{$lightValue}; 
+//   }
+// }
+
 @function color-contrast($bg, $fg) {
   $luminance1: luminance($fg) + 0.05;
   $luminance2: luminance($bg) + 0.05;

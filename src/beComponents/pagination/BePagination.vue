@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, watch, onMounted } from 'vue'
 
 const props = defineProps({
   type: {
@@ -43,6 +43,9 @@ const props = defineProps({
   ellipsis: {
     type: Boolean,
     default: false
+  },
+  color: {
+    type: String
   }
 })
 const pageEl = ref(null)
@@ -90,6 +93,11 @@ const offLimits = computed(() => {
   return props.pageLength <= props.limits || !props.limits
 })
 
+watch(props, () => {
+  last.value = props.pageLength
+})
+
+
 onMounted(() => {
   pageEl.value.focus()
   // current.value = props.currentPage
@@ -121,7 +129,7 @@ const setNextBlock = () => {
 </script>
 
 <template>
-  <div class="be-pagination" :class="[type, {round}, {compact}, `align-${align}`]" ref="pageEl">
+  <div class="be-pagination" :class="[type, {round}, {compact}, `align-${align}`, color]" ref="pageEl">
     <div v-if="!ellipsis && !offLimits" class="pagination-nav first" :class="[itemClass, {disabled: isDisabledPrev}]" @click="setCurrent(1)">
       F
     </div>

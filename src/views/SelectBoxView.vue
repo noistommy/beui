@@ -49,6 +49,18 @@ const setSelect = (payload) => {
       </div>
     </section>
     <section>
+      <h4 class="title">Use All(only multiple)</h4>
+      <div class="desc"></div>
+      <div class="contents-wrapper">
+        <div class="selected-list">
+          <span class="be-tag label" v-for="item in resultList" :key="item">
+            {{ item }}
+          </span>
+        </div>
+        <BeSelectBox :is-all="true" :is-search="true" :options :multiple="true"  max-opt-height="" result-key="option" @select="setSelect" />
+      </div>
+    </section>
+    <section>
       <h4 class="title">Search & Filtering</h4>
       <div class="desc"></div>
       <div class="contents-wrapper">
