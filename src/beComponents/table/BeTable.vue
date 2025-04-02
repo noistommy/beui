@@ -37,6 +37,10 @@ const props = defineProps({
   selection: {
     type: Boolean,
     default: false
+  },
+  striped: {
+    type: String,
+    default: null
   }
 })
 const emit = defineEmits(['select'])
@@ -57,7 +61,7 @@ const setSelect = (row) => {
 </script>
 
 <template>
-  <table class="be-table" :class="[{border, selection }, gridClass]">
+  <table class="be-table" :class="[{border, selection, striped}, gridClass, striped]">
     <thead>
       <tr :class="`align-${headerAlign}`">
         <th v-for="col in columns" :key="col.key" :class="`align-${headerAlign}`">
@@ -70,7 +74,9 @@ const setSelect = (row) => {
         <td v-for="col in columns" :key="`cell-${i}-${col.key}`"
           :class="[`align-${col.align || 'center'}`, `col-${col.col}`]"
         >
-          {{ row[col.key] }}
+          <div class="cell" v-be-tooltip="row[col.key]">
+            {{ row[col.key] }}
+          </div>
         </td>
       </tr>
     </tbody>

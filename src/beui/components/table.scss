@@ -135,6 +135,18 @@ table.be-table {
       }
     }
   }
+  &.striped {
+    &.odd {
+      tr:nth-child(odd) {
+        background-color: #f2f2f2;
+      }
+    }
+    &.even {
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+    }
+  }
   //.be-input, .be-select-box, .be-switch, .be-button {
   //  font-size: 0.8em;
   //}

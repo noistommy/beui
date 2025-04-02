@@ -18,11 +18,19 @@ const labels = [
 ]
 const result = ref(null)
 const resultList = ref(null)
+const resultVal = ref(null)
+const resultOpt = ref(null)
 const setResult = (name, payload) => {
   result.value = payload
 }
 const setSelect = (payload) => {
   resultList.value = payload
+}
+const setResultVal = (payload) => {
+  resultVal.value = payload
+}
+const setResultOpt = (payload) => {
+  resultOpt.value = payload
 }
 </script>
 
@@ -136,7 +144,7 @@ const setSelect = (payload) => {
       <h4 class="title">Option Limit Height</h4>
       <div class="desc"></div>
       <div class="contents-wrapper">
-        <BeSelectBox :options max-opt-height="120px" />
+        <BeSelectBox :options max-opt-height="120" />
       </div>
     </section>
     <section>
@@ -149,9 +157,12 @@ const setSelect = (payload) => {
     <section>
       <h4 class="title">Result Key</h4>
       <div class="desc"></div>
+      <div class="result">
+        val: {{ resultVal }} | option: {{ resultOpt }}
+      </div>
       <div class="contents-wrapper">
-        <BeSelectBox :options placeholder="Result: val" result-key="val" />
-        <BeSelectBox :options placeholder="Result: option" result-key="option" />
+        <BeSelectBox :options placeholder="Result: val" result-key="val" @select="setResultVal" />
+        <BeSelectBox :options placeholder="Result: option" result-key="option" @select="setResultOpt" />
       </div>
     </section>
     <section>

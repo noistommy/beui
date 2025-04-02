@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import NotFound from '../views/404NotFound.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -75,6 +76,11 @@ const router = createRouter({
       component: () => import('../views/PanelView.vue'),
     },
     {
+      path: '/rate',
+      name: 'rate',
+      component: () => import('../views/RateView.vue'),
+    },
+    {
       path: '/components/pagination',
       name: 'pagination',
       component: () => import('../views/PaginationView.vue'),
@@ -93,6 +99,16 @@ const router = createRouter({
       path: '/tabs',
       name: 'tabs',
       component: () => import('../views/TabsView.vue'),
+    },
+    {
+      path: '/components/tree-list',
+      name: 'tree-list',
+      component: () => import('../views/TreeListView.vue'),
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: '404-not-found',
+      component: NotFound
     },
   ],
   scrollBehavior() {

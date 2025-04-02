@@ -14,12 +14,14 @@ const elementList = [
   { name: 'form', path: '/form' },
   { name: 'table', path: '/table' },
   { name: 'panel', path: '/panel' },
+  { name: 'rate', path: '/rate' },
 ]
 
 const componentList = [
   { name: 'pagination', path: '/pagination' },
   { name: 'selectbox', path: '/selectbox' },
   { name: 'list', path: '/list' },
+  { name: 'tree-list', path: '/tree-list' },
 ]
 defineProps({
   current: {

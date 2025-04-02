@@ -44,6 +44,14 @@ const selectedIndex = ref(0)
       </div>
     </section>
     <section>
+      <h4 class="title">Colors-light</h4>
+      <div class="desc"></div>
+      <div class="contents-wrapper">
+        <button v-for="color in colors" :key="color" class="be-button" :class="`${color}-light`">{{ color }}</button>
+        <BeButton color="lightblue-light" content-text="Comp(color)"></BeButton>
+      </div>
+    </section>
+    <section>
       <h4 class="title">Text</h4>
       <div class="desc"></div>
       <div class="contents-wrapper">

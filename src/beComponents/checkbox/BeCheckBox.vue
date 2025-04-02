@@ -12,8 +12,12 @@ defineProps({
   },
   labelText: {
     type: String,
-    default: '',
+    default: null,
   },
+  indeter: {
+    type: Boolean,
+    default: false
+  }
 })
 
 const checkedValue = defineModel()
@@ -22,7 +26,7 @@ const checkedValue = defineModel()
 <template>
   <div
     class="be-checkbox"
-    :class="[type, { checked: checkedValue }]"
+    :class="[type, { checked: checkedValue }, {indeter}]"
     @click="checkedValue = !checkedValue"
   >
     <input type="checkbox" :name="name" v-model="checkedValue" />

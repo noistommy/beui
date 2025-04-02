@@ -4,7 +4,7 @@ import { ref } from 'vue'
 const radioValue = ref(1)
 const compValue = ref(false)
 const compValue1 = ref(false)
-const cbValue = ref([true, false, false])
+const cbValue = ref([true, false, false, true])
 
 const checkList = ['Run', 'Walk', 'Fly']
 // const checkList = [
@@ -66,6 +66,10 @@ const setResultRadio = (payload) => {
           <input type="checkbox" id="checkbox3" v-model="cbValue[2]" />
           <label for="checkbox3">Checkbox3</label>
         </div>
+        <div class="be-checkbox indeter" :class="{ checked: cbValue[3] }">
+          <input type="checkbox" id="checkbox4" v-model="cbValue[3]" />
+          <label for="checkbox4">Checkbox Indeter</label>
+        </div>
       </div>
     </section>
     <section>
@@ -76,6 +80,15 @@ const setResultRadio = (payload) => {
       <div class="contents-wrapper">
         <BeCheckBox v-model="compValue" id="checkComp" label-text="component" />
         <BeCheckBox v-model="compValue1" type="radio" id="checkComp" label-text="component" />
+      </div>
+    </section>
+    <section>
+      <h4 class="title">Indeterminate</h4>
+      <div class="desc">
+        <span class="be-tag label deepblue">component</span>
+      </div>
+      <div class="contents-wrapper">
+        <BeCheckBox v-model="compValue" id="checkComp" label-text="component" :indeter="true" />
       </div>
     </section>
     <section>

@@ -11,6 +11,9 @@ import BeList from './list/BeList.vue'
 import BeMessage from './message/BeMessage.vue'
 import BeTable from './table/BeTable.vue'
 import BePanel from './panel/BePanel.vue'
+import BeTree from './tree/BeTree.vue'
+import BeTreeNode from './tree/BeTreeNode.vue'
+import BeRate from './rate/BeRate.vue'
 
 const be_ui = [
   { name: 'BeButton', comp: BeButton },
@@ -26,6 +29,9 @@ const be_ui = [
   { name: 'BeMessage', comp: BeMessage },
   { name: 'BeTable', comp: BeTable },
   { name: 'BePanel', comp: BePanel },
+  { name: 'BeTree', comp: BeTree },
+  { name: 'BeTreeNode', comp: BeTreeNode },
+  { name: 'BeRate', comp: BeRate },
 ]
 const install = (app) => {
   be_ui.forEach((comp) => {
@@ -48,4 +54,7 @@ export default {
   BeMessage,
   BeTable,
   BePanel,
+  BeTree,
+  BeTreeNode,
+  BeRate,
 }

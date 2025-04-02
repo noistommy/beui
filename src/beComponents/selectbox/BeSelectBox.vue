@@ -50,7 +50,7 @@ const props = defineProps({
   },
   resultKey: {
     type: String,
-    default: 'option'
+    default: 'val'
   },
   isAll: {
     type: Boolean,
@@ -73,19 +73,27 @@ const el = ref(null)
 const menu = ref(null)
 const isShow = ref(false)
 // const selectedIndex = ref(0)
+
 const selectedItem = ref(null)
 const selectedList = ref([])
 const optionList = reactive(props.options)
-
-
+const searchText = ref(null)
+const selectedText = computed(() => {
+  if (props.multiple) {
+    return selectedList.value.length > 0 ?  `${selectedList.value.length} 개 선택` : null
+  } else {
+    const selectIndex = props.options.findIndex(t => t[props.resultKey] === selectedItem.value)
+    return props.options[selectIndex] ? props.options[selectIndex][props.optionKey] : null
+  }
+})
 
 const selectedIndex = computed(() => {
   return selectedItem.value ? searchedOptions.value.findIndex(f => f[props.resultKey] === selectedItem.value) : 0
 })
 
 const searchedOptions = computed(() => {
-  if (props.isSearch && selectedItem.value && !props.multiple) {
-    return optionList.filter((item) => item[props.optionKey].toLowerCase().indexOf(selectedItem.value.toLowerCase()) > -1)
+  if (props.isSearch && searchText.value && !props.multiple) {
+    return optionList.filter((item) => item[props.optionKey].toLowerCase().indexOf(searchText.value.toLowerCase()) > -1)
   } else {
     return optionList
   }
@@ -113,7 +121,7 @@ onUnmounted(() => {
 const initValue = () => {
   if (props.multiple) {
     selectedList.value = props.selectedValue ? props.selectedValue : []
-    selectedItem.value = props.selectedValue ? props.selectedValue.length : null
+    selectedItem.value = props.selectedValue ? `${props.selectedValue.length} 개 선택` : null
   } else {
     selectedItem.value = props.selectedValue
   }
@@ -149,8 +157,8 @@ const toggleOpen = () => {
 const selectItem = (value) => {
   if (props.multiple) {
     setMultipleList(value)
-    selectedItem.value = selectedList.value.length + '개 선택'
   } else {
+    searchText.value = null
     selectedItem.value = value[props.resultKey]
     emit('select', selectedItem.value, props.target)
   }
@@ -188,12 +196,12 @@ const selectAll = () => {
   <div class="selected-item">
     <template v-if="!isSearch">
       <div class="default-text" :class="{has: selectedItem}">
-        {{ selectedItem || placeholder }}
+        {{ selectedText || placeholder }}
       </div>
     </template>
     <template v-else>
-      <div class="be-input icon right" :class="{fluid, disabled}">
-        <input type="text" :placeholder v-model="selectedItem" :readonly="!isSearch || !isShow" />
+      <div class="be-input icon right" :class="{fluid, disabled, has: selectedItem}">
+        <input type="text" :placeholder="selectedText || placeholder" v-model="searchText" :readonly="!isSearch || !isShow" />
       </div>
     </template>
     <i
@@ -249,6 +257,12 @@ const selectAll = () => {
   .be-list {
     .item {
       padding: 1rem;
+    }
+  }
+  .be-input {
+    &.has input::placeholder {
+      opacity: 1;
+      color: var(--txt);
     }
   }
 }

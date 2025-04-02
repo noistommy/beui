@@ -62,6 +62,16 @@ const setSelectItem = (payload) => {
       </div>
     </section>
     <section>
+      <h4>Striped</h4>
+      <div class="desc">
+        <div class="be-tag label blue">Compoennt</div> striped: odd or even
+      </div>
+      <div class="contents-wrapper">
+        <BeTable :columns :values :border="true" striped="odd" />
+        <BeTable :columns :values :border="true" striped="even" />
+      </div>
+    </section>
+    <section>
       <h4>Use Footer</h4>
       <div class="desc">
         <div class="be-tag label blue">Compoennt</div>
