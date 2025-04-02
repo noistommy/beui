@@ -42,8 +42,8 @@ const result = ref(0)
 const isHalf = ref(false)
 
 onMounted(() => {
-  rate.value = props.useHalf ? props.result : Math.floor(props.result)
-  result.value = props.useHalf ? props.result : Math.floor(props.result)
+  rate.value = props.useHalf ? props.resultValue : Math.floor(props.resultValue)
+  result.value = props.useHalf ? props.resultValue : Math.floor(props.resultValue)
 })
 const onHover = (num) => {
   if (props.useHalf) {
