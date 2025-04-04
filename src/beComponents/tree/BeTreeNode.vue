@@ -43,7 +43,10 @@ const toggleNode = (e) => {
           <template v-if="useCheck">
             <be-check-box v-model="checked" @update:modelValue="updateCheck" />
           </template>
-          {{ node.label }}
+          <div class="title">
+            {{ node.label }}
+          </div>
+          <div v-if="node.sub" class="sub-title">{{ node.sub }}</div>
         </div>
       </div>
     </div>

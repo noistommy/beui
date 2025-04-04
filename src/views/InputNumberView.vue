@@ -1,7 +1,5 @@
 <script setup>
 import { ref } from 'vue'
-const placeholder = '입력하세요'
-const editMode = ref(false)
 const value = ref(new Array(10).fill(0))
 const valueLimit = ref(10)
 const valueStep = ref(0)

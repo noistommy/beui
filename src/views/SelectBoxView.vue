@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 const options = [
   { id: 1, option: 'Run', icon: 'xi-run', val: 'run' },
   { id: 2, option: 'Bicycle', icon: 'xi-bicycle', val: 'bicycle' },
@@ -17,7 +17,7 @@ const labels = [
   { id: 16, label: 'public:taxi', icon: 'xi-taxi', val: 'taxi' },
 ]
 const result = ref(null)
-const resultList = ref(null)
+let resultList = ref(null)
 const resultVal = ref(null)
 const resultOpt = ref(null)
 const setResult = (name, payload) => {

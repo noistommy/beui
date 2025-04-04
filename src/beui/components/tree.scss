@@ -12,9 +12,9 @@
     .node {
       position: relative;
       margin-bottom: 1px;
-      &:hover {
-        background-color: #f2f2f2;
-      }
+      // &:hover {
+      //   background-color: #f2f2f2;
+      // }
       .node-title {
         display: flex;
         align-items: center;
@@ -24,6 +24,13 @@
       .node-label {
         padding: 4px;
         flex: 1 0 auto;
+        .title {
+
+        }
+        .sub-title {
+          color: #666;
+          line-height: 1;
+        }
       }
       .sub-node-title {
         font-size: 0.85;

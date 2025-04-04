@@ -3,8 +3,8 @@ import { ref } from 'vue'
 const colors = ['red', 'orange', 'yellow', 'lightgreen', 'green', 'lightblue', 'blue', 'deepblue', 'deeppurple', 'purple', 'brown']
 const selectColor = ref('red')
 
-const rate = ref(0)
-
+const rate = ref(4)
+const insertValue = ref(3.7)
 const setRate = (payload) => {
   rate.value = payload
 }
@@ -16,14 +16,14 @@ const setRate = (payload) => {
       <h4>Base</h4>
       <div class="desc"></div>
       <div class="contents-wrapper">
-        <BeRate />
+        <BeRate :result-value="4" />
       </div>
     </section>
     <section>
       <h4>Rate Length: 10</h4>
-      <div class="desc"></div>
+      <div class="desc">기본: 5</div>
       <div class="contents-wrapper">
-        <BeRate :rate-length="10" />
+        <BeRate :rate-length="10" :result-value="7" />
       </div>
     </section>
     <section>
@@ -32,11 +32,11 @@ const setRate = (payload) => {
       <div class="contents-wrapper">
         <div :style="{ fontSize: '14px'}">
         <div class="title">폰트 14px</div>
-          <BeRate />
+          <BeRate  :result-value="4" />
         </div>
         <div :style="{ fontSize: '22px'}">
           <div class="title">폰트 22px</div>
-          <BeRate />
+          <BeRate  :result-value="4" />
         </div>
       </div>
     </section>
@@ -44,25 +44,25 @@ const setRate = (payload) => {
       <h4>Allow half </h4>
       <div class="desc"></div>
       <div class="contents-wrapper">
-        <BeRate :use-half="true" />
+        <BeRate :use-half="true"  :result-value="3.5" />
       </div>
     </section>
     <section>
       <h4>Icons </h4>
       <div class="desc"></div>
       <div class="contents-wrapper">
-        <BeRate icon="xi-emoticon-smiley" />
+        <BeRate icon="xi-emoticon-smiley"  :result-value="4" />
       </div>
     </section>
     <section>
       <h4>Size</h4>
       <div class="desc"></div>
       <div class="contents-wrapper">
-        <BeRate size="tiny" />
-        <BeRate size="small" />
-        <BeRate />
-        <BeRate size="large" />
-        <BeRate size="huge" />
+        <BeRate size="tiny" :result-value="1" />
+        <BeRate size="small" :result-value="2" />
+        <BeRate :result-value="3" />
+        <BeRate size="large" :result-value="4" />
+        <BeRate size="huge" :result-value="5" />
       </div>
     </section>
     <section>
@@ -82,14 +82,30 @@ const setRate = (payload) => {
       <h4>Disabled</h4>
       <div class="desc"></div>
       <div class="contents-wrapper">
-        <BeRate :disabled="true" />
+        <BeRate :disabled="true" :result-value="4" />
+      </div>
+    </section>
+    <section>
+      <h4>Border</h4>
+      <div class="desc"></div>
+      <div class="contents-wrapper">
+        <BeRate :border="true" :result-value="3.7"  />
+        <BeRate :border="false" :result-value="3.7"  />
+      </div>
+    </section>
+    <section>
+      <h4>Float Value</h4>
+      <div class="desc"></div>
+      <div class="contents-wrapper">
+        <BeRate :result-value="insertValue" readonly />
+        <BeInput v-model="insertValue" />
       </div>
     </section>
     <section>
       <h4>Emit </h4>
       <div class="desc"></div>
       <div class="contents-wrapper">
-        <BeRate @select="setRate"  :use-half="true"/>
+        <BeRate @select="setRate"  :use-half="true" :result-value="rate"/>
         <BeButton >
           Result: {{ rate }}
         </BeButton>
