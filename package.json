@@ -4,8 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "MODE=docs vite",
+    "build": "npm run build:code",
+    "build:code": "MODE=lib vite build",
+    "build:docs": "MODE=docs vite build",
     "preview": "vite preview",
     "lint": "eslint . --fix",
     "format": "prettier --write src/"
