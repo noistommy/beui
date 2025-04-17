@@ -42,10 +42,8 @@ const onClick = () => {
       <div class="switch"></div>
     </template>
     <template v-else>
-      <slot>
-        <span class="on" :class="{active: switchValue}">{{ onText }}</span>
-        <span class="off" :class="{active: !switchValue}">{{ offText }}</span>
-      </slot>
+      <span class="on" :class="{active: switchValue}">{{ onText }}</span>
+      <span class="off" :class="{active: !switchValue}">{{ offText }}</span>
     </template>
   </div>
 </template>

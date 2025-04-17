@@ -113,31 +113,29 @@ const onBlur = () => {
     :class="[status, {readonly}, {underline}, {transparent}, {compact}, {fluid}, {edit: edit}, {editable: editMode}, { icon: iconLeft || iconRight || clear }, iconPosition, { badge: badge }, {unit}]"
     :data-unit="unit"
   >
-    <slot>
-      <i v-if="iconLeft" :class="`icon xi-${iconLeft}`" />
-      <template v-if="type === 'input'">
-        <input
-          :type="inputType"
-          v-model="inputValue"
-          :placeholder="placeholder"
-          :class="[`aline-${align}`]"
-          ref="input"
-          @click="checkFocus()"
-          @blur="onBlur()"
-        />
-      </template>
-      <template v-else>
-        <textarea v-model="inputValue" rows="3" :placeholder="placeholder"></textarea>
-      </template>
-
-      <i
-        v-if="clear"
-        class="icon clear-btn xi-close"
-        :class="{ disabled: inputValue === '' }"
-        @click="inputValue = ''"
+    <i v-if="iconLeft" :class="`icon xi-${iconLeft}`" />
+    <template v-if="type === 'input'">
+      <input
+        :type="inputType"
+        v-model="inputValue"
+        :placeholder="placeholder"
+        :class="[`aline-${align}`]"
+        ref="input"
+        @click="checkFocus()"
+        @blur="onBlur()"
       />
-      <i v-else-if="iconRight && !clear" :class="`icon xi-${iconRight}`" />
-      <span v-else-if="badge" class="be-badge" :class="badgeOption">{{ badge }}</span>
-    </slot>
+    </template>
+    <template v-else>
+      <textarea v-model="inputValue" rows="3" :placeholder="placeholder"></textarea>
+    </template>
+
+    <i
+      v-if="clear"
+      class="icon clear-btn xi-close"
+      :class="{ disabled: inputValue === '' }"
+      @click="inputValue = ''"
+    />
+    <i v-else-if="iconRight && !clear" :class="`icon xi-${iconRight}`" />
+    <span v-else-if="badge" class="be-badge" :class="badgeOption">{{ badge }}</span>
   </div>
 </template>

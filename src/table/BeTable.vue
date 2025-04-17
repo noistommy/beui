@@ -80,13 +80,13 @@ const setSelect = (row) => {
         </td>
       </tr>
     </tbody>
-    <tfoot v-if="useFoot">
+    <!-- <tfoot v-if="useFoot">
       <tr>
         <slot name="footer">
           <td :colspan="columns.length">Footer</td>
         </slot>
       </tr>
-    </tfoot>
+    </tfoot> -->
   </table>
 
 </template>

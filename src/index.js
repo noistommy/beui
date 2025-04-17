@@ -1,62 +1,22 @@
 import './beui/beui.scss'
-import BeButton from './button/BeButton.vue'
-import BeInput from './input/BeInput.vue'
-import BeInputNumber from './input/BeInputNumber.vue'
-import BeCheckBox from './checkbox/BeCheckBox.vue'
-import BeRadio from './checkbox/BeRadio.vue'
-import BeCheckBoxGroup from './checkbox/BeCheckBoxGroup.vue'
-import BeSwitch from './switch/BeSwitch.vue'
-import BePagination from './pagination/BePagination.vue'
-import BeSelectBox from './selectbox/BeSelectBox.vue'
-import BeList from './list/BeList.vue'
-import BeMessage from './message/BeMessage.vue'
-import BeTable from './table/BeTable.vue'
-import BePanel from './panel/BePanel.vue'
-import BeTree from './tree/BeTree.vue'
-import BeTreeNode from './tree/BeTreeNode.vue'
-import BeRate from './rate/BeRate.vue'
+import * as components from './components'
 
-const be_ui = [
-  { name: 'BeButton', comp: BeButton },
-  { name: 'BeInput', comp: BeInput },
-  { name: 'BeInputNumber', comp: BeInputNumber },
-  { name: 'BeCheckBox', comp: BeCheckBox },
-  { name: 'BeRadio', comp: BeRadio },
-  { name: 'BeCheckBoxGroup', comp: BeCheckBoxGroup },
-  { name: 'BeSwitch', comp: BeSwitch },
-  { name: 'BePagination', comp: BePagination },
-  { name: 'BeSelectBox', comp: BeSelectBox },
-  { name: 'BeList', comp: BeList },
-  { name: 'BeMessage', comp: BeMessage },
-  { name: 'BeTable', comp: BeTable },
-  { name: 'BePanel', comp: BePanel },
-  { name: 'BeTree', comp: BeTree },
-  { name: 'BeTreeNode', comp: BeTreeNode },
-  { name: 'BeRate', comp: BeRate },
-]
 const install = (app) => {
-  be_ui.forEach((comp) => {
-    app.component(comp.name, comp.comp)
+  // 모든 컴포넌트를 순회하면서 등록
+  Object.entries(components).forEach(([name, component]) => {
+    // 컴포넌트 이름 정규화
+    const componentName = name.startsWith('Be') ? name : `Be${name}`
+    app.component(componentName, component)
   })
 }
 
+// 컴포넌트 개별 export
+export * from './components'
+
+// 기본 플러그인 export
 export default {
   install,
-  BeButton,
-  BeInput,
-  BeInputNumber,
-  BeCheckBox,
-  BeRadio,
-  BeCheckBoxGroup,
-  BeSwitch,
-  BePagination,
-  BeSelectBox,
-  BeList,
-  BeMessage,
-  BeTable,
-  BePanel,
-  BeTree,
-  BeTreeNode,
-  BeRate,
+  // 개별 컴포넌트도 함께 export
+  ...components
 }
 

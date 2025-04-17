@@ -3,6 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "main": "./dist/be-ui.umd.js",
+  "module": "./dist/be-ui.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/be-ui.es.js",
+      "require": "./dist/be-ui.umd.cjs"
+    },
+    "./dist/style.css": "./dist/beui.css"
+  },
   "scripts": {
     "dev": "MODE=docs vite",
     "build": "npm run build:code",
@@ -12,7 +21,7 @@
     "lint": "eslint . --fix",
     "format": "prettier --write src/"
   },
-  "dependencies": {
+  "peerDependencies": {
     "pinia": "^2.3.1",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"

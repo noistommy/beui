@@ -56,19 +56,15 @@ const showPanel = () => {
 <template>
   <div class="be-panel" :class="[{border, collapse}, iconClass, {open:isOpen}]">
     <div class="panel-header" @click="showPanel">
-      <slot name="header">
-        <div class="title">{{ title }}</div>
-        <span v-if="collapse && toggleIcon">
-          <i class="icon" :class="`${toggleIcon}`"></i>
-        </span>
-      </slot>
+      <div class="title">{{ title }}</div>
+      <span v-if="collapse && toggleIcon">
+        <i class="icon" :class="`${toggleIcon}`"></i>
+      </span>
     </div>
     <div class="panel-content" :style="setHeight">
-      <slot name="contents">
-        <div class="content-wrapper">
-          {{ contents }}
-        </div>
-      </slot>
+      <div class="content-wrapper">
+        {{ contents }}
+      </div>
     </div>
   </div>
 </template>

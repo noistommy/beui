@@ -41,12 +41,10 @@ const iconName = computed(() => {
 
 <template>
   <div class="be-message" :class="[{icon}, state]">
-    <slot>
-      <template v-if="icon">
-        <i class="icon" :class="iconName" />
-      </template>
-      <div class="title">{{ title }}</div>
-      <div class="contents">{{ contents }}</div>
-    </slot>
+    <template v-if="icon">
+      <i class="icon" :class="iconName" />
+    </template>
+    <div class="title">{{ title }}</div>
+    <div class="contents">{{ contents }}</div>
   </div>
 </template>

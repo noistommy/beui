@@ -21,10 +21,12 @@ const selectedIndex = ref(0)
       <div class="contents-wrapper">
         <div class="be-button">Base(class)</div>
         <button class="be-button">Base(tag)</button>
-        <BeButton>1</BeButton>
+        <BeButton>
+          test
+        </BeButton>
       </div>
     </section>
-    <!-- <section>
+    <section>
       <h4 class="title">Brand & Status</h4>
       <div class="desc"></div>
       <div class="contents-wrapper">
@@ -223,7 +225,7 @@ const selectedIndex = ref(0)
         </div>
 
       </div>
-    </section> -->
+    </section>
   </div>
 
 </template>

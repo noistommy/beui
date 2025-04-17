@@ -31,7 +31,7 @@ const checkedValue = defineModel()
   >
     <input type="checkbox" :name="name" v-model="checkedValue" />
     <label>
-      <slot>{{ labelText }}</slot>
+      {{ labelText }}
     </label>
   </div>
 </template>

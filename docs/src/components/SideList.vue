@@ -69,6 +69,8 @@ defineProps({
 
 <style lang="scss" scoped>
 .side-list-wrapper {
+  height: calc(100dvh - 80px);
+  overflow-y:auto;
   .list-title {
     color: var(--txt);
     padding: .5em 1em;

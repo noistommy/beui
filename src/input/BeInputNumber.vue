@@ -102,15 +102,13 @@ const keyControl = (event) => {
     :class="[status, {readonly, compact, fluid, disabled}, controller]"
     tabindex="-1" @keydown.prevent="keyControl"
   >
-    <slot>
-      <input
-        type="number"
-        v-model="inputValue"
-        ref="input"
-        @click="checkFocus()"
-        @blur="onBlur()"
-      />
-    </slot>
+    <input
+      type="number"
+      v-model="inputValue"
+      ref="input"
+      @click="checkFocus()"
+      @blur="onBlur()"
+    />
     <button class="be-button icon dec" :class="{disabled}" @click="decrease">
       <i class="icon" :class="decIcon"></i>
     </button>

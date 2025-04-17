@@ -19,12 +19,15 @@ const libConfig = {
         globals: {
           vue: "Vue",
         },
+        preserveModules: true,
+        moduleIds: 'deterministic',
         assetFileNames: assetInfo => {
           if (assetInfo.name == "style.css") return "nt-ui-css.css"
           return assetInfo.name
         }
       }
-    }
+    },
+    sourcemap: true
   }
 }
 

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch, onMounted } from 'vue'
+import { ref, computed, watch, onMounted , nextTick} from 'vue'
 
 const props = defineProps({
   type: {
@@ -98,8 +98,10 @@ watch(props, () => {
 })
 
 
-onMounted(() => {
+onMounted(async () => {
+  await nextTick()
   pageEl.value.focus()
+  console.log(pageEl.value)
   // current.value = props.currentPage
   last.value = props.pageLength
 })

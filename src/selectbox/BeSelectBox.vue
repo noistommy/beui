@@ -69,10 +69,13 @@ const props = defineProps({
 const emit = defineEmits(['select'])
 // const selectedValue = defineModel()
 
-const el = ref(null)
+const elRef = ref(null)
 const menu = ref(null)
 const isShow = ref(false)
 // const selectedIndex = ref(0)
+const setEl = (el) => {
+  elRef.value = el
+}
 
 const selectedItem = ref(null)
 const selectedList = ref([])
@@ -110,9 +113,11 @@ watch(props, () => {
   initValue()
 })
 
-onMounted(() => {
-  initValue()
+onMounted(async () => {
+  await initValue()
   window.addEventListener('click', () => showMenu(false))
+
+  console.log(elRef.value)
 })
 onUnmounted(() => {
   window.removeEventListener('click', () => showMenu(false))
@@ -133,7 +138,7 @@ const menuStyle = ref({
 
 const toggleOpen = () => {
   if (props.multiple && isShow.value) return
-  const posEl = el.value.getBoundingClientRect()
+  const posEl = elRef.value.getBoundingClientRect()
 
   let menuPos
   if ( window.innerHeight - posEl.bottom - props.maxOptHeight - 10 < 0) {
@@ -165,7 +170,7 @@ const selectItem = (value) => {
 }
 
 const showMenu = (value = true) => {
-  if (el.value && el.value.contains(event.target)) return
+  if (elRef.value && elRef.value.contains(event.target)) return
   if (isShow.value) value = false
   isShow.value = value
 }
@@ -191,7 +196,7 @@ const selectAll = () => {
     class="be-select-box"
     :class="[boxType, { multiple, fluid, disabled }, { show: isShow }]"
     @click="toggleOpen"
-    ref="el"
+    :ref="setEl"
   >
   <div class="selected-item">
     <template v-if="!isSearch">
