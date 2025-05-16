@@ -32,11 +32,11 @@ const libConfig = {
 }
 
 const docsConfig = {
-  root: './docs',
+  root: './demo',
   plugins: [vue(), vueDevTools()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./docs/src', import.meta.url)),
+      '@': fileURLToPath(new URL('./demo/src', import.meta.url)),
     },
   },
   server: {
@@ -50,7 +50,7 @@ export default defineConfig(({ command }) => {
 
   const mode = command === 'build' ? 'production' : 'development'
 
-  if (executionMode === 'docs') {
+  if (executionMode === 'demo') {
     return { ...docsConfig, mode }
   } else {
     return { ...libConfig, mode }

@@ -16,7 +16,7 @@
     "dev": "MODE=docs vite",
     "build": "npm run build:code",
     "build:code": "MODE=lib vite build",
-    "build:docs": "MODE=docs vite build",
+    "build:demo": "MODE=demo vite build",
     "preview": "vite preview",
     "lint": "eslint . --fix",
     "format": "prettier --write src/"
