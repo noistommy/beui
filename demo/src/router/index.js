@@ -11,6 +11,11 @@ const router = createRouter({
       component: HomeView,
     },
     {
+      path: '/beui',
+      name: 'beui',
+      redirect: '/',
+    },
+    {
       path: '/about',
       name: 'about',
       component: () => import('../views/AboutView.vue'),

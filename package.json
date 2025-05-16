@@ -13,7 +13,7 @@
     "./dist/style.css": "./dist/beui.css"
   },
   "scripts": {
-    "dev": "MODE=docs vite",
+    "dev": "MODE=demo vite",
     "build": "npm run build:code",
     "build:code": "MODE=lib vite build",
     "build:demo": "MODE=demo vite build",
