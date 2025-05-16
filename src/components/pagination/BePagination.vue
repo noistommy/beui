@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch, onMounted , nextTick} from 'vue'
+import { ref, computed, watch, onMounted, nextTick } from 'vue'
 
 const props = defineProps({
   type: {
@@ -11,42 +11,42 @@ const props = defineProps({
   },
   round: {
     type: Boolean,
-    default: false
+    default: false,
   },
   compact: {
     type: Boolean,
-    default: false
+    default: false,
   },
   border: {
     type: Boolean,
-    default: false
+    default: false,
   },
   align: {
     type: String,
-    default: 'left'
+    default: 'left',
   },
   limits: {
     type: Number,
-    default: 0
+    default: 0,
   },
   currentPage: {
     type: Number,
-    default: 1
+    default: 1,
   },
   pageLength: {
     type: Number,
-    default: 1
+    default: 1,
   },
   itemClass: {
-    type: String
+    type: String,
   },
   ellipsis: {
     type: Boolean,
-    default: false
+    default: false,
   },
   color: {
-    type: String
-  }
+    type: String,
+  },
 })
 const pageEl = ref(null)
 const current = defineModel()
@@ -58,16 +58,16 @@ const pageList = computed(() => {
     return new Array(props.pageLength).fill(1).map((n, i) => n + i)
   } else if (props.ellipsis) {
     let start = 2
-    let half = Math.floor((props.limits) / 2)
+    let half = Math.floor(props.limits / 2)
     if (isPrevPoint.value) {
       start = current.value - half
     }
     if (!isNextPoint.value && isPrevPoint.value) {
-      start = last.value - (props.limits)
+      start = last.value - props.limits
     }
     return new Array(props.limits).fill(0).map((n, i) => start + i)
   } else {
-    let start = Math.min(findStart.value, props.pageLength - props.limits + 1 )
+    let start = Math.min(findStart.value, props.pageLength - props.limits + 1)
     return new Array(props.limits).fill(start).map((n, i) => n + i)
   }
 })
@@ -81,7 +81,7 @@ const isPrevPoint = computed(() => {
   return current.value > Math.floor(props.limits / 2) + 2 && props.limits < last.value
 })
 const isNextPoint = computed(() => {
-  return current.value <= last.value - (props.limits) && props.limits < last.value
+  return current.value <= last.value - props.limits && props.limits < last.value
 })
 const isDisabledNext = computed(() => {
   return current.value + 1 > last.value
@@ -97,11 +97,9 @@ watch(props, () => {
   last.value = props.pageLength
 })
 
-
 onMounted(async () => {
   await nextTick()
   pageEl.value.focus()
-  console.log(pageEl.value)
   // current.value = props.currentPage
   last.value = props.pageLength
 })
@@ -109,7 +107,7 @@ onMounted(async () => {
 const setCurrent = (num) => {
   if (num > last.value || num <= 0) return
   current.value = num
-  emit('change',num)
+  emit('change', num)
 }
 const setPrev = () => {
   if (isDisabledPrev.value) return
@@ -124,22 +122,39 @@ const setPrevBlock = () => {
   setCurrent(prevNum)
 }
 const setNextBlock = () => {
-  let prevNum = current.value + props.limits > last.value ? current.value + 1 : current.value + props.limits
+  let prevNum =
+    current.value + props.limits > last.value ? current.value + 1 : current.value + props.limits
   setCurrent(prevNum)
 }
-
 </script>
 
 <template>
-  <div class="be-pagination" :class="[type, {round}, {compact}, `align-${align}`, color]" ref="pageEl">
-    <div v-if="!ellipsis && !offLimits" class="pagination-nav first" :class="[itemClass, {disabled: isDisabledPrev}]" @click="setCurrent(1)">
+  <div
+    class="be-pagination"
+    :class="[type, { round }, { compact }, `align-${align}`, color]"
+    ref="pageEl"
+  >
+    <div
+      v-if="!ellipsis && !offLimits"
+      class="pagination-nav first"
+      :class="[itemClass, { disabled: isDisabledPrev }]"
+      @click="setCurrent(1)"
+    >
       F
     </div>
-    <div class="pagination-nav prev" :class="[itemClass, {disabled: isDisabledPrev}]" @click="setPrev">
+    <div
+      class="pagination-nav prev"
+      :class="[itemClass, { disabled: isDisabledPrev }]"
+      @click="setPrev"
+    >
       <i class="xi-angle-left"></i>
     </div>
-    <template  v-if="ellipsis">
-      <div class="pagination-num" :class="[itemClass, { active: 1 === current }]" @click="setCurrent(1)">
+    <template v-if="ellipsis">
+      <div
+        class="pagination-num"
+        :class="[itemClass, { active: 1 === current }]"
+        @click="setCurrent(1)"
+      >
         1
       </div>
       <div v-if="isPrevPoint" class="pagination-num" :class="[itemClass]" @click="setPrevBlock">
@@ -148,11 +163,15 @@ const setNextBlock = () => {
     </template>
     <div class="pagination-page-wrapper">
       <template v-if="type === 'number'">
-        <div class="pagination-num"
+        <div
+          class="pagination-num"
           v-for="page in pageList"
           :key="page"
           :class="[itemClass, { active: page === current }]"
-          @click="setCurrent(page)">{{ page }}</div>
+          @click="setCurrent(page)"
+        >
+          {{ page }}
+        </div>
       </template>
       <template v-else>
         <div class="pagination-info">
@@ -162,18 +181,31 @@ const setNextBlock = () => {
         </div>
       </template>
     </div>
-    <template  v-if="ellipsis && props.limits < props.pageLength">
+    <template v-if="ellipsis && props.limits < props.pageLength">
       <div v-if="isNextPoint" class="pagination-nav" :class="[itemClass]" @click="setNextBlock">
         <i class="xi-ellipsis-h"></i>
       </div>
-      <div class="pagination-num" :class="[itemClass, { active: last === current }]" @click="setCurrent(last)">
+      <div
+        class="pagination-num"
+        :class="[itemClass, { active: last === current }]"
+        @click="setCurrent(last)"
+      >
         {{ last }}
       </div>
     </template>
-    <div class="pagination-nav next" :class="[itemClass, {disabled: isDisabledNext}]" @click="setNext">
+    <div
+      class="pagination-nav next"
+      :class="[itemClass, { disabled: isDisabledNext }]"
+      @click="setNext"
+    >
       <i class="xi-angle-right"></i>
     </div>
-    <div v-if="!ellipsis && !offLimits" class="pagination-nav last" :class="[itemClass, {disabled: isDisabledNext}]" @click="setCurrent(last)">
+    <div
+      v-if="!ellipsis && !offLimits"
+      class="pagination-nav last"
+      :class="[itemClass, { disabled: isDisabledNext }]"
+      @click="setCurrent(last)"
+    >
       L
     </div>
   </div>

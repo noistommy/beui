@@ -11,50 +11,46 @@ const libConfig = {
     lib: {
       entry: resolve(__dirname, './src'),
       name: 'be-ui',
-      fileName: (format) => `be-ui.${format}.js`
+      fileName: (format) => `be-ui.${format}.js`,
     },
-    rollupOption: {
-      external: ["vue"],
+    rollupOptions: {
+      external: ['vue'],
       output: {
         globals: {
-          vue: "Vue",
+          vue: 'Vue',
         },
-        preserveModules: true,
-        moduleIds: 'deterministic',
-        assetFileNames: assetInfo => {
-          if (assetInfo.name == "style.css") return "nt-ui-css.css"
+        // moduleIds: 'deterministic',
+        // exports: 'named',
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name == 'style.css') return 'nt-ui-css.css'
           return assetInfo.name
-        }
-      }
+        },
+      },
     },
-    sourcemap: true
-  }
+    sourcemap: true,
+  },
 }
 
 const docsConfig = {
-  root: "./docs",
-  plugins: [
-    vue(),
-    vueDevTools(),
-  ],
+  root: './docs',
+  plugins: [vue(), vueDevTools()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./docs/src', import.meta.url))
+      '@': fileURLToPath(new URL('./docs/src', import.meta.url)),
     },
   },
   server: {
-    port: 5177
+    port: 5177,
   },
 }
 
 // https://vite.dev/config/
 export default defineConfig(({ command }) => {
-  const executionMode = process.env.MODE || "lib"
-  console.log(executionMode)
+  const executionMode = process.env.MODE || 'lib'
 
-  const mode = command === 'build' ? "production" : "development"
+  const mode = command === 'build' ? 'production' : 'development'
 
-  if(executionMode === 'docs') {
+  if (executionMode === 'docs') {
     return { ...docsConfig, mode }
   } else {
     return { ...libConfig, mode }

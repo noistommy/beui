@@ -76,11 +76,15 @@ const props = defineProps({
   },
   editMode: {
     type: Boolean,
-    default: false
+    default: false,
   },
   unit: {
     type: String,
-    default: null
+    default: null,
+  },
+  disabled: {
+    type: Boolean,
+    default: false,
   },
 })
 const inputValue = defineModel()
@@ -110,32 +114,50 @@ const onBlur = () => {
 <template>
   <div
     class="be-input"
-    :class="[status, {readonly}, {underline}, {transparent}, {compact}, {fluid}, {edit: edit}, {editable: editMode}, { icon: iconLeft || iconRight || clear }, iconPosition, { badge: badge }, {unit}]"
+    :class="[
+      status,
+      { readonly },
+      { underline },
+      { transparent },
+      { compact },
+      { fluid },
+      { edit: edit },
+      { editable: editMode },
+      { icon: iconLeft || iconRight || clear },
+      iconPosition,
+      { badge: badge },
+      { unit },
+      { disabled },
+    ]"
     :data-unit="unit"
   >
-    <i v-if="iconLeft" :class="`icon xi-${iconLeft}`" />
-    <template v-if="type === 'input'">
-      <input
-        :type="inputType"
-        v-model="inputValue"
-        :placeholder="placeholder"
-        :class="[`aline-${align}`]"
-        ref="input"
-        @click="checkFocus()"
-        @blur="onBlur()"
-      />
-    </template>
-    <template v-else>
-      <textarea v-model="inputValue" rows="3" :placeholder="placeholder"></textarea>
-    </template>
+    <slot>
+      <i v-if="iconLeft" :class="`icon xi-${iconLeft}`" />
+      <template v-if="type === 'input'">
+        <input
+          :type="inputType"
+          v-model="inputValue"
+          :placeholder="placeholder"
+          :class="[`aline-${align}`]"
+          ref="input"
+          :disabled="disabled"
+          :readonly="readonly"
+          @click="checkFocus()"
+          @blur="onBlur()"
+        />
+      </template>
+      <template v-else>
+        <textarea v-model="inputValue" rows="3" :placeholder="placeholder"></textarea>
+      </template>
 
-    <i
-      v-if="clear"
-      class="icon clear-btn xi-close"
-      :class="{ disabled: inputValue === '' }"
-      @click="inputValue = ''"
-    />
-    <i v-else-if="iconRight && !clear" :class="`icon xi-${iconRight}`" />
-    <span v-else-if="badge" class="be-badge" :class="badgeOption">{{ badge }}</span>
+      <i
+        v-if="clear"
+        class="icon clear-btn xi-close"
+        :class="{ disabled: inputValue === '' }"
+        @click="inputValue = ''"
+      />
+      <i v-else-if="iconRight && !clear" :class="`icon xi-${iconRight}`" />
+      <span v-else-if="badge" class="be-badge" :class="badgeOption">{{ badge }}</span>
+    </slot>
   </div>
 </template>

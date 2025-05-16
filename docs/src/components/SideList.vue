@@ -1,5 +1,4 @@
 <script setup>
-
 const elementList = [
   { name: 'button', path: '/button' },
   { name: 'input', path: '/input' },
@@ -26,29 +25,37 @@ const componentList = [
 defineProps({
   current: {
     type: String,
-    default: ''
-  }
+    default: '',
+  },
 })
 </script>
 
 <template>
   <div class="side-list-wrapper">
-    <div class="list-title gray-30">
+    <!-- <div class="list-title gray-30">
       <h5>Ready</h5>
-    </div>
-    <div class="be-list nav-list selection">
+    </div> -->
+    <!-- <div class="be-list nav-list selection">
       <RouterLink to="/">
         <div class="item">Home</div>
       </RouterLink>
       <RouterLink to="/about">
         <div class="item">About</div>
       </RouterLink>
-    </div>
+      <RouterLink to="/color-palette">
+        <div class="item">Color Palette</div>
+      </RouterLink>
+    </div> -->
     <div class="list-title gray-30">
       <h5>Element</h5>
     </div>
     <div class="be-list nav-list selection text mark">
-      <div class="item" v-for="item in elementList" :key="item.name" :class="{selected: current === item.name}">
+      <div
+        class="item"
+        v-for="item in elementList"
+        :key="item.name"
+        :class="{ selected: current === item.name }"
+      >
         <RouterLink :to="item.path">
           {{ item.name }}
         </RouterLink>
@@ -58,7 +65,12 @@ defineProps({
       <h5>Components</h5>
     </div>
     <div class="be-list nav-list selection text mark">
-      <div class="item" v-for="item in componentList" :key="item.name" :class="{selected: current === item.name}">
+      <div
+        class="item"
+        v-for="item in componentList"
+        :key="item.name"
+        :class="{ selected: current === item.name }"
+      >
         <RouterLink :to="`/components${item.path}`">
           {{ item.name }}
         </RouterLink>
@@ -70,10 +82,11 @@ defineProps({
 <style lang="scss" scoped>
 .side-list-wrapper {
   height: calc(100dvh - 80px);
-  overflow-y:auto;
+  overflow-y: auto;
+  font-family: 'Noto Sans Mono';
   .list-title {
     color: var(--txt);
-    padding: .5em 1em;
+    padding: 0.5em 1em;
     background-color: #fff;
   }
   .nav-list {

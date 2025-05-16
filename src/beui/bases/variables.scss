@@ -30,7 +30,9 @@ h3,
 h4,
 .h4,
 h5,
-.h5 {
+.h5,
+h6,
+.h6 {
   font-weight: $headerFontWeight;
   &.header {
     margin: $headerMargin;
@@ -171,6 +173,8 @@ h5,
     background-color: $darkGray;
   }
 }
+
+@include generate-color-classes();
 
 //grayscale
 .gray {

@@ -81,6 +81,7 @@ main {
       font-size: 3em;
       padding: 10px 15px;
       height: 100%;
+      font-family: 'Noto Sans Mono';
     }
     .toggle-btn {
       transition: transform 250ms ease-in;

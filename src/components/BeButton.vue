@@ -16,14 +16,14 @@ const props = defineProps({
   circle: Boolean,
   compact: Boolean,
   outline: Boolean,
-  icon: Boolean,
+  icon: String,
   withIcon: {
     type: String,
-    default: null
+    default: null,
   },
   iconPos: String,
   badge: String,
-  badgeOption: String
+  badgeOption: String,
 })
 
 const emit = defineEmits(['on-click'])
@@ -35,16 +35,16 @@ const buttonClasses = computed(() => [
   props.status,
   props.color,
   {
-    'text': props.text,
-    'border': props.border,
-    'disabled': props.disabled,
-    'fluid': props.fluid,
-    'circle': props.circle,
-    'compact': props.compact,
-    'outline': props.outline,
-    'icon': props.icon,
-    'badge': props.badge
-  }
+    text: props.text,
+    border: props.border,
+    disabled: props.disabled,
+    fluid: props.fluid,
+    circle: props.circle,
+    compact: props.compact,
+    outline: props.outline,
+    icon: props.icon,
+    badge: props.badge,
+  },
 ])
 
 // 이벤트 핸들러
@@ -58,16 +58,20 @@ const renderDefaultContent = () => {
 
   // 왼쪽 아이콘
   if (props.withIcon && (props.iconPos === 'left' || props.iconPos === 'both')) {
-    children.push(h('i', {
-      class: ['icon', props.iconPos, props.withIcon]
-    }))
+    children.push(
+      h('i', {
+        class: ['icon', props.iconPos, props.withIcon],
+      }),
+    )
   }
 
   // 아이콘
   if (props.icon) {
-    children.push(h('i', {
-      class: ['icon', props.icon]
-    }))
+    children.push(
+      h('i', {
+        class: ['icon', props.icon],
+      }),
+    )
   }
 
   // contentText
@@ -77,16 +81,24 @@ const renderDefaultContent = () => {
 
   // 오른쪽 아이콘
   if (props.withIcon && (props.iconPos === 'right' || props.iconPos === 'both')) {
-    children.push(h('i', {
-      class: ['icon', props.iconPos, props.withIcon]
-    }))
+    children.push(
+      h('i', {
+        class: ['icon', props.iconPos, props.withIcon],
+      }),
+    )
   }
 
   // 뱃지
   if (props.badge) {
-    children.push(h('div', {
-      class: ['in-badge', props.badgeOption]
-    }, props.badge))
+    children.push(
+      h(
+        'span',
+        {
+          class: ['in-badge', props.badgeOption],
+        },
+        props.badge,
+      ),
+    )
   }
 
   return children
@@ -94,16 +106,19 @@ const renderDefaultContent = () => {
 
 // 메인 렌더 함수
 const render = (slots) => {
-  return h('button', {
-    class: buttonClasses.value,
-    onClick,
-    disabled: props.disabled
-  }, [
-    // slot이 있으면 slot을, 없으면 기본 컨텐츠를 렌더링
-    h('div', {}, [
-      slots.default?.() || renderDefaultContent()
-    ])
-  ])
+  return h(
+    'button',
+    {
+      class: buttonClasses.value,
+      onClick,
+      disabled: props.disabled,
+    },
+    [
+      slots.default?.() || renderDefaultContent(),
+      // slot이 있으면 slot을, 없으면 기본 컨텐츠를 렌더링
+      // h('div', {}, [slots.default?.() || renderDefaultContent()]),
+    ],
+  )
 }
 </script>
 

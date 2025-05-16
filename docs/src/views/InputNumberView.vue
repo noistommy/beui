@@ -3,6 +3,7 @@ import { ref } from 'vue'
 const value = ref(new Array(10).fill(0))
 const valueLimit = ref(10)
 const valueStep = ref(0)
+const valueFirst = ref(0)
 </script>
 <template>
   <div class="page-wrapper be-container">
@@ -15,7 +16,7 @@ const valueStep = ref(0)
         <span class="be-tag label">component</span>
       </div>
       <div class="contents-wrapper">
-        <BeInputNumber v-model="value[0]"  />
+        <BeInputNumber v-model="valueFirst"></BeInputNumber>
       </div>
     </section>
     <section>
@@ -34,7 +35,7 @@ const valueStep = ref(0)
       </div>
       <div class="contents-wrapper">
         <BeInputNumber v-model="value[1]" />
-        <BeInputNumber v-model="value[2]" controller="end"  />
+        <BeInputNumber v-model="value[2]" controller="end" />
       </div>
     </section>
     <section>
@@ -44,7 +45,7 @@ const valueStep = ref(0)
         ex) min = 1 / max = 10
       </div>
       <div class="contents-wrapper">
-        <BeInputNumber v-model="valueLimit" :min="0" :max="10"  />
+        <BeInputNumber v-model="valueLimit" :min="0" :max="10" />
       </div>
     </section>
     <section>
@@ -54,7 +55,7 @@ const valueStep = ref(0)
         ex) step = 5
       </div>
       <div class="contents-wrapper">
-        <BeInputNumber v-model="valueStep" :step="5"  />
+        <BeInputNumber v-model="valueStep" :step="5" />
       </div>
     </section>
     <section>
@@ -63,7 +64,7 @@ const valueStep = ref(0)
         <span class="be-tag label">component</span>
       </div>
       <div class="contents-wrapper">
-        <BeInputNumber v-model="value[3]" dec-icon="xi-angle-down" inc-icon="xi-angle-up"  />
+        <BeInputNumber v-model="value[3]" dec-icon="xi-angle-down" inc-icon="xi-angle-up" />
       </div>
     </section>
     <section>
@@ -90,7 +91,7 @@ const valueStep = ref(0)
         <span class="be-tag label">component</span>
       </div>
       <div class="contents-wrapper">
-        <BeInputNumber v-model="value[6]" :style="{ width: '150px'}" />
+        <BeInputNumber v-model="value[6]" :style="{ width: '150px' }" />
       </div>
     </section>
   </div>

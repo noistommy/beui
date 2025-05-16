@@ -1,3 +1,4 @@
+@use './colors.scss' as *;
 @use 'sass:color';
 @use 'sass:map';
 @use 'sass:math';
@@ -77,7 +78,7 @@ $dModeBackground: #333333;
 // colors
 //
 
-// $primary: #3c79b8;
+// $primary: #d9550d;
 $primary: #6d9d72;
 $secondary: #35363a;
 
@@ -228,11 +229,12 @@ $colors2: (
 //heading
 //
 $headerFontWeight: $bold;
-$h1: absolutePx(22);
-$h2: absolutePx(20);
-$h3: absolutePx(18);
-$h4: absolutePx(16);
-$h5: absolutePx(14);
+$h1: absolutePx(32);
+$h2: absolutePx(26);
+$h3: absolutePx(22);
+$h4: absolutePx(18);
+$h5: absolutePx(16);
+$h6: absolutePx(14);
 
 //Size
 $tinySize: calc(10 / 14);

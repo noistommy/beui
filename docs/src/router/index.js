@@ -16,6 +16,16 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue'),
     },
     {
+      path: '/color-palette',
+      name: 'color-palette',
+      component: () => import('../views/ColorPalette.vue'),
+    },
+    {
+      path: '/color-palette-test',
+      name: 'color-palette-test',
+      component: () => import('../views/ColorPaletteTest.vue'),
+    },
+    {
       path: '/button',
       name: 'button',
       component: () => import('../views/ButtonView.vue'),
@@ -108,12 +118,12 @@ const router = createRouter({
     {
       path: '/:pathMatch(.*)*',
       name: '404-not-found',
-      component: NotFound
+      component: NotFound,
     },
   ],
   scrollBehavior() {
-    return { left: 0, top: 0 }  // 모든 라우트 변경시 페이지의 최상단으로 스크롤
-  }
+    return { left: 0, top: 0 } // 모든 라우트 변경시 페이지의 최상단으로 스크롤
+  },
 })
 
 export default router

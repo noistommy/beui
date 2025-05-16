@@ -1,5 +1,5 @@
 <script setup>
-import { h, ref, computed } from 'vue'
+import { h, ref, computed, watch } from 'vue'
 
 const props = defineProps({
   type: {
@@ -57,16 +57,22 @@ const props = defineProps({
   editMode: Boolean,
   unit: {
     type: String,
-    default: null
+    default: null,
   },
+  modelValue: String,
 })
 
-const inputValue = defineModel()
-const emit = defineEmits(['focus'])
+const inputValue = ref(props.modelValue)
+const emit = defineEmits(['focus', 'update:modelValue'])
 
 const isFocus = ref(false)
-const input = ref(null)
 
+// watch(
+//   () => props.modelValue,
+//   (val) => {
+//     inputValue.value = val
+//   },
+// )
 // 계산된 속성들
 const iconPosition = computed(() => {
   if (props.iconLeft && (props.iconRight || props.clear)) return 'both'
@@ -77,18 +83,18 @@ const containerClasses = computed(() => [
   'be-input',
   props.status,
   {
-    'readonly': props.readonly,
-    'underline': props.underline,
-    'transparent': props.transparent,
-    'compact': props.compact,
-    'fluid': props.fluid,
-    'edit': props.edit,
-    'editable': props.editMode,
-    'icon': props.iconLeft || props.iconRight || props.clear,
-    'unit': props.unit
+    readonly: props.readonly,
+    underline: props.underline,
+    transparent: props.transparent,
+    compact: props.compact,
+    fluid: props.fluid,
+    edit: props.edit,
+    editable: props.editMode,
+    icon: props.iconLeft || props.iconRight || props.clear,
+    unit: props.unit,
   },
   iconPosition.value,
-  { 'badge': props.badge }
+  { badge: props.badge },
 ])
 
 // 이벤트 핸들러
@@ -108,27 +114,29 @@ const onBlur = () => {
 const renderLeftIcon = () => {
   if (!props.iconLeft) return null
   return h('i', {
-    class: `icon xi-${props.iconLeft}`
+    class: `icon xi-${props.iconLeft}`,
   })
 }
 
 const renderInput = () => {
   const inputProps = {
     type: props.type === 'input' ? props.inputType : undefined,
-    modelValue: inputValue.value,
-    'onUpdate:modelValue': (val) => inputValue.value = val,
+    value: inputValue.value,
+    onInput: (e) => {
+      inputValue.value = e.target.value
+      // emit('update:modelValue', e.target.value)
+    },
     placeholder: props.placeholder,
     class: [`aline-${props.align}`],
-    ref: input,
     onClick: checkFocus,
-    onBlur: onBlur
+    onBlur: onBlur,
   }
 
   return props.type === 'input'
     ? h('input', inputProps)
     : h('textarea', {
         ...inputProps,
-        rows: '3'
+        rows: '3',
       })
 }
 
@@ -136,33 +144,39 @@ const renderRightElement = () => {
   if (props.clear) {
     return h('i', {
       class: ['icon', 'clear-btn', 'xi-close', { disabled: inputValue.value === '' }],
-      onClick: () => inputValue.value = ''
+      onClick: () => (inputValue.value = ''),
     })
   } else if (props.iconRight && !props.clear) {
     return h('i', {
-      class: `icon xi-${props.iconRight}`
+      class: `icon xi-${props.iconRight}`,
     })
   } else if (props.badge) {
-    return h('span', {
-      class: ['be-badge', props.badgeOption]
-    }, props.badge)
+    return h(
+      'span',
+      {
+        class: ['be-badge', props.badgeOption],
+      },
+      props.badge,
+    )
   }
   return null
 }
 
 // 메인 렌더 함수
-const render = () => {
-  return h('div', {
-    class: containerClasses.value,
-    'data-unit': props.unit
-  }, [
-    renderLeftIcon(),
-    renderInput(),
-    renderRightElement()
-  ])
+const render = (slots) => {
+  // const renderDefault = [renderLeftIcon(), renderInput(), renderRightElement()]
+  return h(
+    'div',
+    {
+      class: containerClasses.value,
+      'data-unit': props.unit,
+    },
+    // [slots.default?.() || renderDefault],
+    [renderLeftIcon(), renderInput(), renderRightElement()],
+  )
 }
 </script>
 
 <template>
-  <component :is="render" />
+  <component :is="() => render($slots)" />
 </template>

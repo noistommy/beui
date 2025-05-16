@@ -2,6 +2,8 @@
 import { ref } from 'vue'
 const placeholder = '입력하세요'
 const editMode = ref(false)
+
+const inputValue = ref('init')
 </script>
 <template>
   <div class="page-wrapper be-container">
@@ -17,7 +19,8 @@ const editMode = ref(false)
         <div class="be-input">
           <input type="text" :placeholder="placeholder" />
         </div>
-        <BeInput :placeholder="placeholder" />
+        <BeInput v-model="inputValue" :placeholder="placeholder"></BeInput>
+        {{ inputValue }}
       </div>
     </section>
     <section>
@@ -27,9 +30,9 @@ const editMode = ref(false)
       </div>
       <div class="contents-wrapper">
         <div class="be-input disabled">
-          <input type="text" :placeholder="placeholder" />
+          <input type="text" :placeholder="placeholder" disabled />
         </div>
-        <BeInput disabled :placeholder="placeholder" />
+        <BeInput :disabled="true" :placeholder="placeholder" />
       </div>
     </section>
     <section>
@@ -39,9 +42,6 @@ const editMode = ref(false)
       </div>
       <div class="contents-wrapper">
         <div class="be-input readonly">
-          <input type="text" :placeholder="placeholder" />
-        </div>
-        <div class="be-input">
           <input type="text" readonly :placeholder="placeholder" />
         </div>
         <BeInput :readonly="true" :placeholder="placeholder" />
@@ -96,7 +96,9 @@ const editMode = ref(false)
           <input type="text" placeholder="수정 모드" />
         </div>
         <BeInput :edit="true" :edit-mode="editMode" :placeholder="placeholder" />
-        <div class="be-button" @click="editMode = !editMode">EDIT {{ editMode ? 'OFF' : 'ON' }}</div>
+        <div class="be-button" @click="editMode = !editMode">
+          EDIT {{ editMode ? 'OFF' : 'ON' }}
+        </div>
       </div>
     </section>
     <section>

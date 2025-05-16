@@ -76,11 +76,11 @@ const props = defineProps({
   },
   editMode: {
     type: Boolean,
-    default: false
+    default: false,
   },
   unit: {
     type: String,
-    default: null
+    default: null,
   },
 })
 const inputValue = defineModel()
@@ -110,7 +110,20 @@ const onBlur = () => {
 <template>
   <div
     class="be-input"
-    :class="[status, {readonly}, {underline}, {transparent}, {compact}, {fluid}, {edit: edit}, {editable: editMode}, { icon: iconLeft || iconRight || clear }, iconPosition, { badge: badge }, {unit}]"
+    :class="[
+      status,
+      { readonly },
+      { underline },
+      { transparent },
+      { compact },
+      { fluid },
+      { edit: edit },
+      { editable: editMode },
+      { icon: iconLeft || iconRight || clear },
+      iconPosition,
+      { badge: badge },
+      { unit },
+    ]"
     :data-unit="unit"
   >
     <slot>

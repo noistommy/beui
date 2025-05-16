@@ -1,11 +1,28 @@
 <script setup>
-import {ref} from 'vue'
+import { ref } from 'vue'
+
 const status = ['success', 'danger', 'info', 'attention', 'importance']
-const colors = ['red', 'orange', 'yellow', 'lightgreen', 'green', 'lightblue', 'blue', 'deepblue', 'deeppurple', 'purple', 'brown', 'gray']
+const colors = [
+  'red',
+  'orange',
+  'yellow',
+  'lightgreen',
+  'green',
+  'lightblue',
+  'blue',
+  'deepblue',
+  'deeppurple',
+  'purple',
+  'brown',
+  'gray',
+]
 const options = ['primary', 'secondary', 'circle', 'outline', 'icon']
 const icons = ['home', 'user', 'arrow-left', 'arrow-right', 'accessibility']
+const sizes = ['tiny', 'small', 'medium', 'large', 'huge', 'massive']
 
 const selectedIndex = ref(0)
+
+// const testCode = '<div class="be-button">\n' + 'Contents Text\n' + '</div>'
 </script>
 <template>
   <div class="page-wrapper be-container">
@@ -21,8 +38,10 @@ const selectedIndex = ref(0)
       <div class="contents-wrapper">
         <div class="be-button">Base(class)</div>
         <button class="be-button">Base(tag)</button>
-        <BeButton>
-          test
+        <BeButton>test </BeButton>
+        <BeButton content-text="test" />
+        <BeButton class="icon">
+          <i class="xi-user"></i>
         </BeButton>
       </div>
     </section>
@@ -32,7 +51,9 @@ const selectedIndex = ref(0)
       <div class="contents-wrapper">
         <button class="be-button primary">primary</button>
         <button class="be-button secondary">secondary</button>
-        <button v-for="state in status" :key="state" class="be-button" :class="state">{{ state }}</button>
+        <button v-for="state in status" :key="state" class="be-button" :class="state">
+          {{ state }}
+        </button>
         <BeButton brand="primary" content-text="Comp(brand)"></BeButton>
         <BeButton status="danger" content-text="Comp(status)"></BeButton>
       </div>
@@ -41,7 +62,9 @@ const selectedIndex = ref(0)
       <h4 class="title">Colors</h4>
       <div class="desc"></div>
       <div class="contents-wrapper">
-        <button v-for="color in colors" :key="color" class="be-button" :class="color">{{ color }}</button>
+        <button v-for="color in colors" :key="color" class="be-button" :class="color">
+          {{ color }}
+        </button>
         <BeButton color="lightblue" content-text="Comp(color)"></BeButton>
       </div>
     </section>
@@ -49,7 +72,9 @@ const selectedIndex = ref(0)
       <h4 class="title">Colors-light</h4>
       <div class="desc"></div>
       <div class="contents-wrapper">
-        <button v-for="color in colors" :key="color" class="be-button" :class="`${color}-light`">{{ color }}</button>
+        <button v-for="color in colors" :key="color" class="be-button" :class="`${color}-light`">
+          {{ color }}
+        </button>
         <BeButton color="lightblue-light" content-text="Comp(color)"></BeButton>
       </div>
     </section>
@@ -158,6 +183,15 @@ const selectedIndex = ref(0)
       </div>
     </section>
     <section>
+      <h4 class="title">Size</h4>
+      <div class="desc"></div>
+      <div class="contents-wrapper">
+        <button v-for="size in sizes" :key="size" class="be-button" :class="size">
+          {{ size }}
+        </button>
+      </div>
+    </section>
+    <section>
       <h4 class="title">Icon with text</h4>
       <div class="desc"></div>
       <div class="contents-wrapper">
@@ -197,39 +231,41 @@ const selectedIndex = ref(0)
       <div class="desc"></div>
       <div class="contents-wrapper">
         <div class="be-buttons">
-          <div class="be-button"
+          <div
+            class="be-button"
             v-for="(item, i) in ['A', 'B', 'C', 'D']"
             :key="item"
-            :class="{selected: selectedIndex === i}"
-            @click="selectedIndex = i">
+            :class="{ selected: selectedIndex === i }"
+            @click="selectedIndex = i"
+          >
             {{ item }} Button
           </div>
         </div>
         <div class="be-buttons round">
-          <div class="be-button"
+          <div
+            class="be-button"
             v-for="(item, i) in ['A', 'B', 'C', 'D']"
             :key="item"
-            :class="{selected: selectedIndex === i}"
-            @click="selectedIndex = i">
+            :class="{ selected: selectedIndex === i }"
+            @click="selectedIndex = i"
+          >
             {{ item }} Button
           </div>
         </div>
         <div class="be-buttons outline">
-          <div class="be-button"
+          <div
+            class="be-button"
             v-for="(item, i) in ['A', 'B', 'C', 'D']"
             :key="item"
-            :class="{selected: selectedIndex === i}"
-            @click="selectedIndex = i">
+            :class="{ selected: selectedIndex === i }"
+            @click="selectedIndex = i"
+          >
             {{ item }} Button
           </div>
         </div>
-
       </div>
     </section>
   </div>
-
 </template>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

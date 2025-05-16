@@ -50,7 +50,7 @@ const props = defineProps({
   },
   resultKey: {
     type: String,
-    default: 'val'
+    default: 'val',
   },
   isAll: {
     type: Boolean,
@@ -58,12 +58,12 @@ const props = defineProps({
   },
   fluid: {
     type: Boolean,
-    default: false
+    default: false,
   },
   disabled: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 })
 
 const emit = defineEmits(['select'])
@@ -83,20 +83,24 @@ const optionList = reactive(props.options)
 const searchText = ref(null)
 const selectedText = computed(() => {
   if (props.multiple) {
-    return selectedList.value.length > 0 ?  `${selectedList.value.length} 개 선택` : null
+    return selectedList.value.length > 0 ? `${selectedList.value.length} 개 선택` : null
   } else {
-    const selectIndex = props.options.findIndex(t => t[props.resultKey] === selectedItem.value)
+    const selectIndex = props.options.findIndex((t) => t[props.resultKey] === selectedItem.value)
     return props.options[selectIndex] ? props.options[selectIndex][props.optionKey] : null
   }
 })
 
 const selectedIndex = computed(() => {
-  return selectedItem.value ? searchedOptions.value.findIndex(f => f[props.resultKey] === selectedItem.value) : 0
+  return selectedItem.value
+    ? searchedOptions.value.findIndex((f) => f[props.resultKey] === selectedItem.value)
+    : 0
 })
 
 const searchedOptions = computed(() => {
   if (props.isSearch && searchText.value && !props.multiple) {
-    return optionList.filter((item) => item[props.optionKey].toLowerCase().indexOf(searchText.value.toLowerCase()) > -1)
+    return optionList.filter(
+      (item) => item[props.optionKey].toLowerCase().indexOf(searchText.value.toLowerCase()) > -1,
+    )
   } else {
     return optionList
   }
@@ -106,9 +110,6 @@ const optionsHeight = computed(() => {
   return { maxHeight: props.maxOptHeight + 'px' }
 })
 
-
-
-
 watch(props, () => {
   initValue()
 })
@@ -116,8 +117,6 @@ watch(props, () => {
 onMounted(async () => {
   await initValue()
   window.addEventListener('click', () => showMenu(false))
-
-  console.log(elRef.value)
 })
 onUnmounted(() => {
   window.removeEventListener('click', () => showMenu(false))
@@ -141,7 +140,7 @@ const toggleOpen = () => {
   const posEl = elRef.value.getBoundingClientRect()
 
   let menuPos
-  if ( window.innerHeight - posEl.bottom - props.maxOptHeight - 10 < 0) {
+  if (window.innerHeight - posEl.bottom - props.maxOptHeight - 10 < 0) {
     menuPos = 'up'
   } else {
     menuPos = 'down'
@@ -198,25 +197,30 @@ const selectAll = () => {
     @click="toggleOpen"
     :ref="setEl"
   >
-  <div class="selected-item">
-    <template v-if="!isSearch">
-      <div class="default-text" :class="{has: selectedItem}">
-        {{ selectedText || placeholder }}
-      </div>
-    </template>
-    <template v-else>
-      <div class="be-input icon right" :class="{fluid, disabled, has: selectedItem}">
-        <input type="text" :placeholder="selectedText || placeholder" v-model="searchText" :readonly="!isSearch || !isShow" />
-      </div>
-    </template>
-    <i
-      v-if="isShow && multiple"
-      class="icon xi-close"
-      :style="{ pointerEvents: 'auto' }"
-      @click.stop="isShow = false"
-    ></i>
-    <i v-else class="icon xi-angle-down"></i>
-  </div>
+    <div class="selected-item">
+      <template v-if="!isSearch">
+        <div class="default-text" :class="{ has: selectedItem }">
+          {{ selectedText || placeholder }}
+        </div>
+      </template>
+      <template v-else>
+        <div class="be-input icon right" :class="{ fluid, disabled, has: selectedItem }">
+          <input
+            type="text"
+            :placeholder="selectedText || placeholder"
+            v-model="searchText"
+            :readonly="!isSearch || !isShow"
+          />
+        </div>
+      </template>
+      <i
+        v-if="isShow && multiple"
+        class="icon xi-close"
+        :style="{ pointerEvents: 'auto' }"
+        @click.stop="isShow = false"
+      ></i>
+      <i v-else class="icon xi-angle-down"></i>
+    </div>
     <!-- <div class="selected-list">
       <span class="be-tag label" v-for="s in selectedList" :key="s">
         {{searchedOptions[s].option}}
