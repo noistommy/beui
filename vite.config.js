@@ -33,6 +33,7 @@ const libConfig = {
 
 const docsConfig = {
   root: './demo',
+  base: '/beui/',
   plugins: [vue(), vueDevTools()],
   resolve: {
     alias: {
