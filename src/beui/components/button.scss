@@ -23,7 +23,6 @@ $buttonIconDistance: calc($horizontalInputPadding * 0.5);
   text-align: center;
   user-select: none;
   border-radius: $baseBorderRadius;
-  border-radius: 2em;
   border: 0;
   outline: none;
   text-shadow: none;
@@ -52,9 +51,9 @@ $buttonIconDistance: calc($horizontalInputPadding * 0.5);
     background-color: #f2f2f2 !important;
     pointer-events: none;
   }
-  &:not(.icon) {
-    border-radius: $baseBorderRadius;
-  }
+  // &:not(.icon) {
+  //   border-radius: $baseBorderRadius;
+  // }
   &:has(.icon.left) {
     padding-left: $buttonIconDistance;
   }

@@ -8,11 +8,12 @@ import './beComponents/flexible-view/flexible-view.scss'
 
 const route = useRoute()
 const toggleSide = ref(true)
-
+const scrollRef = ref(null)
 const mainTitle = ref(route.name)
 
 watch(route, () => {
   mainTitle.value = route.name
+  scrollRef.value.scrollTop = 0
 })
 </script>
 
@@ -25,7 +26,7 @@ watch(route, () => {
             <a href="/"> BEUI </a>
           </div>
           <div class="toggle-btn" :class="{ show: toggleSide }" @click="toggleSide = !toggleSide">
-            <div class="be-button icon circle gray-70">
+            <div class="be-button icon">
               <i class="xi-angle-left" :class="{ 'xi-rotate-180': toggleSide }"></i>
             </div>
           </div>
@@ -40,7 +41,7 @@ watch(route, () => {
         <div class="main-title">
           <h2>{{ mainTitle }}</h2>
         </div>
-        <div class="main-contents">
+        <div class="main-contents" ref="scrollRef">
           <RouterView />
         </div>
       </main>
@@ -56,6 +57,8 @@ main {
   overflow-y: auto;
   .main-title {
     height: $headerHeight;
+    padding-top: 15px;
+    padding-left: 20px;
     border-bottom: 1px solid var(--brd);
     &::first-letter {
       text-transform: uppercase;
@@ -63,6 +66,7 @@ main {
   }
   .main-contents {
     height: calc(100% - $headerHeight);
+    overflow-y: auto;
   }
 }
 .side-nav {
@@ -80,14 +84,14 @@ main {
       font-weight: 800;
       font-size: 3em;
       padding: 10px 15px;
-      height: 100%;
       font-family: 'Noto Sans Mono';
     }
     .toggle-btn {
+      margin: 10px;
       transition: transform 250ms ease-in;
-      transform: translateX(100%) rotate(0);
+      transform: translateX(110%);
       &.show {
-        transform: translateX(50%) rotate(180deg);
+        transform: translateX(0%);
       }
     }
   }

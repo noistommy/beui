@@ -114,7 +114,7 @@ defineProps({
     width: calc(var(--side) * 1px);
     height: 100%;
     transition: margin calc(var(--dur) * 1ms) ease;
-    z-index: 1;
+    z-index: 1000;
   }
   &.show.push,
   &.show.overlay {

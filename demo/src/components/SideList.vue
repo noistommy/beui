@@ -46,8 +46,8 @@ defineProps({
         <div class="item">Color Palette</div>
       </RouterLink>
     </div> -->
-    <div class="list-title gray-30">
-      <h5>Element</h5>
+    <div class="list-title">
+      <h6>Element</h6>
     </div>
     <div class="be-list nav-list selection text mark">
       <div
@@ -61,8 +61,8 @@ defineProps({
         </RouterLink>
       </div>
     </div>
-    <div class="list-title gray-30">
-      <h5>Components</h5>
+    <div class="list-title">
+      <h6>Components</h6>
     </div>
     <div class="be-list nav-list selection text mark">
       <div
@@ -84,16 +84,27 @@ defineProps({
   height: calc(100dvh - 80px);
   overflow-y: auto;
   font-family: 'Noto Sans Mono';
+  // background-color: #909090;
   .list-title {
-    color: var(--txt);
+    color: #aaa;
     padding: 0.5em 1em;
-    background-color: #fff;
+
+    margin: 1px;
+    margin-left: 0;
+    border-radius: 2px;
+    background-color: #ccc;
+
+    // background-color: #fff;
   }
   .nav-list {
     .item {
       padding: 0.5rem 1rem;
+      // margin: 1px;
+      // margin-left: 0;
+      border-radius: 2px;
+      background-color: #ccc;
       &:hover {
-        background-color: rgba(0, 0, 0, 0.04);
+        background-color: #ddd;
       }
       a {
         width: 100%;

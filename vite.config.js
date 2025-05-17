@@ -4,7 +4,6 @@ import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
-
 const libConfig = {
   plugins: [vue()],
   build: {
@@ -33,7 +32,7 @@ const libConfig = {
 
 const docsConfig = {
   root: './demo',
-  base: '/beui/',
+  base: process.env.NODE_ENV === 'production' ? '/beui/' : '/',
   plugins: [vue(), vueDevTools()],
   resolve: {
     alias: {
