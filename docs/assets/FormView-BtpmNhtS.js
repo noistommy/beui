@@ -1,4 +1,4 @@
-import{_ as i}from"./CodeBlock-DpeeNE6v.js";import{_ as h}from"./PageContainer-6gRpGfhJ.js";import{_,r as B,c as n,a as l,b as t,w as p,F as a,f as o,t as r,n as b,e as c,o as d}from"./index-DJRzCbrU.js";const w=`<!-- HTML -->
+import{_ as i}from"./CodeBlock-Bi4m5WSL.js";import{_ as h}from"./PageContainer-RAF9BO4c.js";import{_,r as B,c as n,a as l,b as t,w as p,F as a,f as o,t as r,n as b,e as c,o as d}from"./index-YGnsNkeF.js";const w=`<!-- HTML -->
 <div class="be-form">
    <div class="field">
        <label> Label </label>

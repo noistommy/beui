@@ -1,4 +1,4 @@
-import{_ as i}from"./CodeBlock-DpeeNE6v.js";import{_ as r}from"./PageContainer-6gRpGfhJ.js";import{_ as u,c,a as e,b as n,w as o,e as m,d as a,t as l,o as g}from"./index-DJRzCbrU.js";const p=`<!-- <div></div> 태그 사용 -->
+import{_ as i}from"./CodeBlock-Bi4m5WSL.js";import{_ as r}from"./PageContainer-RAF9BO4c.js";import{_ as u,c,a as e,b as n,w as o,e as m,d as a,t as l,o as g}from"./index-YGnsNkeF.js";const p=`<!-- <div></div> 태그 사용 -->
 <div class="be-segment">
    <div class="contents">Contents ... </div>
 </div>`,v=`<!-- script setup -->

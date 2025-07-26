@@ -1,4 +1,4 @@
-import{_ as e}from"./CodeBlock-DpeeNE6v.js";import{_ as v}from"./PageContainer-6gRpGfhJ.js";import{_ as m,c as d,a as s,b as a,w as r,F as t,f as o,n as u,j as b,o as i}from"./index-DJRzCbrU.js";const p=`<!-- HTML -->
+import{_ as e}from"./CodeBlock-Bi4m5WSL.js";import{_ as v}from"./PageContainer-RAF9BO4c.js";import{_ as m,c as d,a as s,b as a,w as r,F as t,f as o,n as u,j as b,o as i}from"./index-YGnsNkeF.js";const p=`<!-- HTML -->
 <!-- Grid Column: 12 -->
 <div class="be-grid">
    <!-- span-1은 생략 가능 -->

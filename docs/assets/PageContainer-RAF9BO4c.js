@@ -1,0 +1,1 @@
+import{r as o,c as n,o as r,a,B as e,F as l}from"./index-YGnsNkeF.js";const i={class:"base"},c={class:"variants"},m={__name:"PageContainer",setup(_){return o("Usage"),(s,t)=>(r(),n(l,null,[a("div",i,[e(s.$slots,"base")]),a("div",c,[t[0]||(t[0]=a("h1",{class:"title"},"Variants",-1)),e(s.$slots,"variants")]),e(s.$slots,"extention")],64))}};export{m as _};

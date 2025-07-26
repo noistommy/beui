@@ -1,4 +1,4 @@
-import{_ as n}from"./CodeBlock-DpeeNE6v.js";import{_ as w}from"./PageContainer-6gRpGfhJ.js";import{r as d,c,b as t,w as i,a as e,e as v,F as z,f as y,n as x,t as m,d as C,o as B}from"./index-DJRzCbrU.js";const V=`<!-- Component only -->
+import{_ as n}from"./CodeBlock-Bi4m5WSL.js";import{_ as w}from"./PageContainer-RAF9BO4c.js";import{r as d,c,b as t,w as i,a as e,e as v,F as z,f as y,n as x,t as m,d as C,o as B}from"./index-YGnsNkeF.js";const V=`<!-- Component only -->
 <!-- script setup -->
 <!-- const result = ref() -->
 <BeRate :result-value="result"></BeRate>`,_=`<!--@rateLength: Number -->

@@ -39,6 +39,9 @@ const docsConfig = {
       '@': fileURLToPath(new URL('./demo/src', import.meta.url)),
     },
   },
+  build: {
+    outDir: '../docs',
+  },
   server: {
     port: 5177,
   },

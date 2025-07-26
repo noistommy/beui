@@ -1,4 +1,4 @@
-import{_ as a}from"./CodeBlock-DpeeNE6v.js";import{_ as c}from"./PageContainer-6gRpGfhJ.js";import{c as o,a as e,b as l,w as d,d as s,F as u,f as m,t as p,n as B,e as i,o as r}from"./index-DJRzCbrU.js";const w=`<!-- Parent element 내부에 사용 -->
+import{_ as a}from"./CodeBlock-Bi4m5WSL.js";import{_ as c}from"./PageContainer-RAF9BO4c.js";import{c as o,a as e,b as l,w as d,d as s,F as u,f as m,t as p,n as B,e as i,o as r}from"./index-YGnsNkeF.js";const w=`<!-- Parent element 내부에 사용 -->
 <div class="parent-element">
    ...
    <div class="be-badge">N</div>

@@ -1,4 +1,4 @@
-import{_ as d}from"./CodeBlock-DpeeNE6v.js";import{_ as m}from"./PageContainer-6gRpGfhJ.js";import{r as a,x as w,c,a as s,b as n,w as p,e as k,d as h,t as f,F as y,f as x,n as u,o as v}from"./index-DJRzCbrU.js";const g=`<!-- html -->
+import{_ as d}from"./CodeBlock-Bi4m5WSL.js";import{_ as m}from"./PageContainer-RAF9BO4c.js";import{r as a,x as w,c,a as s,b as n,w as p,e as k,d as h,t as f,F as y,f as x,n as u,o as v}from"./index-YGnsNkeF.js";const g=`<!-- html -->
 <div class="be-switch slide">
    <input type="checkbox" />
    <span class="switch"></span>

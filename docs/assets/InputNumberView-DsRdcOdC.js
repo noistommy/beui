@@ -1,4 +1,4 @@
-import{_ as s}from"./CodeBlock-DpeeNE6v.js";import{_ as r}from"./PageContainer-6gRpGfhJ.js";import{r as d,c as v,a as e,b as n,w as p,e as V,o as c}from"./index-DJRzCbrU.js";const b=`<!-- only component -->
+import{_ as s}from"./CodeBlock-Bi4m5WSL.js";import{_ as r}from"./PageContainer-RAF9BO4c.js";import{r as d,c as v,a as e,b as n,w as p,e as V,o as c}from"./index-YGnsNkeF.js";const b=`<!-- only component -->
 <!-- script setup -->
 <!-- const inputValue = ref(0) -->
 <BeInputNumber v-model="inputValue"></BeInputNumber>`,B=`<!-- @disabled: Boolean -->

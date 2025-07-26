@@ -138,7 +138,7 @@ main {
   .main-title {
     padding-top: 15px;
     padding-left: 20px;
-    .title {
+    > .title {
       font-size: 45px;
       font-weight: 700;
       margin-bottom: 20px;

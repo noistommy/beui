@@ -1,4 +1,4 @@
-import{_ as a}from"./CodeBlock-DpeeNE6v.js";import{_ as w}from"./PageContainer-6gRpGfhJ.js";import{r as k,c as i,b as n,w as B,a as e,e as h,d as u,t as m,F as b,f as v,n as f,o as c}from"./index-DJRzCbrU.js";const _=`//  column data set 
+import{_ as a}from"./CodeBlock-Bi4m5WSL.js";import{_ as w}from"./PageContainer-RAF9BO4c.js";import{r as k,c as i,b as n,w as B,a as e,e as h,d as u,t as m,F as b,f as v,n as f,o as c}from"./index-YGnsNkeF.js";const _=`//  column data set 
 const columns = [
    { key: 'column1', name: '이름', align: 'center', col: 2 }
    { key: 'column2', name: '이름', align: 'center', col: 6 }

@@ -1,4 +1,4 @@
-import{_ as i}from"./CodeBlock-DpeeNE6v.js";import{_ as p}from"./PageContainer-6gRpGfhJ.js";import{_ as b,r as M,c as o,b as t,w as v,a as s,F as B,f,n as c,t as x,e as r,j as T,o as a}from"./index-DJRzCbrU.js";const w=`<!-- <div></div> 태그 사용 -->
+import{_ as i}from"./CodeBlock-Bi4m5WSL.js";import{_ as p}from"./PageContainer-RAF9BO4c.js";import{_ as b,r as M,c as o,b as t,w as v,a as s,F as B,f,n as c,t as x,e as r,j as T,o as a}from"./index-YGnsNkeF.js";const w=`<!-- <div></div> 태그 사용 -->
 <div class="be-message">
    <div class="title" >Title</div>
    <div class="contents" >content...</div>

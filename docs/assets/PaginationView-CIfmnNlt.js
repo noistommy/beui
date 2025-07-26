@@ -1,4 +1,4 @@
-import{_ as s}from"./CodeBlock-DpeeNE6v.js";import{_ as B}from"./PageContainer-6gRpGfhJ.js";import{r as u,c as g,a as e,b as o,w as m,e as f,d as P,t as c,F as w,f as b,n as y,o as r}from"./index-DJRzCbrU.js";const C=`<!-- script setup -->
+import{_ as s}from"./CodeBlock-Bi4m5WSL.js";import{_ as B}from"./PageContainer-RAF9BO4c.js";import{r as u,c as g,a as e,b as o,w as m,e as f,d as P,t as c,F as w,f as b,n as y,o as r}from"./index-YGnsNkeF.js";const C=`<!-- script setup -->
 <!-- const pageValue = ref(null) -->
 <!-- @pageLength: Number  -->
 <BePagination v-model="pageValue" :page-length="pageLength"></BePagination>`,U=`<!-- @limits: Number -->

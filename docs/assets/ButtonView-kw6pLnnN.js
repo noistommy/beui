@@ -1,4 +1,4 @@
-import{_ as e}from"./CodeBlock-DpeeNE6v.js";import{_ as k}from"./PageContainer-6gRpGfhJ.js";import{_ as O,r as $,c as l,a as n,b as s,w as v,F as b,f as a,n as d,t as p,e as I,d as r,j as g,o as u}from"./index-DJRzCbrU.js";const S=`<!-- <button></button> 태그 사용 -->
+import{_ as e}from"./CodeBlock-Bi4m5WSL.js";import{_ as k}from"./PageContainer-RAF9BO4c.js";import{_ as O,r as $,c as l,a as n,b as s,w as v,F as b,f as a,n as d,t as p,e as I,d as r,j as g,o as u}from"./index-YGnsNkeF.js";const S=`<!-- <button></button> 태그 사용 -->
 <button class="be-button">Contents-text</button>
 <!-- <div></div> 태그 사용 -->
 <div class="be-button">Contents-text</div>`,z=`<BeButton content-text="Contents-text"></BeButton>

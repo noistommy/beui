@@ -1,4 +1,4 @@
-import{_ as t}from"./CodeBlock-DpeeNE6v.js";import{_ as m}from"./PageContainer-6gRpGfhJ.js";import{_ as c,c as d,a as s,b as n,w as o,e as T,d as e,F as v,f as r,n as p,t as u,o as g}from"./index-DJRzCbrU.js";const B=`<!-- html -->
+import{_ as t}from"./CodeBlock-Bi4m5WSL.js";import{_ as m}from"./PageContainer-RAF9BO4c.js";import{_ as c,c as d,a as s,b as n,w as o,e as T,d as e,F as v,f as r,n as p,t as u,o as g}from"./index-YGnsNkeF.js";const B=`<!-- html -->
 <div class="be-tag label">Tag</div>
 <div class="be-tag line"></div>
 <div class="be-tag dot"></div>

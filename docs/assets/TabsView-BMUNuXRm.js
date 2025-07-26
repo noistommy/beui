@@ -1,4 +1,4 @@
-import{_ as d}from"./CodeBlock-DpeeNE6v.js";import{_ as c}from"./PageContainer-6gRpGfhJ.js";import{r as p,c as r,a as e,b as a,w as n,e as m,d as u,t as o,F as T,f as y,n as _,o as v}from"./index-DJRzCbrU.js";const w=`<div class="be-tabs">
+import{_ as d}from"./CodeBlock-Bi4m5WSL.js";import{_ as c}from"./PageContainer-RAF9BO4c.js";import{r as p,c as r,a as e,b as a,w as n,e as m,d as u,t as o,F as T,f as y,n as _,o as v}from"./index-YGnsNkeF.js";const w=`<div class="be-tabs">
    <div class="tab-menu">
        <div class="tab-item">tab1</div>
        <div class="tab-item">tab2</div>

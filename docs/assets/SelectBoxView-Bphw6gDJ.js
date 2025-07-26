@@ -1,4 +1,4 @@
-import{_ as n}from"./CodeBlock-DpeeNE6v.js";import{_ as T}from"./PageContainer-6gRpGfhJ.js";import{r as u,c as p,a as e,b as l,w as b,F as g,f as y,t as c,u as S,e as C,d as L,o as d}from"./index-DJRzCbrU.js";const R=`//  options data set 
+import{_ as n}from"./CodeBlock-Bi4m5WSL.js";import{_ as T}from"./PageContainer-RAF9BO4c.js";import{r as u,c as p,a as e,b as l,w as b,F as g,f as y,t as c,u as S,e as C,d as L,o as d}from"./index-YGnsNkeF.js";const R=`//  options data set 
 const optionList = [
    { id: 1, option: 'option1', icon: 'xi-icon', val: 'value1' }
    { id: 2, option: 'option2', icon: 'xi-icon', val: 'value2' }

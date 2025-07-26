@@ -1,4 +1,4 @@
-import{y as z,z as H,r,x as V,h as J,g as K,c as m,o as p,a as l,j as x,p as g,n as B,F as O,f as P,A as Q,t as v,b as o,w as E,k as X,d as Y,v as Z}from"./index-DJRzCbrU.js";import{_ as i}from"./CodeBlock-DpeeNE6v.js";import{_}from"./PageContainer-6gRpGfhJ.js";const ee=`<!-- Component only -->
+import{y as z,z as H,r,x as V,h as J,g as K,c as m,o as p,a as l,j as x,p as g,n as B,F as O,f as P,A as Q,t as v,b as o,w as E,k as X,d as Y,v as Z}from"./index-YGnsNkeF.js";import{_ as i}from"./CodeBlock-Bi4m5WSL.js";import{_}from"./PageContainer-RAF9BO4c.js";const ee=`<!-- Component only -->
 <!-- script setup -->
 <!-- const result = ref() -->
 <BeSlider v-model="result"></BeSlider>`,le=`<!--@disabled: Boolean -->

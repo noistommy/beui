@@ -1,4 +1,4 @@
-import{_ as t}from"./CodeBlock-DpeeNE6v.js";import{_ as m}from"./PageContainer-6gRpGfhJ.js";import{r as c,c as b,b as s,w as p,a as n,e as g,d as v,t as a,n as w,o as f}from"./index-DJRzCbrU.js";const B=`<!-- HTML -->
+import{_ as t}from"./CodeBlock-Bi4m5WSL.js";import{_ as m}from"./PageContainer-RAF9BO4c.js";import{r as c,c as b,b as s,w as p,a as n,e as g,d as v,t as a,n as w,o as f}from"./index-YGnsNkeF.js";const B=`<!-- HTML -->
 <div class="be-panel">
    <div class="panel-header">
        {header contents}
