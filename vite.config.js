@@ -32,7 +32,7 @@ const libConfig = {
 
 const docsConfig = {
   root: './demo',
-  base: process.env.NODE_ENV === 'production' ? '/beui/' : '/',
+  // base: process.env.NODE_ENV === 'production' ? '/beui/' : '/',
   plugins: [vue(), vueDevTools()],
   resolve: {
     alias: {
