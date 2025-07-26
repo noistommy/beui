@@ -115,7 +115,7 @@ const setResultOpt = (payload) => {
           <div class="contents-wrapper">
             <BeSelectBox :options :is-search="true" />
           </div>
-          <CodeBlock :code="codes.filteringq" lang="vue-html"></CodeBlock>
+          <CodeBlock :code="codes.filtering" lang="vue-html"></CodeBlock>
         </section>
         <section>
           <h4 class="title">Dropdown Type</h4>
