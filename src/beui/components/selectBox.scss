@@ -43,7 +43,6 @@ $selectBoxCompactVerticalPadding: $compactVerticalPadding;
         top: 50%;
         transform: translate(-50%, -50%);
       }
-
     }
   }
   &.show,
@@ -66,7 +65,7 @@ $selectBoxCompactVerticalPadding: $compactVerticalPadding;
       max-width: 200px;
       display: flex;
       gap: 5px;
-    } 
+    }
   }
   .select-menu {
     display: none;
@@ -193,6 +192,26 @@ $selectBoxCompactVerticalPadding: $compactVerticalPadding;
     }
     i {
       padding: $selectBoxCompactVerticalPadding;
+    }
+  }
+}
+
+.be-popper {
+  &.select-menu {
+    padding: 0.5rem;
+    .option-item {
+      height: $itemHeight;
+      padding: 10px;
+      max-height: $itemHeight;
+      border-radius: $baseBorderRadius;
+      cursor: pointer;
+      &.icon {
+        display: block;
+        i {
+          font-size: 0.9em;
+          margin-right: 10px;
+        }
+      }
     }
   }
 }

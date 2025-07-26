@@ -1,5 +1,6 @@
 <script setup>
-defineProps({
+import { ref, computed, onMounted, onUnmounted } from 'vue'
+const props = defineProps({
   type: {
     type: String,
     default: 'push',
@@ -24,16 +25,50 @@ defineProps({
     type: Number,
     default: 500,
   },
+  dimmed: {
+    type: Boolean,
+    default: false,
+  },
 })
+
+const device = ref('desktop')
+
+const slideType = computed(() => {
+  return device.value === 'mobile' ? 'overlay' : props.type
+})
+
+onMounted(() => {
+  detect()
+  window.addEventListener('resize', detect)
+})
+
+onUnmounted(() => window.removeEventListener('resize', detect))
+
+const detect = () => {
+  const wW = window.innerWidth
+  const ua = navigator.userAgent
+  if (/mobile/i.test(ua) || wW <= 768) device.value = 'mobile'
+  else if (/tablet|ipad|playbook|silk/i.test(ua)) device.value = 'tablet'
+  else device.value = 'desktop'
+}
 </script>
 
 <template>
   <div
     class="slide-side-layout"
-    :class="[type, direct, { show: isShow }]"
+    :class="[
+      direct,
+      slideType,
+      device,
+      { dimmed: slideType === 'overlay' && dimmed },
+      { show: isShow },
+    ]"
     :style="{ '--dur': duration }"
   >
-    <div class="side-pane" :style="{ '--side': sideWidth, '--min-side': minSideWidth }">
+    <div
+      class="side-pane"
+      :style="{ '--side': sideWidth, '--min-side': minSideWidth }"
+    >
       <slot name="side">side</slot>
     </div>
     <div class="main-pane">
@@ -141,10 +176,34 @@ defineProps({
       width: calc(var(--side) * 1px);
     }
   }
+  &.show.overlay {
+    &.dimmed:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 10;
+    }
+  }
   .main-pane {
     background-color: #fff;
     width: 100%;
     height: 100%;
+  }
+  &.mobile {
+    &.left .side-pane {
+      width: 100dvw;
+      margin-left: -100dvw;
+      text-align: center;
+    }
+    &.right .side-pane {
+      width: 100dvw;
+      margin-right: -100dvw;
+      text-align: center;
+    }
   }
 }
 </style>

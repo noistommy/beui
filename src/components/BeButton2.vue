@@ -101,7 +101,9 @@ export default defineComponent({
         <i class="icon" :class="icon"></i>
       </template>
       {{ contentText }}
-      <template v-if="withIcon && (iconPos === 'right' || iconPos === 'both')"></template>
+      <template
+        v-if="withIcon && (iconPos === 'right' || iconPos === 'both')"
+      ></template>
       <template v-if="badge">
         <div class="in-badge" :class="badgeOption">{{ badge }}</div>
       </template>

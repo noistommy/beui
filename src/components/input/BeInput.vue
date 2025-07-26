@@ -23,7 +23,9 @@ const props = defineProps({
     type: String,
     default: null,
     validator(value) {
-      return ['success', 'error', 'attention', 'info', 'importance'].includes(value)
+      return ['success', 'error', 'attention', 'info', 'importance'].includes(
+        value,
+      )
     },
   },
   placeholder: {
@@ -95,7 +97,11 @@ const isFocus = ref(false)
 const input = ref(null)
 const iconPosition = computed(() => {
   if (props.iconLeft && (props.iconRight || props.clear)) return 'both'
-  return props.iconLeft ? 'left' : props.iconRight || props.clear ? 'right' : null
+  return props.iconLeft
+    ? 'left'
+    : props.iconRight || props.clear
+      ? 'right'
+      : null
 })
 
 const checkFocus = () => {
@@ -147,7 +153,11 @@ const onBlur = () => {
         />
       </template>
       <template v-else>
-        <textarea v-model="inputValue" rows="3" :placeholder="placeholder"></textarea>
+        <textarea
+          v-model="inputValue"
+          rows="3"
+          :placeholder="placeholder"
+        ></textarea>
       </template>
 
       <i
@@ -157,7 +167,9 @@ const onBlur = () => {
         @click="inputValue = ''"
       />
       <i v-else-if="iconRight && !clear" :class="`icon xi-${iconRight}`" />
-      <span v-else-if="badge" class="be-badge" :class="badgeOption">{{ badge }}</span>
+      <span v-else-if="badge" class="be-badge" :class="badgeOption">{{
+        badge
+      }}</span>
     </slot>
   </div>
 </template>

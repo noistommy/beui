@@ -11,6 +11,7 @@ $badgeBorderRadius: $badgeSize;
 $badgeVerticalPadding: 4px;
 $badgeHorizontalPadding: 6px;
 $badgePadding: $badgeVerticalPadding $badgeHorizontalPadding;
+$badgeBorder: 0 0 0 1px rgba(255, 255, 255, 0.8);
 $badgeShadow: -2px 2px 0px 0px rgba(0, 0, 0, 0.2);
 $badgeOffset: ($badgeSize * 0.5);
 $badgeOffsetLeft: calc(100% - $badgeOffset);
@@ -34,15 +35,17 @@ $badgeOffsetLeft: calc(100% - $badgeOffset);
   z-index: 999;
   top: $badgeOffset * -1;
   right: $badgeOffset * -1;
+  box-shadow: $badgeBorder;
   &.shadow {
     box-shadow: $badgeShadow;
+    // border: 0;
   }
   &.mark {
-    min-width: 5px;
-    min-height: 5px;
+    min-width: 8px;
+    min-height: 8px;
     padding: 0;
-    top: 1px;
-    right: 1px;
+    top: -3px;
+    right: -3px;
   }
   &.align {
     &-left {

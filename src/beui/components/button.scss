@@ -76,7 +76,7 @@ $buttonIconDistance: calc($horizontalInputPadding * 0.5);
     img {
       margin: 0;
     }
-    //&.circle {
+    //&.round {
     //    border-radius: 50%;
     //}
     &:active {
@@ -124,7 +124,7 @@ $buttonIconDistance: calc($horizontalInputPadding * 0.5);
   &.fluid:not(.badge) {
     width: 100%;
   }
-  &.circle {
+  &.round {
     border-radius: 2em;
   }
   &.outline {
@@ -239,8 +239,8 @@ $buttonIconDistance: calc($horizontalInputPadding * 0.5);
       // margin-left: 1px;
     }
   }
-  &.outline {
-    border-radius: $baseBorderRadius;
+  &.border {
+    border-radius: calc($baseBorderRadius + 1px);
     border: 1px solid var(--brd);
     overflow: hidden;
     //box-sizing: content-box;
@@ -263,16 +263,16 @@ $buttonIconDistance: calc($horizontalInputPadding * 0.5);
   }
   &.round {
     border-radius: 2em;
-    // .be-button {
-    //   &:first-child:not(.icon) {
-    //     border-top-left-radius: 2em;
-    //     border-bottom-left-radius: 2em;
-    //   }
-    //   &:last-child:not(.icon) {
-    //     border-top-right-radius: 2em;
-    //     border-bottom-right-radius: 2em;
-    //   }
-    // }
+    .be-button {
+      &:first-child:not(.icon) {
+        border-top-left-radius: 2em;
+        border-bottom-left-radius: 2em;
+      }
+      &:last-child:not(.icon) {
+        border-top-right-radius: 2em;
+        border-bottom-right-radius: 2em;
+      }
+    }
   }
 }
 

@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+// import HomeView from '../views/HomeView.vue'
 import NotFound from '../views/404NotFound.vue'
 
 const router = createRouter({
@@ -47,6 +47,11 @@ const router = createRouter({
       component: () => import('../views/CheckBoxView.vue'),
     },
     {
+      path: '/checkbox-group',
+      name: 'checkbox-group',
+      component: () => import('../views/CheckBoxGroupView.vue'),
+    },
+    {
       path: '/switch',
       name: 'switch',
       component: () => import('../views/SwitchView.vue'),
@@ -92,17 +97,22 @@ const router = createRouter({
       component: () => import('../views/RateView.vue'),
     },
     {
-      path: '/components/pagination',
+      path: '/slider',
+      name: 'slider',
+      component: () => import('../views/SliderView.vue'),
+    },
+    {
+      path: '/pagination',
       name: 'pagination',
       component: () => import('../views/PaginationView.vue'),
     },
     {
-      path: '/components/selectbox',
+      path: '/selectbox',
       name: 'selectbox',
       component: () => import('../views/SelectBoxView.vue'),
     },
     {
-      path: '/components/list',
+      path: '/list',
       name: 'list',
       component: () => import('../views/ListView.vue'),
     },
@@ -112,7 +122,27 @@ const router = createRouter({
       component: () => import('../views/TabsView.vue'),
     },
     {
-      path: '/components/tree-list',
+      path: '/segment',
+      name: 'segment',
+      component: () => import('../views/SegmentView.vue'),
+    },
+    {
+      path: '/card',
+      name: 'card',
+      component: () => import('../views/CardView.vue'),
+    },
+    {
+      path: '/calendar',
+      name: 'calendar',
+      component: () => import('../views/CalendarView.vue'),
+    },
+    {
+      path: '/date-picker',
+      name: 'date-picker',
+      component: () => import('../views/DatePickerView.vue'),
+    },
+    {
+      path: '/tree-list',
       name: 'tree-list',
       component: () => import('../views/TreeListView.vue'),
     },

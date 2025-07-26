@@ -1,4 +1,6 @@
-import '../../dist/beui.css'
+import './assets/reset.css'
+// import '../../dist/beui.css'
+import '../../src/beui/beui.scss'
 import './assets/main.css'
 
 import { createApp } from 'vue'
@@ -7,7 +9,7 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
-import BeUi from '../../dist/be-ui.es.js'
+import BeUi from '../../src/'
 import Toast from './plugins/toast'
 import Tooltip from './plugins/tooltip'
 

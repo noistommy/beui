@@ -2,35 +2,35 @@
 import { ref, computed } from 'vue'
 const props = defineProps({
   title: {
-    type: String
+    type: String,
   },
   contents: {
-    type: String
+    type: String,
   },
   border: {
     type: Boolean,
-    default: false
+    default: false,
   },
   toggleIcon: {
     type: String,
-    default: null
+    default: null,
   },
   iconPos: {
     type: String,
-    default: 'left'
+    default: 'left',
   },
   open: {
     type: Boolean,
-    default: false
+    default: false,
   },
   collapse: {
     type: Boolean,
-    default: false
+    default: false,
   },
   maxHeight: {
     type: Number,
     default: 200,
-  }
+  },
 })
 
 const emit = defineEmits(['show'])
@@ -43,7 +43,7 @@ const iconClass = computed(() => {
 const setHeight = computed(() => {
   if (!props.collapse) return {}
   return {
-    '--max-height': `${props.maxHeight}px`
+    '--max-height': `${props.maxHeight}px`,
   }
 })
 
@@ -54,7 +54,10 @@ const showPanel = () => {
 }
 </script>
 <template>
-  <div class="be-panel" :class="[{border, collapse}, iconClass, {open:isOpen}]">
+  <div
+    class="be-panel"
+    :class="[{ border, collapse }, iconClass, { open: isOpen }]"
+  >
     <div class="panel-header" @click="showPanel">
       <div class="title">{{ title }}</div>
       <span v-if="collapse && toggleIcon">
@@ -63,7 +66,9 @@ const showPanel = () => {
     </div>
     <div class="panel-content" :style="setHeight">
       <div class="content-wrapper">
-        {{ contents }}
+        <slot name="contents">
+          {{ contents }}
+        </slot>
       </div>
     </div>
   </div>

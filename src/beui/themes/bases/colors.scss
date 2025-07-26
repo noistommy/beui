@@ -341,18 +341,18 @@ $gray-o: (
 );
 
 $color-palettes: (
-  red: $red-o,
-  orange: $orange-o,
-  yellow: $yellow-o,
-  lightgreen: $lightgreen-o,
-  green: $green-o,
-  lightblue: $lightblue-o,
-  blue: $blue-o,
-  deepblue: $deepblue-o,
-  deeppurple: $deeppurple-o,
-  purple: $purple-o,
-  brown: $brown-o,
-  gray: $gray-o,
+  'red': $red-o,
+  'orange': $orange-o,
+  'yellow': $yellow-o,
+  'lightgreen': $lightgreen-o,
+  'green': $green-o,
+  'lightblue': $lightblue-o,
+  'blue': $blue-o,
+  'deepblue': $deepblue-o,
+  'deeppurple': $deeppurple-o,
+  'purple': $purple-o,
+  'brown': $brown-o,
+  'gray': $gray-o,
 );
 // 색상 접근 함수
 @function be-color($color-name, $shade: 400) {
@@ -372,41 +372,39 @@ $color-palettes: (
 @mixin generate-color-classes() {
   // 배경색 클래스
   @each $color-name, $palette in $color-palettes {
-    .bg-#{$color-name} {
-      background-color: be-color($color-name);
+    .bg-#{'' + $color-name} {
+      background-color: getUserColor($color-name);
+
       &-light {
-        background-color: be-color($color-name, 200);
+        background-color: getUserColor($color-name, 200);
       }
 
       &-dark {
-        background-color: be-color($color-name, 700);
+        background-color: getUserColor($color-name, 700);
       }
     }
 
     // 개별 색조 클래스
     @each $shade, $value in $palette {
-      .bg-#{$color-name}-#{$shade} {
+      .bg-#{'' + $color-name}-#{$shade} {
         background-color: $value;
-        @if ($shade * 1) > 500 {
-          color: #fff;
-        }
       }
     }
 
     // 텍스트 색상 클래스
-    .text-#{$color-name} {
-      color: be-color($color-name);
+    .text-#{'' + $color-name} {
+      color: getUserColor($color-name);
     }
 
     @each $shade, $value in $palette {
-      .text-#{$color-name}-#{$shade} {
+      .text-#{'' + $color-name}-#{$shade} {
         color: $value;
       }
     }
 
     // 테두리 색상 클래스
-    .border-#{$color-name} {
-      border-color: be-color($color-name);
+    .border-#{'' + $color-name} {
+      border-color: getUserColor($color-name);
     }
   }
 }

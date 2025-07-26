@@ -10,14 +10,10 @@
   color: #999;
   margin-bottom: 5px;
   width: 100%;
+  line-height: 1.6;
   &:last-child {
     margin: 0;
   }
-
-  &:hover {
-    background-color: var(--suf);
-  }
-
   &.align {
     &-left {
       text-align: left;
@@ -41,7 +37,7 @@
       font-size: 1.6em;
     }
   }
-  &> .title {
+  & > .title {
     font-weight: bold;
   }
 }
@@ -53,7 +49,7 @@
   .be-message {
     width: auto;
     flex: 1 0 auto;
-    margin: 0
+    margin: 0;
   }
   &.list {
     flex-direction: column;
@@ -102,7 +98,10 @@
 @each $color, $value in $stateColors {
   .be-message {
     &.#{$color} {
-      background-color: color.adjust(list.nth($value, 4), $lightness: 6%) !important;
+      background-color: color.adjust(
+        list.nth($value, 4),
+        $lightness: 6%
+      ) !important;
       color: list.nth($value, 1) !important;
       border-color: list.nth($value, 1) !important;
     }

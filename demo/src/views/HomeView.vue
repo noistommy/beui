@@ -18,11 +18,11 @@
         Right
         <i class="icon right xi-angle-right"></i>
       </div>
-      <div class="be-button red circle">Round</div>
-      <button class="be-button blue circle border">Border</button>
-      <button class="be-button purple circle outline">Outline</button>
-      <button class="be-button purple circle outline disabled">Disabled</button>
-      <button class="be-button purple circle outline icon">
+      <div class="be-button red round">Round</div>
+      <button class="be-button blue round border">Border</button>
+      <button class="be-button purple round outline">Outline</button>
+      <button class="be-button purple round outline disabled">Disabled</button>
+      <button class="be-button purple round outline icon">
         <i class="xi-airplane"></i>
       </button>
     </div>

@@ -78,7 +78,10 @@ const findStart = computed(() => {
 //   return props.pageLength === 1
 // })
 const isPrevPoint = computed(() => {
-  return current.value > Math.floor(props.limits / 2) + 2 && props.limits < last.value
+  return (
+    current.value > Math.floor(props.limits / 2) + 2 &&
+    props.limits < last.value
+  )
 })
 const isNextPoint = computed(() => {
   return current.value <= last.value - props.limits && props.limits < last.value
@@ -118,12 +121,17 @@ const setNext = () => {
   setCurrent(current.value + 1)
 }
 const setPrevBlock = () => {
-  let prevNum = current.value - props.limits <= 0 ? current.value - 1 : current.value - props.limits
+  let prevNum =
+    current.value - props.limits <= 0
+      ? current.value - 1
+      : current.value - props.limits
   setCurrent(prevNum)
 }
 const setNextBlock = () => {
   let prevNum =
-    current.value + props.limits > last.value ? current.value + 1 : current.value + props.limits
+    current.value + props.limits > last.value
+      ? current.value + 1
+      : current.value + props.limits
   setCurrent(prevNum)
 }
 </script>
@@ -157,7 +165,12 @@ const setNextBlock = () => {
       >
         1
       </div>
-      <div v-if="isPrevPoint" class="pagination-num" :class="[itemClass]" @click="setPrevBlock">
+      <div
+        v-if="isPrevPoint"
+        class="pagination-num"
+        :class="[itemClass]"
+        @click="setPrevBlock"
+      >
         <i class="xi-ellipsis-h"></i>
       </div>
     </template>
@@ -182,7 +195,12 @@ const setNextBlock = () => {
       </template>
     </div>
     <template v-if="ellipsis && props.limits < props.pageLength">
-      <div v-if="isNextPoint" class="pagination-nav" :class="[itemClass]" @click="setNextBlock">
+      <div
+        v-if="isNextPoint"
+        class="pagination-nav"
+        :class="[itemClass]"
+        @click="setNextBlock"
+      >
         <i class="xi-ellipsis-h"></i>
       </div>
       <div

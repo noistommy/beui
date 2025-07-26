@@ -57,7 +57,10 @@ const renderDefaultContent = () => {
   const children = []
 
   // 왼쪽 아이콘
-  if (props.withIcon && (props.iconPos === 'left' || props.iconPos === 'both')) {
+  if (
+    props.withIcon &&
+    (props.iconPos === 'left' || props.iconPos === 'both')
+  ) {
     children.push(
       h('i', {
         class: ['icon', props.iconPos, props.withIcon],
@@ -80,7 +83,10 @@ const renderDefaultContent = () => {
   }
 
   // 오른쪽 아이콘
-  if (props.withIcon && (props.iconPos === 'right' || props.iconPos === 'both')) {
+  if (
+    props.withIcon &&
+    (props.iconPos === 'right' || props.iconPos === 'both')
+  ) {
     children.push(
       h('i', {
         class: ['icon', props.iconPos, props.withIcon],

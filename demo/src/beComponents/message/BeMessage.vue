@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 
 const stateIcon = {
   success: 'xi-check-circle',
@@ -17,15 +17,17 @@ const props = defineProps({
     type: String,
   },
   icon: {
-    type: String
+    type: String,
   },
   state: {
     type: String,
     default: null,
     varidator: (value) => {
-      return ['success', 'error', 'info', 'attention', 'importance'].includes(value)
-    }
-  }
+      return ['success', 'error', 'info', 'attention', 'importance'].includes(
+        value,
+      )
+    },
+  },
 })
 
 const iconName = computed(() => {
@@ -35,12 +37,10 @@ const iconName = computed(() => {
     return props.icon
   }
 })
-
-
 </script>
 
 <template>
-  <div class="be-message" :class="[{icon}, state]">
+  <div class="be-message" :class="[{ icon }, state]">
     <slot>
       <template v-if="icon">
         <i class="icon" :class="iconName" />

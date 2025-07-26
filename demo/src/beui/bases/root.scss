@@ -34,24 +34,24 @@
 }
 
 @each $color, $value in $stateColors {
-  $lightValue: color.adjust(list.nth( $value, 1), $lightness: 35%);
+  $lightValue: color.adjust(list.nth($value, 1), $lightness: 35%);
   :root {
-    --be-#{$color}-color:  #{$value}; 
-    --be-#{$color}-light:  #{$lightValue};
+    --be-#{$color}-color: #{$value};
+    --be-#{$color}-light: #{$lightValue};
   }
 }
 @each $color, $value in $colors {
-  $lightValue: color.adjust(list.nth( $value, 1), $lightness: 35%);
+  $lightValue: color.adjust(list.nth($value, 1), $lightness: 35%);
   :root {
-    --be-#{$color}-color:  #{$value}; 
-    --be-#{$color}-light:  #{$lightValue};
+    --be-#{$color}-color: #{$value};
+    --be-#{$color}-light: #{$lightValue};
   }
 }
 // @each $color, $value in $colors2 {
 //   $lightValue: color.adjust(list.nth( $value, 1), $lightness: 35%);
 //   :root {
-//     --be-#{$color}-sub-color:  #{$value}; 
-//     --be-#{$color}-sub-light:  #{$lightValue}; 
+//     --be-#{$color}-sub-color:  #{$value};
+//     --be-#{$color}-sub-light:  #{$lightValue};
 //   }
 // }
 
@@ -67,6 +67,13 @@
   $ratio: math.round($ratio * 100) / 100;
 
   @return $ratio;
+}
+
+@function check-contrast($bg, $fg, $account) {
+  @debug $account;
+  $result: color-contrast($bg, $fg) < $account;
+  @debug $result;
+  @return $result;
 }
 
 @function luminance($color) {

@@ -5,7 +5,9 @@ const props = defineProps({
     type: String,
     default: null,
     validator(value) {
-      return ['success', 'error', 'attention', 'info', 'importance'].includes(value)
+      return ['success', 'error', 'attention', 'info', 'importance'].includes(
+        value,
+      )
     },
   },
   placeholder: {
@@ -34,30 +36,30 @@ const props = defineProps({
   },
   step: {
     type: Number,
-    default: 1
+    default: 1,
   },
   controller: {
     type: String,
-    default: 'between'
+    default: 'between',
   },
   min: {
-    type: Number
+    type: Number,
   },
   max: {
-    type: Number
+    type: Number,
   },
   incIcon: {
     type: String,
-    default: 'xi-plus'
+    default: 'xi-plus',
   },
   decIcon: {
     type: String,
-    default: 'xi-minus'
+    default: 'xi-minus',
   },
   disabled: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 })
 const inputValue = defineModel()
 const emit = defineEmits(['focus'])
@@ -90,7 +92,7 @@ const decrease = () => {
   inputValue.value -= props.step
 }
 const keyControl = (event) => {
-  if(props.disabled) return
+  if (props.disabled) return
   if (event.keyCode === 38) increase()
   if (event.keyCode === 40) decrease()
 }
@@ -99,8 +101,9 @@ const keyControl = (event) => {
 <template>
   <div
     class="be-input button number"
-    :class="[status, {readonly, compact, fluid, disabled}, controller]"
-    tabindex="-1" @keydown.prevent="keyControl"
+    :class="[status, { readonly, compact, fluid, disabled }, controller]"
+    tabindex="-1"
+    @keydown.prevent="keyControl"
   >
     <slot>
       <input
@@ -111,12 +114,11 @@ const keyControl = (event) => {
         @blur="onBlur()"
       />
     </slot>
-    <button class="be-button icon dec" :class="{disabled}" @click="decrease">
+    <button class="be-button icon dec" :class="{ disabled }" @click="decrease">
       <i class="icon" :class="decIcon"></i>
     </button>
-    <button class="be-button icon inc" :class="{disabled}" @click="increase">
+    <button class="be-button icon inc" :class="{ disabled }" @click="increase">
       <i class="icon" :class="incIcon"></i>
     </button>
   </div>
 </template>
-

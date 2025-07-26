@@ -1,5 +1,7 @@
 @forward './bases/root';
 @forward './bases/variables';
+
+@forward './components/alert';
 @forward './components/button';
 @forward './components/input';
 @forward './components/checkbox';
@@ -21,3 +23,6 @@
 @forward './components/card';
 @forward './components/tree';
 @forward './components/rate';
+@forward './components/slider';
+@forward './components/segment';
+@forward './components/slide-side-layout';

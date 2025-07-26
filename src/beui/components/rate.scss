@@ -25,8 +25,7 @@
       z-index: 0;
     }
     i:last-child {
-
-      display:none;
+      display: none;
     }
     &:hover {
       // font-size: 1.2em;
@@ -38,7 +37,7 @@
     &.check {
       // i:first-child {
       //   color: var(--be-orange-color);
-        
+
       // }
       i:last-child {
         color: var(--be-yellow-color);
@@ -53,7 +52,7 @@
       }
     }
     & + .rate-item {
-      margin-left: .3em;
+      margin-left: 0.3em;
     }
   }
   &.border {
@@ -78,7 +77,6 @@
     }
   }
 }
-
 
 @each $color, $value in $colors {
   $hoverColor: color.adjust($value, $lightness: -10%);
@@ -107,7 +105,6 @@
       }
     }
     &.light {
-
     }
   }
 }

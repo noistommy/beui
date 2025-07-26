@@ -6,8 +6,8 @@ defineProps({
   },
   selected: {
     type: String,
-    default: ''
-  }
+    default: '',
+  },
 })
 const uniqueId = Math.random().toString(36)
 

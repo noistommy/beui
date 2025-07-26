@@ -5,24 +5,24 @@ const props = defineProps({
     type: Object,
     default: () => {
       return {}
-    }
+    },
   },
   level: {
     type: Number,
-    default: 0
+    default: 0,
   },
   useCheck: {
     type: Boolean,
-    default: false
+    default: false,
   },
   useMark: {
     type: Boolean,
-    default: true
+    default: true,
   },
   check: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 })
 
 const showNode = ref(false)
@@ -31,14 +31,20 @@ const toggleNode = (e) => {
   if (e.target.tagName === 'LABEL') return
   showNode.value = !showNode.value
 }
-
-
 </script>
 <template>
-  <div class="be-tree" :class="{show: showNode}" :style="{'--level': level}">
+  <div
+    class="be-tree"
+    :class="{ show: showNode }"
+    :style="{ '--level': level }"
+  >
     <div class="node custom-node" @click="toggleNode">
       <div class="node-title">
-        <i v-if="useMark" class="icon expend-icon" :class="{'xi-caret-down-min': node.children?.length > 0}"></i>
+        <i
+          v-if="useMark"
+          class="icon expend-icon"
+          :class="{ 'xi-caret-down-min': node.children?.length > 0 }"
+        ></i>
         <div class="node-label">
           <template v-if="useCheck">
             <be-check-box v-model="checked" @update:modelValue="updateCheck" />
@@ -52,7 +58,8 @@ const toggleNode = (e) => {
     </div>
     <div v-if="showNode && node.children?.length > 0" class="node-children">
       <be-tree-node
-        v-for="(child, i) in node.children" :key="`level-${level}-${i + 1}`"
+        v-for="(child, i) in node.children"
+        :key="`level-${level}-${i + 1}`"
         :node="child"
         :level="level + 1"
         :use-check="useCheck"

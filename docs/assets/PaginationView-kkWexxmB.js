@@ -1,0 +1,27 @@
+import{_ as s}from"./CodeBlock-DpeeNE6v.js";import{_ as B}from"./PageContainer-6gRpGfhJ.js";import{r as u,c as g,a as e,b as o,w as m,e as f,d as P,t as c,F as w,f as b,n as y,o as r}from"./index-DJRzCbrU.js";const C=`<!-- script setup -->
+<!-- const pageValue = ref(null) -->
+<!-- @pageLength: Number  -->
+<BePagination v-model="pageValue" :page-length="pageLength"></BePagination>`,U=`<!-- @limits: Number -->
+<!-- default: 5 -->
+
+<BePagination v-model="pageValue" :limits="limits"></BePagination>`,k=`<!-- @compact: Boolean -->
+<!-- default: false -->
+
+<BePagination v-model="pageValue" compact></BePagination>`,N=`<!-- @round: Boolean -->
+<!-- default: false -->
+
+<BePagination v-model="pageValue" round></BePagination>`,x=`<!-- @align: { left | center | right } -->
+<!-- default: left -->
+
+<BePagination v-model="pageValue" :align="align"></BePagination>`,L=`<!-- @type: { page | number } -->
+<!-- default: number -->
+
+<BePagination v-model="pageValue" :type="type"></BePagination>`,E=`<!-- @ellipsis: Boolean -->
+<!-- default: false -->
+
+<BePagination v-model="pageValue" ellipsis></BePagination>`,T=`<!-- emit: change -->
+
+<BePagination v-model="pageValue" @change="setCurrent"></BePagination>`,$=`<!-- @color: String -->
+<!-- default: null -->
+
+<BePagination v-model="pageValue" color="{color}"></BePagination>`,F={class:"page-wrapper be container"},R={class:"contents-wrapper"},S={class:"contents-wrapper"},z={class:"contents-wrapper"},A={class:"contents-wrapper"},D={class:"contents-wrapper"},j={class:"contents-wrapper"},q={class:"contents-wrapper"},G={class:"contents-wrapper"},H={class:"contents-wrapper"},I={class:"color-picker",style:{width:"100%"}},J=["onClick"],X={__name:"PaginationView",setup(K){const v=["red","orange","yellow","lightgreen","green","lightblue","blue","deepblue","deeppurple","purple","brown","gray"],t=u(1),d=u(1),i=u(null),V=p=>{d.value=p};return(p,l)=>{const a=f("BePagination");return r(),g("div",F,[l[31]||(l[31]=e("div",{class:"summary"},null,-1)),o(B,null,{base:m(()=>[e("section",null,[l[11]||(l[11]=e("div",{class:"desc"},[e("span",{class:"be-tag label deepblue"},"Component")],-1)),e("div",R,[o(a,{modelValue:t.value,"onUpdate:modelValue":l[0]||(l[0]=n=>t.value=n),"page-length":15},null,8,["modelValue"])]),o(s,{code:C,lang:"vue-html"},null,8,["code"])])]),variants:m(()=>[e("section",null,[l[12]||(l[12]=e("h4",{class:"title"},"Limits",-1)),l[13]||(l[13]=e("div",{class:"desc"},"limits = 5",-1)),e("div",S,[o(a,{limits:5,modelValue:t.value,"onUpdate:modelValue":l[1]||(l[1]=n=>t.value=n),"page-length":15},null,8,["modelValue"])]),o(s,{code:U,lang:"vue-html"},null,8,["code"])]),e("section",null,[l[14]||(l[14]=e("h4",{class:"title"},"Compact",-1)),l[15]||(l[15]=e("div",{class:"desc"},null,-1)),e("div",z,[o(a,{limits:5,compact:!0,modelValue:t.value,"onUpdate:modelValue":l[2]||(l[2]=n=>t.value=n),"page-length":15},null,8,["modelValue"])]),o(s,{code:k,lang:"vue-html"},null,8,["code"])]),e("section",null,[l[16]||(l[16]=e("h4",{class:"title"},"Round",-1)),l[17]||(l[17]=e("div",{class:"desc"},null,-1)),e("div",A,[o(a,{limits:5,round:!0,modelValue:t.value,"onUpdate:modelValue":l[3]||(l[3]=n=>t.value=n),"page-length":15},null,8,["modelValue"])]),o(s,{code:N,lang:"vue-html"},null,8,["code"])]),e("section",null,[l[21]||(l[21]=e("h4",{class:"title"},"Align",-1)),l[22]||(l[22]=e("div",{class:"desc"},"left, center, right",-1)),e("div",D,[l[18]||(l[18]=e("h5",null,"left",-1)),o(a,{limits:5,align:"left",modelValue:t.value,"onUpdate:modelValue":l[4]||(l[4]=n=>t.value=n),"page-length":15},null,8,["modelValue"]),l[19]||(l[19]=e("h5",null,"center",-1)),o(a,{limits:5,align:"center",modelValue:t.value,"onUpdate:modelValue":l[5]||(l[5]=n=>t.value=n),"page-length":15},null,8,["modelValue"]),l[20]||(l[20]=e("h5",null,"right",-1)),o(a,{limits:5,align:"right",modelValue:t.value,"onUpdate:modelValue":l[6]||(l[6]=n=>t.value=n),"page-length":15},null,8,["modelValue"])]),o(s,{code:x,lang:"vue-html"},null,8,["code"])]),e("section",null,[l[23]||(l[23]=e("h4",{class:"title"},"Page Type",-1)),l[24]||(l[24]=e("div",{class:"desc"},null,-1)),e("div",j,[o(a,{type:"page",modelValue:t.value,"onUpdate:modelValue":l[7]||(l[7]=n=>t.value=n),"page-length":20},null,8,["modelValue"])]),o(s,{code:L,lang:"vue-html"},null,8,["code"])]),e("section",null,[l[25]||(l[25]=e("h4",{class:"title"},"Ellipsis Type",-1)),l[26]||(l[26]=e("div",{class:"desc"},null,-1)),e("div",q,[o(a,{limits:5,ellipsis:!0,modelValue:t.value,"onUpdate:modelValue":l[8]||(l[8]=n=>t.value=n),"page-length":10},null,8,["modelValue"])]),o(s,{code:E,lang:"vue-html"},null,8,["code"])]),e("section",null,[l[27]||(l[27]=e("h4",{class:"title"},"Emit",-1)),l[28]||(l[28]=e("div",{class:"desc"},"emit: change",-1)),e("div",G,[o(a,{limits:5,ellipsis:!0,modelValue:t.value,"onUpdate:modelValue":l[9]||(l[9]=n=>t.value=n),"page-length":10,onChange:V},null,8,["modelValue"])]),P(" Result: "+c(d.value)+" ",1),o(s,{code:T,lang:"vue-html"},null,8,["code"])]),e("section",null,[l[29]||(l[29]=e("h4",{class:"title"},"Color",-1)),l[30]||(l[30]=e("div",{class:"desc"},null,-1)),e("div",H,[e("div",I,[(r(),g(w,null,b(v,n=>e("div",{class:y(["be-tag dot",[n,{select:i.value===n}]]),key:n,onClick:M=>i.value=n},null,10,J)),64))]),o(a,{modelValue:t.value,"onUpdate:modelValue":l[10]||(l[10]=n=>t.value=n),"page-length":5,color:i.value},null,8,["modelValue","color"])]),o(s,{code:$,lang:"vue-html"},null,8,["code"])])]),_:1})])}}};export{X as default};

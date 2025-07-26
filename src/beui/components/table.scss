@@ -26,7 +26,7 @@ $cellTextAlign: inherit;
 
 $headerBackgroundColor: #eee;
 // $headerBackgroundColor: #e5e9f2;
-
+$tableBorderRadius: 1em;
 .table-title {
   background-color: color.adjust($headerBackgroundColor, $lightness: 5%);
   padding: 10px 20px;
@@ -124,6 +124,8 @@ table.be-table {
         border-top: $border;
       }
     }
+    border-radius: 14px;
+    overflow: hidden;
   }
   &.selection {
     tr {

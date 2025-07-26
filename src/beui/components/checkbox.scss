@@ -19,26 +19,23 @@
   label,
   .label {
     cursor: pointer;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
     font-size: 1em;
-    padding-left: relativePx(20);
     &:before {
       content: '';
       width: 16px;
       height: 16px;
-      position: absolute;
-      top: 50%;
-      left: 0;
       display: block;
       border: 1px solid var(--brd);
-      background-color: var(--suf);
+      background-color: var(--bgc);
       border-radius: 2px;
-      transform: translateY(-50%);
     }
     &:after {
       content: '';
       position: absolute;
-      top: 5px;
+      top: 6px;
       left: 4px;
       border: 2px solid var(--suf);
       border-left: 0;
@@ -63,7 +60,7 @@
         border: 0;
         width: 8px;
         height: 8px;
-        top: 3px;
+        top: 4px;
         left: 4px;
         transform: scale(0);
       }
@@ -81,7 +78,8 @@
       }
     }
     &.radio {
-      label, .label {
+      label,
+      .label {
         &:after {
           transform: scale(1);
         }
@@ -92,18 +90,19 @@
     label,
     .label {
       &:after {
-        top: 7px;
+        top: 8px;
         left: 3px;
         width: 10px;
         height: 0;
         border-width: 3px;
-        transform:  translateY(-50%) rotate(0) scale(0);
+        transform: translateY(-50%) rotate(0) scale(0);
       }
     }
     &.checked {
-      label, .label {
+      label,
+      .label {
         &:after {
-          transform:  translateY(-50%) rotate(0) scale(1);
+          transform: translateY(-50%) rotate(0) scale(1);
         }
       }
     }

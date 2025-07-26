@@ -4,38 +4,42 @@ defineProps({
     type: Array,
     default: () => {
       return []
-    }
+    },
   },
   selection: {
     type: Boolean,
-    default: false
+    default: false,
   },
   selectedType: {
     type: String,
-    default: 'bg'
+    default: 'bg',
   },
   icon: {
     type: Boolean,
-    default: false
+    default: false,
   },
   image: {
     type: Boolean,
-    default: false
+    default: false,
   },
-  bordered: {
+  border: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 })
 
 const selectItem = defineModel()
-
-
 </script>
 
 <template>
-  <div class="be-list" :class="[{selection}, {bordered}, selectedType]">
-    <div class="item" v-for="opt in options" :key="opt.option" :class="{selected: selectItem && selectItem.option === opt.option}" @click="selectItem = opt">
+  <div class="be-list" :class="[{ selection }, { border }, selectedType]">
+    <div
+      class="item"
+      v-for="opt in options"
+      :key="opt.option"
+      :class="{ selected: selectItem && selectItem.option === opt.option }"
+      @click="selectItem = opt"
+    >
       <template v-if="image">
         <div class="item-img">
           <img :src="opt.image" />

@@ -15,7 +15,8 @@ const onMouseDown = ({ target: resizer, pageX: initX, pageY: initY }) => {
     const initPaneWidth = pane.offsetWidth
     const initPaneHeight = pane.offsetHeight
 
-    const { addEventListener: addEvent, removeEventListener: removeEvent } = window
+    const { addEventListener: addEvent, removeEventListener: removeEvent } =
+      window
 
     const resize = (initSize, offset = 0) => {
       const direction = reverse ? -1 : 1

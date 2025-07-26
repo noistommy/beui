@@ -211,7 +211,7 @@
       > i.icon {
         pointer-events: auto;
         cursor: pointer;
-        &.circle {
+        &.round {
           border-radius: 50%;
         }
         &:hover {
@@ -325,7 +325,6 @@
     input[type='number'] {
       -moz-appearance: textfield;
     }
-
   }
 
   textarea {

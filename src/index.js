@@ -17,6 +17,5 @@ export * from './components'
 export default {
   install,
   // 개별 컴포넌트도 함께 export
-  ...components
+  ...components,
 }
-

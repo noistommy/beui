@@ -5,26 +5,26 @@ defineProps({
     default: 'slide',
     varidator: (value) => {
       return ['slide', 'button', 'button-slide'].includes(value)
-    }
+    },
   },
   inside: {
     type: Boolean,
-    default: false
+    default: false,
   },
   round: {
     type: Boolean,
   },
   onText: {
     type: String,
-    default: 'ON'
+    default: 'ON',
   },
   offText: {
     type: String,
-    default: 'OFF'
+    default: 'OFF',
   },
   color: {
-    type: String
-  }
+    type: String,
+  },
 })
 const switchValue = defineModel()
 const emit = defineEmits(['change'])
@@ -33,18 +33,20 @@ const onClick = () => {
   switchValue.value = !switchValue.value
   emit('change', switchValue.value)
 }
-
 </script>
 <template>
-  <div class="be-switch" :class="[type, {inside}, {round:round}, color ]" @click="onClick">
+  <div
+    class="be-switch"
+    :class="[type, { inside }, { round: round }, color]"
+    @click="onClick"
+  >
     <input type="checkbox" v-model="switchValue" />
     <template v-if="type === 'slide'">
       <div class="switch"></div>
     </template>
     <template v-else>
-      <span class="on" :class="{active: switchValue}">{{ onText }}</span>
-      <span class="off" :class="{active: !switchValue}">{{ offText }}</span>
+      <span class="on" :class="{ active: switchValue }">{{ onText }}</span>
+      <span class="off" :class="{ active: !switchValue }">{{ offText }}</span>
     </template>
   </div>
 </template>
-

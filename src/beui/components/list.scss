@@ -45,7 +45,7 @@
     //  outline: dotted 1px $primary;
     //}
   }
-  &.bordered {
+  &.border {
     > .item {
       border-bottom: 1px solid $borderColor;
       &:last-child {
@@ -81,7 +81,8 @@
       }
     }
     &.text {
-      > .item, .item a {
+      > .item,
+      .item a {
         &.include,
         &.selected:not(.include),
         &.active {

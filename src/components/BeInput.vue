@@ -24,7 +24,9 @@ const props = defineProps({
     type: String,
     default: null,
     validator(value) {
-      return ['success', 'error', 'attention', 'info', 'importance'].includes(value)
+      return ['success', 'error', 'attention', 'info', 'importance'].includes(
+        value,
+      )
     },
   },
   placeholder: {
@@ -76,7 +78,11 @@ const isFocus = ref(false)
 // 계산된 속성들
 const iconPosition = computed(() => {
   if (props.iconLeft && (props.iconRight || props.clear)) return 'both'
-  return props.iconLeft ? 'left' : props.iconRight || props.clear ? 'right' : null
+  return props.iconLeft
+    ? 'left'
+    : props.iconRight || props.clear
+      ? 'right'
+      : null
 })
 
 const containerClasses = computed(() => [
@@ -143,7 +149,12 @@ const renderInput = () => {
 const renderRightElement = () => {
   if (props.clear) {
     return h('i', {
-      class: ['icon', 'clear-btn', 'xi-close', { disabled: inputValue.value === '' }],
+      class: [
+        'icon',
+        'clear-btn',
+        'xi-close',
+        { disabled: inputValue.value === '' },
+      ],
       onClick: () => (inputValue.value = ''),
     })
   } else if (props.iconRight && !props.clear) {

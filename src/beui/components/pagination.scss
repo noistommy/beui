@@ -14,6 +14,12 @@
       border-radius: 17px;
     }
   }
+  &.border {
+    .pagination-nav,
+    .pagination-num {
+      border: 1px solid var(--brd);
+    }
+  }
   .pagination {
     &-item {
       font-size: 1rem;
@@ -39,6 +45,7 @@
       padding: 0.5em;
       user-select: none;
       color: #909090;
+      border-radius: 4px;
       // transition-duration: 0.1s;
       // transition: all 250ms ease;
       &:hover {
@@ -93,11 +100,10 @@
 
         &:last-child {
           margin-left: -1px;
-          
         }
       }
     }
-    //&.circle {
+    //&.round {
     //  .pagination-nav {
     //    &:first-child {
     //      border-bottom-left-radius: 17px;
@@ -127,7 +133,6 @@
     }
   }
 }
-
 
 @each $color, $value in $colors {
   $hoverColor: color.adjust($value, $lightness: -10%);

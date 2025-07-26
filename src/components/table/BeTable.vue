@@ -6,42 +6,42 @@ const props = defineProps({
     type: Array,
     default: () => {
       return []
-    }
+    },
   },
   values: {
     type: Array,
     default: () => {
       return []
-    }
+    },
   },
   headerAlign: {
     type: String,
-    default: 'center'
+    default: 'center',
   },
   useFoot: {
     type: Boolean,
-    default: false
+    default: false,
   },
   border: {
     type: Boolean,
-    default: false
+    default: false,
   },
   gridType: {
     type: String,
-    default: null
+    default: null,
   },
   divideNum: {
     type: [String || Number],
-    default: 3
+    default: 3,
   },
   selection: {
     type: Boolean,
-    default: false
+    default: false,
   },
   striped: {
     type: String,
-    default: null
-  }
+    default: null,
+  },
 })
 const emit = defineEmits(['select'])
 const selectedRow = ref('')
@@ -61,20 +61,34 @@ const setSelect = (row) => {
 </script>
 
 <template>
-  <table class="be-table" :class="[{border, selection, striped}, gridClass, striped]">
+  <table
+    class="be-table"
+    :class="[{ border, selection, striped }, gridClass, striped]"
+  >
     <thead>
       <tr :class="`align-${headerAlign}`">
-        <th v-for="col in columns" :key="col.key" :class="`align-${headerAlign}`">
+        <th
+          v-for="col in columns"
+          :key="col.key"
+          :class="`align-${headerAlign}`"
+        >
           {{ col.name }}
         </th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(row, i) in values" :key="`row-${i}`" :class="{select:selectedRow === i}" @click="setSelect(i)">
-        <td v-for="col in columns" :key="`cell-${i}-${col.key}`"
+      <tr
+        v-for="(row, i) in values"
+        :key="`row-${i}`"
+        :class="{ select: selectedRow === i }"
+        @click="setSelect(i)"
+      >
+        <td
+          v-for="col in columns"
+          :key="`cell-${i}-${col.key}`"
           :class="[`align-${col.align || 'center'}`, `col-${col.col}`]"
         >
-          <div class="cell" v-be-tooltip="row[col.key]">
+          <div class="cell">
             {{ row[col.key] }}
           </div>
         </td>
@@ -88,5 +102,4 @@ const setSelect = (row) => {
       </tr>
     </tfoot> -->
   </table>
-
 </template>

@@ -77,7 +77,7 @@ $buttonIconDistance: calc($horizontalInputPadding * 0.5);
     img {
       margin: 0;
     }
-    //&.circle {
+    //&.round {
     //    border-radius: 50%;
     //}
     &:active {
@@ -125,7 +125,7 @@ $buttonIconDistance: calc($horizontalInputPadding * 0.5);
   &.fluid:not(.badge) {
     width: 100%;
   }
-  &.circle {
+  &.round {
     border-radius: 2em;
   }
   &.outline {

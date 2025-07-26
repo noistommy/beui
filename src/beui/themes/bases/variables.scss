@@ -3,12 +3,14 @@
 @use 'sass:map';
 @use 'sass:math';
 
+$baseFontSize: 14;
+
 @function relativePx($number) {
-  @return calc($number/14) * 1em;
+  @return calc($number/$baseFontSize) * 1em;
 }
 
 @function absolutePx($number) {
-  @return calc($number/14) * 1rem;
+  @return calc($number/$baseFontSize) * 1rem;
 }
 
 $grays: (
@@ -35,6 +37,7 @@ $black: map.get($grays, 'gray-95');
 //font family
 //
 $fontName: 'Pretendard Variable';
+$fontSize: calc($baseFontSize * 1px);
 $fontSmoothing: antialiased;
 $baseFontColor: $black;
 $dModeBaseFontColor: $white;
@@ -49,7 +52,7 @@ $bolder: 900;
 //
 //line height
 //
-$lineHeight: calc(18 / 14);
+$lineHeight: calc(18 / $baseFontSize);
 
 //
 //letter spacing
@@ -79,7 +82,8 @@ $dModeBackground: #333333;
 //
 
 // $primary: #d9550d;
-$primary: #6d9d72;
+// $primary: #6d9d72;
+$primary: #5178af;
 $secondary: #35363a;
 
 $success: #528e64;
@@ -110,9 +114,15 @@ $gray: #909090;
 $lightGray: color.adjust($gray, $lightness: 16.1%);
 $darkGray: color.adjust($black, $lightness: 20.4%);
 
-$darkPrimary: color.adjust(color.adjust($primary, $saturation: 0%), $lightness: -10.6%);
+$darkPrimary: color.adjust(
+  color.adjust($primary, $saturation: 0%),
+  $lightness: -10.6%
+);
 $darkSecondary: color.adjust($secondary, $lightness: -35.7%);
-$darkerPrimary: color.adjust(color.adjust($primary, $saturation: 0%), $lightness: -20.8%);
+$darkerPrimary: color.adjust(
+  color.adjust($primary, $saturation: 0%),
+  $lightness: -20.8%
+);
 $darkerSecondary: color.adjust($secondary, $lightness: -58.1%);
 
 $lightPrimary: color.adjust($primary, $lightness: 35%);
@@ -237,12 +247,12 @@ $h5: absolutePx(16);
 $h6: absolutePx(14);
 
 //Size
-$tinySize: calc(10 / 14);
-$smallSize: calc(12 / 14);
-$mediumSize: calc(14 / 14);
-$largeSize: calc(18 / 14);
-$hugeSize: calc(20 / 14);
-$massiveSize: calc(24 / 14);
+$tinySize: relativePx(10);
+$smallSize: relativePx(12);
+$mediumSize: relativePx(14);
+$largeSize: relativePx(18);
+$hugeSize: relativePx(26);
+$massiveSize: relativePx(32);
 
 // Scroll Bars
 
@@ -307,10 +317,10 @@ $equalLargeBtnPadding: 18px 30px;
 //input base
 $inputLineHeight: relativePx(18);
 $lineHeightOffset: (($inputLineHeight - 1em) * 0.5);
-//$inputLineHeight: 17 / 14;
-//$lineHeightOffset:(( $inputLineHeight - 1) * 0.5) * 14;
 
-$inputVerticalOffsetPadding: calc($verticalInputPadding - $lineHeightOffset - 1px);
+$inputVerticalOffsetPadding: calc(
+  $verticalInputPadding - $lineHeightOffset - 1px
+);
 
 //$inputPadding: $inputVerticalOffsetPadding+px $horizontalInputPadding+px;
 $inputPadding: $inputVerticalOffsetPadding $horizontalInputPadding;
@@ -359,13 +369,13 @@ $bp-desktop: 1440px;
 
 //breakpoint
 $breakpoints: (
-  xs: 0,
+  xs: 320px,
   //mobile-portrait
   sm: 576px,
   //mobile-landscape
   md: 768px,
   //tablet
-  lg: 992px,
+  lg: 1280px,
   //desktop
-  xl: 1200px, //desktop-large
+  xl: 1440px, //desktop-large
 ) !default;

@@ -24,7 +24,7 @@ $tabLineWidth: 2px;
     }
   }
   &.vertical {
-    display: flex;  
+    display: flex;
     .tab-menu {
       .tab-item {
         display: block;
@@ -86,7 +86,6 @@ $tabLineWidth: 2px;
   .tab-contents {
     width: 100%;
     // background-color: $surface;
-    padding: 20px;
   }
   &.browser {
     .tab-menu {
@@ -108,8 +107,9 @@ $tabLineWidth: 2px;
           position: absolute;
           top: 50%;
           right: 10px;
-          padding: 0.4em;
           transform: translateY(-50%);
+          line-height: 0.8em;
+          font-size: 0.8em;
         }
         .tabText {
           display: block;

@@ -9,13 +9,14 @@ $tagLineWidth: 80px;
 $tagLineHeight: 8px;
 
 .be-tag {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   border-style: solid;
   border-radius: 0.6em;
-  margin: 3px;
   &.line {
     border-width: ($tagLineHeight * 0.5);
     width: $tagLineWidth;
+    height: 0;
     min-width: 30px;
     border-color: $baseTagColor;
   }
@@ -26,18 +27,17 @@ $tagLineHeight: 8px;
     height: 0;
     border-color: $baseTagColor;
   }
-  &.label {
+  &.label,
+  &.pointing {
     vertical-align: baseline;
     font-size: 0.8em;
-    font-weight: 400;
-    line-height: 1;
+    font-weight: 600;
+    line-height: 1.8em;
     border-radius: $baseBorderRadius;
-    display: inline-flex;
-    align-items: center;
-    margin: 0 0.14285714em;
+    // margin: 0 0.2em;
     background-color: $baseTagColor;
     background-image: none;
-    padding: 0.5em 0.8em;
+    padding: 0 0.8em;
     text-transform: none;
     border: 0 solid transparent;
     transition: background 0.1s ease;
@@ -47,18 +47,67 @@ $tagLineHeight: 8px;
     &:focus {
       background-color: $baseHoverTagColor;
     }
+    &.icon i {
+      line-height: 1.8em;
+    }
     i.icon.left {
-      margin-right: 5px;
+      margin-right: 0.4em;
+      margin-left: -0.4em;
     }
     i.icon.right {
-      margin-left: 5px;
+      margin-left: 0.4em;
+      margin-right: -0.4em;
     }
     &.round {
       border-radius: 2em;
     }
   }
+  &.pointing {
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      width: 1em;
+      height: 1em;
+      clip-path: polygon(0 0, 100% 0, 50% 50%);
+      background-color: inherit;
+    }
+    &.up::after {
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: -1px 0;
+    }
+    &.down::after {
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%) rotate(180deg);
+      margin: -1px 0;
+    }
+    &.left::after {
+      clip-path: polygon(100% 0%, 100% 100%, 50% 50%);
+      top: 50%;
+      right: 100%;
+      transform: translateY(-50%);
+      margin: 0 -1px;
+    }
+    &.right::after {
+      clip-path: polygon(100% 0%, 100% 100%, 50% 50%);
+      top: 50%;
+      left: 100%;
+      transform: translateY(-50%) rotate(180deg);
+      margin: 0 -1px;
+    }
+  }
   &.static {
     pointer-events: none;
+  }
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  & + .be-tag {
+    margin-left: 4px;
   }
 }
 
@@ -73,6 +122,7 @@ $tagLineHeight: 8px;
 .be-tags {
   width: 100%;
   display: inline-flex;
+  align-items: center;
   overflow-x: auto;
   &.tagMap {
     flex-wrap: wrap;
@@ -123,6 +173,7 @@ $tagLineHeight: 8px;
         border-color: $hoverColor;
       }
     }
+    &.#{$color}.pointing,
     &.#{$color}.label {
       background-color: $bgColor;
       color: $white;
@@ -148,6 +199,7 @@ $tagLineHeight: 8px;
         border-color: $hoverColor;
       }
     }
+    &.#{$color}.pointing,
     &.#{$color}.label {
       background-color: $value;
       color: $white;

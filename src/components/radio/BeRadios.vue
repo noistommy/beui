@@ -9,7 +9,7 @@ const props = defineProps({
     },
   },
   id: {
-    type: String
+    type: String,
   },
   name: {
     type: String,
@@ -32,8 +32,14 @@ const setValue = computed(() => {
 </script>
 
 <template>
-  <div class="be-checkbox" :class="[type, {checked: setValue}]">
-    <input :type="type" :name="name" :id="id" v-model="checkedValue" :value="id" />
+  <div class="be-checkbox" :class="[type, { checked: setValue }]">
+    <input
+      :type="type"
+      :name="name"
+      :id="id"
+      v-model="checkedValue"
+      :value="id"
+    />
     <label :for="id">
       <slot>{{ labelText }}</slot>
     </label>
