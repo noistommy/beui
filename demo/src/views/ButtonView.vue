@@ -3,8 +3,12 @@ import * as codes from '@/codes/button'
 import CodeBlock from '@/components/CodeBlock.vue'
 
 import PageContainer from '@/components/PageContainer.vue'
+import PropsDataList from '@/components/PropsDataList.vue'
 
 import { ref } from 'vue'
+
+const usage = ''
+import { buttonProps, buttonsProps } from '@/contents/props-data'
 
 const status = ['success', 'danger', 'info', 'attention', 'importance']
 const colors = [
@@ -59,6 +63,13 @@ const selectedIndex = ref(0)
           </div>
           <CodeBlock :code="codes.base_component" lang="vue-html"></CodeBlock>
         </section>
+      </template>
+      <template #usage>
+        {{ usage }}
+      </template>
+      <template #props>
+        <PropsDataList title="Button" :datas="buttonProps" />
+        <PropsDataList title="Buttons" :datas="buttonsProps" />
       </template>
       <template #variants>
         <section>

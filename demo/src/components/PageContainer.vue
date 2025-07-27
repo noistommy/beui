@@ -4,13 +4,20 @@ const optionList = [
   { id: 1, option: 'Usage', icon: 'xi-run' },
   { id: 2, option: 'Props', icon: 'xi-bicycle' },
 ]
+
+defineProps({
+  options: {
+    tyupe: Array,
+    default: ['Usage', 'Props'],
+  },
+})
 const selectedTab = ref('Usage')
 </script>
 <template>
   <div class="base">
     <slot name="base"></slot>
   </div>
-  <!-- <div class="infomation">
+  <div class="infomation">
     <BeTabs :tab-list="optionList" v-model="selectedTab" tab-type="line">
       <h1 class="title">{{ selectedTab }}</h1>
       <template v-if="selectedTab === 'Usage'">
@@ -20,10 +27,18 @@ const selectedTab = ref('Usage')
         <slot name="props"></slot>
       </template>
     </BeTabs>
-  </div> -->
+  </div>
   <div class="variants">
     <h1 class="title">Variants</h1>
     <slot name="variants"></slot>
   </div>
   <slot name="extention"></slot>
 </template>
+
+<style lang="scss" scoped>
+.infomation {
+  h1.title {
+    margin-top: 20px;
+  }
+}
+</style>

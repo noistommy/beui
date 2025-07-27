@@ -4,27 +4,23 @@ import { ref } from 'vue'
 // import BeInput from '@/beComponents/beInput/BeInput.vue'
 // import BeCheckBox from '@/beComponents/beCheckBox/BeCheckBox.vue'
 
-
-
-
 const insertValue = ref('')
 const checkValue = ref(false)
 const radioValue = ref('test3')
 const switchValue = ref(false)
 const pageValue = ref(1)
-
 </script>
 <template>
   <div class="page-wrapper">
     <div class="button">
       <BeButton>{{ insertValue }}</BeButton>
       <BeButton class="primary">Button</BeButton>
-      <BeButton class="circle">Button</BeButton>
+      <BeButton class="round">Button</BeButton>
       <BeButton disabled>Button</BeButton>
       <BeButton class="icon">
         <i class="icon xi-star"></i>
       </BeButton>
-      <BeButton class="outline red circle">
+      <BeButton class="outline red round">
         <i class="icon left xi-angle-left"></i>
         Left
       </BeButton>
@@ -40,12 +36,20 @@ const pageValue = ref(1)
       <BeInput type="textarea"></BeInput>
     </div>
     <div class="checkbox">
-      <BeCheckBox id="test" name="check" v-model="checkValue">Test CheckBox</BeCheckBox>
+      <BeCheckBox id="test" name="check" v-model="checkValue"
+        >Test CheckBox</BeCheckBox
+      >
     </div>
     <div class="radio">
-      <BeCheckBox type="radio" id="test1" name="check" v-model="radioValue">Test1</BeCheckBox>
-      <BeCheckBox type="radio" id="test2" name="check" v-model="radioValue">Test2</BeCheckBox>
-      <BeCheckBox type="radio" id="test3" name="check" v-model="radioValue">Test3</BeCheckBox>
+      <BeCheckBox type="radio" id="test1" name="check" v-model="radioValue"
+        >Test1</BeCheckBox
+      >
+      <BeCheckBox type="radio" id="test2" name="check" v-model="radioValue"
+        >Test2</BeCheckBox
+      >
+      <BeCheckBox type="radio" id="test3" name="check" v-model="radioValue"
+        >Test3</BeCheckBox
+      >
       {{ radioValue }}
     </div>
     <div class="switch">
@@ -53,10 +57,21 @@ const pageValue = ref(1)
       <BeSwitch v-model="switchValue" :round="true" />
       <BeSwitch v-model="switchValue" type="button" />
       <BeSwitch v-model="switchValue" type="button" :round="true" />
-      <BeSwitch v-model="switchValue" type="button" :round="true" on-text="Start" off-text="End" />
+      <BeSwitch
+        v-model="switchValue"
+        type="button"
+        :round="true"
+        on-text="Start"
+        off-text="End"
+      />
     </div>
     <div class="pagination">
-      <BePagination v-model="pageValue" :limits="5" :page-length="8" :round="true"></BePagination>
+      <BePagination
+        v-model="pageValue"
+        :limits="5"
+        :page-length="8"
+        :round="true"
+      ></BePagination>
       Current: {{ pageValue }}
     </div>
   </div>

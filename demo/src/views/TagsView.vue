@@ -3,6 +3,10 @@ import * as codes from '@/codes/tag'
 import CodeBlock from '@/components/CodeBlock.vue'
 
 import PageContainer from '@/components/PageContainer.vue'
+import PropsDataList from '@/components/PropsDataList.vue'
+
+const usage = ''
+import { tagProps } from '@/contents/props-data'
 
 const colors = [
   'red',
@@ -48,6 +52,12 @@ const colors = [
           </div>
           <CodeBlock :code="codes.base" lang="vue-html"></CodeBlock>
         </section>
+      </template>
+      <template #usage>
+        {{ usage }}
+      </template>
+      <template #props>
+        <PropsDataList :datas="tagProps" />
       </template>
       <template #variants>
         <section>

@@ -56,7 +56,7 @@ const selectItem = defineModel()
       </div>
       <template v-if="button">
         <div class="btn-set">
-          <div class="be-button circle icon">
+          <div class="be-button round icon">
             <i :Class="opt.icon"></i>
           </div>
         </div>

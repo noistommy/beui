@@ -3,6 +3,10 @@ import * as codes from '@/codes/input'
 import CodeBlock from '@/components/CodeBlock.vue'
 
 import PageContainer from '@/components/PageContainer.vue'
+import PropsDataList from '@/components/PropsDataList.vue'
+
+const usage = ''
+import { inputProps } from '@/contents/props-data'
 
 import { ref } from 'vue'
 const placeholder = '입력하세요'
@@ -36,6 +40,12 @@ const inputValue = ref('init')
           </div>
           <CodeBlock :code="codes.base_component" lang="vue-html"></CodeBlock>
         </section>
+      </template>
+      <template #usage>
+        {{ usage }}
+      </template>
+      <template #props>
+        <PropsDataList :datas="inputProps" />
       </template>
       <template #variants>
         <section>

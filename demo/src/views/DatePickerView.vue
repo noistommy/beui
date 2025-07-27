@@ -3,6 +3,10 @@ import * as codes from '@/codes/calendar'
 import CodeBlock from '@/components/CodeBlock.vue'
 
 import PageContainer from '@/components/PageContainer.vue'
+import PropsDataList from '@/components/PropsDataList.vue'
+
+const usage = ''
+import { calendarProps } from '@/contents/props-data'
 
 import { ref } from 'vue'
 const userDate = ref('2025-06-30')
@@ -24,6 +28,12 @@ const userDate = ref('2025-06-30')
           </div>
           <CodeBlock :code="codes.datePicker" lang="vue-html"></CodeBlock>
         </section>
+      </template>
+      <template #usage>
+        {{ usage }}
+      </template>
+      <template #props>
+        <PropsDataList :datas="calendarProps" />
       </template>
     </PageContainer>
   </div>

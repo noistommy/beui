@@ -7,6 +7,22 @@ const props = defineProps({
     type: [String, Date],
     default: new Date(),
   },
+  cellSize: {
+    type: String,
+    default: '37px',
+  },
+  border: {
+    type: Boolean,
+    default: false,
+  },
+  symmetry: {
+    type: Boolean,
+    default: false,
+  },
+  today: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 const emits = defineEmits(['select'])
@@ -63,7 +79,7 @@ onUnmounted(() => {
 <template>
   <div class="be-date-picker" ref="el">
     <div class="default-date-text" ref="reference" @click="toggleOpen">
-      <div class="be-button icon small circle">
+      <div class="be-button icon small round">
         <i class="icon xi-calendar"></i>
       </div>
       <input type="text" readonly :value="formattedDate" />
@@ -77,7 +93,14 @@ onUnmounted(() => {
             class="calender-wrapper be-popper"
             :style="menuStyle"
           >
-            <BeCalendar :selected-date="date" @select="setSelectedData">
+            <BeCalendar
+              :selected-date="date"
+              :cell-size="cellSize"
+              :border="border"
+              :symmetry="symmetry"
+              :today="today"
+              @select="setSelectedData"
+            >
               <div class="calendar-footer">
                 <template slots="footer">
                   <div class="be-button">Close</div>

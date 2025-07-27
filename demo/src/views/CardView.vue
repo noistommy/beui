@@ -3,6 +3,10 @@ import * as codes from '@/codes/card'
 import CodeBlock from '@/components/CodeBlock.vue'
 
 import PageContainer from '@/components/PageContainer.vue'
+import PropsDataList from '@/components/PropsDataList.vue'
+
+const usage = ''
+import { cardProps } from '@/contents/props-data'
 
 const lorem_text =
   'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium error quia quod magni.Repellendus numquam labore, aliquid voluptates dicta dignissimos beatae quidem repellat amet, vel fuga totam dolorum necessitatibus recusandae!'
@@ -35,6 +39,12 @@ const lorem_text =
           </div>
           <CodeBlock :code="codes.base_component" lang="vue-html"></CodeBlock>
         </section>
+      </template>
+      <template #usage>
+        {{ usage }}
+      </template>
+      <template #props>
+        <PropsDataList :datas="cardProps" />
       </template>
       <template #variants>
         <section>

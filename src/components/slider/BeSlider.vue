@@ -40,7 +40,7 @@ const props = defineProps({
     default: null,
   },
   disabled: Boolean,
-  resultColor: {
+  color: {
     type: String,
     default: '',
   },
@@ -60,11 +60,17 @@ const catching = ref(false)
 
 const startValue = ref(0)
 
-const setResult = computed(() => ({ width: `${result.value}px`, left: `${startValue.value}%` }))
+const setResult = computed(() => ({
+  width: `${result.value}px`,
+  left: `${startValue.value}%`,
+}))
 const setPosition = computed(() => ({ left: `${result.value}px` }))
 
 const setResultValue = computed(() => {
-  return Math.ceil((props.max - props.min) * (result.value / container.value)) + props.min
+  return (
+    Math.ceil((props.max - props.min) * (result.value / container.value)) +
+    props.min
+  )
 })
 
 const stepLevel = computed(() => (props.max - props.min) / props.stepSize)
@@ -72,7 +78,10 @@ const unitSize = computed(() => 100 / stepLevel.value)
 
 const initValue = () => {
   if (resultValue.value > props.max) {
-    emit('error', { title: 'errorMaxValue', message: `입력값이 ${props.max}보다 클 수 없습니다.` })
+    emit('error', {
+      title: 'errorMaxValue',
+      message: `입력값이 ${props.max}보다 클 수 없습니다.`,
+    })
     result.value = convertPixel(props.max)
   } else if (resultValue.value < props.min) {
     emit('error', {
@@ -169,7 +178,7 @@ let slide_obs = new ResizeObserver((entries) => {
   >
     <div
       class="result-slider primary"
-      :class="`be-${resultColor}`"
+      :class="`be-${color}`"
       ref="resultRef"
       :style="setResult"
     ></div>

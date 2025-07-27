@@ -37,6 +37,13 @@ const checkList = ['Run', 'Walk', 'Fly']
           <CodeBlock :code="codes.base" lang="html"></CodeBlock>
         </section>
       </template>
+      <template #usage>
+        {{ usage }}
+      </template>
+      <template #props>
+        <span class="be-tag label lightblue">HTML</span> 으로만 정의된
+        컴포넌트입니다.
+      </template>
       <template #variants>
         <section>
           <h4 class="title">Title</h4>

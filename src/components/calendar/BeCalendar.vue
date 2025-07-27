@@ -125,7 +125,7 @@ const setToday = () => {
       </slot>
       <div
         v-if="today"
-        class="be-button small compact circle outline deepblue"
+        class="be-button small compact round outline deepblue"
         @click="setToday"
       >
         Today

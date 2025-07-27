@@ -3,6 +3,10 @@ import * as codes from '@/codes/checkbox'
 import CodeBlock from '@/components/CodeBlock.vue'
 
 import PageContainer from '@/components/PageContainer.vue'
+import PropsDataList from '@/components/PropsDataList.vue'
+
+const usage = ''
+import { checkboxProps } from '@/contents/props-data'
 
 import { ref } from 'vue'
 
@@ -64,6 +68,12 @@ const cbValue = ref([true, false, false, true])
           </div>
           <CodeBlock :code="codes.base_component" lang="vue-html"></CodeBlock>
         </section>
+      </template>
+      <template #usage>
+        {{ usage }}
+      </template>
+      <template #props>
+        <PropsDataList :datas="checkboxProps" />
       </template>
       <template #variants>
         <section>

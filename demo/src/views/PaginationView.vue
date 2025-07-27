@@ -3,6 +3,10 @@ import * as codes from '@/codes/pagination'
 import CodeBlock from '@/components/CodeBlock.vue'
 
 import PageContainer from '@/components/PageContainer.vue'
+import PropsDataList from '@/components/PropsDataList.vue'
+
+const usage = ''
+import { paginationProps } from '@/contents/props-data'
 
 import { ref } from 'vue'
 const colors = [
@@ -42,6 +46,12 @@ const setCurrent = (payload) => {
           </div>
           <CodeBlock :code="codes.base_component" lang="vue-html"></CodeBlock>
         </section>
+      </template>
+      <template #usage>
+        {{ usage }}
+      </template>
+      <template #props>
+        <PropsDataList :datas="paginationProps" />
       </template>
       <template #variants>
         <section>

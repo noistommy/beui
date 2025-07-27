@@ -3,6 +3,10 @@ import * as codes from '@/codes/calendar'
 import CodeBlock from '@/components/CodeBlock.vue'
 
 import PageContainer from '@/components/PageContainer.vue'
+import PropsDataList from '@/components/PropsDataList.vue'
+
+const usage = ''
+import { calendarProps } from '@/contents/props-data'
 
 import { ref } from 'vue'
 
@@ -23,6 +27,12 @@ const selectedDate = ref(null)
           </div>
           <CodeBlock :code="codes.base_component" lang="vue-html"></CodeBlock>
         </section>
+      </template>
+      <template #usage>
+        {{ usage }}
+      </template>
+      <template #props>
+        <PropsDataList :datas="calendarProps" />
       </template>
       <template #variants>
         <section>

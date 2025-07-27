@@ -3,6 +3,10 @@ import * as codes from '@/codes/table'
 import CodeBlock from '@/components/CodeBlock.vue'
 
 import PageContainer from '@/components/PageContainer.vue'
+import PropsDataList from '@/components/PropsDataList.vue'
+
+const usage = ''
+import { tableProps } from '@/contents/props-data'
 
 import { ref } from 'vue'
 const columns = [
@@ -82,6 +86,12 @@ const setSelectItem = (payload) => {
             :use-toggle="false"
           ></CodeBlock>
         </section>
+      </template>
+      <template #usage>
+        {{ usage }}
+      </template>
+      <template #props>
+        <PropsDataList :datas="tableProps" />
       </template>
       <template #variants>
         <section>

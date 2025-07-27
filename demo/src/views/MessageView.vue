@@ -3,6 +3,10 @@ import * as codes from '@/codes/message'
 import CodeBlock from '@/components/CodeBlock.vue'
 
 import PageContainer from '@/components/PageContainer.vue'
+import PropsDataList from '@/components/PropsDataList.vue'
+
+const usage = ''
+import { messageProps } from '@/contents/props-data'
 
 import { ref } from 'vue'
 const states = ['success', 'error', 'info', 'attention', 'importance']
@@ -45,6 +49,12 @@ const useIcon = ref(true)
           </div>
           <CodeBlock :code="codes.base_component" lang="vue-html"></CodeBlock>
         </section>
+      </template>
+      <template #usage>
+        {{ usage }}
+      </template>
+      <template #props>
+        <PropsDataList :datas="messageProps" />
       </template>
       <template #variants>
         <section>

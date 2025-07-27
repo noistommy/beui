@@ -3,6 +3,10 @@ import * as codes from '@/codes/list'
 import CodeBlock from '@/components/CodeBlock.vue'
 
 import PageContainer from '@/components/PageContainer.vue'
+import PropsDataList from '@/components/PropsDataList.vue'
+
+const usage = ''
+import { listProps } from '@/contents/props-data'
 
 import { ref } from 'vue'
 const optionList = [
@@ -57,6 +61,12 @@ const selectedItem = ref(optionList[0])
             :use-toggle="false"
           ></CodeBlock>
         </section>
+      </template>
+      <template #usage>
+        {{ usage }}
+      </template>
+      <template #props>
+        <PropsDataList :datas="listProps" />
       </template>
       <template #variants>
         <section>

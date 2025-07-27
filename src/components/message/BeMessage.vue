@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 
-const stateIcon = {
+const statusIcon = {
   success: 'xi-check-circle',
   info: 'xi-info',
   error: 'xi-emoticon-devil',
@@ -19,7 +19,7 @@ const props = defineProps({
   icon: {
     type: String,
   },
-  state: {
+  status: {
     type: String,
     default: null,
     varidator: (value) => {
@@ -39,8 +39,8 @@ const props = defineProps({
 })
 
 const iconName = computed(() => {
-  if (props.state) {
-    return stateIcon[props.state]
+  if (props.status) {
+    return statusIcon[props.status]
   } else {
     return props.icon
   }
@@ -50,7 +50,7 @@ const iconName = computed(() => {
 <template>
   <div
     class="be-message"
-    :class="[{ icon: icon }, state, { selected, disabled }]"
+    :class="[{ icon: icon }, status, { selected, disabled }]"
   >
     <template v-if="icon">
       <i class="icon" :class="iconName" />

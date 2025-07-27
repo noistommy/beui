@@ -27,7 +27,7 @@ const buttonProps = {
   fluid: {
     type: Boolean,
   },
-  circle: {
+  round: {
     type: Boolean,
   },
   compact: {
@@ -84,7 +84,7 @@ export default defineComponent({
       { border },
       { disabled },
       { fluid },
-      { circle },
+      { round },
       { compact },
       { outline },
       { icon },

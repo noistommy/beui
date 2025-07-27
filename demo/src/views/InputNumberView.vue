@@ -3,6 +3,10 @@ import * as codes from '@/codes/input-number'
 import CodeBlock from '@/components/CodeBlock.vue'
 
 import PageContainer from '@/components/PageContainer.vue'
+import PropsDataList from '@/components/PropsDataList.vue'
+
+const usage = ''
+import { inputNumberProps } from '@/contents/props-data'
 
 import { ref } from 'vue'
 const value = ref(new Array(10).fill(0))
@@ -24,6 +28,12 @@ const valueFirst = ref(0)
           </div>
           <CodeBlock :code="codes.base_component" lang="vue-html"></CodeBlock>
         </section>
+      </template>
+      <template #usage>
+        {{ usage }}
+      </template>
+      <template #props>
+        <PropsDataList :datas="inputNumberProps" />
       </template>
       <template #variants>
         <section>

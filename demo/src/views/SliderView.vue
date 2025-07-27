@@ -3,6 +3,10 @@ import * as codes from '@/codes/slider'
 import CodeBlock from '@/components/CodeBlock.vue'
 
 import PageContainer from '@/components/PageContainer.vue'
+import PropsDataList from '@/components/PropsDataList.vue'
+
+const usage = ''
+import { sliderProps } from '@/contents/props-data'
 
 import { ref } from 'vue'
 const colors = [
@@ -20,7 +24,6 @@ const colors = [
   'gray',
 ]
 
-import BeSlider from '../beComponents/slider/BeSlider.vue'
 const range = ref(new Array(13).fill(50))
 
 const selectColor = ref('red')
@@ -42,6 +45,12 @@ const selectColor = ref('red')
           </div>
           <CodeBlock :code="codes.base_component" lang="vue-html"></CodeBlock>
         </section>
+      </template>
+      <template #usage>
+        {{ usage }}
+      </template>
+      <template #props>
+        <PropsDataList :datas="sliderProps" />
       </template>
       <template #variants>
         <section>
@@ -161,7 +170,7 @@ const selectColor = ref('red')
               <BeSlider
                 v-model="range[12]"
                 :show-label="true"
-                :result-color="selectColor"
+                :color="selectColor"
                 :show-tooltip="true"
               />
             </div>

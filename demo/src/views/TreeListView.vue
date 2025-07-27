@@ -3,6 +3,10 @@ import * as codes from '@/codes/tree-list'
 import CodeBlock from '@/components/CodeBlock.vue'
 
 import PageContainer from '@/components/PageContainer.vue'
+import PropsDataList from '@/components/PropsDataList.vue'
+
+const usage = ''
+import { treeListProps, treeNodeProps } from '@/contents/props-data'
 
 import { ref } from 'vue'
 
@@ -83,6 +87,13 @@ const treeList = ref([
             :use-toggle="false"
           ></CodeBlock>
         </section>
+      </template>
+      <template #usage>
+        {{ usage }}
+      </template>
+      <template #props>
+        <PropsDataList title="TreeList" :datas="treeListProps" />
+        <PropsDataList title="TreeNode" :datas="treeNodeProps" />
       </template>
       <template #variants>
         <section>

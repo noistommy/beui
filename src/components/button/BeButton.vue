@@ -25,7 +25,7 @@ defineProps({
   fluid: {
     type: Boolean,
   },
-  circle: {
+  round: {
     type: Boolean,
   },
   compact: {
@@ -68,7 +68,7 @@ const onClick = (e) => {
       { border },
       { disabled },
       { fluid },
-      { circle },
+      { round },
       { compact },
       { outline },
       { icon },

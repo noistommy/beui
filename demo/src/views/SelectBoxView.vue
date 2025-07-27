@@ -3,6 +3,10 @@ import * as codes from '@/codes/selectbox'
 import CodeBlock from '@/components/CodeBlock.vue'
 
 import PageContainer from '@/components/PageContainer.vue'
+import PropsDataList from '@/components/PropsDataList.vue'
+
+const usage = ''
+import { selectboxProps } from '@/contents/props-data'
 
 import { ref } from 'vue'
 const options = [
@@ -86,6 +90,12 @@ const setResultOpt = (payload) => {
             :use-toggle="false"
           ></CodeBlock>
         </section>
+      </template>
+      <template #usage>
+        {{ usage }}
+      </template>
+      <template #props>
+        <PropsDataList :datas="selectboxProps" />
       </template>
       <template #variants>
         <section>

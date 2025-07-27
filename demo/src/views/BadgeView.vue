@@ -3,6 +3,10 @@ import * as codes from '@/codes/badge'
 import CodeBlock from '@/components/CodeBlock.vue'
 
 import PageContainer from '@/components/PageContainer.vue'
+import PropsDataList from '@/components/PropsDataList.vue'
+
+const usage = ''
+import { badgeProps } from '@/contents/props-data'
 
 const colors = [
   'red',
@@ -67,6 +71,12 @@ const colors = [
           </div>
           <CodeBlock :code="codes.base_component" lang="vue-html"></CodeBlock>
         </section>
+      </template>
+      <template #usage>
+        {{ usage }}
+      </template>
+      <template #props>
+        <PropsDataList :datas="badgeProps" />
       </template>
       <template #variants>
         <section>

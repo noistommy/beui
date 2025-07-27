@@ -3,6 +3,10 @@ import * as codes from '@/codes/switch'
 import CodeBlock from '@/components/CodeBlock.vue'
 
 import PageContainer from '@/components/PageContainer.vue'
+import PropsDataList from '@/components/PropsDataList.vue'
+
+const usage = ''
+import { switchProps } from '@/contents/props-data'
 
 import { ref, computed } from 'vue'
 const colors = [
@@ -65,6 +69,12 @@ const setSwitch = computed(() => {
           </div>
           <CodeBlock :code="codes.base_b" lang="vue-html"></CodeBlock>
         </section>
+      </template>
+      <template #usage>
+        {{ usage }}
+      </template>
+      <template #props>
+        <PropsDataList :datas="switchProps" />
       </template>
       <template #variants>
         <section>
