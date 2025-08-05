@@ -27,7 +27,7 @@ const props = defineProps({
   },
   limits: {
     type: Number,
-    default: 0,
+    default: 5,
   },
   currentPage: {
     type: Number,
@@ -46,6 +46,14 @@ const props = defineProps({
   },
   color: {
     type: String,
+  },
+  firstText: {
+    type: String,
+    default: 'F',
+  },
+  lastText: {
+    type: String,
+    default: 'L',
   },
 })
 const pageEl = ref(null)
@@ -148,7 +156,10 @@ const setNextBlock = () => {
       :class="[itemClass, { disabled: isDisabledPrev }]"
       @click="setCurrent(1)"
     >
-      F
+      <template v-if="firstText.indexOf('xi-') > -1">
+        <i :class="firstText" />
+      </template>
+      <template v-else>{{ firstText }}</template>
     </div>
     <div
       class="pagination-nav prev"
@@ -224,7 +235,10 @@ const setNextBlock = () => {
       :class="[itemClass, { disabled: isDisabledNext }]"
       @click="setCurrent(last)"
     >
-      L
+      <template v-if="lastText.indexOf('xi-') > -1">
+        <i :class="lastText" />
+      </template>
+      <template v-else>{{ lastText }}</template>
     </div>
   </div>
 </template>

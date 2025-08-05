@@ -25,6 +25,18 @@ export const filtering =
   `<!-- @isSearch: Boolean -->\n` +
   `<!-- default: false -->\n\n` +
   `<BeSelectBox :options :is-search="true"></BeSelectBox>`
+export const round =
+  `<!-- @round: Boolean -->\n` +
+  `<!-- default: false -->\n\n` +
+  `<BeSelectBox :options round></BeSelectBox>`
+export const disabled =
+  `<!-- @disabled: Boolean -->\n` +
+  `<!-- default: false -->\n\n` +
+  `<BeSelectBox :options disabled></BeSelectBox>`
+export const fluid =
+  `<!-- @fluid: Boolean -->\n` +
+  `<!-- default: false -->\n\n` +
+  `<BeSelectBox :options fluid></BeSelectBox>`
 export const dropdown_type =
   `<!-- @boxType: dropdown -->\n` +
   `<!-- default: false -->\n\n` +

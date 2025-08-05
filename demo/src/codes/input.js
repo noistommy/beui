@@ -34,6 +34,15 @@ export const underline =
   `</div>\n` +
   `<!-- component -->\n` +
   `<BeInput v-model="inputValue" placeholder="입력하세요" underline></BeInput>`
+export const round =
+  `<!-- @round: Boolean -->\n` +
+  `<!-- default: false -->\n\n` +
+  `<!-- html -->\n` +
+  `<div class="be-input round">\n` +
+  `   <input type="text" placeholder="입력하세요" />\n` +
+  `</div>\n` +
+  `<!-- component -->\n` +
+  `<BeInput v-model="inputValue" placeholder="입력하세요" round></BeInput>`
 export const transparent =
   `<!-- @transparent: Boolean -->\n` +
   `<!-- default: false -->\n\n` +

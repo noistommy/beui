@@ -53,6 +53,7 @@ $segmentVerticalPadding: 14px;
 
   background-color: $segmentBgColor;
   margin-bottom: 12px;
+  overflow: auto;
   & > div {
     padding: $segmentHorizontalPadding;
   }

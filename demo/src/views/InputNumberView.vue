@@ -37,6 +37,14 @@ const valueFirst = ref(0)
       </template>
       <template #variants>
         <section>
+          <h4 class="title">Round</h4>
+          <div class="desc"></div>
+          <div class="contents-wrapper">
+            <BeInputNumber v-model="value[0]" round />
+          </div>
+          <CodeBlock :code="codes.round" lang="vue-html"></CodeBlock>
+        </section>
+        <section>
           <h4 class="title">Disabled</h4>
           <div class="desc"></div>
           <div class="contents-wrapper">

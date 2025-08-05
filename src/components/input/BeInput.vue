@@ -36,6 +36,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  round: {
+    type: Boolean,
+    default: false,
+  },
   underline: {
     type: Boolean,
     default: false,
@@ -124,6 +128,7 @@ const onBlur = () => {
       status,
       { readonly },
       { underline },
+      { round },
       { transparent },
       { compact },
       { fluid },

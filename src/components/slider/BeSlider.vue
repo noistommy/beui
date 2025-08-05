@@ -193,7 +193,7 @@ let slide_obs = new ResizeObserver((entries) => {
     </template>
     <div class="control-btn" :class="{ catching }" :style="setPosition">
       <div v-if="showTooltip" class="tooltip">
-        {{ setResultValue }}
+        {{ setResultValue }}{{ unitText }}
       </div>
     </div>
     <div v-if="showValue" class="label-text">

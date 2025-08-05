@@ -130,11 +130,14 @@ $headerHeight: 56px;
 main {
   height: calc(100dvh - $headerHeight);
 }
+.main-pane {
+  overflow-y: auto;
+}
 .main {
   height: 100%;
   max-width: 780px;
   margin: 0 auto;
-  overflow-y: auto;
+
   .main-title {
     padding-top: 15px;
     padding-left: 20px;

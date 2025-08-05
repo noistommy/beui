@@ -135,7 +135,7 @@ $buttonIconDistance: calc($horizontalInputPadding * 0.5);
     //border:1px solid $borderColor;
     box-shadow: 0 0 0 1px var(--brd) inset;
     &:hover {
-      background-color: var(----hover-suf);
+      background-color: var(--hover-suf);
     }
   }
   &.border:not(.outline),

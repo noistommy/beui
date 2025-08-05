@@ -114,6 +114,7 @@ const selectColor = ref('red')
             <BeSlider
               v-model="range[6]"
               :show-label="true"
+              :show-tooltip="true"
               max="12"
               unit-text="시"
             />

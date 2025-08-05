@@ -67,6 +67,7 @@ $sliderHandleSize: 1em;
       display: none;
       padding: 4px 8px;
       position: absolute;
+      min-width: max-content;
       bottom: 100%;
       left: 50%;
       z-index: 9999;
@@ -79,6 +80,7 @@ $sliderHandleSize: 1em;
       &:before {
         content: '';
         position: absolute;
+        margin-top: -1px;
         top: 100%;
         left: 50%;
         transform: translateX(-50%);

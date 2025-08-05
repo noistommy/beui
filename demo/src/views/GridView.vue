@@ -23,6 +23,24 @@ import PageContainer from '@/components/PageContainer.vue'
                 :data-col="`col-${col}`"
               ></div>
             </div>
+            <div class="be-grid divide-6">
+              <div class="rows">
+                <div
+                  class="column"
+                  v-for="col in 6"
+                  :key="`base-${col}`"
+                  :data-col="`col-${col}`"
+                ></div>
+              </div>
+              <div class="rows">
+                <div
+                  class="column"
+                  v-for="col in 6"
+                  :key="`base-${col}`"
+                  :data-col="`col-${col}`"
+                ></div>
+              </div>
+            </div>
           </div>
           <CodeBlock :code="codes.base" lang="html"></CodeBlock>
         </section>

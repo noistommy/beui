@@ -66,6 +66,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  round: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 const emit = defineEmits(['select'])
@@ -85,14 +89,10 @@ const searchText = ref(null)
 
 const offsetValue = props.boxType === 'dropdown' ? 10 : 0
 
-const { floatingStyles, x, y, strategy, isPositioned } = useFloating(
-  reference,
-  floating,
-  {
-    middleware: [offset(offsetValue), flip(), shift()],
-    whileElementsMounted: autoUpdate,
-  },
-)
+const { x, y, strategy, isPositioned } = useFloating(reference, floating, {
+  middleware: [offset(offsetValue), flip(), shift()],
+  whileElementsMounted: autoUpdate,
+})
 
 const customFloatingStyle = computed(() => {
   const floatOffset =
@@ -243,7 +243,7 @@ const selectAll = () => {
 <template>
   <div
     class="be-select-box"
-    :class="[boxType, { multiple, fluid, disabled }, { show: isShow }]"
+    :class="[boxType, { multiple, fluid, disabled, round }, { show: isShow }]"
     @click="toggleOpen"
     ref="elRef"
   >
@@ -256,7 +256,7 @@ const selectAll = () => {
       <template v-else>
         <div
           class="be-input icon right"
-          :class="{ fluid, disabled, has: selectedItem }"
+          :class="{ fluid, disabled, round, has: selectedItem }"
         >
           <input
             type="text"

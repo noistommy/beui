@@ -125,15 +125,19 @@ const checkList = ['Run', 'Walk', 'Fly']
           <div class="contents-wrapper">
             <div class="be-form">
               <div class="fields divide-3">
-                <div class="field column" v-for="fi in 3" :key="fi">
-                  <label for="">field {{ fi }}</label>
-                  <input type="text" :placeholder="`Field ${fi}`" />
+                <div class="field">
+                  <div class="column" v-for="fi in 3" :key="fi">
+                    <label for="">field {{ fi }}</label>
+                    <input type="text" :placeholder="`Field ${fi}`" />
+                  </div>
                 </div>
               </div>
               <div class="fields divide-4">
-                <div class="field column" v-for="fi in 4" :key="fi">
-                  <label for="">field {{ fi }}</label>
-                  <input type="text" :placeholder="`Field ${fi}`" />
+                <div class="field">
+                  <div class="column" v-for="fi in 4" :key="fi">
+                    <label for="">field {{ fi }}</label>
+                    <input type="text" :placeholder="`Field ${fi}`" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -145,34 +149,28 @@ const checkList = ['Run', 'Walk', 'Fly']
           <div class="desc"></div>
           <div class="contents-wrapper">
             <div class="be-form">
-              <div class="fields right-side">
-                <div class="field column">
-                  <label for="">Label</label>
-                </div>
-                <div class="field column">
-                  <input type="text" placeholder="Input value" />
-                </div>
-              </div>
               <div class="fields">
-                <div
-                  class="field column"
-                  v-for="fi in [2, 6, 4]"
-                  :key="fi"
-                  :class="`span-${fi}`"
-                >
-                  <label for="">field {{ fi }}</label>
-                  <input type="text" :placeholder="`Field ${fi}`" />
+                <div class="field">
+                  <div
+                    class="column"
+                    v-for="fi in [2, 6, 4]"
+                    :key="fi"
+                    :class="`span-${fi}`"
+                  >
+                    <label for="">field {{ fi }}</label>
+                    <input type="text" :placeholder="`Field ${fi}`" />
+                  </div>
                 </div>
-              </div>
-              <div class="fields">
-                <div
-                  class="field column"
-                  v-for="fi in [2, 7, 3]"
-                  :key="fi"
-                  :class="`span-${fi}`"
-                >
-                  <label for="">field {{ fi }}</label>
-                  <input type="text" :placeholder="`Field ${fi}`" />
+                <div class="field">
+                  <div
+                    class="field column"
+                    v-for="fi in [2, 7, 3]"
+                    :key="fi"
+                    :class="`span-${fi}`"
+                  >
+                    <label for="">field {{ fi }}</label>
+                    <input type="text" :placeholder="`Field ${fi}`" />
+                  </div>
                 </div>
               </div>
             </div>

@@ -26,6 +26,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  round: {
+    type: Boolean,
+    default: false,
+  },
   iconLeft: {
     type: String,
     default: null,
@@ -101,7 +105,7 @@ const keyControl = (event) => {
 <template>
   <div
     class="be-input button number"
-    :class="[status, { readonly, compact, fluid, disabled }, controller]"
+    :class="[status, { readonly, compact, fluid, disabled, round }, controller]"
     tabindex="-1"
     @keydown.prevent="keyControl"
   >

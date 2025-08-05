@@ -19,11 +19,12 @@ export const contents =
   `   <div class="panel-header">\n` +
   `       {header contents}\n` +
   `   </div>\n` +
-  `   <div class="panel-contents">\n` +
-  `       <div class="contents-wrapper">\n` +
-  `       <div class="content-head">Header</div>\n` +
-  `       <div class="content-body">Body ... </div>\n` +
-  `       <div class="content-foot">Footer</div>\n` +
+  `   <div class="panel-content">\n` +
+  `       <div class="content-wrapper">\n` +
+  `           <div class="content-head">Header</div>\n` +
+  `           <div class="content-body">Body ... </div>\n` +
+  `           <div class="contewnt-foot">Footer</div>\n` +
+  `       </div>\n` +
   `   </div>\n` +
   `</div>\n` +
   `<!-- Component -->\n` +
@@ -53,7 +54,7 @@ export const special_html =
   `   <summary class="panel-header">\n` +
   `       {header contents}\n` +
   `   </summary>\n` +
-  `   <div class="panel-contents">\n` +
-  `       <div class="contents-wrapper">Contents ...</div>\n` +
+  `   <div class="panel-content">\n` +
+  `       <div class="content-wrapper">Contents ...</div>\n` +
   `   </div>\n` +
   `</details>`

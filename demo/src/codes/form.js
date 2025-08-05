@@ -66,14 +66,16 @@ export const base_grid_divide =
   `<div class="be-form">\n` +
   `   <div class="fields divide-{number}">\n` +
   `       <div class="field">\n` +
-  `           <label> Label </label>\n` +
-  `           <input type="text" />\n` +
+  `           <div class="column">\n` +
+  `               <label> Label </label>\n` +
+  `               <input type="text" />\n` +
+  `           </div>\n` +
+  `           <div class="column">\n` +
+  `               <label label> Label </label>\n` +
+  `               <input type="text" />\n` +
+  `           </div>\n` +
+  `           ...\n` +
   `       </div>\n` +
-  `       <div class="field">\n` +
-  `           <label> Label </label>\n` +
-  `           <input type="text" />\n` +
-  `       </div>\n` +
-  `       ...\n` +
   `   </div>\n` +
   `</div>`
 export const base_grid_widths =
@@ -81,15 +83,17 @@ export const base_grid_widths =
   `<!-- Grid System과 동일한 스타일이 적용 됩니다. -->\n` +
   `<div class="be-form">\n` +
   `   <div class="fields">\n` +
-  `       <div class="field span-{a}">\n` +
-  `           <label> Label </label>\n` +
-  `           <input type="text" />\n` +
+  `       <div class="field">\n` +
+  `           <div class="column span-{a}">\n` +
+  `               <label> Label </label>\n` +
+  `               <input type="text" />\n` +
+  `           </div>\n` +
+  `           <div class="column span-{b}">\n` +
+  `               <label> Label </label>\n` +
+  `               <input type="text" />\n` +
+  `           </div>\n` +
+  `           ...\n` +
   `       </div>\n` +
-  `       <div class="field span-{b}">\n` +
-  `           <label> Label </label>\n` +
-  `           <input type="text" />\n` +
-  `       </div>\n` +
-  `       ...\n` +
   `   </div>\n` +
   `</div>`
 export const base_textarea =

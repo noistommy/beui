@@ -42,7 +42,11 @@ const setCurrent = (payload) => {
             <span class="be-tag label deepblue">Component</span>
           </div>
           <div class="contents-wrapper">
-            <BePagination v-model="pageValue" :page-length="15" />
+            <BePagination
+              :limits="false"
+              v-model="pageValue"
+              :page-length="13"
+            />
           </div>
           <CodeBlock :code="codes.base_component" lang="vue-html"></CodeBlock>
         </section>
@@ -87,6 +91,25 @@ const setCurrent = (payload) => {
             />
           </div>
           <CodeBlock :code="codes.round" lang="vue-html"></CodeBlock>
+        </section>
+        <section>
+          <h4 class="title">User Custom First, Last Text</h4>
+          <div class="desc"></div>
+          <div class="contents-wrapper">
+            <BePagination
+              v-model="pageValue"
+              :page-length="10"
+              first-text="First"
+              last-text="Last"
+            />
+            <BePagination
+              v-model="pageValue"
+              :page-length="10"
+              first-text="xi-arrow-left"
+              last-text="xi-arrow-right"
+            />
+          </div>
+          <CodeBlock :code="codes.first_last_text" lang="vue-html"></CodeBlock>
         </section>
         <section>
           <h4 class="title">Align</h4>

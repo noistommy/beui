@@ -75,6 +75,16 @@ const inputValue = ref('init')
           <CodeBlock :code="codes.readonly" lang="vue-html"></CodeBlock>
         </section>
         <section>
+          <h4 class="title">Round</h4>
+          <div class="desc">
+            <span class="be-tag label">component</span>
+          </div>
+          <div class="contents-wrapper">
+            <BeInput :round="true" :placeholder="placeholder" />
+          </div>
+          <CodeBlock :code="codes.round" lang="vue-html"></CodeBlock>
+        </section>
+        <section>
           <h4 class="title">Underline</h4>
           <div class="desc">
             <span class="be-tag label">component</span>

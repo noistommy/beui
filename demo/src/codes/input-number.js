@@ -3,6 +3,10 @@ export const base_component =
   `<!-- script setup -->\n` +
   `<!-- const inputValue = ref(0) -->\n` +
   `<BeInputNumber v-model="inputValue"></BeInputNumber>`
+export const round =
+  `<!-- @round: Boolean -->\n` +
+  `<!-- default: false -->\n\n` +
+  `<BeInputNumber v-model="inputValue" round></BeInputNumber>`
 export const disabled =
   `<!-- @disabled: Boolean -->\n` +
   `<!-- default: false -->\n\n` +

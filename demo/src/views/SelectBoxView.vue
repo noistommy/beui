@@ -128,6 +128,30 @@ const setResultOpt = (payload) => {
           <CodeBlock :code="codes.filtering" lang="vue-html"></CodeBlock>
         </section>
         <section>
+          <h4 class="title">Round</h4>
+          <div class="desc"></div>
+          <div class="contents-wrapper">
+            <BeSelectBox :options round />
+          </div>
+          <CodeBlock :code="codes.round" lang="vue-html"></CodeBlock>
+        </section>
+        <section>
+          <h4 class="title">Fluid</h4>
+          <div class="desc"></div>
+          <div class="contents-wrapper">
+            <BeSelectBox :options fluid />
+          </div>
+          <CodeBlock :code="codes.fluid" lang="vue-html"></CodeBlock>
+        </section>
+        <section>
+          <h4 class="title">Disabled</h4>
+          <div class="desc"></div>
+          <div class="contents-wrapper">
+            <BeSelectBox :options disabled />
+          </div>
+          <CodeBlock :code="codes.disabled" lang="vue-html"></CodeBlock>
+        </section>
+        <section>
           <h4 class="title">Dropdown Type</h4>
           <div class="desc"></div>
           <div class="contents-wrapper">
