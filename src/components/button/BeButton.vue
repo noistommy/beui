@@ -50,6 +50,14 @@ defineProps({
   badgeOption: {
     type: String,
   },
+  link: {
+    type: String,
+    default: null,
+  },
+  linkTarget: {
+    type: String,
+    default: null,
+  },
 })
 const emit = defineEmits(['onClick'])
 const onClick = (e) => {
@@ -65,6 +73,7 @@ const onClick = (e) => {
       status,
       color,
       { text },
+      { link },
       { border },
       { disabled },
       { fluid },
@@ -91,5 +100,6 @@ const onClick = (e) => {
         <div class="in-badge" :class="badgeOption">{{ badge }}</div>
       </template>
     </slot>
+    <a v-if="link" :href="link" :target="linkTarget || '_self'" />
   </button>
 </template>

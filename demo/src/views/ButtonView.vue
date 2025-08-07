@@ -334,6 +334,14 @@ const selectedIndex = ref(0)
           <CodeBlock :code="codes.badge" lang="vue-html"></CodeBlock>
         </section>
         <section>
+          <h4 class="title">Link</h4>
+          <div class="desc"></div>
+          <div class="contents-wrapper">
+            <BeButton link="/" link-target="_blank"> Link </BeButton>
+          </div>
+          <CodeBlock :code="codes.link" lang="vue-html"></CodeBlock>
+        </section>
+        <section>
           <h4 class="title">Event: Click</h4>
           <div class="desc"></div>
           <div class="contents-wrapper">

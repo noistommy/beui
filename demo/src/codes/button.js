@@ -135,6 +135,11 @@ export const badge =
   `<!-- component -->\n` +
   `<BeButton badge="{badge}" badge-option="{badgeOption}">...</BeButton>`
 
+export const link =
+  `<!-- @link: href link url -->\n` +
+  `<!-- @linkTarget: {_self, _blank} -->\n` +
+  `<BeButton :link="link" :link-target="linkTarget">...</BeButton>`
+
 export const eventEmit =
   `<!-- emit: onClick -->\n` + `<BeButton @onClick="handleClick">...</BeButton>`
 export const buttons =

@@ -14,6 +14,7 @@ $buttonIconDistance: calc($horizontalInputPadding * 0.5);
   align-items: center;
   font-weight: 400;
   line-height: 1;
+  font-size: 1em;
   // font-family: $fontName;
   vertical-align: baseline;
   cursor: pointer;
@@ -204,6 +205,12 @@ $buttonIconDistance: calc($horizontalInputPadding * 0.5);
   &.static {
     pointer-events: none;
   }
+  &.link {
+    a {
+      position: absolute;
+      inset: 0;
+    }
+  }
 }
 
 .be-button {
@@ -212,14 +219,11 @@ $buttonIconDistance: calc($horizontalInputPadding * 0.5);
     margin: 0;
   }
 }
-//.be-button-group {
-//    .be-button {
-//        padding: $verticalPadding;
-//    }
-//}
 .be-buttons {
-  display: inline-block;
+  display: inline-flex;
+  overflow-x: auto;
   .be-button {
+    flex: 1 0 auto;
     //padding: $verticalPadding;
     border-radius: 0;
     margin: 0;
@@ -236,17 +240,17 @@ $buttonIconDistance: calc($horizontalInputPadding * 0.5);
       border-bottom-right-radius: $baseBorderRadius;
     }
     & + .be-button {
-      // margin-left: 1px;
+      margin-left: 1px;
     }
   }
   &.border {
     border-radius: calc($baseBorderRadius + 1px);
     border: 1px solid var(--brd);
-    overflow: hidden;
     //box-sizing: content-box;
     .be-button {
       box-shadow: none;
       border-left: 1px solid var(--brd);
+      margin: 0;
       &:first-child {
         border-left: none;
         border-left: 0;

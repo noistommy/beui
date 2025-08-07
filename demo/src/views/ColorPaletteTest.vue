@@ -1,6 +1,11 @@
 <script setup>
 import { ref, reactive, inject, onMounted } from 'vue'
-import { argbFromHex, Hct, TonalPalette, hexFromArgb } from '@material/material-color-utilities'
+import {
+  argbFromHex,
+  Hct,
+  TonalPalette,
+  hexFromArgb,
+} from '@material/material-color-utilities'
 import { shades, hexToLch, exportColorPaletteScss } from '@/utils/color-util'
 
 import ColorPicker from '../components/color-picker/ColorPicker.vue'
@@ -96,7 +101,9 @@ const genColor = () => {
   tones.forEach((tone) => {
     const argb = primary.tone(tone)
     const hct = Hct.fromInt(argb)
-    console.log(`톤 ${tone}: ${hexFromArgb(argb)} = ${hct.hue}.${hct.chroma}.${hct.tone}`)
+    console.log(
+      `톤 ${tone}: ${hexFromArgb(argb)} = ${hct.hue}.${hct.chroma}.${hct.tone}`,
+    )
     paletters.push({
       tone,
       value: hexFromArgb(argb),
@@ -138,6 +145,28 @@ const exportPalette = () => {
 
 <template>
   <div class="page-wrapper be-container">
+    <h1
+      class="be-deepblue"
+      :style="{
+        display: 'inline-block',
+        borderRadius: '4px',
+        lineHeight: '1',
+        fontWeight: '600',
+        padding: '0 5px',
+      }"
+    >
+      Be
+    </h1>
+    <h1
+      class="be-gray-text"
+      :style="{
+        display: 'inline-block',
+        lineHeight: '60px',
+        fontWeight: '600',
+      }"
+    >
+      long
+    </h1>
     <section>
       <h4>New Color</h4>
       <div class="contents-wrapper">
@@ -169,7 +198,11 @@ const exportPalette = () => {
             {{ pal.tone }}
           </div>
         </div>
-        <div class="palette-wrap" v-for="palette in valiablePalette" :key="palette.name">
+        <div
+          class="palette-wrap"
+          v-for="palette in valiablePalette"
+          :key="palette.name"
+        >
           <!-- <h6 class="color-name">{{ palette.name }}</h6> -->
           <div class="palettes">
             <div class="color-item h6 color-name">{{ palette.name }}</div>
