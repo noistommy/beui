@@ -55,6 +55,10 @@ const props = defineProps({
     type: String,
     default: 'L',
   },
+  activeType: {
+    type: String,
+    default: 'button', // text
+  },
 })
 const pageEl = ref(null)
 const current = defineModel()
@@ -147,7 +151,7 @@ const setNextBlock = () => {
 <template>
   <div
     class="be-pagination"
-    :class="[type, { round }, { compact }, `align-${align}`, color]"
+    :class="[type, activeType, { round }, { compact }, `align-${align}`, color]"
     ref="pageEl"
   >
     <div

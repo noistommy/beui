@@ -35,6 +35,10 @@ Vue 3 전용 UI 라이브러리
 
 ### Install
 
+```sh
+npm install noist-beui
+```
+
 전역에서 모듈 전체를 install 하여 사용하거나 개별 컴포넌트를 임포트하여 사용 가능합니다.
 (`beui.css` 스타일은 설치와 상관없이 Import 해야합니다.)
 
@@ -43,9 +47,9 @@ Vue 3 전용 UI 라이브러리
 ```js
 // main.js
 // import modules
-import Beui from 'beui'
+import Beui from 'noist-beui'
 // import stylesheet
-import 'beui/beui.css'
+import 'noist-beui/beui.css'
 
 const app = createApp('./App.vue')
 
@@ -55,7 +59,7 @@ app.use(Beui)
 ### Usage
 
 ```js
-import { BeComponent } from 'beui'
+import { BeComponent } from 'noist-beui'
 ;<BeComponent v-bind="..."></BeComponent>
 ```
 

@@ -1,6 +1,6 @@
 {
   "name": "noist-beui",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "private": false,
   "type": "module",
   "main": "./dist/be-ui.umd.js",
@@ -10,7 +10,7 @@
       "import": "./dist/be-ui.es.js",
       "require": "./dist/be-ui.umd.cjs"
     },
-    "./dist/style.css": "./dist/beui.css"
+    "./beui.css": "./dist/beui.css"
   },
   "files": [
     "dist",

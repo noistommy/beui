@@ -132,6 +132,23 @@
       }
     }
   }
+  &.text {
+    .pagination {
+      &-num,
+      &-nav {
+        border-color: transparent;
+        background-color: transparent;
+        &:hover {
+          color: #ccc;
+        }
+        &.active {
+          font-weight: 800;
+          color: $primary;
+          pointer-events: none;
+        }
+      }
+    }
+  }
 }
 
 @each $color, $value in $colors {
@@ -145,6 +162,12 @@
     &.#{$color} {
       .pagination-num.active {
         background-color: $value;
+      }
+    }
+    &.text.#{$color} {
+      .pagination-num.active {
+        background-color: transparent;
+        color: $value;
       }
     }
   }

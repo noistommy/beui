@@ -59,6 +59,27 @@ const setCurrent = (payload) => {
       </template>
       <template #variants>
         <section>
+          <h4 class="title">Active Type</h4>
+          <div class="desc">button (default) || text</div>
+          <div class="contents-wrapper">
+            <h5>Button</h5>
+            <BePagination
+              active-type="button"
+              :limits="5"
+              v-model="pageValue"
+              :page-length="15"
+            />
+            <h5>Text</h5>
+            <BePagination
+              active-type="text"
+              :limits="5"
+              v-model="pageValue"
+              :page-length="15"
+            />
+          </div>
+          <CodeBlock :code="codes.active_type" lang="vue-html"></CodeBlock>
+        </section>
+        <section>
           <h4 class="title">Limits</h4>
           <div class="desc">limits = 5</div>
           <div class="contents-wrapper">
@@ -189,6 +210,12 @@ const setCurrent = (payload) => {
               ></div>
             </div>
             <BePagination
+              v-model="pageValue"
+              :page-length="5"
+              :color="selectColor"
+            />
+            <BePagination
+              activeType="text"
               v-model="pageValue"
               :page-length="5"
               :color="selectColor"

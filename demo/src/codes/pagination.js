@@ -3,6 +3,10 @@ export const base_component =
   `<!-- const pageValue = ref(null) -->\n` +
   `<!-- @pageLength: Number  -->\n` +
   `<BePagination  v-model="pageValue" :page-length="pageLength"></BePagination>`
+export const active_type =
+  `<!-- @activeType: Number -->\n` +
+  `<!-- default: button -->\n\n` +
+  `<BePagination :active-type="activeType"></BePagination>`
 export const limits =
   `<!-- @limits: Number -->\n` +
   `<!-- default: 5 -->\n\n` +

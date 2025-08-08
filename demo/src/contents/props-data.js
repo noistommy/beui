@@ -1004,6 +1004,13 @@ export const paginationProps = [
     required: false,
   },
   {
+    name: 'activeType',
+    type: 'button | text',
+    description: '선택 표시 스타일 지정',
+    default: 'button',
+    required: false,
+  },
+  {
     name: 'pageLength',
     type: 'Number',
     description: '전체 페이지 수 지정',
