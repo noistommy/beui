@@ -6,6 +6,8 @@ import SideList from '@/components/SideList.vue'
 import onMouseDown from './beComponents/flexible-view'
 import './beComponents/flexible-view/flexible-view.scss'
 
+import { Analytics } from '@vercel/analytics/vue'
+
 import { elementList, viewsList, layoutList } from '@/contents'
 const navList = [...elementList, ...viewsList, ...layoutList]
 
@@ -32,6 +34,7 @@ const setPrevNext = () => {
 </script>
 
 <template>
+  <Analytics />
   <header class="main-header">
     <div class="be container">
       <div

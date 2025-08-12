@@ -34,17 +34,21 @@
 }
 
 // @media (prefers-color-scheme: dark) {
-//   :root {
-//     --bgc: #{map.get($grays, 'gray-90')};
-//     --txt: #{map.get($grays, 'gray-5')};
-//     --brd: #{map.get($grays, 'gray-70')};
-//     --suf: #{map.get($grays, 'gray-40')};
-//     --hover-suf: #{map.get($grays, 'gray-50')};
-
-//     --base-color: #{map.get($grays, 'gray-80')};
-//     --base-hover-color: #{map.get($grays, 'gray-70')};
-//   }
 // }
+:root {
+  &.dark {
+    --bgc: #{map.get($grays, 'gray-90')};
+    --txt: #{map.get($grays, 'gray-5')};
+    --brd: #{map.get($grays, 'gray-70')};
+    --suf: #{map.get($grays, 'gray-40')};
+    --hover-suf: #{map.get($grays, 'gray-50')};
+
+    --base-color: #{map.get($grays, 'gray-80')};
+    --base-hover-color: #{map.get($grays, 'gray-70')};
+
+    --depth-bg: #{map.get($grays, 'gray-0')};
+  }
+}
 
 @each $color, $value in $stateColors {
   $lightValue: color.adjust(list.nth($value, 1), $lightness: 35%);

@@ -21,8 +21,9 @@ const libConfig = {
         // moduleIds: 'deterministic',
         // exports: 'named',
         assetFileNames: (assetInfo) => {
-          if (assetInfo.name == 'style.css') return 'nt-ui-css.css'
-          return assetInfo.name
+          if (assetInfo.name == 'style.css') return 'beui.css'
+          // return assetInfo.name
+          return 'beui.css'
         },
       },
     },
