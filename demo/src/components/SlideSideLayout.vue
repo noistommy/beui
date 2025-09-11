@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 const props = defineProps({
   type: {
     type: String,
@@ -29,12 +29,18 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  current: {
+    type: String,
+  },
 })
 
 const device = ref('desktop')
 
+const scrollRef = ref(null)
+
 const slideType = computed(() => {
-  return device.value === 'mobile' ? 'overlay' : props.type
+  // return device.value === 'mobile' ? 'overlay' : props.type
+  return props.type
 })
 
 onMounted(() => {
@@ -43,6 +49,14 @@ onMounted(() => {
 })
 
 onUnmounted(() => window.removeEventListener('resize', detect))
+
+watch(
+  () => props.current,
+  () => {
+    if (scrollRef.value) scrollRef.value.scrollTop = 0
+  },
+  { immediate: true },
+)
 
 const detect = () => {
   const wW = window.innerWidth
@@ -60,7 +74,7 @@ const detect = () => {
       direct,
       slideType,
       device,
-      { dimmed: slideType === 'overlay' && dimmed },
+      // { dimmed: slideType === 'overlay' && dimmed },
       { show: isShow },
     ]"
     :style="{ '--dur': duration }"
@@ -71,7 +85,12 @@ const detect = () => {
     >
       <slot name="side">side</slot>
     </div>
-    <div class="main-pane">
+    <div
+      v-if="(slideType === 'overlay' || device === 'mobile') && dimmed"
+      class="side-bg"
+      :class="{ dimmed: isShow }"
+    ></div>
+    <div class="main-pane" ref="scrollRef">
       <slot name="main"> main </slot>
     </div>
   </div>
@@ -84,6 +103,7 @@ const detect = () => {
   --min-side: 70;
   height: 100%;
   overflow: hidden;
+  position: relative;
   &.push {
     display: flex;
     .side-pane {
@@ -143,6 +163,14 @@ const detect = () => {
       flex-grow: 1;
     }
   }
+  .side-bg {
+    &.dimmed {
+      background-color: rgba(0, 0, 0, 0.4);
+      position: absolute;
+      inset: 0;
+      z-index: 999;
+    }
+  }
   .side-pane {
     position: relative;
     top: 0;
@@ -194,13 +222,22 @@ const detect = () => {
     height: 100%;
   }
   &.mobile {
+    .side-pane {
+      // margin: 0 !important;
+      max-width: 100%;
+      position: absolute;
+      width: 300px;
+      // height: 400px;
+      // top: 10px;
+      // left: 10px;
+      border-radius: 1em;
+      box-shadow: var(--depth-bs);
+    }
     &.left .side-pane {
-      width: 100dvw;
       margin-left: -100dvw;
       text-align: center;
     }
     &.right .side-pane {
-      width: 100dvw;
       margin-right: -100dvw;
       text-align: center;
     }

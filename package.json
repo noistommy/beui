@@ -1,6 +1,6 @@
 {
   "name": "noist-beui",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "private": false,
   "type": "module",
   "main": "./dist/be-ui.umd.js",
@@ -24,7 +24,7 @@
     "vue",
     "vue3",
     "ui/ux",
-    "liblary",
+    "library",
     "components"
   ],
   "style": "./dist/beui.css",

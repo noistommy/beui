@@ -49,6 +49,8 @@ const colors = [
             <div class="be-tag dot orange"></div>
             <div class="be-tag dot lightblue"></div>
             <BeTag>Tag(Comp)</BeTag>
+            <BeTag>Tag(Comp)</BeTag>
+            <BeTag>Tag(Comp)</BeTag>
           </div>
           <CodeBlock :code="codes.base" lang="vue-html"></CodeBlock>
         </section>
@@ -70,6 +72,25 @@ const colors = [
               <i class="icon xi-tag"></i>
             </div>
             <BeTag>label type</BeTag>
+            <BeTag type="kbd" is-meta>enter</BeTag>
+            <div class="be-tag kbd meta">shift</div>
+            <div class="be-tag label kbd meta">ctrl</div>
+            <div class="be-tag label kbd">z</div>
+          </div>
+          <CodeBlock :code="codes.type_label" lang="vue-html"></CodeBlock>
+        </section>
+        <section>
+          <h4 class="title">Type: kbd</h4>
+          <div class="desc"></div>
+          <div class="contents-wrapper">
+            <BeTag type="kbd">enter</BeTag>
+            <BeTag type="kbd">space</BeTag>
+            <BeTag type="kbd">a</BeTag>
+            <BeTag type="kbd">b</BeTag>
+            <BeTag type="kbd">c</BeTag>
+            <div class="be-tag kbd meta">shift</div>
+            <div class="be-tag label kbd meta">ctrl</div>
+            <div class="be-tag label kbd">z</div>
           </div>
           <CodeBlock :code="codes.type_label" lang="vue-html"></CodeBlock>
         </section>

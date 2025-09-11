@@ -75,7 +75,7 @@ defineProps({
 
 <style lang="scss" scoped>
 .side-list-wrapper {
-  height: calc(100dvh - 56px);
+  height: 100%;
   overflow-y: auto;
   padding: 10px;
   font-size: 0.85em;
@@ -86,6 +86,7 @@ defineProps({
     font-size: 0.95em;
   }
   .nav-list {
+    max-height: none;
     .item {
       border-radius: 4px;
       &:hover {

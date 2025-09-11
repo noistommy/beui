@@ -32,6 +32,10 @@ defineProps({
     type: String,
     default: 'up',
   },
+  isMeta: {
+    type: Boolean,
+    default: false,
+  },
 })
 </script>
 
@@ -43,10 +47,11 @@ defineProps({
       { light },
       type,
       { round, icon: icon, pointing },
-      pointingPos,
+      type === 'pointing' && pointingPos,
+      type === 'kbd' && isMeta ? 'meta' : '',
     ]"
   >
-    <template v-if="type === 'label'">
+    <template v-if="type === 'label' || type === 'pointing' || type === 'kbd'">
       <i v-if="icon" class="icon" :class="[icon, iconPos]"></i>
       <slot></slot>
       <i

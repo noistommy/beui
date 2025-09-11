@@ -3,7 +3,7 @@ import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import SlideSideLayout from './components/SlideSideLayout.vue'
 import SideList from '@/components/SideList.vue'
-import onMouseDown from './beComponents/flexible-view'
+// import onMouseDown from './beComponents/flexible-view'
 import './beComponents/flexible-view/flexible-view.scss'
 
 import { Analytics } from '@vercel/analytics/vue'
@@ -13,7 +13,7 @@ const navList = [...elementList, ...viewsList, ...layoutList]
 
 const route = useRoute()
 const toggleSide = ref(true)
-const scrollRef = ref(null)
+
 const mainTitle = ref(route.name)
 
 const prevInfo = ref(null)
@@ -22,7 +22,7 @@ const nextInfo = ref(null)
 watch(route, () => {
   mainTitle.value = route.name
   setPrevNext()
-  if (scrollRef.value) scrollRef.value.scrollTop = 0
+  // toggleSide.value = false
 })
 
 const setPrevNext = () => {
@@ -50,17 +50,46 @@ const setPrevNext = () => {
         <div class="title">Be-UI</div>
         <div class="description">Vue 3 전용 공용 UI 라이브러리</div>
       </div>
+      <div class="links">
+        <div
+          class="be-button icon round compact large border"
+          v-be-tooltip="`Github`"
+        >
+          <a
+            class="link"
+            href="https://github.com/noistommy/beui.git"
+            target="_blank"
+          ></a>
+          <i class="xi-github"></i>
+        </div>
+        <div
+          class="be-button icon round compact large border"
+          v-be-tooltip="`NPM`"
+        >
+          <a
+            class="link"
+            href="https://www.npmjs.com/package/noist-beui"
+            target="_blank"
+          ></a>
+          <i class="xi-package"></i>
+        </div>
+      </div>
     </div>
   </header>
   <main>
-    <SlideSideLayout :is-show="toggleSide" type="push" dimmed>
+    <SlideSideLayout
+      :is-show="toggleSide"
+      type="push"
+      dimmed
+      :current="mainTitle"
+    >
       <template #side>
         <div class="nav-contents">
           <SideList :current="mainTitle" @select="setPrevNext" />
         </div>
       </template>
       <template #main>
-        <div class="main" ref="scrollRef">
+        <div class="main">
           <div class="main-title">
             <h1 class="title">{{ mainTitle }}</h1>
             <div class="description"></div>
@@ -110,6 +139,7 @@ $headerHeight: 56px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    container-name: head-container;
   }
 }
 
@@ -117,8 +147,7 @@ $headerHeight: 56px;
   flex-grow: 1;
   padding: 0 16px;
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column;
   .title {
     font-weight: 700;
     font-size: 24px;
@@ -127,11 +156,15 @@ $headerHeight: 56px;
   .description {
     font-size: 14px;
     color: #666;
+    margin-top: -10px;
   }
 }
 
 main {
   height: calc(100dvh - $headerHeight);
+  .nav-contents {
+    height: 100%;
+  }
 }
 .main-pane {
   overflow-y: auto;
@@ -156,9 +189,6 @@ main {
       color: #c4c4c4;
       padding: 10px 10px 20px;
     }
-  }
-  .main-contents {
-    // height: calc(100% - $headerHeight);
   }
   .main-footer {
     padding: 15px;
