@@ -10,6 +10,14 @@ export const type_label =
   `<div class="be-tag label">Tag</div>\n` +
   `<!-- component -->\n` +
   `<BeTag type="label">Tag(Comp)</BeTag>`
+export const type_kbd = `
+  <!-- html -->
+  <div class="be-tag kbd meta">shift</div>
+  <div class="be-tag kbd">z</div>
+  <!-- component -->
+  <BeTag type="kbd" is-meta>shift</BeTag>
+  <BeTag type="kbd">z</BeTag>
+  `
 export const type_line =
   `<!-- html -->\n` +
   `<div class="be-tag line"></div>\n` +

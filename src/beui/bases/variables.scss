@@ -9,8 +9,8 @@ $headerTopMargin: 2em - $lineHeight * 0.5;
 $headerMargin: $headerTopMargin 0 1rem;
 
 body {
-  // background-color: var(--bgc);
-  // color: var(--txt);
+  background-color: var(--bgc);
+  color: var(--txt);
   font-family: $fontName;
   font-size: $fontSize;
 }
