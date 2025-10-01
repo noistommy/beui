@@ -147,6 +147,11 @@ const router = createRouter({
       component: () => import('../views/TreeListView.vue'),
     },
     {
+      path: '/event-tracker',
+      name: 'event-tracker',
+      component: () => import('../views/EventTracker.vue'),
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: '404-not-found',
       component: NotFound,

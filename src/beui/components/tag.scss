@@ -111,6 +111,7 @@ $tagLineHeight: 8px;
     margin-left: 4px;
   }
   &.kbd {
+    display: inline-block;
     text-transform: capitalize;
     transform: translateY(-3px);
     border-radius: 6px;
@@ -126,7 +127,6 @@ $tagLineHeight: 8px;
       }
     }
     &.meta {
-      margin-right: 10px;
       &:after {
         content: '+';
         color: var(--txt);
@@ -135,6 +135,47 @@ $tagLineHeight: 8px;
         padding: 0 6px;
         left: 100%;
         display: inline-block;
+      }
+      & + .kbd {
+        margin-left: 20px;
+      }
+    }
+    &.space {
+      text-align: center;
+      width: 100px;
+    }
+    &.esc {
+      text-transform: uppercase;
+    }
+    &.enter {
+      &:before {
+        content: '↵';
+        margin-right: 5px;
+      }
+    }
+    &.cmd {
+      &:before {
+        content: '⌘';
+        margin-right: 5px;
+      }
+    }
+    &.opt,
+    &.alt {
+      &:before {
+        content: '⌥';
+        margin-right: 5px;
+      }
+    }
+    &.ctrl {
+      &:before {
+        content: '⌃';
+        margin-right: 5px;
+      }
+    }
+    &.shift {
+      &:before {
+        content: '⇧';
+        margin-right: 5px;
       }
     }
   }

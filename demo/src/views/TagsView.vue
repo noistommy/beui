@@ -79,14 +79,28 @@ const colors = [
           <h4 class="title">Type: kbd</h4>
           <div class="desc"></div>
           <div class="contents-wrapper">
-            <BeTag type="kbd">enter</BeTag>
-            <BeTag type="kbd">space</BeTag>
-            <BeTag type="kbd">a</BeTag>
-            <BeTag type="kbd">b</BeTag>
-            <BeTag type="kbd">c</BeTag>
-            <div class="be-tag kbd meta">shift</div>
-            <div class="be-tag label kbd meta">ctrl</div>
-            <div class="be-tag label kbd">z</div>
+            <div class="kbd-set">
+              <BeTag type="kbd" key-Type="enter">enter</BeTag>
+              <BeTag type="kbd">space</BeTag>
+              <BeTag type="kbd" is-meta key-type="cmd">command</BeTag>
+              <BeTag type="kbd">a</BeTag>
+              <BeTag type="kbd">b</BeTag>
+              <BeTag type="kbd">c</BeTag>
+            </div>
+            <div class="kbd-set">
+              <div class="be-tag kbd space">space</div>
+              <div class="be-tag kbd esc">esc</div>
+              <div class="be-tag kbd enter">enter</div>
+              <div class="be-tag kbd meta shift">shift</div>
+              <div class="be-tag kbd meta ctrl">ctrl</div>
+              <div class="be-tag kbd meta opt">option</div>
+              <div class="be-tag kbd meta cmd">command</div>
+              <div class="be-tag kbd">z</div>
+            </div>
+            <p>
+              Press <BeTag type="kbd" key-type="enter">enter</BeTag> to open
+              Tool
+            </p>
           </div>
           <CodeBlock :code="codes.type_kbd" lang="vue-html"></CodeBlock>
         </section>

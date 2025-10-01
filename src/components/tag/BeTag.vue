@@ -36,6 +36,10 @@ defineProps({
     type: Boolean,
     default: false,
   },
+  keyType: {
+    type: String,
+    default: null,
+  },
 })
 </script>
 
@@ -49,6 +53,7 @@ defineProps({
       { round, icon: icon, pointing },
       type === 'pointing' && pointingPos,
       type === 'kbd' && isMeta ? 'meta' : '',
+      type === 'kbd' && keyType ? keyType : '',
     ]"
   >
     <template v-if="type === 'label' || type === 'pointing' || type === 'kbd'">
