@@ -37,7 +37,7 @@
 // }
 :root {
   &.dark {
-    --bgc: #{map.get($grays, 'gray-90')};
+    --bgc: #{map.get($grays, 'gray-95')};
     --txt: #{map.get($grays, 'gray-5')};
     --brd: #{map.get($grays, 'gray-70')};
     --suf: #{map.get($grays, 'gray-40')};
@@ -46,7 +46,7 @@
     --base-color: #{map.get($grays, 'gray-80')};
     --base-hover-color: #{map.get($grays, 'gray-70')};
 
-    --depth-bg: #{map.get($grays, 'gray-0')};
+    --depth-bg: #{color.adjust(map.get($grays, 'gray-85'), $alpha: -0.4)};
   }
 }
 
