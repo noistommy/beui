@@ -103,7 +103,7 @@ const selectedItem = ref(optionList[0])
             <div class="be-tag label">component</div>
           </div>
           <div class="contents-wrapper">
-            <BeList :options="optionSubList" :selection="true"></BeList>
+            <BeList :options="optionSubList"></BeList>
           </div>
           <CodeBlock :code="codes.sub_title" lang="vue-html"></CodeBlock>
         </section>
@@ -149,9 +149,6 @@ const selectedItem = ref(optionList[0])
     border: 1px solid #eee;
     & > .item {
       padding: 10px;
-      &:hover {
-        background-color: #ebebeb;
-      }
     }
   }
 }
