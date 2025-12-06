@@ -23,6 +23,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  files: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 const showNode = ref(false)
@@ -41,10 +45,22 @@ const toggleNode = (e) => {
     <div class="node custom-node" @click="toggleNode">
       <div class="node-title">
         <i
-          v-if="useMark"
+          v-if="!files && useMark"
           class="icon expend-icon"
           :class="{ 'xi-caret-down-min': node.children?.length > 0 }"
         ></i>
+        <i
+          v-if="files"
+          class="icon"
+          :class="
+            node.children?.length > 0
+              ? showNode
+                ? 'xi-folder-open'
+                : 'xi-folder'
+              : 'xi-file-o'
+          "
+        />
+
         <div class="node-label">
           <template v-if="useCheck">
             <be-check-box v-model="checked" @update:modelValue="updateCheck" />
@@ -65,6 +81,7 @@ const toggleNode = (e) => {
         :use-check="useCheck"
         :use-mark="useMark"
         :check="check"
+        :files
       />
     </div>
   </div>

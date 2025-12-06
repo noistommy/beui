@@ -10,59 +10,10 @@ import { treeListProps, treeNodeProps } from '@/contents/props-data'
 
 import { ref } from 'vue'
 
-const treeList = ref([
-  {
-    label: 'tree item level 1',
-    children: [
-      {
-        label: 'tree item level 1-1',
-        children: [
-          {
-            label: 'tree item level 1-1-1',
-          },
-        ],
-      },
-      {
-        label: 'tree item level 1-2',
-      },
-    ],
-  },
-  {
-    label: 'tree item level 2',
-    children: [
-      {
-        label: 'tree item level 2-1',
-        children: [
-          {
-            label: 'tree item level 2-1-1',
-          },
-        ],
-      },
-      {
-        label: 'tree item level 2-2',
-        children: [
-          {
-            label: 'tree item level 2-2-1',
-          },
-          {
-            label: 'tree item level 2-2-2',
-            children: [
-              {
-                label: 'tree item level 2-2-2-1',
-              },
-              {
-                label: 'tree item level 2-2-2-2',
-              },
-              {
-                label: 'tree item level 2-2-2-3',
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-])
+import { treeData, files } from '@/datas'
+
+const treeList = ref(treeData)
+const fileList = ref(files)
 </script>
 <template>
   <div class="be container page-wrapper">
@@ -104,6 +55,15 @@ const treeList = ref([
             <BeTree :tree-data="treeList" />
             <div class="title">mark 사용 안함</div>
             <BeTree :tree-data="treeList" :use-mark="false" />
+          </div>
+          <CodeBlock :code="codes.use_mark" lang="vue-html"></CodeBlock>
+        </section>
+        <section>
+          <h4>Files</h4>
+          <div class="desc">기본값 files: false</div>
+          <div class="contents-wrapper">
+            <div class="title">mark 사용</div>
+            <BeTree :tree-data="fileList" files />
           </div>
           <CodeBlock :code="codes.use_mark" lang="vue-html"></CodeBlock>
         </section>

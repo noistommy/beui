@@ -141,11 +141,18 @@ const lorem_text =
           </div>
           <div class="contents-wrapper">
             <div class="be-cards">
-              <BeCard title="Card1">
+              <BeCard title="Card1" attached>
                 {{ lorem_text }}
+                <template #footer>
+                  <div class="ft_content">
+                    <button class="be-button">Detail</button>
+                  </div>
+                </template>
               </BeCard>
-              <BeCard title="Card2">
-                {{ lorem_text }}
+              <BeCard title="Card2" image>
+                <template #image>
+                  <img src="../assets/img/profile_img.png" alt="profile" />
+                </template>
               </BeCard>
             </div>
           </div>

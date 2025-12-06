@@ -11,6 +11,9 @@ $cardVerticalPadding: 14px;
   width: 290px;
   background-color: $cardBackgroundColor;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   &.border {
     border: 1px solid var(--brd);
     > .extra {
@@ -73,6 +76,9 @@ $cardVerticalPadding: 14px;
       border-bottom-left-radius: inherit;
       border-bottom-right-radius: inherit;
     }
+  }
+  > .contents {
+    flex-grow: 1;
   }
 }
 

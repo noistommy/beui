@@ -42,19 +42,16 @@ const setPrevNext = () => {
         :class="{ show: toggleSide }"
         @click="toggleSide = !toggleSide"
       >
-        <div class="be-button icon">
+        <div class="be-button icon round">
           <i class="xi-angle-left" :class="{ 'xi-rotate-180': toggleSide }"></i>
         </div>
       </div>
       <div class="logo">
-        <div class="title">Be-UI</div>
-        <div class="description">Vue 3 전용 공용 UI 라이브러리</div>
+        <div class="title">BEUI <span class="sub">VUE</span></div>
+        <!-- <div class="description">Vue 3 전용 공용 UI 라이브러리</div> -->
       </div>
       <div class="links">
-        <div
-          class="be-button icon round compact large border"
-          v-be-tooltip="`Github`"
-        >
+        <div class="be-button icon round compact large" v-be-tooltip="`Github`">
           <a
             class="link"
             href="https://github.com/noistommy/beui.git"
@@ -62,10 +59,7 @@ const setPrevNext = () => {
           ></a>
           <i class="xi-github"></i>
         </div>
-        <div
-          class="be-button icon round compact large border"
-          v-be-tooltip="`NPM`"
-        >
+        <div class="be-button icon round compact large" v-be-tooltip="`NPM`">
           <a
             class="link"
             href="https://www.npmjs.com/package/noist-beui"
@@ -130,7 +124,17 @@ const setPrevNext = () => {
 </template>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
 $headerHeight: 56px;
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Ubuntu';
+}
 .main-header {
   height: $headerHeight;
   .container {
@@ -149,9 +153,13 @@ $headerHeight: 56px;
   display: flex;
   flex-direction: column;
   .title {
+    font-family: 'Ubuntu';
     font-weight: 700;
     font-size: 24px;
     color: #000;
+    .sub {
+      color: #a1a1a1;
+    }
   }
   .description {
     font-size: 14px;

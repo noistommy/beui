@@ -228,6 +228,7 @@ const inputValue = ref('init')
           </div>
           <div class="contents-wrapper">
             <BeInput :clear="true" />
+            <BeInput :clear="true" icon-right="eye" />
           </div>
           <CodeBlock :code="codes.clearIcon" lang="vue-html"></CodeBlock>
         </section>

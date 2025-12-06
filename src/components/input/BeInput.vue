@@ -100,12 +100,8 @@ const isFocus = ref(false)
 
 const input = ref(null)
 const iconPosition = computed(() => {
-  if (props.iconLeft && (props.iconRight || props.clear)) return 'both'
-  return props.iconLeft
-    ? 'left'
-    : props.iconRight || props.clear
-      ? 'right'
-      : null
+  if (props.iconLeft && props.iconRight) return 'both'
+  return props.iconLeft ? 'left' : props.iconRight ? 'right' : null
 })
 
 const checkFocus = () => {
@@ -171,7 +167,7 @@ const onBlur = () => {
         :class="{ disabled: inputValue === '' }"
         @click="inputValue = ''"
       />
-      <i v-else-if="iconRight && !clear" :class="`icon xi-${iconRight}`" />
+      <i v-if="iconRight" :class="`icon xi-${iconRight}`" />
       <span v-else-if="badge" class="be-badge" :class="badgeOption">{{
         badge
       }}</span>

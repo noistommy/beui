@@ -66,7 +66,7 @@ const setSelectItem = (payload) => {
         </section>
         <section>
           <div class="desc">
-            <div class="be-tag label blue">Compoennt</div>
+            <div class="be-tag label blue">Component</div>
           </div>
           <div class="contents-wrapper">
             <BeTable :columns :values />
@@ -97,7 +97,7 @@ const setSelectItem = (payload) => {
         <section>
           <h4>Border</h4>
           <div class="desc">
-            <div class="be-tag label blue">Compoennt</div>
+            <div class="be-tag label blue">Component</div>
           </div>
           <div class="contents-wrapper">
             <BeTable :columns :values :border="true" />
@@ -107,7 +107,7 @@ const setSelectItem = (payload) => {
         <section>
           <h4>Striped</h4>
           <div class="desc">
-            <div class="be-tag label blue">Compoennt</div>
+            <div class="be-tag label blue">Component</div>
             striped: odd or even
           </div>
           <div class="contents-wrapper">
@@ -119,7 +119,7 @@ const setSelectItem = (payload) => {
         <section>
           <h4>Use Footer</h4>
           <div class="desc">
-            <div class="be-tag label blue">Compoennt</div>
+            <div class="be-tag label blue">Component</div>
           </div>
           <div class="contents-wrapper">
             <BeTable :columns :values :use-foot="true" />
@@ -128,7 +128,7 @@ const setSelectItem = (payload) => {
         <section>
           <h4>Grid column (divide)</h4>
           <div class="desc">
-            <div class="be-tag label blue">Compoennt</div>
+            <div class="be-tag label blue">Component</div>
           </div>
           <div class="contents-wrapper">
             <BeTable
@@ -144,7 +144,7 @@ const setSelectItem = (payload) => {
         <section>
           <h4>Grid column (widths)</h4>
           <div class="desc">
-            <div class="be-tag label blue">Compoennt</div>
+            <div class="be-tag label blue">Component</div>
           </div>
           <div class="contents-wrapper">
             <BeTable :columns :values :border="true" grid-type="widths" />
@@ -154,7 +154,7 @@ const setSelectItem = (payload) => {
         <section>
           <h4>Selection</h4>
           <div class="desc">
-            <div class="be-tag label blue">Compoennt</div>
+            <div class="be-tag label blue">Component</div>
           </div>
           <div class="contents-wrapper">
             {{ selectItem }}

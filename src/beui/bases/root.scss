@@ -46,7 +46,12 @@
     --base-color: #{map.get($grays, 'gray-80')};
     --base-hover-color: #{map.get($grays, 'gray-70')};
 
-    --depth-bg: #{color.adjust(map.get($grays, 'gray-85'), $alpha: -0.4)};
+    --depth-bg: color-mix(
+      in oklab,
+      #{map.get($grays, 'gray-95')},
+      rgba(0, 0, 0, 0.04)
+    );
+    // --depth-bg: #{color.adjust(map.get($grays, 'gray-85'), $alpha: -0.4)};
   }
 }
 
