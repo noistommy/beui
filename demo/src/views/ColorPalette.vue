@@ -24,7 +24,9 @@ const colors = [
         <div v-for="color in colors" :key="color" class="color-palette">
           <!-- <div class="title" :class="`bg-${color}-300`">{{ color }}</div> -->
           <div class="palette">
-            <div class="title color-item" :class="`bg-${color}-300`">{{ color }}</div>
+            <div class="title color-item" :class="`be-${color}`">
+              {{ color }}
+            </div>
             <div
               v-for="shade in shades"
               :key="shade"

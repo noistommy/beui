@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive, inject, onMounted } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
 import {
   argbFromHex,
   Hct,
@@ -15,6 +15,8 @@ const target_tones = [27, 36, 42, 48, 56, 64, 70, 78, 88, 94]
 
 const hexRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/
 const colors = [
+  'primary',
+  'secondary',
   'red',
   'orange',
   'yellow',
@@ -30,6 +32,8 @@ const colors = [
 ]
 
 const valiableColor = {
+  primary: '#5178af',
+  secondary: '#35363a',
   red: '#d75757',
   orange: '#ee9033',
   yellow: '#f8b825',
@@ -44,12 +48,8 @@ const valiableColor = {
   gray: '#8b8b8b',
 }
 
-const toast = inject('$toast')
-const toastOption = {
-  useTitle: false,
-  snackbar: true,
-  position: 'top-center',
-}
+const msgError = ref('')
+
 const colorName = ref('')
 const colorValue = ref('')
 
@@ -58,7 +58,6 @@ const brandPalette = reactive([])
 const valiablePalette = reactive([])
 onMounted(() => {
   colors.forEach((color) => {
-    // console.log(color)
     valiablePalette.push({
       name: color,
       palette: genaratorPalette(valiableColor[color]),
@@ -67,21 +66,23 @@ onMounted(() => {
 })
 
 const genColor = () => {
+  msgError.value = ''
   colorName.value = colorName.value.trim()
   colorValue.value = colorValue.value.trim()
 
   if (!colorName.value) {
-    toast.show('error', { contents: '색상 이름을 입력하세요' }, toastOption)
+    msgError.value = '색상 이름을 입력하세요'
     return
   }
   if (!colorValue.value) {
-    toast.show('error', { contents: '색상 값을 입력하세요' }, toastOption)
+    msgError.value = '색상 값을 입력하세요'
     return
   }
   if (!hexRegex.test(colorValue.value)) {
-    toast.show('error', { contents: '헥사 값을 입력하세요' }, toastOption)
+    msgError.value = '헥사 값을 입력하세요'
     return
   }
+
   // newPalette.value = generationPalette(colorValue.value)
   // newPalette.value = generateMaterialPalette2(colorValue.value)
   // const paletters = generatePaletteAlgorithm1({
@@ -89,9 +90,9 @@ const genColor = () => {
   //   name: colorName.value,
   // })
   const paletters = []
-  console.log(hexToLch(colorValue.value))
-  console.log(argbFromHex(colorValue.value))
-  console.log(Hct.fromInt(argbFromHex(colorValue.value)))
+  // console.log(hexToLch(colorValue.value))
+  // console.log(argbFromHex(colorValue.value))
+  // console.log(Hct.fromInt(argbFromHex(colorValue.value)))
   // console.log(TonalPalette.fromInt(argbFromHex(colorValue.value)).tone(20))
   // const primary = TonalPalette.fromInt(argbFromHex(colorValue.value))
   const kColor = Hct.fromInt(argbFromHex(colorValue.value))
@@ -121,12 +122,11 @@ const genaratorPalette = (hex) => {
   const scheme = TonalPalette.fromInt(argbColor) // type 1
 
   const hct = Hct.fromInt(argbColor)
-  console.log(`${hct.hue}|${hct.chroma}|${hct.tone}`)
+  console.dir(scheme.tone(27))
   // const scheme = TonalPalette.fromHueAndChroma(hct.hue, hct.chroma) // type 2
   target_tones.forEach((tone) => {
     const argb = scheme.tone(tone)
     // const hct = Hct.fromInt(argb)
-    // console.log(`${tone}: ${hexFromArgb(argb)} = ${hct.hue}|${hct.chroma}|${hct.tone}`)
     palette.push({
       tone,
       value: hexFromArgb(argb),
@@ -145,28 +145,6 @@ const exportPalette = () => {
 
 <template>
   <div class="page-wrapper be-container">
-    <h1
-      class="be-deepblue"
-      :style="{
-        display: 'inline-block',
-        borderRadius: '4px',
-        lineHeight: '1',
-        fontWeight: '600',
-        padding: '0 5px',
-      }"
-    >
-      Be
-    </h1>
-    <h1
-      class="be-gray-text"
-      :style="{
-        display: 'inline-block',
-        lineHeight: '60px',
-        fontWeight: '600',
-      }"
-    >
-      long
-    </h1>
     <section>
       <h4>New Color</h4>
       <div class="contents-wrapper">
@@ -178,6 +156,7 @@ const exportPalette = () => {
         </div>
         <div class="be-button primary" @click="genColor">생성</div>
       </div>
+      <div class="error-msg error-text">{{ msgError }}</div>
     </section>
     <section>
       <ColorPicker />

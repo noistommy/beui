@@ -6,6 +6,10 @@ const props = defineProps({
     type: Number,
     default: null,
   },
+  col: {
+    type: Number,
+    default: null,
+  },
   row: {
     type: Number,
     default: null,
@@ -46,9 +50,18 @@ const props = defineProps({
     type: Number,
     default: null,
   },
+  justify: {
+    type: String, // start | center | end | strech
+    default: null,
+  },
+  align: {
+    type: String, // start | center | end | strech
+    default: null,
+  },
 })
 
 const setSpan = computed(() => {
+  if (!props.span) return []
   const span = props.span && `span-${props.span}`
   const span_md = props.md && `span-md-${props.md}`
   const span_sm = props.sm && `span-sm-${props.sm}`
@@ -67,7 +80,8 @@ const setSpanOrder = computed(() => {
   return props.order ? `order-${props.order}` : ''
 })
 const setColumn = computed(() => {
-  const col = props.span && `col-${props.span}`
+  if (!props.col) return []
+  const col = props.col && `col-${props.col}`
   const col_md = props.md && `col-md-${props.md}`
   const col_sm = props.sm && `col-sm-${props.sm}`
   const col_xs = props.xs && `col-xs-${props.xs}`

@@ -77,6 +77,11 @@ const router = createRouter({
       component: () => import('../views/GridView.vue'),
     },
     {
+      path: '/dosirak-grid',
+      name: 'dosirak-grid',
+      component: () => import('../views/Grid2View.vue'),
+    },
+    {
       path: '/form',
       name: 'form',
       component: () => import('../views/FormView.vue'),

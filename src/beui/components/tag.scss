@@ -280,6 +280,7 @@ $tagLineHeight: 8px;
       //   background-color: $hoverColor;
       // }
     }
+    &.light.#{$color}.pointing,
     &.light.#{$color}.label {
       background-color: color.adjust($value, $lightness: 32%);
       color: $value;

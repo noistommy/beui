@@ -46,7 +46,7 @@ $panelPadding: $panelVerticalPadding $panelHorizontalPadding;
       padding: $panelPadding;
       .content {
         &-head {
-          background-color: #eee;
+          background-color: var(--suf);
           padding: 10px;
           margin-bottom: $panelVerticalPadding;
         }

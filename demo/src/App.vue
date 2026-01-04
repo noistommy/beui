@@ -36,7 +36,7 @@ const setPrevNext = () => {
 <template>
   <Analytics />
   <header class="main-header">
-    <div class="be container">
+    <div class="be container center">
       <div
         class="toggle-btn"
         :class="{ show: toggleSide }"

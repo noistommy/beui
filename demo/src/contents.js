@@ -17,6 +17,7 @@ export const elementList = [
 export const layoutList = [
   { name: 'tabs', path: '/tabs' },
   { name: 'grid', path: '/grid' },
+  { name: 'dosirak-grid', path: '/dosirak-grid' },
   { name: 'form', path: '/form' },
 ]
 

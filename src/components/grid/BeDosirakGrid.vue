@@ -1,11 +1,11 @@
 <script setup>
-import { computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 
 const props = defineProps({
-  setRows: {
-    type: Boolean,
-    default: false,
-  },
+  // setRows: {
+  //   type: Boolean,
+  //   default: false,
+  // },
   inline: {
     type: Boolean,
     default: false,
@@ -21,6 +21,10 @@ const props = defineProps({
   flow: {
     type: String, // column || row
     default: '',
+  },
+  round: {
+    type: String, // s | m | l | xl
+    default: null,
   },
   divide: {
     type: Number,
@@ -38,35 +42,46 @@ const props = defineProps({
     type: Number,
     default: null,
   },
-  justify: {
+  justifyContent: {
     type: String,
     default: null,
   },
-  align: {
+  alignContent: {
+    type: String,
+    default: null,
+  },
+  justifyItems: {
+    type: String,
+    default: null,
+  },
+  alignItems: {
     type: String,
     default: null,
   },
   dosirak: {
     type: Boolean,
-    default: false,
+    default: true,
   },
   rowHeight: {
     type: String,
-    default: '50px',
+    default: null,
   },
   gridGap: {
-    type: String,
-    default: '20px',
+    type: Number,
+    default: 10,
   },
   columnNumber: {
     type: Number,
-    default: null,
+    default: 12,
   },
   rowNumber: {
     type: Number,
-    default: null,
+    default: 12,
   },
 })
+
+const gridRef = ref(null)
+const gridWidth = ref(null)
 
 const setDivide = computed(() => {
   const divide = props.divide && `divide-column-${props.divide}`
@@ -81,10 +96,16 @@ const setAlign = computed(() => {
   return [justify, align]
 })
 
+const getColumnWidth = computed(() => {
+  const columns = props.divide ? props.divide : props.columnNumber
+  return (gridWidth.value - props.gridGap * (columns - 1)) / columns
+})
+
 const setAutoRows = computed(() => {
+  // const divide = props.divide || 1
   return {
     '--grid-gap': props.gridGap,
-    '--grid-auto-row': props.rowHeight,
+    '--grid-auto-row': getColumnWidth.value,
   }
 })
 const setGridColNumber = computed(() => {
@@ -99,6 +120,26 @@ const setGridRowNumber = computed(() => {
     '--grid-row-num': props.rowNumber,
   }
 })
+
+const setAutoFlow = computed(() => {
+  if (props.dense) return ''
+  return props.flow && `flow-${props.flow}`
+})
+const setRows = computed(() => {
+  if (!props.rowHeight) return
+  return {
+    '--rows-height': props.rowHeight,
+  }
+})
+
+let grid_obs = new ResizeObserver((entries) => {
+  for (let entry of entries) {
+    gridWidth.value = entry.target.clientWidth || 0
+  }
+})
+onMounted(() => {
+  grid_obs.observe(gridRef.value)
+})
 </script>
 
 <template>
@@ -107,14 +148,16 @@ const setGridRowNumber = computed(() => {
     :class="[
       ...setDivide,
       ...setAlign,
-      { setRows },
       { inline },
       { autoFit },
       { dense },
-      flow && `flow-${flow}`,
+      setAutoFlow,
+      round && `round-${round}`,
       { dosirak },
+      setRows && 'set-rows',
     ]"
-    :style="[setAutoRows, setGridColNumber, setGridRowNumber]"
+    :style="[setAutoRows, setGridColNumber, setGridRowNumber, setRows]"
+    ref="gridRef"
   >
     <slot></slot>
   </div>

@@ -154,14 +154,14 @@
     }
   }
   &.extend {
-    > .be-item {
+    > .item {
       cursor: pointer;
       padding: 0;
       margin: 0;
     }
   }
   &.underLine {
-    .be-item {
+    .item {
       border-bottom: 1px solid #ebebeb;
     }
     &:first-child {
@@ -169,7 +169,7 @@
     }
   }
   &.compact {
-    .hw-item {
+    .item {
       padding: 4px 10px;
     }
   }

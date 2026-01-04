@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from 'vue'
+// import { onMounted } from 'vue'
 import { elementList, viewsList, layoutList } from '@/contents'
 defineProps({
   current: {

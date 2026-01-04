@@ -1,4 +1,15 @@
-export const shades = ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900']
+export const shades = [
+  '50',
+  '100',
+  '200',
+  '300',
+  '400',
+  '500',
+  '600',
+  '700',
+  '800',
+  '900',
+]
 export const accents = ['A100', 'A200', 'A400', 'A700']
 
 const findBaseIndex = (light) => {
@@ -53,7 +64,9 @@ export const generationPalette = (color) => {
 
 export const convertHexCode = (hex) => {
   hex = hex.replace(/^#/, '')
-  return hex.length === 3 ? hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2] : hex
+  return hex.length === 3
+    ? hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2]
+    : hex
 }
 export const hexToHSL = (hex) => {
   hex = convertHexCode(hex)
@@ -451,11 +464,20 @@ export const generateMaterialPalette = (color) => {
     let s = baseHSL.s * satMultiplier
 
     // 3. 밝기 조정 계산
-    const lightnessAdjustment = getLightnessAdjustment(baseHSL.h, baseHSL.l, shade)
+    const lightnessAdjustment = getLightnessAdjustment(
+      baseHSL.h,
+      baseHSL.l,
+      shade,
+    )
     let l = baseHSL.l + lightnessAdjustment
 
     // 4. 특별 케이스 처리
-    const specialAdjustments = applySpecialCaseRules(baseHSL.h, baseHSL.s, baseHSL.l, shade)
+    const specialAdjustments = applySpecialCaseRules(
+      baseHSL.h,
+      baseHSL.s,
+      baseHSL.l,
+      shade,
+    )
     h += specialAdjustments.h
     s += specialAdjustments.s
     l += specialAdjustments.l
@@ -520,11 +542,19 @@ export const deriveBaseColorFrom = (selectedColor, estimatedLevel) => {
   let baseHSL = { ...selectedHSL }
 
   // 1. 밝기 역산
-  const lightnessAdjustment = getLightnessAdjustment(selectedHSL.h, selectedHSL.l, estimatedLevel)
+  const lightnessAdjustment = getLightnessAdjustment(
+    selectedHSL.h,
+    selectedHSL.l,
+    estimatedLevel,
+  )
   baseHSL.l = selectedHSL.l - lightnessAdjustment
 
   // 2. 채도 역산
-  const satMultiplier = getSaturationMultiplier(selectedHSL.h, selectedHSL.s, estimatedLevel)
+  const satMultiplier = getSaturationMultiplier(
+    selectedHSL.h,
+    selectedHSL.s,
+    estimatedLevel,
+  )
   baseHSL.s = selectedHSL.s / satMultiplier
 
   // 3. 색상 역산
@@ -578,11 +608,18 @@ function generatePaletteWithAnchor(selectedColor) {
 
       const adjustedHSL = {
         h: (hsl.h + corrections.h * weightFactor + 360) % 360,
-        s: Math.max(0, Math.min(100, hsl.s * Math.pow(corrections.s, weightFactor))),
+        s: Math.max(
+          0,
+          Math.min(100, hsl.s * Math.pow(corrections.s, weightFactor)),
+        ),
         l: Math.max(0, Math.min(100, hsl.l + corrections.l * weightFactor)),
       }
 
-      finalPalette[level] = hslToHex(adjustedHSL.h, adjustedHSL.s, adjustedHSL.l)
+      finalPalette[level] = hslToHex(
+        adjustedHSL.h,
+        adjustedHSL.s,
+        adjustedHSL.l,
+      )
     }
   }
 
@@ -592,7 +629,10 @@ function generatePaletteWithAnchor(selectedColor) {
   }
 }
 
-function generatePaletteWithUserDefinedLevel(selectedColor, userDefinedLevel = null) {
+function generatePaletteWithUserDefinedLevel(
+  selectedColor,
+  userDefinedLevel = null,
+) {
   // 사용자가 레벨을 지정한 경우
   if (
     userDefinedLevel &&
@@ -658,7 +698,10 @@ function adjustPaletteWithFeedback(selectedColor, userFeedback) {
   // }
 
   const analysis = analyzeSelectedColor(selectedColor)
-  let virtualBaseColor = deriveBaseColorFrom(selectedColor, analysis.estimatedLevel)
+  let virtualBaseColor = deriveBaseColorFrom(
+    selectedColor,
+    analysis.estimatedLevel,
+  )
   let baseHSL = hexToHSL(virtualBaseColor)
 
   // 피드백에 따른 조정
@@ -692,9 +735,18 @@ function rgbToLch(r, g, blue) {
   let gLinear = g / 255
   let bLinear = blue / 255
 
-  rLinear = rLinear > 0.04045 ? Math.pow((rLinear + 0.055) / 1.055, 2.4) : rLinear / 12.92
-  gLinear = gLinear > 0.04045 ? Math.pow((gLinear + 0.055) / 1.055, 2.4) : gLinear / 12.92
-  bLinear = bLinear > 0.04045 ? Math.pow((bLinear + 0.055) / 1.055, 2.4) : bLinear / 12.92
+  rLinear =
+    rLinear > 0.04045
+      ? Math.pow((rLinear + 0.055) / 1.055, 2.4)
+      : rLinear / 12.92
+  gLinear =
+    gLinear > 0.04045
+      ? Math.pow((gLinear + 0.055) / 1.055, 2.4)
+      : gLinear / 12.92
+  bLinear =
+    bLinear > 0.04045
+      ? Math.pow((bLinear + 0.055) / 1.055, 2.4)
+      : bLinear / 12.92
 
   // 2. sRGB -> XYZ
   const X = rLinear * 0.4124 + gLinear * 0.3576 + bLinear * 0.1805
@@ -747,9 +799,18 @@ function lchToRgb(L, C, h) {
   let bLinear = X * 0.0557 + Y * -0.204 + Z * 1.057
 
   // 4. sRGB -> RGB
-  let r = rLinear > 0.0031308 ? 1.055 * Math.pow(rLinear, 1 / 2.4) - 0.055 : 12.92 * rLinear
-  let g = gLinear > 0.0031308 ? 1.055 * Math.pow(gLinear, 1 / 2.4) - 0.055 : 12.92 * gLinear
-  let b = bLinear > 0.0031308 ? 1.055 * Math.pow(bLinear, 1 / 2.4) - 0.055 : 12.92 * bLinear
+  let r =
+    rLinear > 0.0031308
+      ? 1.055 * Math.pow(rLinear, 1 / 2.4) - 0.055
+      : 12.92 * rLinear
+  let g =
+    gLinear > 0.0031308
+      ? 1.055 * Math.pow(gLinear, 1 / 2.4) - 0.055
+      : 12.92 * gLinear
+  let b =
+    bLinear > 0.0031308
+      ? 1.055 * Math.pow(bLinear, 1 / 2.4) - 0.055
+      : 12.92 * bLinear
 
   // 제한
   r = Math.max(0, Math.min(1, r)) * 255
@@ -936,7 +997,18 @@ export const generateMaterialPalette2 = (baseColorHex) => {
   const palette = {}
 
   // 각 색상 단계별로 생성
-  for (const shade of ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900']) {
+  for (const shade of [
+    '50',
+    '100',
+    '200',
+    '300',
+    '400',
+    '500',
+    '600',
+    '700',
+    '800',
+    '900',
+  ]) {
     // 계산된 LCh 값
     let L = lightnessPattern[shade]
     let C = chromaPattern[shade]
@@ -1275,7 +1347,9 @@ export const importColorPalette = (event) => {
 
 export const processJson = (jsonData) => {
   let scss =
-    '// Color Palette SCSS Variables\n// Generated on ' + new Date().toLocaleString() + '\n\n'
+    '// Color Palette SCSS Variables\n// Generated on ' +
+    new Date().toLocaleString() +
+    '\n\n'
 
   // 개별 색상 변수 생성
   // jsonData.forEach((colorGroup) => {
@@ -1315,11 +1389,11 @@ export const processJson = (jsonData) => {
   // 유틸리티 함수 추가
   scss += `// Function to access color values easily
 @function color($color-name, $tone) {
-@if map-has-key(map-get($colors, $color-name), $tone) {
-@return map-get(map-get($colors, $color-name), $tone);
-}
-@warn "Unknown \`#{$tone}\` in color family \`#{$color-name}\`.";
-@return null;
+  @if map-has-key(map-get($colors, $color-name), $tone) {
+    @return map-get(map-get($colors, $color-name), $tone);
+  }
+  @warn "Unknown \`#{$tone}\` in color family \`#{$color-name}\`.";
+  @return null;
 }\n`
 
   return scss
