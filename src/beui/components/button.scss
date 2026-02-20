@@ -12,6 +12,7 @@ $buttonIconDistance: calc($horizontalInputPadding * 0.5);
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  gap: $buttonIconDistance;
   font-weight: 400;
   line-height: 1;
   font-size: 1em;
@@ -58,12 +59,12 @@ $buttonIconDistance: calc($horizontalInputPadding * 0.5);
   // &:not(.icon) {
   //   border-radius: $baseBorderRadius;
   // }
-  &:has(.icon.left) {
-    padding-left: $buttonIconDistance;
-  }
-  &:has(.icon.right) {
-    padding-right: $buttonIconDistance;
-  }
+  // &:has(.icon.left) {
+  //   padding-left: $buttonIconDistance;
+  // }
+  // &:has(.icon.right) {
+  //   padding-right: $buttonIconDistance;
+  // }
   i {
     pointer-events: none;
   }
@@ -161,19 +162,19 @@ $buttonIconDistance: calc($horizontalInputPadding * 0.5);
     margin: 0;
     text-align: center;
     font-size: 1em;
-    &.left {
-      margin: 0 $buttonIconDistance 0 0;
-    }
-    &.right {
-      margin: 0 0 0 $buttonIconDistance;
-    }
+    // &.left {
+    //   margin: 0 $buttonIconDistance 0 0;
+    // }
+    // &.right {
+    //   margin: 0 0 0 $buttonIconDistance;
+    // }
   }
   &.badge {
     display: inline-flex;
     align-items: center;
     .in-badge {
       vertical-align: baseline;
-      margin-left: 10px;
+      // margin-left: 10px;
       font-size: 11px;
       //font-weight: 600;
       text-align: center;
@@ -208,9 +209,9 @@ $buttonIconDistance: calc($horizontalInputPadding * 0.5);
   }
   &.mini {
     padding: $verticalPadding;
-    i.icon {
-      margin-right: 5px;
-    }
+    // i.icon {
+    //   margin-right: 5px;
+    // }
   }
   &.static {
     pointer-events: none;

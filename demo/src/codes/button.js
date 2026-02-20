@@ -141,7 +141,7 @@ export const link =
   `<BeButton :link="link" :link-target="linkTarget">...</BeButton>`
 
 export const eventEmit =
-  `<!-- emit: onClick -->\n` + `<BeButton @onClick="handleClick">...</BeButton>`
+  `<!-- emit: onClick -->\n` + `<BeButton @click="handleClick">...</BeButton>`
 export const buttons =
   `<!-- html -->\n` +
   `<div class="buttons">\n` +

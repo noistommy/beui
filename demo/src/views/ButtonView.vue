@@ -121,6 +121,7 @@ const selectedIndex = ref(0)
               :key="color"
               class="be-button"
               :class="`${color}-light`"
+              :aria-label="color"
             >
               {{ color }}
             </button>

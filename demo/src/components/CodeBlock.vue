@@ -94,9 +94,6 @@ watch(() => props.code, highlight)
     padding-top: 1.25rem;
     padding-bottom: 1.25rem;
     background-color: transparent !important;
-    code {
-      font-family: monospacer;
-    }
   }
 }
 
