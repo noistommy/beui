@@ -30,7 +30,7 @@ const props = defineProps({
   },
   placeholder: {
     type: String,
-    default: '입력하세요',
+    default: '',
   },
   readonly: {
     type: Boolean,
@@ -92,6 +92,26 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  labeled: {
+    type: Boolean,
+    default: false,
+  },
+  withButton: {
+    type: Boolean,
+    default: false,
+  },
+  attachStart: {
+    type: Boolean,
+    default: false,
+  },
+  attachEnd: {
+    type: Boolean,
+    default: false,
+  },
+  label: {
+    type: String,
+    default: null,
+  },
 })
 const inputValue = defineModel()
 const emit = defineEmits(['focus'])
@@ -102,6 +122,10 @@ const input = ref(null)
 const iconPosition = computed(() => {
   if (props.iconLeft && props.iconRight) return 'both'
   return props.iconLeft ? 'left' : props.iconRight ? 'right' : null
+})
+
+const setPlaceholder = computed(() => {
+  return props.label ? ' ' : props.placeholder
 })
 
 const checkFocus = () => {
@@ -128,6 +152,10 @@ const onBlur = () => {
       { transparent },
       { compact },
       { fluid },
+      { labeled },
+      { left: (labeled && attachStart) || (withButton && attachStart) },
+      { right: (labeled && attachEnd) || (withButton && attachEnd) },
+      { withButton },
       { edit: edit },
       { editable: editMode },
       { icon: iconLeft || iconRight || clear },
@@ -138,13 +166,14 @@ const onBlur = () => {
     ]"
     :data-unit="unit"
   >
+    <slot name="start"></slot>
     <slot>
       <i v-if="iconLeft" :class="`icon xi-${iconLeft}`" />
       <template v-if="type === 'input'">
         <input
           :type="inputType"
           v-model="inputValue"
-          :placeholder="placeholder"
+          :placeholder="setPlaceholder"
           :class="[`aline-${align}`]"
           ref="input"
           :disabled="disabled"
@@ -160,7 +189,9 @@ const onBlur = () => {
           :placeholder="placeholder"
         ></textarea>
       </template>
-
+      <template v-if="label">
+        <label>{{ label }}</label>
+      </template>
       <i
         v-if="clear"
         class="icon clear-btn xi-close"
@@ -172,5 +203,6 @@ const onBlur = () => {
         badge
       }}</span>
     </slot>
+    <slot name="end"></slot>
   </div>
 </template>

@@ -54,6 +54,10 @@ export const float =
   `<!-- @float: Boolean -->\n` +
   `<!-- default: false -->\n` +
   `<BeCard float="{float}" >{{ contents }}</BeCard>`
+export const round =
+  `<!-- @round: String {s | m | l | xl} -->\n` +
+  `<!-- default: m -->\n` +
+  `<BeCard round="{round}" >{{ contents }}</BeCard>`
 export const cards =
   `<!-- only html -->\n` +
   `<div class="be-card">\n` +

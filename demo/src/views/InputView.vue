@@ -12,7 +12,7 @@ import { ref } from 'vue'
 const placeholder = '입력하세요'
 const editMode = ref(false)
 
-const inputValue = ref('init')
+const inputValue = ref('inserted value')
 </script>
 <template>
   <div class="page-wrapper be-container">
@@ -48,6 +48,21 @@ const inputValue = ref('init')
         <PropsDataList :datas="inputProps" />
       </template>
       <template #variants>
+        <section>
+          <h4 class="title">Use Label</h4>
+          <div class="desc">
+            <span class="be-tag label">component</span>
+            <!-- <p>label적용은 placeholder 역할을 함꼐 하기 때문에 placeholder 값을 주기 않아야 한다</p> -->
+          </div>
+          <div class="contents-wrapper">
+            <div class="be-input">
+              <label>Title</label>
+              <input type="text" placeholder=" " />
+            </div>
+            <BeInput label="Title" v-model="inputValue" />
+          </div>
+          <CodeBlock :code="codes.useLabel" lang="vue-html"></CodeBlock>
+        </section>
         <section>
           <h4 class="title">Disabled</h4>
           <div class="desc">
@@ -93,7 +108,11 @@ const inputValue = ref('init')
             <div class="be-input underline">
               <input type="text" :placeholder="placeholder" />
             </div>
-            <BeInput :underline="true" :placeholder="placeholder" />
+            <BeInput
+              :underline="true"
+              :placeholder="placeholder"
+              label="underline"
+            />
           </div>
           <CodeBlock :code="codes.underline" lang="vue-html"></CodeBlock>
         </section>
@@ -139,9 +158,12 @@ const inputValue = ref('init')
               :edit="true"
               :edit-mode="editMode"
               :placeholder="placeholder"
+              label="edit mode"
             />
-            <div class="be-button" @click="editMode = !editMode">
-              EDIT {{ editMode ? 'OFF' : 'ON' }}
+            <div class="be-button icon" @click="editMode = !editMode">
+              <!-- {{ editMode ? 'OFF' : 'ON' }} -->
+              <i class="xi-check" v-if="editMode"></i>
+              <i class="xi-pen" v-else></i>
             </div>
           </div>
           <CodeBlock :code="codes.edit" lang="vue-html"></CodeBlock>
@@ -216,6 +238,7 @@ const inputValue = ref('init')
               icon-left="users"
               icon-right="lock"
               :placeholder="placeholder"
+              label="icon title"
             />
           </div>
           <CodeBlock :code="codes.icon" lang="vue-html"></CodeBlock>
@@ -252,12 +275,18 @@ const inputValue = ref('init')
           <div class="contents-wrapper">
             <div class="be-input labeled right">
               <input type="text" :placeholder="placeholder" />
-              <label>$</label>
+              <span class="label">$</span>
             </div>
             <div class="be-input labeled left">
               <input type="text" :placeholder="placeholder" />
-              <label>Name</label>
+              <span class="label">Name</span>
             </div>
+            <BeInput :labeled="true" attach-start>
+              <!-- <template #end>
+              </template> -->
+              <div class="label">END</div>
+              <input type="text" :placeholder="placeholder" />
+            </BeInput>
           </div>
           <CodeBlock :code="codes.label" lang="vue-html"></CodeBlock>
         </section>
@@ -265,16 +294,26 @@ const inputValue = ref('init')
           <h4 class="title">Button</h4>
           <div class="desc"></div>
           <div class="contents-wrapper">
-            <div class="be-input button left">
+            <div class="be-input withButton left">
               <input type="text" :placeholder="placeholder" />
               <button class="be-button primary">Save</button>
             </div>
-            <div class="be-input button right">
+            <div class="be-input withButton right">
               <input type="text" :placeholder="placeholder" />
               <button class="be-button icon">
                 <i class="ixon xi-upload"></i>
               </button>
             </div>
+            <BeInput :with-button="true" attach-start>
+              <!-- <template #end>
+              </template> -->
+              <div class="be-button primary">Start</div>
+              <input
+                type="text"
+                :placeholder="placeholder"
+                label="test label"
+              />
+            </BeInput>
           </div>
           <CodeBlock :code="codes.button" lang="vue-html"></CodeBlock>
         </section>
@@ -288,6 +327,12 @@ const inputValue = ref('init')
             <div class="be-input fluid short">
               <textarea type="text" :placeholder="placeholder"></textarea>
             </div>
+            <BeInput
+              type="textarea"
+              :placeholder="placeholder"
+              label="Textarea Label"
+              fluid
+            ></BeInput>
           </div>
           <CodeBlock :code="codes.textarea" lang="vue-html"></CodeBlock>
         </section>

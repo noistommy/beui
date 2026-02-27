@@ -92,6 +92,31 @@ const lorem_text =
           <CodeBlock :code="codes.float" lang="vue-html"></CodeBlock>
         </section>
         <section>
+          <h4>Round</h4>
+          <div class="desc">
+            <div class="be-tag label deepblue">Component</div>
+          </div>
+          <div class="contents-wrapper">
+            <BeSegment border round="s">
+              <h5 class="title">round s</h5>
+              {{ lorem_text }}
+            </BeSegment>
+            <BeSegment border round="m">
+              <h5 class="title">round m</h5>
+              {{ lorem_text }}
+            </BeSegment>
+            <BeSegment border round="l">
+              <h5 class="title">round l</h5>
+              {{ lorem_text }}
+            </BeSegment>
+            <BeSegment border round="xl">
+              <h5 class="title">round xl</h5>
+              {{ lorem_text }}
+            </BeSegment>
+          </div>
+          <CodeBlock :code="codes.round" lang="vue-html"></CodeBlock>
+        </section>
+        <section>
           <h4>Attached</h4>
           <div class="desc">
             <div class="be-tag label deepblue">Component</div>

@@ -23,6 +23,10 @@ export const float =
   `<!--@float: Boolean -->\n` +
   `<!--default: false -->\n\n` +
   `<BeSegement float> contents ... ...</BeSegement>`
+export const round =
+  `<!-- @round: String {s | m | l | xl} -->\n` +
+  `<!-- default: m -->\n` +
+  `<BeSegement round="{round}" > contents ... ...</BeSegement>`
 export const attached =
   `<!--@attached: Array -->\n` +
   `<!--default: [] -->\n\n` +

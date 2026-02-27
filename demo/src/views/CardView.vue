@@ -135,6 +135,29 @@ const lorem_text =
           <CodeBlock :code="codes.float" lang="vue-html"></CodeBlock>
         </section>
         <section>
+          <h4>Round</h4>
+          <div class="desc">
+            <div class="be-tag label deepblue">Component</div>
+          </div>
+          <div class="contents-wrapper">
+            <div class="be-cards column-2 column-xs-1">
+              <BeCard title="round s" round="s">
+                {{ lorem_text }}
+              </BeCard>
+              <BeCard title="round m">
+                {{ lorem_text }}
+              </BeCard>
+              <BeCard title="round l" round="l">
+                {{ lorem_text }}
+              </BeCard>
+              <BeCard title="round xl" round="xl">
+                {{ lorem_text }}
+              </BeCard>
+            </div>
+          </div>
+          <CodeBlock :code="codes.round" lang="vue-html"></CodeBlock>
+        </section>
+        <section>
           <h4>Cards</h4>
           <div class="desc">
             <div class="be-tag label deepblue">Component</div>

@@ -7,6 +7,16 @@ export const base_component =
   `<!-- script setup -->\n` +
   `<!-- const inputValue = ref(null) -->\n` +
   `<BeInput v-model="inputValue" placeholder="입력하세요"></BeInput>`
+export const useLabel =
+  `<!-- @label: String -->\n` +
+  `<!-- default: null -->\n\n` +
+  `<!-- html -->\n` +
+  `<div class="be-input">\n` +
+  `   <label>{label}</label>\n` +
+  `   <input type="text" placeholder="" />\n` +
+  `</div>\n` +
+  `<!-- component -->\n` +
+  `<BeInput v-model="inputValue" :label="{label}"></BeInput>`
 export const disabled =
   `<!-- @disabled: Boolean -->\n` +
   `<!-- default: false -->\n\n` +
@@ -143,36 +153,41 @@ export const label =
   `<!-- @label: String -->\n` +
   `<!-- default: null -->\n\n` +
   `<!-- html -->\n` +
-  `<div class="be-input label left">\n` +
+  `<div class="be-input labeled left">\n` +
   `   <label>{label}</label>\n` +
   `   <input type="text" placeholder="입력하세요" />\n` +
   `</div>\n` +
-  `<div class="be-input label right">\n` +
+  `<div class="be-input labeled right">\n` +
   `   <input type="text" placeholder="입력하세요" />\n` +
   `   <label>{label}</label>\n` +
   `</div>\n` +
   `<!-- component & slot -->\n` +
-  `<BeInput placeholder="입력하세요">\n ` +
+  `<BeInput placeholder="입력하세요" :labeled="true" attached-{start | end}>\n ` +
   `   <input v-model="inputValue" type="text" placeholder="입력하세요" />\n` +
-  `   <label>{label}</label>\n` +
+  `   <!-- slot start or end -->\n` +
+  `   <template {#start | #end}>\n` +
+  `       <label>{label}</label>\n` +
+  `   </template>\n` +
   `</BeInput>`
 export const button =
   `<!-- @button: String -->\n` +
   `<!-- @buttonOption: Object -->\n` +
   `<!-- default: null -->\n\n` +
   `<!-- html -->\n` +
-  `<div class="be-input button left">\n` +
+  `<div class="be-input withButton left">\n` +
   `   <button class="be-button {buttonOption}">{button}</button>\n` +
   `   <input type="text" placeholder="입력하세요" />\n` +
   `</div>\n` +
-  `<div class="be-input button right">\n` +
+  `<div class="be-input withButton right">\n` +
   `   <input type="text" placeholder="입력하세요" />\n` +
   `   <button class="be-button {buttonOption}">{button}</button>\n` +
   `</div>\n` +
   `<!-- component & slot -->\n` +
-  `<BeInput placeholder="입력하세요">\n ` +
+  `<BeInput placeholder="입력하세요" :with-button="{true | false}" attach-{start | end}>\n ` +
   `   <input type="text" placeholder="입력하세요" />\n` +
-  `   <button class="be-button {buttonOption}">{button}</button>\n` +
+  `   <template {#start | #end}>\n` +
+  `       <button class="be-button {buttonOption}">{button}</button>\n` +
+  `   </template>\n` +
   `</BeInput>`
 export const textarea =
   `<!-- @type: input || textarea -->\n` +

@@ -262,6 +262,41 @@ export const inputProps = [
     default: 'null',
     required: false,
   },
+  {
+    name: 'labeled',
+    type: 'Boolean',
+    description: '추가 정보 전달을 위한 라벨 추가 유무',
+    default: 'false',
+    required: false,
+  },
+  {
+    name: 'withButton',
+    type: 'Boolean',
+    description: '전용 버튼을 추가',
+    default: 'false',
+    required: false,
+  },
+  {
+    name: 'attachStart',
+    type: 'Boolean',
+    description: 'labeled, withButton의 위치를 지정 앞쪽 위치',
+    default: 'false',
+    required: false,
+  },
+  {
+    name: 'attachEnd',
+    type: 'Boolean',
+    description: 'labeled, withButton의 위치를 지정 뒷쪽 위치',
+    default: 'false',
+    required: false,
+  },
+  {
+    name: 'label',
+    type: 'String',
+    description: '인풋텍스트의 라벨 텍스트 표시',
+    default: 'null',
+    required: false,
+  },
 ]
 export const inputNumberProps = [
   globalProps.status,

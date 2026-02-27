@@ -276,7 +276,7 @@ section {
   align-items: center;
   padding: 1rem;
   border: 1px solid var(--brd);
-  gap: 8px;
+  gap: 14px;
   margin-bottom: 5px;
   &:last-child {
     // &:after {

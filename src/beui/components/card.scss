@@ -1,4 +1,5 @@
 @use '../theme.scss' as *;
+@use 'sass:map';
 
 $cardBackgroundColor: var(--depth-bg);
 $cardBoxShadow: var(--depth-bs);
@@ -32,16 +33,16 @@ $cardsGap: 12px;
   }
   &.round {
     &-s {
-      border-radius: calc($cardRadius * 0.5);
+      border-radius: map.get($layoutRadiuses, 's');
     }
     &-m {
-      border-radius: $cardRadius;
+      border-radius: map.get($layoutRadiuses, 'm');
     }
     &-l {
-      border-radius: calc($cardRadius * 2);
+      border-radius: map.get($layoutRadiuses, 'l');
     }
     &-xl {
-      border-radius: calc($cardRadius * 4);
+      border-radius: map.get($layoutRadiuses, 'xl');
     }
   }
   > div {
@@ -97,9 +98,58 @@ $cardsGap: 12px;
       }
     }
   }
+  &.round {
+    &-s > .be-card {
+      border-radius: map.get($layoutRadiuses, 's');
+    }
+    &-m > .be-card {
+      border-radius: map.get($layoutRadiuses, 'm');
+    }
+    &-l > .be-card {
+      border-radius: map.get($layoutRadiuses, 'l');
+    }
+    &-xl > .be-card {
+      border-radius: map.get($layoutRadiuses, 'xl');
+    }
+  }
   .be-card {
     .float {
       box-shadow: none;
+    }
+  }
+}
+
+@media all and (max-width: #{$bp-tablet - 0.02px}) {
+  .be-cards {
+    &.column {
+      @for $i from 1 through $maxCardColumn {
+        &-xs-#{$i} > .be-card {
+          width: calc(100% / $i - $cardsGap) !important;
+        }
+      }
+    }
+  }
+}
+@media all and (min-width: #{$bp-tablet}) and (max-width: #{$bp-laptop - 0.02px}) {
+  .be-cards {
+    &.column {
+      @for $i from 1 through $maxCardColumn {
+        &-sm-#{$i} > .be-card {
+          width: calc(100% / $i - $cardsGap) !important;
+        }
+      }
+    }
+  }
+}
+@media all and (min-width: #{$bp-laptop}) and (max-width: #{$bp-desktop - 0.02px}) {
+  //@media all and (max-width: #{$bp-desktop - 1px}) {
+  .be-cards {
+    &.column {
+      @for $i from 1 through $maxCardColumn {
+        &-md-#{$i} > .be-card {
+          width: calc(100% / $i - $cardsGap) !important;
+        }
+      }
     }
   }
 }
