@@ -78,6 +78,7 @@ const setPrevNext = () => {
       type="push"
       dimmed
       :current="mainTitle"
+      @change="toggleSide = $event.show"
     >
       <template #side>
         <div class="nav-contents">

@@ -34,6 +34,8 @@ const props = defineProps({
   },
 })
 
+const emits = defineEmits(['change'])
+
 const device = ref('desktop')
 
 const scrollRef = ref(null)
@@ -65,6 +67,10 @@ const detect = () => {
   else if (/tablet|ipad|playbook|silk/i.test(ua)) device.value = 'tablet'
   else device.value = 'desktop'
 }
+
+const handleChange = () => {
+  if (device.value === 'mobile') emits('change', { show: false })
+}
 </script>
 
 <template>
@@ -82,6 +88,7 @@ const detect = () => {
     <div
       class="side-pane"
       :style="{ '--side': sideWidth, '--min-side': minSideWidth }"
+      @click="handleChange"
     >
       <slot name="side">side</slot>
     </div>
