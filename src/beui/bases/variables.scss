@@ -452,9 +452,15 @@ h5,
   }
 }
 
+$isButtonActivation: true;
+
 @keyframes scale-up-center {
   0% {
-    transform: scale(0.95);
+    @if $isButtonActivation {
+      transform: scale(0.95);
+    } @else {
+      transform: scale(1);
+    }
   }
   100% {
     transform: scale(1);

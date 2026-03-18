@@ -1,4 +1,5 @@
 <script setup>
+import { version } from '../../package.json'
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import SlideSideLayout from './components/SlideSideLayout.vue'
@@ -48,6 +49,7 @@ const setPrevNext = () => {
       </div>
       <div class="logo">
         <div class="title">BEUI <span class="sub">VUE</span></div>
+        <span class="be-tag label round">v {{ version }}</span>
         <!-- <div class="description">Vue 3 전용 공용 UI 라이브러리</div> -->
       </div>
       <div class="links">
@@ -151,7 +153,8 @@ h5 {
   flex-grow: 1;
   padding: 0 16px;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 10px;
   .title {
     font-family: 'Ubuntu';
     font-weight: 700;

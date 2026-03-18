@@ -1,4 +1,5 @@
 @use '../theme.scss' as *;
+$listItemPadding: 8px;
 
 .be-list {
   max-height: 100%;
@@ -6,7 +7,15 @@
     position: relative;
     display: flex;
     align-items: center;
+    padding: $listItemPadding;
     margin-bottom: 1px;
+    &:has(> a) {
+      padding: 0;
+      a {
+        width: 100%;
+        padding: $listItemPadding;
+      }
+    }
     .item-title {
       flex: 0 1 auto;
     }

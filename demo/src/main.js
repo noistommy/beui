@@ -1,6 +1,6 @@
 import './assets/reset.css'
-// import '../../dist/beui.css'
 import '../../src/beui/beui.scss'
+// import 'gitris-ui/dist/beui.css'
 import './assets/main.css'
 
 import { createApp } from 'vue'

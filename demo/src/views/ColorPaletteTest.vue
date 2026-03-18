@@ -9,7 +9,8 @@ import {
 import { shades, hexToLch, exportColorPaletteScss } from '@/utils/color-util'
 
 import ColorPicker from '../components/color-picker/ColorPicker.vue'
-const tones = [20, 25, 30, 35, 40, 50, 60, 70, 80, 90, 95, 98]
+const tones = [20, 30, 40, 50, 60, 70, 80, 90, 95, 99, 100]
+const tones_o = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 99, 100]
 const s_tones = [15, 25, 35, 40, 45, 55, 65, 75, 85, 95]
 const target_tones = [27, 36, 42, 48, 56, 64, 70, 78, 88, 94]
 
@@ -84,56 +85,58 @@ const genColor = () => {
   }
 
   // newPalette.value = generationPalette(colorValue.value)
-  // newPalette.value = generateMaterialPalette2(colorValue.value)
+  // newPalette.value = generateMate22222rialPalette2(colorValue.value)
   // const paletters = generatePaletteAlgorithm1({
   //   ...hexToRgb(colorValue.value),
   //   name: colorName.value,
   // })
-  const paletters = []
   // console.log(hexToLch(colorValue.value))
   // console.log(argbFromHex(colorValue.value))
   // console.log(Hct.fromInt(argbFromHex(colorValue.value)))
   // console.log(TonalPalette.fromInt(argbFromHex(colorValue.value)).tone(20))
   // const primary = TonalPalette.fromInt(argbFromHex(colorValue.value))
-  const kColor = Hct.fromInt(argbFromHex(colorValue.value))
-  console.log(kColor.tone)
 
-  const primary = TonalPalette.fromHueAndChroma(kColor.hue, kColor.chroma)
-  tones.forEach((tone) => {
-    const argb = primary.tone(tone)
-    const hct = Hct.fromInt(argb)
-    console.log(
-      `톤 ${tone}: ${hexFromArgb(argb)} = ${hct.hue}.${hct.chroma}.${hct.tone}`,
-    )
-    paletters.push({
-      tone,
-      value: hexFromArgb(argb),
-    })
-  })
-
-  newPalette.value = paletters
+  newPalette.value = getPalette(colorValue.value)
   colorName.value = ''
   colorValue.value = ''
 }
 
-const genaratorPalette = (hex) => {
-  const palette = []
-  const argbColor = argbFromHex(hex)
-  const scheme = TonalPalette.fromInt(argbColor) // type 1
-
-  const hct = Hct.fromInt(argbColor)
-  console.dir(scheme.tone(27))
-  // const scheme = TonalPalette.fromHueAndChroma(hct.hue, hct.chroma) // type 2
-  target_tones.forEach((tone) => {
-    const argb = scheme.tone(tone)
-    // const hct = Hct.fromInt(argb)
-    palette.push({
+const getPalette = (hex) => {
+  const tones = [20, 30, 40, 50, 60, 70, 80, 90, 95, 98]
+  const palettes = []
+  const internal = Hct.fromInt(argbFromHex(hex))
+  const totalPalette = TonalPalette.fromHueAndChroma(
+    internal.hue,
+    internal.chroma,
+  )
+  tones.forEach((tone) => {
+    const argb = totalPalette.tone(tone)
+    palettes.push({
       tone,
       value: hexFromArgb(argb),
     })
   })
-  return palette.reverse().map((p, i) => {
-    return { ...p, shade: shades[i] }
+  return palettes
+}
+
+const genaratorPalette = (hex) => {
+  // const palette = []
+  // const argbColor = argbFromHex(hex)
+  // const scheme = TonalPalette.fromInt(argbColor) // type 1
+  // target_tones.forEach((tone) => {
+  //   const argb = scheme.tone(tone)
+  //   palette.push({
+  //     tone,
+  //     value: hexFromArgb(argb),
+  //   })
+  // })
+  const palette = getPalette(hex)
+
+  // return palette.reverse().map((p, i) => {
+  //   return { ...p, shade: shades[i] }
+  // })
+  return palette.map((p, i) => {
+    return { ...p, shade: tones[i] }
   })
   // return palette
 }
@@ -162,7 +165,7 @@ const exportPalette = () => {
       <ColorPicker />
     </section>
     <section>
-      <h4 class="title">Color Palette</h4>
+      <h4 class="title">New Color Palette</h4>
       <div class="contents-wrapper">
         <div class="be-button deepblue" @click="exportPalette">EXPORT</div>
         <div class="be-list color-palette">
@@ -170,11 +173,28 @@ const exportPalette = () => {
             v-for="(pal, i) in newPalette"
             :key="pal.tone"
             class="item color-item"
-            :class="{ dark: pal.tone <= 60 }"
+            :class="{ dark: pal.tone <= 70 }"
             :style="{ backgroundColor: pal.value }"
             v-be-tooltip="pal.value"
           >
             {{ pal.tone }}
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h4 class="title">Color Palette</h4>
+      <div class="contents-wrapper" :style="{ backgroundColor: '#ebebeb' }">
+        <div class="palette-wrap">
+          <div class="palettes header">
+            <div class="color-item h6 color-name">name</div>
+            <div
+              class="color-item"
+              v-for="shade in shades.reverse()"
+              :key="shade"
+            >
+              {{ shade }}
+            </div>
           </div>
         </div>
         <div
@@ -189,11 +209,11 @@ const exportPalette = () => {
               class="color-item"
               v-for="color in palette.palette"
               :key="color.tone"
-              :class="{ dark: color.tone < 60 }"
+              :class="{ dark: color.tone < 70 }"
               :style="{ backgroundColor: color.value }"
               v-be-tooltip="color.value"
             >
-              {{ color.shade }}
+              <!-- {{ color.shade }} -->
             </div>
           </div>
         </div>
@@ -219,6 +239,7 @@ const exportPalette = () => {
 
 .palette-wrap {
   width: 100%;
+  background-color: #ebebeb;
   .color-name {
     &::first-letter {
       text-transform: uppercase;
@@ -226,11 +247,14 @@ const exportPalette = () => {
   }
   .palettes {
     display: flex;
+    gap: 1px;
     .color-item {
-      width: 60px;
+      flex-shrink: 0;
+      width: 45px;
+      height: 45px;
       padding: 7px;
       text-align: center;
-      transition: trnaasform 250ms;
+      transition: transform 250ms;
       &.dark {
         color: #fff;
       }
@@ -238,7 +262,14 @@ const exportPalette = () => {
         transform: scale(1.2);
       }
       &.color-name {
-        width: 100px;
+        width: 150px;
+      }
+    }
+    &.header {
+      .color-item {
+        font-size: 0.95em;
+        color: #888;
+        font-family: monospace;
       }
     }
   }
