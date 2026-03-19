@@ -42,6 +42,7 @@ const docsConfig = {
   },
   build: {
     outDir: '../docs',
+    emptyOutDir: true,
   },
   server: {
     port: 5177,
