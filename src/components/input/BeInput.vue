@@ -131,13 +131,17 @@ const setPlaceholder = computed(() => {
 const checkFocus = () => {
   if (!isFocus.value) {
     isFocus.value = true
-    console.log('fucus', isFocus.value)
+    console.log('focus', isFocus.value)
     emit('focus', isFocus.value)
   }
 }
 const onBlur = () => {
   isFocus.value = false
   emit('focus', isFocus.value)
+}
+const clearValue = () => {
+  console.log('value', inputValue.value)
+  inputValue.value = ''
 }
 </script>
 
@@ -196,9 +200,10 @@ const onBlur = () => {
         v-if="clear"
         class="icon clear-btn xi-close"
         :class="{ disabled: inputValue === '' }"
-        @click="inputValue = ''"
+        @mousedown="clearValue"
       />
       <i v-if="iconRight" :class="`icon xi-${iconRight}`" />
+
       <span v-else-if="badge" class="be-badge" :class="badgeOption">{{
         badge
       }}</span>

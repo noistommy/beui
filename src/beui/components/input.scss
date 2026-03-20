@@ -45,7 +45,7 @@ $iconAreaOffset: 5px;
       &.primary {
         border-color: $primary;
       }
-      & + i.icon.clear-btn {
+      & ~ i.icon.clear-btn {
         border-radius: 50%;
         background-color: #ebebeb;
         opacity: 1;
