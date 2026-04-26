@@ -28,9 +28,25 @@ const checkList = ['Run', 'Walk', 'Fly']
           </div>
           <div class="contents-wrapper">
             <div class="be-form">
-              <div class="field">
-                <label for="">Label</label>
-                <input type="text" placeholder="Base Form" />
+              <div class="header">
+                <div class="title">Form Title</div>
+                <div class="desc">Form description</div>
+              </div>
+              <div class="fields">
+                <legend>Field title</legend>
+                <div class="field">
+                  <label for="">Label</label>
+                  <BeInput placeholder="Base Form" />
+                  <div class="help-text">helper text</div>
+                </div>
+                <div class="divider"></div>
+                <div class="field">
+                  <label for="">Label</label>
+                  <BeInput placeholder="Base Form" />
+                  <div class="extra">
+                    <BeCheckBox id="checkComp" label-text="with checkbox" />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -46,16 +62,13 @@ const checkList = ['Run', 'Walk', 'Fly']
       </template>
       <template #variants>
         <section>
-          <h4 class="title">Title</h4>
+          <h4 class="title">Form Header</h4>
           <div class="desc"></div>
           <div class="contents-wrapper">
             <div class="be-form">
               <div class="header">
                 <div class="title">Form Title</div>
-              </div>
-              <div class="field">
-                <label for="">Label</label>
-                <input type="text" placeholder="Base Form" />
+                <div class="desc">Form description</div>
               </div>
             </div>
           </div>
@@ -68,7 +81,7 @@ const checkList = ['Run', 'Walk', 'Fly']
             <div class="be-form">
               <div class="field inline">
                 <label for="">Label</label>
-                <input type="text" placeholder="Base Form" />
+                <BeInput placeholder="Base Form" />
               </div>
             </div>
           </div>
@@ -81,10 +94,10 @@ const checkList = ['Run', 'Walk', 'Fly']
             <div class="be-form">
               <div class="field">
                 <label for="">Label</label>
-                <input type="text" placeholder="With Label" />
+                <BeInput placeholder="with Label" />
               </div>
               <div class="field">
-                <input type="text" placeholder="Without Label" />
+                <BeInput placeholder="Without Label" />
               </div>
             </div>
           </div>
@@ -97,21 +110,22 @@ const checkList = ['Run', 'Walk', 'Fly']
             <div class="be-form">
               <div class="field disabled">
                 <label for="">Label</label>
-                <input type="text" placeholder="disabled" />
+                <BeInput placeholder="Disabled" disabled />
               </div>
             </div>
           </div>
           <CodeBlock :code="codes.base_disabled" lang="html"></CodeBlock>
         </section>
         <section>
-          <h4 class="title">Field Group</h4>
+          <h4 class="title">Fields</h4>
           <div class="desc"></div>
           <div class="contents-wrapper">
             <div class="be-form">
               <div class="fields">
+                <div class="legend">Fields</div>
                 <div class="field" v-for="fi in 3" :key="fi">
                   <label for="">Label {{ fi }}</label>
-                  <input type="text" :placeholder="`Label ${fi}`" />
+                  <BeInput :placeholder="`Label ${fi}`" />
                 </div>
               </div>
             </div>
@@ -124,20 +138,16 @@ const checkList = ['Run', 'Walk', 'Fly']
           <div class="desc"></div>
           <div class="contents-wrapper">
             <div class="be-form">
-              <div class="fields divide-3">
-                <div class="field">
-                  <div class="column" v-for="fi in 3" :key="fi">
-                    <label for="">field {{ fi }}</label>
-                    <input type="text" :placeholder="`Field ${fi}`" />
-                  </div>
+              <div class="fields grid divide-3">
+                <div class="field column" v-for="fi in 3" :key="fi">
+                  <label for="">field {{ fi }}</label>
+                  <input type="text" :placeholder="`Field ${fi}`" />
                 </div>
               </div>
-              <div class="fields divide-4">
-                <div class="field">
-                  <div class="column" v-for="fi in 4" :key="fi">
-                    <label for="">field {{ fi }}</label>
-                    <input type="text" :placeholder="`Field ${fi}`" />
-                  </div>
+              <div class="fields grid divide-4">
+                <div class="field column" v-for="fi in 4" :key="fi">
+                  <label for="">field {{ fi }}</label>
+                  <input type="text" :placeholder="`Field ${fi}`" />
                 </div>
               </div>
             </div>
@@ -145,32 +155,30 @@ const checkList = ['Run', 'Walk', 'Fly']
           <CodeBlock :code="codes.base_grid_divide" lang="html"></CodeBlock>
         </section>
         <section>
-          <h4 class="title">Widths</h4>
+          <h4 class="title">Fields Widths</h4>
           <div class="desc"></div>
           <div class="contents-wrapper">
             <div class="be-form">
-              <div class="fields">
-                <div class="field">
-                  <div
-                    class="column"
-                    v-for="fi in [2, 6, 4]"
-                    :key="fi"
-                    :class="`span-${fi}`"
-                  >
-                    <label for="">field {{ fi }}</label>
-                    <input type="text" :placeholder="`Field ${fi}`" />
-                  </div>
+              <div class="fields grid">
+                <div
+                  class="column field"
+                  v-for="fi in [2, 6, 4]"
+                  :key="fi"
+                  :class="`span-${fi}`"
+                >
+                  <label for="">field {{ fi }}</label>
+                  <input type="text" :placeholder="`Field ${fi}`" />
                 </div>
-                <div class="field">
-                  <div
-                    class="field column"
-                    v-for="fi in [2, 7, 3]"
-                    :key="fi"
-                    :class="`span-${fi}`"
-                  >
-                    <label for="">field {{ fi }}</label>
-                    <input type="text" :placeholder="`Field ${fi}`" />
-                  </div>
+              </div>
+              <div class="fields grid">
+                <div
+                  class="field column"
+                  v-for="fi in [2, 7, 3]"
+                  :key="fi"
+                  :class="`span-${fi}`"
+                >
+                  <label for="">field {{ fi }}</label>
+                  <input type="text" :placeholder="`Field ${fi}`" />
                 </div>
               </div>
             </div>
@@ -184,11 +192,11 @@ const checkList = ['Run', 'Walk', 'Fly']
             <div class="be-form">
               <div class="field">
                 <label for="">textarea label</label>
-                <textarea placeholder="textarea large"></textarea>
+                <BeInput type="textarea" placeholder="textarea large" fluid />
               </div>
               <div class="field short">
                 <label for="">textarea label</label>
-                <textarea placeholder="textarea short"></textarea>
+                <BeInput type="textarea" placeholder="textarea large" fluid />
               </div>
             </div>
           </div>

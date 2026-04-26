@@ -26,10 +26,28 @@ const setOpen = (payload) => {
             <div class="be-tag label lightblue">HTML</div>
           </div>
           <div class="contents-wrapper">
-            <div class="be-panel">
-              <div class="panel-header">Title</div>
-              <div class="panel-content">
-                <div class="content-wrapper">contents</div>
+            <div class="be-accordiopn">
+              <div class="be-panel collapse icon">
+                <div class="panel-header">
+                  <div class="title">Title</div>
+                  <span class="panel-toggle-btn">
+                    <i class="icon xi-angle-down"></i>
+                  </span>
+                </div>
+                <div class="panel-content">
+                  <div class="content-wrapper">contents</div>
+                </div>
+              </div>
+              <div class="be-panel collapse icon">
+                <div class="panel-header">
+                  <div class="title">Title</div>
+                  <span class="panel-toggle-btn">
+                    <i class="icon xi-angle-down"></i>
+                  </span>
+                </div>
+                <div class="panel-content">
+                  <div class="content-wrapper">contents</div>
+                </div>
               </div>
             </div>
           </div>
@@ -72,21 +90,21 @@ const setOpen = (payload) => {
                 title="Title"
                 :contents="lorem"
                 collapse
-                toggle-icon="xi-angle-down"
+                toggle-icon="xi-plus"
                 icon-pos="right"
               />
               <BePanel
                 title="Title"
                 :contents="lorem"
                 collapse
-                toggle-icon="xi-angle-down"
+                toggle-icon="xi-plus"
                 icon-pos="right"
               />
               <BePanel
                 title="Title"
                 :contents="lorem"
                 collapse
-                toggle-icon="xi-angle-down"
+                toggle-icon="xi-plus"
                 icon-pos="right"
               />
             </BeAccordion>

@@ -1,5 +1,3 @@
 # test
 
-```
 console.log('test')
-```

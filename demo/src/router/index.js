@@ -32,6 +32,11 @@ const router = createRouter({
       component: () => import('../views/ButtonView.vue'),
     },
     {
+      path: '/button-group',
+      name: 'button-group',
+      component: () => import('../views/ButtonGroupView.vue'),
+    },
+    {
       path: '/input',
       name: 'input',
       component: () => import('../views/InputView.vue'),
@@ -95,6 +100,11 @@ const router = createRouter({
       path: '/panel',
       name: 'panel',
       component: () => import('../views/PanelView.vue'),
+    },
+    {
+      path: '/accordion',
+      name: 'accordion',
+      component: () => import('../views/AccordionView.vue'),
     },
     {
       path: '/rate',

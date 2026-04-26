@@ -282,10 +282,8 @@ const inputValue = ref('inserted value')
               <span class="label">Name</span>
             </div>
             <BeInput :labeled="true" attach-start>
-              <!-- <template #end>
-              </template> -->
-              <div class="label">END</div>
               <input type="text" :placeholder="placeholder" />
+              <div class="label">END</div>
             </BeInput>
           </div>
           <CodeBlock :code="codes.label" lang="vue-html"></CodeBlock>
@@ -307,12 +305,12 @@ const inputValue = ref('inserted value')
             <BeInput :with-button="true" attach-start>
               <!-- <template #end>
               </template> -->
-              <div class="be-button primary">Start</div>
               <input
                 type="text"
                 :placeholder="placeholder"
                 label="test label"
               />
+              <div class="be-button primary">Start</div>
             </BeInput>
           </div>
           <CodeBlock :code="codes.button" lang="vue-html"></CodeBlock>

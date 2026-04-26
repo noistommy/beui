@@ -194,7 +194,7 @@ const clearValue = () => {
         ></textarea>
       </template>
       <template v-if="label">
-        <label>{{ label }}</label>
+        <label class="label">{{ label }}</label>
       </template>
       <i
         v-if="clear"

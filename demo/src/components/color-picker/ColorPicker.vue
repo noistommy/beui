@@ -32,9 +32,9 @@
       </div>
     </div>
     <div class="color-hsl-value" v-if="hslColor">
-      <div class="be-button">{{ Math.round(hslColor.h) }}</div>
-      <div class="be-button">{{ Math.round(hslColor.s) }}</div>
-      <div class="be-button">{{ Math.round(hslColor.l) }}</div>
+      <div class="be-button">h:{{ Math.round(hslColor.h) }}</div>
+      <div class="be-button">s:{{ Math.round(hslColor.s) }}</div>
+      <div class="be-button">l:{{ Math.round(hslColor.l) }}</div>
     </div>
   </div>
 </template>

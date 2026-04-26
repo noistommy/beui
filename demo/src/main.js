@@ -1,5 +1,5 @@
 import './assets/reset.css'
-import '../../src/beui/beui.scss'
+// import '../../src/beui/beui.scss'
 // import 'gitris-ui/dist/beui.css'
 import './assets/main.css'
 
@@ -20,7 +20,7 @@ app.use(Toast, {
   // useTitle: false,
   // useIcon: true,
   // clickToClose: true,
-  // closeButton: true,q
+  // closeButton: true,
   position: 'top-center',
   // round: false,
   // theme: 'light',

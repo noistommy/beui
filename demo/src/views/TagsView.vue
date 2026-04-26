@@ -210,6 +210,23 @@ const colors = [
           <CodeBlock :code="codes.pointing" lang="vue-html"></CodeBlock>
         </section>
         <section>
+          <h4 class="title">Prefix | Suffix</h4>
+          <div class="desc"></div>
+          <div class="contents-wrapper">
+            <div class="be-tag label red prefix">
+              <span class="detail">prefix</span>
+              Tag
+            </div>
+            <div class="be-tag label blue suffix">
+              Tag
+              <span class="detail">suffix</span>
+            </div>
+            <BeTag class="primary" prefix="pre">Tag</BeTag>
+            <BeTag class="secondary" suffix="suf">Tag</BeTag>
+          </div>
+          <CodeBlock :code="codes.prefix_suffix" lang="vue-html"></CodeBlock>
+        </section>
+        <section>
           <h4 class="title">Tags</h4>
           <div class="desc"></div>
           <div class="contents-wrapper">
@@ -220,6 +237,26 @@ const colors = [
             </div>
           </div>
           <CodeBlock :code="codes.tags" lang="vue-html"></CodeBlock>
+        </section>
+        <section>
+          <h4 class="title">Attached tags</h4>
+          <div class="desc"></div>
+          <div class="contents-wrapper">
+            <div class="be-tags attached">
+              <div class="be-tag label primary pointing right">Attached</div>
+              <div class="be-tag label secondary">Tags</div>
+            </div>
+            <div class="be-tags attached">
+              <div class="be-tag label deeppurple">Tag A</div>
+              <div class="be-tag label orange">Tag B</div>
+            </div>
+            <div class="be-tags attached">
+              <div class="be-tag label blue light">Tag A</div>
+              <div class="be-tag label blue">Tag B</div>
+              <div class="be-tag label deepblue">Tag C</div>
+            </div>
+          </div>
+          <CodeBlock :code="codes.attached_tags" lang="vue-html"></CodeBlock>
         </section>
         <section>
           <h4 class="title">Tags: Hover Effect</h4>

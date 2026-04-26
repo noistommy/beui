@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive, onMounted } from 'vue'
+import { ref, reactive, onMounted, computed } from 'vue'
 import {
   argbFromHex,
   Hct,
@@ -9,6 +9,8 @@ import {
 import { shades, hexToLch, exportColorPaletteScss } from '@/utils/color-util'
 
 import ColorPicker from '../components/color-picker/ColorPicker.vue'
+import CodeBlock from '@/components/CodeBlock.vue'
+
 const tones = [20, 30, 40, 50, 60, 70, 80, 90, 95, 99, 100]
 const tones_o = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 99, 100]
 const s_tones = [15, 25, 35, 40, 45, 55, 65, 75, 85, 95]
@@ -144,10 +146,25 @@ const genaratorPalette = (hex) => {
 const exportPalette = () => {
   exportColorPaletteScss(valiablePalette)
 }
+
+const btnOptions = ref('')
+const btnClasses = computed(() => {
+  return btnOptions.value.replaceAll(',', ' ')
+})
 </script>
 
 <template>
   <div class="page-wrapper be-container">
+    <section class="motion-change-btn">
+      <div class="contents-wrapper">
+        <button class="be-button transition" :class="btnClasses">Button</button>
+      </div>
+      <div class="contents-wrapper">
+        <div class="be-input">
+          <input type="text" v-model="btnOptions" />
+        </div>
+      </div>
+    </section>
     <section>
       <h4>New Color</h4>
       <div class="contents-wrapper">
@@ -223,6 +240,9 @@ const exportPalette = () => {
 </template>
 
 <style lang="scss" scoped>
+.transition {
+  transition: all 2s 0.25s ease;
+}
 .color-palette {
   display: flex;
   // flex-direction: row-reverse;

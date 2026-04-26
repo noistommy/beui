@@ -1,6 +1,6 @@
 {
   "name": "noist-beui",
-  "version": "0.2.3",
+  "version": "0.2.5",
   "private": false,
   "type": "module",
   "main": "./dist/be-ui.umd.js",
@@ -63,6 +63,7 @@
   },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",
-    "gitris-ui": "github:noistommy/frog-ui-css"
+    "gitris-ui": "github:noistommy/frog-ui-css#v1.0.0",
+    "noist-beui": "^0.2.3"
   }
 }

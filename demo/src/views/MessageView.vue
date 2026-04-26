@@ -9,11 +9,11 @@ const usage = ''
 import { messageProps } from '@/contents/props-data'
 
 import { ref } from 'vue'
-const states = ['success', 'error', 'info', 'attention', 'importance']
+const states = ['success', 'danger', 'info', 'attention', 'importance']
 const statusIcon = {
   success: 'xi-check-circle',
   info: 'xi-info',
-  error: 'xi-emoticon-devil',
+  danger: 'xi-error',
   attention: 'xi-warning',
   importance: 'xi-star',
 }
@@ -27,7 +27,7 @@ const useIcon = ref(true)
           <div class="desc">
             <div class="be-tag label lightblue">HTML</div>
           </div>
-          <div class="contents-wrapper">
+          <div class="contents-wrapper block">
             <div class="be-message">// 내용 //</div>
             <div class="be-message">
               <div class="title">Title text</div>
@@ -40,7 +40,7 @@ const useIcon = ref(true)
           <div class="desc">
             <div class="be-tag label deepblue">COMPONENT</div>
           </div>
-          <div class="contents-wrapper">
+          <div class="contents-wrapper block">
             <BeMessage
               title="Component Title"
               contents="contents ..."
@@ -58,11 +58,11 @@ const useIcon = ref(true)
       </template>
       <template #variants>
         <section>
-          <h4 class="title">State Type</h4>
+          <h4 class="title">State</h4>
           <div class="desc">
             <div class="be-tag label deepblue">COMPONENT</div>
           </div>
-          <div class="contents-wrapper">
+          <div class="contents-wrapper block">
             <div
               class="be-message"
               v-for="state in states"
@@ -77,9 +77,27 @@ const useIcon = ref(true)
           <CodeBlock :code="codes.status" lang="vue-html"></CodeBlock>
         </section>
         <section>
+          <h4 class="title">State Type</h4>
+          <div class="desc">
+            <div class="be-tag label deepblue">COMPONENT</div>
+          </div>
+          <div class="contents-wrapper block">
+            <div class="be-messages list">
+              <template v-for="state in ['text', 'bg', 'border']" :key="state">
+                <BeMessage status="success" :icon="true" :status-type="state">
+                  <i class="icon" :class="statusIcon['success']"></i>
+                  <div class="title">{{ state }} type</div>
+                  <div class="contents">contents</div>
+                </BeMessage>
+              </template>
+            </div>
+          </div>
+          <CodeBlock :code="codes.status" lang="vue-html"></CodeBlock>
+        </section>
+        <section>
           <h4 class="title">Use Icon</h4>
           <div class="desc"></div>
-          <div class="contents-wrapper">
+          <div class="contents-wrapper block">
             <BeCheckBox v-model="useIcon" label-text="use icon" />
             <div class="be-message" :class="{ icon: useIcon }">
               <i v-if="useIcon" class="icon xi-info"></i>
@@ -99,7 +117,7 @@ const useIcon = ref(true)
         <section>
           <h4 class="title">Message Group</h4>
           <div class="desc"></div>
-          <div class="contents-wrapper">
+          <div class="contents-wrapper block">
             <div class="be-messages">
               <div class="be-message icon selected">
                 <i class="icon xi-info"></i>
@@ -123,7 +141,7 @@ const useIcon = ref(true)
         <section>
           <h4 class="title">Message List Group</h4>
           <div class="desc"></div>
-          <div class="contents-wrapper">
+          <div class="contents-wrapper block">
             <div class="be-messages list">
               <div class="be-message icon selected">
                 <i class="icon xi-info"></i>

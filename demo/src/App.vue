@@ -4,6 +4,8 @@ import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import SlideSideLayout from './components/SlideSideLayout.vue'
 import SideList from '@/components/SideList.vue'
+
+import BeLogo from '@/components/BeLogo.vue'
 // import onMouseDown from './beComponents/flexible-view'
 import './beComponents/flexible-view/flexible-view.scss'
 
@@ -48,7 +50,7 @@ const setPrevNext = () => {
         </div>
       </div>
       <div class="logo">
-        <div class="title">BEUI <span class="sub">VUE</span></div>
+        <div class="title"><BeLogo />UI <span class="sub">VUE</span></div>
         <span class="be-tag label round">v {{ version }}</span>
         <!-- <div class="description">Vue 3 전용 공용 UI 라이브러리</div> -->
       </div>
@@ -72,7 +74,7 @@ const setPrevNext = () => {
       </div>
     </div>
   </header>
-  <main>
+  <main class="be container center">
     <SlideSideLayout
       :is-show="toggleSide"
       type="push"
@@ -282,6 +284,7 @@ section {
   border: 1px solid var(--brd);
   gap: 14px;
   margin-bottom: 5px;
+  overflow-x: auto;
   &:last-child {
     // &:after {
     //   content: 'component';
@@ -294,6 +297,9 @@ section {
     //   color: #fff;
 
     // }
+  }
+  &.block {
+    display: block;
   }
 }
 .layout-h {

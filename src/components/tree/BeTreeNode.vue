@@ -38,38 +38,36 @@ const toggleNode = (e) => {
 </script>
 <template>
   <div
-    class="be-tree"
+    class="tree-branch"
     :class="{ show: showNode }"
     :style="{ '--level': level }"
   >
-    <div class="node custom-node" @click="toggleNode">
-      <div class="node-title">
-        <i
-          v-if="!files && useMark"
-          class="icon expend-icon"
-          :class="{ 'xi-caret-down-min': node.children?.length > 0 }"
-        ></i>
-        <i
-          v-if="files"
-          class="icon"
-          :class="
-            node.children?.length > 0
-              ? showNode
-                ? 'xi-folder-open'
-                : 'xi-folder'
-              : 'xi-file-o'
-          "
-        />
+    <div class="node-title custom-node" @click="toggleNode">
+      <i
+        v-if="!files && useMark"
+        class="icon expend-icon"
+        :class="{ 'xi-caret-down-min': node.children?.length > 0 }"
+      ></i>
+      <i
+        v-if="files"
+        class="icon"
+        :class="
+          node.children?.length > 0
+            ? showNode
+              ? 'xi-folder-open'
+              : 'xi-folder'
+            : 'xi-file-o'
+        "
+      />
 
-        <div class="node-label">
-          <template v-if="useCheck">
-            <be-check-box v-model="checked" @update:modelValue="updateCheck" />
-          </template>
-          <div class="title">
-            {{ node.label }}
-          </div>
-          <div v-if="node.sub" class="sub-title">{{ node.sub }}</div>
+      <div class="node-label">
+        <template v-if="useCheck">
+          <be-check-box v-model="checked" @update:modelValue="updateCheck" />
+        </template>
+        <div class="title">
+          {{ node.label }}
         </div>
+        <div v-if="node.sub" class="sub-title">{{ node.sub }}</div>
       </div>
     </div>
     <div v-if="showNode && node.children?.length > 0" class="node-children">

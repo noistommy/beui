@@ -1,5 +1,6 @@
 export const elementList = [
   { name: 'button', path: '/button' },
+  { name: 'button-group', path: '/button-group' },
   { name: 'input', path: '/input' },
   { name: 'input-number', path: '/input-number' },
   { name: 'checkbox', path: '/checkbox' },

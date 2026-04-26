@@ -21,6 +21,7 @@ const libConfig = {
         // moduleIds: 'deterministic',
         // exports: 'named',
         assetFileNames: (assetInfo) => {
+          console.log(assetInfo)
           if (assetInfo.name == 'style.css') return 'beui.css'
           // return assetInfo.name
           return 'beui.css'

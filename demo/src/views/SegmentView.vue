@@ -137,6 +137,27 @@ const lorem_text =
           <CodeBlock :code="codes.attached" lang="vue-html"></CodeBlock>
         </section>
         <section>
+          <h4>Extra</h4>
+          <div class="desc">
+            <div class="be-tag label deepblue">Component</div>
+          </div>
+          <div class="contents-wrapper">
+            <BeSegment border extra>
+              {{ lorem_text }}
+              <template #extra>
+                <div class="be flex between">
+                  Extra
+                  <div class="btns">
+                    <BeButton brand="primary">Start</BeButton>
+                    <BeButton outline>Cancel</BeButton>
+                  </div>
+                </div>
+              </template>
+            </BeSegment>
+          </div>
+          <CodeBlock :code="codes.attached" lang="vue-html"></CodeBlock>
+        </section>
+        <section>
           <h4>Align</h4>
           <div class="desc">
             Left | Center | Right

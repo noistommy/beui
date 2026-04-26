@@ -40,6 +40,14 @@ defineProps({
     type: String,
     default: null,
   },
+  prefix: {
+    type: String,
+    default: null,
+  },
+  suffix: {
+    type: String,
+    default: null,
+  },
 })
 </script>
 
@@ -54,9 +62,12 @@ defineProps({
       type === 'pointing' && pointingPos,
       type === 'kbd' && isMeta ? 'meta' : '',
       type === 'kbd' && keyType ? keyType : '',
+      { prefix },
+      { suffix },
     ]"
   >
     <template v-if="type === 'label' || type === 'pointing' || type === 'kbd'">
+      <span v-if="prefix" class="detail">{{ prefix }}</span>
       <i v-if="icon" class="icon" :class="[icon, iconPos]"></i>
       <slot></slot>
       <i
@@ -64,6 +75,7 @@ defineProps({
         class="icon right"
         :class="icon"
       ></i>
+      <span v-if="suffix" class="detail">{{ suffix }}</span>
     </template>
   </div>
 </template>

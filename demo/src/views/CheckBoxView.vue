@@ -29,22 +29,38 @@ const cbValue = ref([true, false, false, true])
             <span class="be-tag label lightblue">HTML</span>
           </div>
           <div class="contents-wrapper">
-            <div class="be-checkbox" :class="{ checked: cbValue[0] }">
+            <label
+              for="checkbox1"
+              class="be-checkbox"
+              :class="{ checked: cbValue[0] }"
+            >
               <input type="checkbox" id="checkbox1" v-model="cbValue[0]" />
-              <label for="checkbox1">Checkbox1</label>
-            </div>
-            <div class="be-checkbox" :class="{ checked: cbValue[1] }">
+              Checkbox1
+            </label>
+            <label
+              for="checkbox2"
+              class="be-checkbox"
+              :class="{ checked: cbValue[1] }"
+            >
               <input type="checkbox" id="checkbox2" v-model="cbValue[1]" />
-              <label for="checkbox2">Checkbox2</label>
-            </div>
-            <div class="be-checkbox" :class="{ checked: cbValue[2] }">
+              Checkbox2
+            </label>
+            <label
+              for="checkbox3"
+              class="be-checkbox"
+              :class="{ checked: cbValue[2] }"
+            >
               <input type="checkbox" id="checkbox3" v-model="cbValue[2]" />
-              <label for="checkbox3">Checkbox3</label>
-            </div>
-            <div class="be-checkbox indeter" :class="{ checked: cbValue[3] }">
+              Checkbox3
+            </label>
+            <label
+              for="checkbox4"
+              class="be-checkbox indeter"
+              :class="{ checked: cbValue[3] }"
+            >
               <input type="checkbox" id="checkbox4" v-model="cbValue[3]" />
-              <label for="checkbox4">Checkbox Indeter</label>
-            </div>
+              Checkbox Indeter
+            </label>
           </div>
           <CodeBlock :code="codes.base_html" lang="html"></CodeBlock>
         </section>

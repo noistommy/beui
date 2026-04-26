@@ -66,6 +66,15 @@ const selectedIndex = ref(0)
       </template>
       <template #usage>
         {{ usage }}
+        <button class="be-button link">
+          <i class="icon left xi-checkbox-blank"></i>
+          codesandbox
+          <a
+            href="https://codesandbox.io/p/devbox/yljdvr"
+            class="link"
+            target="_blank"
+          ></a>
+        </button>
       </template>
       <template #props>
         <PropsDataList title="Button" :datas="buttonProps" />
@@ -76,8 +85,8 @@ const selectedIndex = ref(0)
           <h4 class="title">Brand</h4>
           <div class="desc"></div>
           <div class="contents-wrapper">
-            <button class="be-button primary">Primary</button>
-            <button class="be-button secondary">Secondary</button>
+            <BeButton brand="primary" content-text="Primary"></BeButton>
+            <BeButton brand="secondary" content-text="Secondary"></BeButton>
           </div>
           <CodeBlock :code="codes.brand" lang="vue-html"></CodeBlock>
         </section>
@@ -85,14 +94,9 @@ const selectedIndex = ref(0)
           <h4 class="title">Status</h4>
           <div class="desc"></div>
           <div class="contents-wrapper">
-            <button
-              v-for="state in status"
-              :key="state"
-              class="be-button"
-              :class="state"
-            >
-              {{ state }}
-            </button>
+            <template v-for="state in status" :key="state">
+              <BeButton :status="state" :content-text="state" />
+            </template>
           </div>
           <CodeBlock :code="codes.status" lang="vue-html"></CodeBlock>
         </section>
@@ -100,15 +104,9 @@ const selectedIndex = ref(0)
           <h4 class="title">Colors</h4>
           <div class="desc"></div>
           <div class="contents-wrapper">
-            <button
-              v-for="color in colors"
-              :key="color"
-              class="be-button"
-              :class="color"
-            >
-              {{ color }}
-            </button>
-            <BeButton color="lightblue" content-text="Comp(color)"></BeButton>
+            <template v-for="color in colors" :key="color">
+              <BeButton :color="color" :content-text="color" />
+            </template>
           </div>
           <CodeBlock :code="codes.colors" lang="vue-html"></CodeBlock>
         </section>
@@ -116,19 +114,12 @@ const selectedIndex = ref(0)
           <h4 class="title">Colors-light</h4>
           <div class="desc"></div>
           <div class="contents-wrapper">
-            <button
-              v-for="color in colors"
-              :key="color"
-              class="be-button"
-              :class="`${color}-light`"
-              :aria-label="color"
-            >
-              {{ color }}
-            </button>
-            <BeButton
-              color="lightblue-light"
-              content-text="Comp(color)"
-            ></BeButton>
+            <template v-for="color in colors" :key="color">
+              <BeButton
+                :color="`${color}-light`"
+                :content-text="`${color}-light`"
+              />
+            </template>
           </div>
           <CodeBlock :code="codes.colors_light" lang="vue-html"></CodeBlock>
         </section>
@@ -136,13 +127,15 @@ const selectedIndex = ref(0)
           <h4 class="title">Text</h4>
           <div class="desc"></div>
           <div class="contents-wrapper">
-            <button class="be-button text">text</button>
-            <button class="be-button primary text">text</button>
-            <button class="be-button text">
-              <i class="icon left xi-text-size"></i>
-              text
-            </button>
-            <BeButton :text="true" content-text="Comp(text)"></BeButton>
+            <BeButton :text="true" content-text="Text" />
+            <BeButton :text="true" class="no-hover" content-text="No Hover" />
+            <BeButton :text="true" brand="primary" content-text="Text" />
+            <BeButton
+              :text="true"
+              icon="xi-text-size"
+              icon-pos="left"
+              content-text="Text"
+            />
           </div>
           <CodeBlock :code="codes.text" lang="vue-html"></CodeBlock>
         </section>
@@ -150,19 +143,15 @@ const selectedIndex = ref(0)
           <h4 class="title">Border</h4>
           <div class="desc"></div>
           <div class="contents-wrapper">
-            <button class="be-button border">border</button>
-            <button
-              v-for="opt in options"
-              :key="opt"
-              class="be-button border"
-              :class="opt"
-            >
-              <template v-if="opt.indexOf('icon') > -1">
-                <i class="icon left xi-airplane"></i>
-              </template>
-              border
-            </button>
-            <BeButton :border="true" content-text="Comp(border)"></BeButton>
+            <BeButton :border="true">Border</BeButton>
+            <template v-for="opt in options" :key="opt">
+              <BeButton :class="opt" :border="true" content-text="Comp(border)">
+                <template v-if="opt.indexOf('icon') > -1">
+                  <i class="icon left xi-airplane"></i>
+                </template>
+                Border
+              </BeButton>
+            </template>
           </div>
           <CodeBlock :code="codes.border" lang="vue-html"></CodeBlock>
         </section>
@@ -180,19 +169,15 @@ const selectedIndex = ref(0)
           <h4 class="title">Fluid</h4>
           <div class="desc"></div>
           <div class="contents-wrapper">
-            <button class="be-button fluid">fluid</button>
-            <button
-              v-for="opt in options"
-              :key="opt"
-              class="be-button fluid"
-              :class="opt"
-            >
-              <template v-if="opt.indexOf('icon') > -1">
-                <i class="icon left xi-airplane"></i>
-              </template>
-              fluid ({{ opt }})
-            </button>
-            <BeButton :fluid="true" content-text="Comp(fluid)"></BeButton>
+            <BeButton fluid>fluid</BeButton>
+            <template v-for="opt in options" :key="opt">
+              <BeButton :class="opt" fluid>
+                <template v-if="opt.indexOf('icon') > -1">
+                  <i class="icon left xi-airplane"></i>
+                </template>
+                fluid ({{ opt }})
+              </BeButton>
+            </template>
           </div>
           <CodeBlock :code="codes.fluid" lang="vue-html"></CodeBlock>
         </section>
@@ -200,19 +185,15 @@ const selectedIndex = ref(0)
           <h4 class="title">Compact</h4>
           <div class="desc"></div>
           <div class="contents-wrapper">
-            <button class="be-button compact">compact</button>
-            <button
-              v-for="opt in options"
-              :key="opt"
-              class="be-button compact"
-              :class="opt"
-            >
-              <template v-if="opt.indexOf('icon') > -1">
-                <i class="icon left xi-airplane"></i>
-              </template>
-              compact
-            </button>
             <BeButton :compact="true" content-text="Comp(compact)"></BeButton>
+            <template v-for="opt in options" :key="opt">
+              <BeButton :class="opt" compact>
+                <template v-if="opt.indexOf('icon') > -1">
+                  <i class="icon left xi-airplane"></i>
+                </template>
+                Compact
+              </BeButton>
+            </template>
           </div>
           <CodeBlock :code="codes.compact" lang="vue-html"></CodeBlock>
         </section>
@@ -220,19 +201,15 @@ const selectedIndex = ref(0)
           <h4 class="title">Outline</h4>
           <div class="desc"></div>
           <div class="contents-wrapper">
-            <button class="be-button outline">outline</button>
-            <button
-              v-for="opt in options"
-              :key="opt"
-              class="be-button outline"
-              :class="opt"
-            >
-              <template v-if="opt.indexOf('icon') > -1">
-                <i class="icon left xi-airplane"></i>
-              </template>
-              outline
-            </button>
             <BeButton :outline="true" content-text="Comp(outline)"></BeButton>
+            <template v-for="opt in options" :key="opt">
+              <BeButton :class="opt" outline>
+                <template v-if="opt.indexOf('icon') > -1">
+                  <i class="icon left xi-airplane"></i>
+                </template>
+                Outline
+              </BeButton>
+            </template>
           </div>
           <CodeBlock :code="codes.outline" lang="vue-html"></CodeBlock>
         </section>
@@ -240,17 +217,12 @@ const selectedIndex = ref(0)
           <h4 class="title">Icons(xeicon 2.3.3)</h4>
           <div class="desc"></div>
           <div class="contents-wrapper">
-            <button class="be-button icon"><i class="xi-airplane"></i></button>
-            <button class="be-button icon"><i class="xi-airplane"></i></button>
-            <button
-              v-for="(opt, i) in options"
-              :key="opt"
-              class="be-button icon"
-              :class="opt"
-            >
-              <i :class="`xi-${icons[i]}`"></i>
-            </button>
-            <BeButton icon="xi-airplane"></BeButton>
+            <BeButton icon="xi-airplane" />
+            <template v-for="(opt, i) in options" :key="opt">
+              <BeButton :class="opt" icon>
+                <i :class="`xi-${icons[i]}`"></i>
+              </BeButton>
+            </template>
           </div>
           <CodeBlock :code="codes.icon" lang="vue-html"></CodeBlock>
         </section>
@@ -258,19 +230,15 @@ const selectedIndex = ref(0)
           <h4 class="title">Round</h4>
           <div class="desc"></div>
           <div class="contents-wrapper">
-            <button class="be-button round">round</button>
-            <button
-              v-for="opt in options"
-              :key="opt"
-              class="be-button round"
-              :class="opt"
-            >
-              <template v-if="opt.indexOf('icon') > -1">
-                <i class="icon left xi-airplane"></i>
-              </template>
-              round
-            </button>
-            <BeButton :round="true" content-text="Comp(round)"></BeButton>
+            <BeButton round content-text="Round"></BeButton>
+            <template v-for="opt in options" :key="opt">
+              <BeButton round :class="opt">
+                <template v-if="opt.indexOf('icon') > -1">
+                  <i class="icon left xi-airplane"></i>
+                </template>
+                Round
+              </BeButton>
+            </template>
           </div>
           <CodeBlock :code="codes.round" lang="vue-html"></CodeBlock>
         </section>
@@ -278,14 +246,9 @@ const selectedIndex = ref(0)
           <h4 class="title">Size</h4>
           <div class="desc"></div>
           <div class="contents-wrapper">
-            <button
-              v-for="size in sizes"
-              :key="size"
-              class="be-button"
-              :class="size"
-            >
-              {{ size }}
-            </button>
+            <template v-for="size in sizes" :key="size">
+              <BeButton :size="size">{{ size }}</BeButton>
+            </template>
           </div>
           <CodeBlock :code="codes.size" lang="vue-html"></CodeBlock>
         </section>
@@ -295,20 +258,22 @@ const selectedIndex = ref(0)
           <div class="contents-wrapper">
             <button class="be-button">
               <i class="icon left xi-angle-left"></i>
-              Icon Left
-            </button>
-            <button class="be-button">
-              Icon Right
-              <i class="icon right xi-angle-right"></i>
-            </button>
-            <button class="be-button">
-              <i class="icon left xi-angle-left"></i>
               Icon Both
               <i class="icon right xi-angle-right"></i>
             </button>
             <BeButton
-              with-icon="xi-airplane"
+              with-icon="xi-angle-left"
               icon-pos="left"
+              content-text="Icon Left"
+            />
+            <BeButton
+              with-icon="xi-angle-right"
+              icon-pos="right"
+              content-text="Icon Right"
+            />
+            <BeButton
+              :with-icon="['xi-angle-left', 'xi-angle-right']"
+              icon-pos="both"
               content-text="Comp(icon)"
             ></BeButton>
           </div>
@@ -318,18 +283,20 @@ const selectedIndex = ref(0)
           <h4 class="title">Badge</h4>
           <div class="desc"></div>
           <div class="contents-wrapper">
-            <button class="be-button badge">
-              Bedge Best
-              <span class="in-badge primary">Best</span>
-            </button>
-            <button class="be-button badge">
-              Bedge New
-              <span class="in-badge be-red">N</span>
-            </button>
+            <BeButton
+              badge="Best"
+              badge-option="primary"
+              content-text="Badge-Best"
+            ></BeButton>
+            <BeButton
+              badge="N"
+              badge-option="be-red"
+              content-text="Badge-New"
+            ></BeButton>
             <BeButton
               badge="COMP"
               badge-option="secondary"
-              content-text="Comp(badge)"
+              content-text="Badge"
             ></BeButton>
           </div>
           <CodeBlock :code="codes.badge" lang="vue-html"></CodeBlock>
