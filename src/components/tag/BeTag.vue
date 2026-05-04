@@ -55,8 +55,7 @@ defineProps({
   <div
     class="be-tag"
     :class="[
-      color,
-      { light },
+      color && `${color}${light ? `-light` : ''}`,
       type,
       { round, icon: icon, pointing },
       type === 'pointing' && pointingPos,
@@ -68,7 +67,11 @@ defineProps({
   >
     <template v-if="type === 'label' || type === 'pointing' || type === 'kbd'">
       <span v-if="prefix" class="detail">{{ prefix }}</span>
-      <i v-if="icon" class="icon" :class="[icon, iconPos]"></i>
+      <i
+        v-if="icon && iconPos !== 'right'"
+        class="icon"
+        :class="[icon, iconPos]"
+      ></i>
       <slot></slot>
       <i
         v-if="icon && iconPos === 'right'"

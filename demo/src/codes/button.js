@@ -1,3 +1,19 @@
+export const install = `<script setup lang="ts">
+  import { BeButton } from 'noist-beui';
+
+  const handleClick = (e) => {
+    // ... click action
+  }
+</script>
+
+<template>
+  <BeButton ...props @onClick="handleClick">
+    <!-- Button icon -->
+    <!-- Button Contents -->
+    <!-- Button badge -->
+  </BeButton>
+</template>
+`
 export const base_html = `<!-- <button></button> 태그 사용 -->
 <button class="be-button">Contents-text</button>
 <!-- <div></div> 태그 사용 -->

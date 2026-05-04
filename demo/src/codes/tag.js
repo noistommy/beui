@@ -48,7 +48,7 @@ export const pointing = `<!-- @pointing: Boolean -->
 <!-- html -->
 <div class="be-tag label pointing {pointingPos}">Point</div>
 <!-- component -->
-<BeTag type="label" pointing pointing-pos="{pointingPos}">Point</BeTag>`
+<BeTag type="pointing" pointing-pos="{pointingPos}">Point</BeTag>`
 export const prefix_suffix = `<!-- @prefix: String -->
 <!-- @suffix: String -->
 <!-- html -->

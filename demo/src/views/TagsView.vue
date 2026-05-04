@@ -67,10 +67,8 @@ const colors = [
           <div class="desc"></div>
           <div class="contents-wrapper">
             <div class="be-tag label">BASE</div>
-            <div class="be-tag label">기본태그</div>
-            <div class="be-tag label icon">
-              <i class="icon xi-tag"></i>
-            </div>
+            <BeTag>기본태그</BeTag>
+            <BeTag icon="xi-tag"></BeTag>
             <BeTag>label type</BeTag>
           </div>
           <CodeBlock :code="codes.type_label" lang="vue-html"></CodeBlock>
@@ -80,22 +78,17 @@ const colors = [
           <div class="desc"></div>
           <div class="contents-wrapper">
             <div class="kbd-set">
-              <BeTag type="kbd" key-Type="enter">enter</BeTag>
-              <BeTag type="kbd">space</BeTag>
+              <BeTag type="kbd" key-Type="enter">Enter</BeTag>
+              <BeTag type="kbd" key-Type="space">Space</BeTag>
+              <BeTag type="kbd" key-Type="esc">ESC</BeTag>
+              <BeTag type="kbd" key-type="shift">Shift</BeTag>
+              <BeTag type="kbd" key-type="ctrl">Control</BeTag>
+              <BeTag type="kbd" key-type="opt">Option</BeTag>
               <BeTag type="kbd" is-meta key-type="cmd">command</BeTag>
+              <BeTag type="kbd">Z</BeTag>
               <BeTag type="kbd">a</BeTag>
               <BeTag type="kbd">b</BeTag>
               <BeTag type="kbd">c</BeTag>
-            </div>
-            <div class="kbd-set">
-              <div class="be-tag kbd space">space</div>
-              <div class="be-tag kbd esc">esc</div>
-              <div class="be-tag kbd enter">enter</div>
-              <div class="be-tag kbd meta shift">shift</div>
-              <div class="be-tag kbd meta ctrl">ctrl</div>
-              <div class="be-tag kbd meta opt">option</div>
-              <div class="be-tag kbd meta cmd">command</div>
-              <div class="be-tag kbd">z</div>
             </div>
             <p>
               Press <BeTag type="kbd" key-type="enter">enter</BeTag> to open
@@ -108,11 +101,10 @@ const colors = [
           <h4 class="title">Type: line</h4>
           <div class="desc"></div>
           <div class="contents-wrapper">
-            <div class="be-tag line"></div>
-            <div class="be-tag line red"></div>
-            <div class="be-tag line blue"></div>
-            <div class="be-tag line green"></div>
             <BeTag type="line"></BeTag>
+            <BeTag type="line" color="red" />
+            <BeTag type="line" color="blue" />
+            <BeTag type="line" color="green" />
           </div>
           <CodeBlock :code="codes.type_line" lang="vue-html"></CodeBlock>
         </section>
@@ -120,11 +112,10 @@ const colors = [
           <h4 class="title">Type: dot</h4>
           <div class="desc"></div>
           <div class="contents-wrapper">
-            <div class="be-tag dot"></div>
-            <div class="be-tag dot red"></div>
-            <div class="be-tag dot blue"></div>
-            <div class="be-tag dot green"></div>
             <BeTag type="dot"></BeTag>
+            <BeTag type="dot" color="red" />
+            <BeTag type="dot" color="blue" />
+            <BeTag type="dot" color="green" />
           </div>
           <CodeBlock :code="codes.type_dot" lang="vue-html"></CodeBlock>
         </section>
@@ -132,29 +123,14 @@ const colors = [
           <h4 class="title">Icon</h4>
           <div class="desc">label 타입의 경우에 사용</div>
           <div class="contents-wrapper">
-            <div class="be-tag label icon">
-              <i class="icon xi-bell"></i>
-            </div>
-            <div class="be-tag label">
-              <i class="icon left xi-angle-left"></i>
-              Left
-            </div>
-            <div class="be-tag label">
-              Right
-              <i class="icon right xi-angle-right"></i>
-            </div>
-            <div class="be-tag label blue">
-              <i class="icon left xi-user"></i>
-              User
-            </div>
-            <div class="be-tag label red">
-              <i class="icon left xi-new"></i>
-              New
-            </div>
-            <div class="be-tag label deeppurple">
+            <BeTag icon="xi-bell"></BeTag>
+            <BeTag icon="xi-angle-left" icon-pos="left">Left</BeTag>
+            <BeTag icon="xi-angle-right" icon-pos="right">Right</BeTag>
+            <BeTag icon="xi-user" icon-pos="left" color="blue">User</BeTag>
+            <BeTag icon="xi-new" icon-pos="left" color="red">New</BeTag>
+            <BeTag icon="xi-close" icon-pos="right" color="deeppurple">
               Tag
-              <i class="icon right xi-close"></i>
-            </div>
+            </BeTag>
             <BeTag icon="xi-tag" icon-pos="left">icon(Comp)</BeTag>
           </div>
           <CodeBlock :code="codes.icon" lang="vue-html"></CodeBlock>
@@ -163,26 +139,15 @@ const colors = [
           <h4 class="title">Round</h4>
           <div class="desc"></div>
           <div class="contents-wrapper">
-            <div class="be-tag label round">
-              <i class="icon left xi-angle-left"></i>
-              Left
-            </div>
-            <div class="be-tag label round">
-              Right
-              <i class="icon right xi-angle-right"></i>
-            </div>
-            <div class="be-tag label round blue">
-              <i class="icon left xi-user"></i>
+            <BeTag icon="xi-angle-left" icon-pos="left" round>Left</BeTag>
+            <BeTag icon="xi-angle-right" icon-pos="right" round>Right</BeTag>
+            <BeTag icon="xi-user" icon-pos="left" color="blue" round>
               User
-            </div>
-            <div class="be-tag label round red">
-              <i class="icon left xi-new"></i>
-              New
-            </div>
-            <div class="be-tag label round deeppurple">
+            </BeTag>
+            <BeTag icon="xi-new" icon-pos="left" color="red" round>New</BeTag>
+            <BeTag icon="xi-close" icon-pos="right" color="deeppurple" round>
               Tag
-              <i class="icon right xi-close"></i>
-            </div>
+            </BeTag>
           </div>
           <CodeBlock :code="codes.round" lang="vue-html"></CodeBlock>
         </section>
@@ -190,22 +155,18 @@ const colors = [
           <h4 class="title">Pointing</h4>
           <div class="desc"></div>
           <div class="contents-wrapper">
-            <div class="be-tag pointing up">
+            <BeTag type="pointing" pointing-pos="up" color="blue">
               Point Up
-              <i class="icon right xi-angle-right"></i>
-            </div>
-            <div class="be-tag pointing blue down">
-              <i class="icon left xi-user"></i>
+            </BeTag>
+            <BeTag type="pointing" pointing-pos="down" color="blue">
               Point Down
-            </div>
-            <div class="be-tag pointing left">
-              Point left
-              <i class="icon right xi-angle-right"></i>
-            </div>
-            <div class="be-tag pointing blue right">
-              <i class="icon left xi-user"></i>
+            </BeTag>
+            <BeTag type="pointing" pointing-pos="left" color="blue">
+              Point Left
+            </BeTag>
+            <BeTag type="pointing" pointing-pos="right" color="blue">
               Point Right
-            </div>
+            </BeTag>
           </div>
           <CodeBlock :code="codes.pointing" lang="vue-html"></CodeBlock>
         </section>
@@ -231,9 +192,12 @@ const colors = [
           <div class="desc"></div>
           <div class="contents-wrapper">
             <div class="be-tags">
-              <div class="be-tag label green">Tag A</div>
-              <div class="be-tag label deepblue">Tag B</div>
-              <div class="be-tag label orange">Tag C</div>
+              <template
+                v-for="color in ['green', 'deepblue', 'orange']"
+                :key="color"
+              >
+                <BeTag :color>{{ color }}</BeTag>
+              </template>
             </div>
           </div>
           <CodeBlock :code="codes.tags" lang="vue-html"></CodeBlock>
@@ -263,9 +227,12 @@ const colors = [
           <div class="desc"></div>
           <div class="contents-wrapper">
             <div class="be-tags one-of-a-kind">
-              <div class="be-tag label green">Tag A</div>
-              <div class="be-tag label deepblue">Tag B</div>
-              <div class="be-tag label orange">Tag C</div>
+              <template
+                v-for="color in ['green', 'deepblue', 'orange']"
+                :key="color"
+              >
+                <BeTag :color>{{ color }}</BeTag>
+              </template>
             </div>
           </div>
           <CodeBlock :code="codes.effect" lang="vue-html"></CodeBlock>
@@ -274,14 +241,9 @@ const colors = [
           <h4 class="title">Color</h4>
           <div class="desc"></div>
           <div class="contents-wrapper">
-            <div
-              v-for="color in colors"
-              :key="color"
-              class="be-tag label"
-              :class="color"
-            >
+            <BeTag v-for="color in colors" :key="color" :color>
               {{ color }}
-            </div>
+            </BeTag>
           </div>
           <CodeBlock :code="codes.color" lang="vue-html"></CodeBlock>
         </section>
@@ -289,14 +251,9 @@ const colors = [
           <h4 class="title">Color - light</h4>
           <div class="desc"></div>
           <div class="contents-wrapper">
-            <div
-              v-for="color in colors"
-              :key="color"
-              class="be-tag label light"
-              :class="color"
-            >
+            <BeTag v-for="color in colors" :key="color" :color light>
               {{ color }}
-            </div>
+            </BeTag>
           </div>
           <CodeBlock :code="codes.color_light" lang="vue-html"></CodeBlock>
         </section>

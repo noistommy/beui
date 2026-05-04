@@ -29,11 +29,21 @@ const options = ['primary', 'secondary', 'round', 'outline', 'icon']
 const icons = ['home', 'user', 'arrow-left', 'arrow-right', 'accessibility']
 const sizes = ['tiny', 'small', 'medium', 'large', 'huge', 'massive']
 
-const selectedIndex = ref(0)
+// const selectedIndex = ref(0)
 </script>
 <template>
   <div class="page-wrapper be-container">
-    <div class="summary"></div>
+    <div class="summary">
+      <!-- <button class="be-button link">
+        <i class="icon left xi-checkbox-blank"></i>
+        codesandbox
+        <a
+          href="https://codesandbox.io/p/devbox/yljdvr"
+          class="link"
+          target="_blank"
+        ></a>
+      </button> -->
+    </div>
     <PageContainer>
       <template #base>
         <section>
@@ -66,15 +76,7 @@ const selectedIndex = ref(0)
       </template>
       <template #usage>
         {{ usage }}
-        <button class="be-button link">
-          <i class="icon left xi-checkbox-blank"></i>
-          codesandbox
-          <a
-            href="https://codesandbox.io/p/devbox/yljdvr"
-            class="link"
-            target="_blank"
-          ></a>
-        </button>
+        <CodeBlock :code="codes.install" :use-toggle="false" lang="vue" />
       </template>
       <template #props>
         <PropsDataList title="Button" :datas="buttonProps" />
@@ -318,7 +320,7 @@ const selectedIndex = ref(0)
           <CodeBlock :code="codes.eventEmit" lang="vue-html"></CodeBlock>
         </section>
       </template>
-      <template #extention>
+      <!-- <template #extention>
         <div class="buttons">
           <h1 class="title">Buttons</h1>
           <section>
@@ -376,7 +378,7 @@ const selectedIndex = ref(0)
             <CodeBlock :code="codes.buttons_border" lang="vue-html"></CodeBlock>
           </section>
         </div>
-      </template>
+      </template> -->
     </PageContainer>
   </div>
 </template>

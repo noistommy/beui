@@ -1,36 +1,36 @@
 export const elementList = [
+  { name: 'badge', path: '/badge' },
   { name: 'button', path: '/button' },
   { name: 'button-group', path: '/button-group' },
-  { name: 'input', path: '/input' },
-  { name: 'input-number', path: '/input-number' },
+  { name: 'card', path: '/card' },
   { name: 'checkbox', path: '/checkbox' },
   { name: 'checkbox-group', path: '/checkbox-group' },
-  { name: 'switch', path: '/switch' },
-  { name: 'tag', path: '/tag' },
-  { name: 'badge', path: '/badge' },
+  { name: 'input', path: '/input' },
+  { name: 'input-number', path: '/input-number' },
   { name: 'message', path: '/message' },
   { name: 'rate', path: '/rate' },
-  { name: 'slider', path: '/slider' },
   { name: 'segment', path: '/segment' },
-  { name: 'card', path: '/card' },
+  { name: 'slider', path: '/slider' },
+  { name: 'switch', path: '/switch' },
+  { name: 'tag', path: '/tag' },
 ]
 
 export const layoutList = [
-  { name: 'tabs', path: '/tabs' },
-  { name: 'grid', path: '/grid' },
   { name: 'dosirak-grid', path: '/dosirak-grid' },
   { name: 'form', path: '/form' },
+  { name: 'grid', path: '/grid' },
+  { name: 'tabs', path: '/tabs' },
 ]
 
 export const viewsList = [
-  { name: 'table', path: '/table' },
-  { name: 'panel', path: '/panel' },
-  { name: 'list', path: '/list' },
-  { name: 'tree-list', path: '/tree-list' },
   { name: 'calendar', path: '/calendar' },
   { name: 'date-picker', path: '/date-picker' },
   { name: 'pagination', path: '/pagination' },
+  { name: 'list', path: '/list' },
+  { name: 'panel', path: '/panel' },
   { name: 'selectbox', path: '/selectbox' },
+  { name: 'table', path: '/table' },
+  { name: 'tree-list', path: '/tree-list' },
 ]
 
 export const navList = {
