@@ -224,7 +224,6 @@ const handleChange = () => {
     }
   }
   .main-pane {
-    background-color: #fff;
     width: 100%;
     height: 100%;
   }

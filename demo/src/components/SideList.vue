@@ -90,7 +90,7 @@ defineProps({
     .item {
       border-radius: 4px;
       &:hover {
-        background-color: #ddd;
+        background-color: var(--hover-suf);
       }
       a {
         width: 100%;

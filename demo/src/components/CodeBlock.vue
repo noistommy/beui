@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, watch } from 'vue'
+import { ref, shallowRef, onMounted, onUnmounted, watch } from 'vue'
 import { createHighlighter } from 'shiki'
 
 const props = defineProps({
@@ -27,23 +27,56 @@ const props = defineProps({
 
 const isShow = ref(props.show)
 const highlightedCode = ref(null)
+const highlighter = shallowRef(null)
+
+/** `App.vue`와 동일: `<html>`의 `dark-mode` / `light-mode`에 맞춤 */
+function resolveCodeTheme() {
+  if (typeof document === 'undefined') return 'github-light'
+  return document.documentElement.classList.contains('dark-mode')
+    ? 'github-dark'
+    : 'github-light'
+}
 
 const highlight = async () => {
-  const highlighter = await createHighlighter({
-    langs: [props.lang],
-    themes: ['vitesse-light', 'rose-pine-dawn', 'github-light'],
-  })
-  highlightedCode.value = highlighter.codeToHtml(props.code, {
+  if (!highlighter.value) {
+    highlighter.value = await createHighlighter({
+      langs: [props.lang],
+      themes: ['github-light', 'github-dark'],
+    })
+  }
+  highlightedCode.value = highlighter.value.codeToHtml(props.code, {
     lang: props.lang,
-    theme: 'github-light',
+    theme: resolveCodeTheme(),
   })
 }
+
+let htmlClassObserver = null
 
 onMounted(() => {
   isShow.value = props.useToggle ? props.show : true
   highlight()
+  htmlClassObserver = new MutationObserver(() => {
+    highlight()
+  })
+  htmlClassObserver.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['class'],
+  })
 })
+
+onUnmounted(() => {
+  htmlClassObserver?.disconnect()
+  htmlClassObserver = null
+})
+
 watch(() => props.code, highlight)
+watch(
+  () => props.lang,
+  async () => {
+    highlighter.value = null
+    await highlight()
+  },
+)
 </script>
 
 <template>

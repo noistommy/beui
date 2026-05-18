@@ -1,6 +1,6 @@
 <script setup>
 import { version } from '../../package.json'
-import { ref, watch } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import SlideSideLayout from './components/SlideSideLayout.vue'
 import SideList from '@/components/SideList.vue'
@@ -22,6 +22,8 @@ const mainTitle = ref(route.name)
 const prevInfo = ref(null)
 const nextInfo = ref(null)
 
+const mode = ref('')
+
 watch(route, () => {
   mainTitle.value = route.name
   setPrevNext()
@@ -34,6 +36,33 @@ const setPrevNext = () => {
   prevInfo.value = navList[currentIdx - 1] || null
   nextInfo.value = navList[currentIdx + 1] || null
 }
+
+const toggleTheme = () => {
+  const newValue = mode.value === 'light' ? 'dark' : 'light'
+  mode.value = newValue
+}
+const selectTheme = () => {
+  const html = document.documentElement
+  html.className = ''
+  html.classList.add(`${mode.value}-mode`)
+
+  sessionStorage.setItem('theme-mode', mode.value)
+}
+
+watch(
+  () => mode.value,
+  () => {
+    selectTheme()
+  },
+)
+onMounted(() => {
+  console.log(sessionStorage.getItem('theme-mode'))
+  if (sessionStorage.getItem('theme-mode')) {
+    mode.value = sessionStorage.getItem('theme-mode')
+  } else {
+    mode.value = 'light'
+  }
+})
 </script>
 
 <template>
@@ -55,7 +84,14 @@ const setPrevNext = () => {
         <!-- <div class="description">Vue 3 전용 공용 UI 라이브러리</div> -->
       </div>
       <div class="links">
-        <div class="be-button icon round compact large" v-be-tooltip="`Github`">
+        <div
+          class="be-button icon compact"
+          @click="toggleTheme"
+          v-be-tooltip="`Toggle Mode`"
+        >
+          <i :class="mode === 'light' ? 'xi-moon' : 'xi-sun'"></i>
+        </div>
+        <div class="be-button icon compact" v-be-tooltip="`Github`">
           <a
             class="link"
             href="https://github.com/noistommy/beui.git"
@@ -63,7 +99,7 @@ const setPrevNext = () => {
           ></a>
           <i class="xi-github"></i>
         </div>
-        <div class="be-button icon round compact large" v-be-tooltip="`NPM`">
+        <div class="be-button icon compact" v-be-tooltip="`NPM`">
           <a
             class="link"
             href="https://www.npmjs.com/package/noist-beui"
@@ -89,8 +125,18 @@ const setPrevNext = () => {
       </template>
       <template #main>
         <div class="main">
-          <div class="main-title">
-            <h1 class="title">{{ mainTitle }}</h1>
+          <div class="main-title be-flex justify-between">
+            <div class="title">{{ mainTitle }}</div>
+            <div class="move-btns">
+              <button class="be-button icon compact" :disabled="!prevInfo">
+                <i class="xi-angle-left"></i>
+                <a :href="prevInfo?.path" class="link"></a>
+              </button>
+              <button class="be-button icon compact" :disabled="!nextInfo">
+                <i class="xi-angle-right"></i>
+                <a :href="nextInfo?.path" class="link"></a>
+              </button>
+            </div>
             <div class="description"></div>
           </div>
           <div class="main-contents">
@@ -129,6 +175,7 @@ const setPrevNext = () => {
 </template>
 
 <style lang="scss">
+@use 'sass:math';
 @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
 $headerHeight: 56px;
@@ -162,7 +209,7 @@ h5 {
     font-family: 'Ubuntu';
     font-weight: 700;
     font-size: 24px;
-    color: #000;
+    color: var(--color);
     .sub {
       color: #a1a1a1;
     }
@@ -189,17 +236,19 @@ main {
   margin: 0 auto;
 
   .main-title {
-    padding-top: 15px;
-    padding-left: 20px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     & > .title {
-      font-size: 45px;
+      font-size: 2em;
       font-weight: 700;
-      margin: 20px 0;
       &::first-letter {
         text-transform: uppercase;
       }
     }
     .description {
+      width: 100%;
       color: #c4c4c4;
       padding: 10px 10px 20px;
     }

@@ -48,6 +48,7 @@ defineProps({
 </template>
 
 <style lang="scss" scoped>
+$tableBoderColor: var(--brd);
 .title {
   font-size: 1.2em;
   font-weight: 700;
@@ -61,23 +62,23 @@ defineProps({
     }
   }
   .lb {
-    color: #666;
+    color: var(--txt-light);
     font-size: 0.9em;
-    border: 1px solid #f2f2f2;
+    border: 1px solid $tableBoderColor;
     .props-item {
       // background-color: #f8f8f8;
       margin-bottom: 5px;
       border-radius: 4px;
-      border-bottom: 1px solid #f2f2f2;
+      border-bottom: 1px solid $tableBoderColor;
       &:last-child {
         margin: 0;
         border: 0;
       }
       .column {
         padding: 8px 12px;
-        &.name {
-          color: #333;
-        }
+        // &.name {
+        //   color: in;
+        // }
         &.description {
           flex-grow: 1;
           span + span {

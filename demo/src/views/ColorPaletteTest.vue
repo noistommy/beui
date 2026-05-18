@@ -34,10 +34,27 @@ const colors = [
   'gray',
 ]
 
-const valiableColor = {
+const valiableColor1 = {
   primary: '#5178af',
   secondary: '#35363a',
   red: '#d75757',
+  orange: '#ee9033',
+  yellow: '#f8b825',
+  lightgreen: '#b3bc40',
+  green: '#61a475',
+  lightblue: '#8cc5ce',
+  blue: '#70a3ca',
+  deepblue: '#5178af',
+  deeppurple: '#9180b4',
+  purple: '#af77c0',
+  brown: '#a86a82',
+  gray: '#8b8b8b',
+}
+
+const valiableColor = {
+  primary: '#5178af',
+  secondary: '#35363a',
+  red: 'rgb(229, 72, 77)',
   orange: '#ee9033',
   yellow: '#f8b825',
   lightgreen: '#b3bc40',
