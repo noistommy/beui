@@ -207,18 +207,13 @@ let slide_obs = new ResizeObserver((entries) => {
   <div
     class="be-slider"
     ref="slider"
-    :class="[{ disabled }, trackType, { labeled: showLabel }]"
+    :class="[{ disabled }, trackType, { labeled: showLabel }, color]"
     @mousedown="setStateOn"
     @mouseup="setStateOff"
     @touchstart="setStateOn"
     @touchend="setStateOff"
   >
-    <div
-      class="result-slider primary"
-      :class="`be-${color}`"
-      ref="resultRef"
-      :style="setResult"
-    ></div>
+    <div class="result-slider" ref="resultRef" :style="setResult"></div>
     <template v-if="showStep">
       <div
         class="break-point"
@@ -232,11 +227,9 @@ let slide_obs = new ResizeObserver((entries) => {
       <div v-if="showTooltip" class="tooltip">
         {{ setResultValue }}{{ unitText }}
       </div>
-    </div>
-    <div v-if="showValue" class="label-text">
-      <div class="current-label" :style="{ left: `${result}px` }">
-        {{ setResultValue }}{{ unitText }}
-      </div>
+      <template v-if="showValue">
+        <div class="current-label">{{ setResultValue }}{{ unitText }}</div>
+      </template>
     </div>
     <div v-if="showLabel" class="label-text">
       <div class="start-label">{{ min }}{{ unitText }}</div>

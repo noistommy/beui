@@ -4,7 +4,7 @@ const props = defineProps({
   type: {
     type: String,
     default: 'checkbox',
-    varidator: (value) => {
+    validator: (value) => {
       return ['checkbox', 'radio'].includes(value)
     },
   },

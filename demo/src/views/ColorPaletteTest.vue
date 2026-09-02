@@ -54,7 +54,7 @@ const valiableColor1 = {
 const valiableColor = {
   primary: '#5178af',
   secondary: '#35363a',
-  red: 'rgb(229, 72, 77)',
+  red: '#d75757',
   orange: '#ee9033',
   yellow: '#f8b825',
   lightgreen: '#b3bc40',
@@ -66,6 +66,23 @@ const valiableColor = {
   purple: '#af77c0',
   brown: '#a86a82',
   gray: '#8b8b8b',
+}
+
+const valiableColorVintage = {
+  primary: '#5178af',
+  secondary: '#35363a',
+  red: '#B35454',
+  orange: '#C07E3C',
+  yellow: '#C59934',
+  lightgreen: '#8C914D',
+  green: '#60866B',
+  lightblue: '#7BA9B0',
+  blue: '#678DAA',
+  deepblue: '#576C8A',
+  deeppurple: '#7F7399',
+  purple: '#966CA2',
+  brown: '#8C6474',
+  gray: '#7A7A7A',
 }
 
 const msgError = ref('')
@@ -80,7 +97,7 @@ onMounted(() => {
   colors.forEach((color) => {
     valiablePalette.push({
       name: color,
-      palette: genaratorPalette(valiableColor[color]),
+      palette: genaratorPalette(valiableColorVintage[color]),
     })
   })
 })
@@ -122,20 +139,22 @@ const genColor = () => {
 
 const getPalette = (hex) => {
   const tones = [20, 30, 40, 50, 60, 70, 80, 90, 95, 98]
+  const lebels = [900, 800, 700, 600, 500, 400, 300, 200, 100, 50]
   const palettes = []
   const internal = Hct.fromInt(argbFromHex(hex))
   const totalPalette = TonalPalette.fromHueAndChroma(
     internal.hue,
     internal.chroma,
   )
-  tones.forEach((tone) => {
+  tones.forEach((tone, i) => {
     const argb = totalPalette.tone(tone)
     palettes.push({
       tone,
+      name: lebels[i],
       value: hexFromArgb(argb),
     })
   })
-  return palettes
+  return palettes.reverse()
 }
 
 const genaratorPalette = (hex) => {
@@ -239,6 +258,10 @@ const btnClasses = computed(() => {
           <!-- <h6 class="color-name">{{ palette.name }}</h6> -->
           <div class="palettes">
             <div class="color-item h6 color-name">{{ palette.name }}</div>
+            <!-- <div
+              class="color-item"
+              :style="{ backgroundColor: valiableColorVintage[palette.name] }"
+            ></div> -->
             <div
               class="color-item"
               v-for="color in palette.palette"

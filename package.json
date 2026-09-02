@@ -1,6 +1,6 @@
 {
   "name": "noist-beui",
-  "version": "0.2.6",
+  "version": "0.2.8",
   "private": false,
   "type": "module",
   "main": "./dist/be-ui.umd.js",
@@ -29,10 +29,10 @@
   ],
   "style": "./dist/beui.css",
   "scripts": {
-    "dev": "MODE=demo vite",
+    "dev": "vite --mode=demo",
     "build": "npm run build:code",
-    "build:code": "MODE=lib vite build",
-    "build:demo": "MODE=demo vite build",
+    "build:code": "vite build --mode=lib",
+    "build:demo": "vite build --mode=demo",
     "preview": "vite preview",
     "lint": "eslint . --fix",
     "format": "prettier --write src/"
@@ -53,6 +53,7 @@
     "prettier": "^3.4.2",
     "sass": "^1.89.0",
     "shiki": "^3.8.1",
+    "unplugin-vue-markdown": "^30.0.0",
     "vite": "^6.0.11",
     "vite-plugin-vue-devtools": "^7.7.1",
     "vue-markdown-shiki": "^2.0.0"

@@ -4,6 +4,7 @@ import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
+import Markdown from 'unplugin-vue-markdown/vite'
 const libConfig = {
   plugins: [vue()],
   build: {
@@ -35,7 +36,13 @@ const libConfig = {
 const docsConfig = {
   root: './demo',
   // base: process.env.NODE_ENV === 'production' ? '/beui/' : '/',
-  plugins: [vue(), vueDevTools()],
+  plugins: [
+    vue({
+      include: [/\.vue$/, /\.md$/], // <-- allows Vue to compile Markdown files
+    }),
+    Markdown(),
+    vueDevTools(),
+  ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./demo/src', import.meta.url)),
@@ -51,14 +58,13 @@ const docsConfig = {
 }
 
 // https://vite.dev/config/
-export default defineConfig(({ command }) => {
-  const executionMode = process.env.MODE || 'lib'
-
-  const mode = command === 'build' ? 'production' : 'development'
+export default defineConfig(({ command, mode }) => {
+  const executionMode = mode || 'lib'
+  process.env.NODE_ENV = command === 'build' ? 'production' : 'development'
 
   if (executionMode === 'demo') {
-    return { ...docsConfig, mode }
+    return docsConfig
   } else {
-    return { ...libConfig, mode }
+    return libConfig
   }
 })

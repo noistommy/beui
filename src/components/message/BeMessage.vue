@@ -22,7 +22,7 @@ const props = defineProps({
   status: {
     type: String,
     default: null,
-    varidator: (value) => {
+    validator: (value) => {
       return ['success', 'danger', 'info', 'attention', 'importance'].includes(
         value,
       )
@@ -31,7 +31,7 @@ const props = defineProps({
   statusType: {
     type: String,
     default: null,
-    varidator: (value) => {
+    validator: (value) => {
       return ['text', 'bg', 'border'].includes(value)
     },
   },

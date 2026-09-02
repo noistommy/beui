@@ -146,7 +146,7 @@ const selectedItem = ref(optionList[0])
 #ListPage {
   .be-list {
     width: 250px;
-    border: 1px solid #eee;
+    border: 1px solid var(--brd);
     & > .item {
       padding: 10px;
     }

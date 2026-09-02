@@ -3,7 +3,7 @@ defineProps({
   type: {
     type: String,
     default: 'slide',
-    varidator: (value) => {
+    validator: (value) => {
       return ['slide', 'button', 'button-slide'].includes(value)
     },
   },

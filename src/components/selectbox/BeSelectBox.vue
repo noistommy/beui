@@ -148,16 +148,16 @@ const optionsHeight = computed(() => {
   return { maxHeight: props.maxOptHeight + 'px' }
 })
 
-watch(props, () => {
+watch(props.selectedValue, () => {
   initValue()
 })
 
 onMounted(() => {
   initValue()
-  window.addEventListener('click', () => showMenu(false))
+  window.addEventListener('click', closeMenu)
 })
 onUnmounted(() => {
-  window.removeEventListener('click', () => showMenu(false))
+  window.removeEventListener('click', closeMenu)
 })
 
 const initValue = () => {
@@ -210,14 +210,13 @@ const selectItem = (value) => {
   }
 }
 
-const showMenu = (value = true) => {
+const closeMenu = () => {
   if (
     elRef.value?.contains(event.target) ||
     floating.value?.contains(event.target)
   )
     return
-  if (isShow.value) value = false
-  isShow.value = value
+  isShow.value = false
 }
 
 const setMultipleList = (item) => {
@@ -255,9 +254,10 @@ const selectAll = () => {
       </template>
       <template v-else>
         <div
-          class="be-input icon right"
+          class="be-input icon both"
           :class="{ fluid, disabled, round, has: selectedItem }"
         >
+          <i class="icon xi-search" />
           <input
             type="text"
             :placeholder="selectedText || placeholder"

@@ -5,7 +5,7 @@ const props = defineProps({
   type: {
     type: String,
     default: 'number',
-    varidator: (value) => {
+    validator: (value) => {
       return ['number', 'page'].includes(value)
     },
   },
@@ -108,7 +108,7 @@ const offLimits = computed(() => {
   return props.pageLength <= props.limits || !props.limits
 })
 
-watch(props, () => {
+watch(props.pageLength, () => {
   last.value = props.pageLength
 })
 

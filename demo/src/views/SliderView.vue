@@ -85,7 +85,7 @@ const selectColor = ref('red')
         <section>
           <h4>Show Tooltip</h4>
           <div class="desc"></div>
-          <div class="contents-wrapper">
+          <div class="contents-wrapper py-10">
             <BeSlider
               v-model="range[4]"
               :show-label="true"

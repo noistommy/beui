@@ -1371,7 +1371,7 @@ export const processJson = (jsonData) => {
     scss += `$${colorName}-palette: (\n`
 
     colorGroup.palette.forEach((color) => {
-      scss += `  ${color.shade}: ${color.value},\n`
+      scss += `  ${color.name}: ${color.value},\n`
     })
 
     scss = scss.slice(0, -2) // 마지막 쉼표 제거
@@ -1397,4 +1397,9 @@ export const processJson = (jsonData) => {
 }\n`
 
   return scss
+}
+
+export const generateGradiant = (type = 'linear', angle = '90deg', colors) => {
+  // const colorString =
+  return `${type}-gradiant(${angle})`
 }

@@ -137,7 +137,7 @@ export const badge = `<!-- @badge: String -->
 export const link = `<!-- @link: href link url -->
 <!-- @linkTarget: {_self, _blank} -->
 <BeButton :link="link" :link-target="linkTarget">...</BeButton>
-
-export const eventEmit =
-<!-- emit: onClick --> <BeButton @click="handleClick">...</BeButton>
+`
+export const eventEmit = `<!-- emit: onClick -->
+<BeButton @click="handleClick">...</BeButton>
 `
