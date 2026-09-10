@@ -79,7 +79,7 @@ onMounted(() => {
         </div>
       </div>
       <div class="logo">
-        <div class="title"><BeLogo />UI <span class="sub">VUE</span></div>
+        <a class="title" href="/"><BeLogo /> <span class="sub">VUE</span></a>
         <span class="be-tag label round">v {{ version }}</span>
         <!-- <div class="description">Vue 3 전용 공용 UI 라이브러리</div> -->
       </div>

@@ -45,25 +45,25 @@
 }
 .base-tooltip[class*='top']::after {
   top: 100%;
-  transform: translate(-50%, -50%) rotate(-45deg);
+  /* transform: translate(-50%, -50%) rotate(-45deg); */
   box-shadow: -1px 1px 0 0 rgba(0, 0, 0, 0.16);
 }
 
 .base-tooltip[class*='bottom']::after {
   bottom: 100%;
-  transform: translate(-50%, 50%) rotate(-45deg);
+  /* transform: translate(-50%, 50%) rotate(-45deg); */
   box-shadow: 1px -1px 0 0 rgba(0, 0, 0, 0.16);
 }
 
 .base-tooltip[class*='left']::after {
   left: 100%;
-  transform: translate(-50%, -50%) rotate(45deg);
+  /* transform: translate(-50%, -50%) rotate(45deg); */
   box-shadow: 1px -1px 0 0 rgba(0, 0, 0, 0.16);
 }
 
 .base-tooltip[class*='right']::after {
   right: 100%;
-  transform: translate(50%, -50%) rotate(45deg);
+  /* transform: translate(50%, -50%) rotate(45deg); */
   box-shadow: -1px 1px 0 0 rgba(0, 0, 0, 0.16);
 }
 

@@ -1,62 +1,50 @@
-<script setup></script>
+<script setup>
+import BeLogo from '@/components/BeLogo.vue'
+</script>
 
 <template>
-  <main>
-    <div class="be-container">
-      <h3>Button</h3>
-      <div class="be-button">button</div>
-      <div class="be-button">
-        <i class="icon left xi-arrow-left"></i>
-        Left
+  <main id="intro" class="be flex column center mid">
+    <div class="intro-wrapper p-10">
+      <h5 class="be-tag label round">Headless UI</h5>
+      <h1 class="hero large">
+        <BeLogo />
+      </h1>
+      <div class="large gray-txt-70 pt-4 pb-8">
+        Unstyled UI components <br />designed to pair perfectly with Frog UI.
       </div>
-      <div class="be-button">
-        Right
-        <i class="icon right xi-arrow-right"></i>
+      <div class="be-button primary outline bold">
+        Show Components
+        <i class="icon right xi-arrow-right" />
+        <a class="link" href="/button" />
       </div>
-      <div class="be-button">
-        <i class="icon left xi-angle-left"></i>
-        Right
-        <i class="icon right xi-angle-right"></i>
+      <div
+        class="be flex mid center gap-4 pt-15"
+        v-be-tooltip:bottom="`Frog UI + BEUI-Vue`"
+      >
+        <img src="@/assets/img/frog-profile.svg" />
+        <i class="xi-plus-circle huge" />
+        <img src="@/assets/img/be-ui-vue.svg" />
       </div>
-      <div class="be-button red round">Round</div>
-      <button class="be-button blue round border">Border</button>
-      <button class="be-button purple round outline">Outline</button>
-      <button class="be-button purple round outline disabled">Disabled</button>
-      <button class="be-button purple round outline icon">
-        <i class="xi-airplane"></i>
-      </button>
-    </div>
-    <div class="be-container">
-      <h3>Input</h3>
-      <div class="be-input">
-        <input type="text" placeholder="Insert text" />
-      </div>
-      <div class="be-input">
-        <input type="text" placeholder="Insert text" />
-      </div>
-      <div class="be-input icon left">
-        <i class="icon xi-search"></i>
-        <input type="text" placeholder="Insert text" />
-      </div>
-      <div class="be-input icon right">
-        <i class="icon xi-close"></i>
-        <input type="text" placeholder="Insert text" />
-      </div>
-      <div class="be-input icon right underline">
-        <i class="icon xi-close"></i>
-        <input type="text" placeholder="Insert text" />
-      </div>
-      <div class="be-input icon right underline disabled">
-        <i class="icon xi-close"></i>
-        <input type="text" placeholder="Insert text" />
-      </div>
-    </div>
-    <div class="be-container">
-      <h3>Tag</h3>
-      <div class="be-tag label">test</div>
-    </div>
-    <div class="be-container">
-      <h3></h3>
     </div>
   </main>
 </template>
+
+<style lang="scss" scoped>
+#intro {
+  position: fixed;
+  width: 100dvw;
+  height: 100dvh;
+  top: 0;
+  left: 0;
+  background-color: var(--bgc);
+  z-index: 9999;
+  text-align: center;
+  .hero {
+    line-height: 1.2;
+  }
+  img {
+    background-color: var(--gray-10);
+    border-radius: 8px;
+  }
+}
+</style>

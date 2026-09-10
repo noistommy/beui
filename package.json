@@ -56,7 +56,8 @@
     "unplugin-vue-markdown": "^30.0.0",
     "vite": "^6.0.11",
     "vite-plugin-vue-devtools": "^7.7.1",
-    "vue-markdown-shiki": "^2.0.0"
+    "vue-markdown-shiki": "^2.0.0",
+    "vue-nt-tooltip": "^1.0.0"
   },
   "repository": {
     "type": "git",

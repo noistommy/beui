@@ -28,6 +28,7 @@ const playInterval = (state = true) => {
     <span class="rolling-words">
       <span>{{ word }}</span>
     </span>
+    <span class="pl-4">UI</span>
   </div>
 </template>
 
