@@ -35,7 +35,7 @@ defineProps({
     type: Boolean,
   },
   icon: {
-    type: Boolean,
+    type: Boolean || String,
   },
   withIcon: {
     type: String || Array,
@@ -72,6 +72,7 @@ const onClick = (e) => {
 <template>
   <button
     class="be-button"
+    type="button"
     :class="[
       brand,
       status,
@@ -88,6 +89,8 @@ const onClick = (e) => {
       { icon },
       { badge: badge },
     ]"
+    :disabled
+    :aria-label="typeof icon === 'string' ? icon : null"
     @click="onClick"
   >
     <slot>
@@ -98,10 +101,11 @@ const onClick = (e) => {
             iconPos,
             typeof withIcon === 'string' ? withIcon : withIcon[0],
           ]"
+          :atia-hidden="true"
         ></i>
       </template>
       <template v-if="icon">
-        <i class="icon" :class="icon"></i>
+        <i class="icon" :class="icon" :atia-hidden="true"></i>
       </template>
       {{ contentText }}
       <template v-if="withIcon && (iconPos === 'right' || iconPos === 'both')">
@@ -111,6 +115,7 @@ const onClick = (e) => {
             iconPos,
             typeof withIcon === 'string' ? withIcon : withIcon[1],
           ]"
+          :atia-hidden="true"
         ></i>
       </template>
       <template v-if="badge">

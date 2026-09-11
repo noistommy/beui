@@ -1,6 +1,9 @@
 <script setup>
 import { ref, reactive, computed, watch, onMounted, onUnmounted } from 'vue'
 import { useFloating, autoUpdate, offset, flip, shift } from '@floating-ui/vue'
+import { generateId } from '../../utility'
+
+const uid = generateId()
 
 const props = defineProps({
   target: {
@@ -245,6 +248,8 @@ const selectAll = () => {
     :class="[boxType, { multiple, fluid, disabled, round }, { show: isShow }]"
     @click="toggleOpen"
     ref="elRef"
+    :aria-expanded="isShow"
+    :aria-controls="uid"
   >
     <div class="selected-item" ref="reference">
       <template v-if="!isSearch">
@@ -280,6 +285,7 @@ const selectAll = () => {
         class="be-popper-container"
         ref="floating"
         :style="customFloatingStyle"
+        :id="uid"
       >
         <Transition name="extend-fade">
           <div

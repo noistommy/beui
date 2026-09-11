@@ -67,9 +67,7 @@ const sizes = ['tiny', 'small', 'medium', 'large', 'huge', 'massive']
             <BeButton content-text="Component"></BeButton>
             <BeButton brand="primary" content-text="Comp(brand)"></BeButton>
             <BeButton status="danger" content-text="Comp(status)"></BeButton>
-            <BeButton icon>
-              <i class="icon xi-user" />
-            </BeButton>
+            <BeButton icon="xi-user"> </BeButton>
           </div>
           <CodeBlock :code="codes.base_component" lang="vue-html"></CodeBlock>
         </section>
